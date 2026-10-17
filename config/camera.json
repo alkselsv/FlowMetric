@@ -1,0 +1,6 @@
+{
+  "note": "Floor zones in source-frame pixels (1920x1080), tested against box bottom (feet). door = doorway behind the threshold line; kitchen = kitchen pass.",
+  "door": [[420, 380], [590, 380], [590, 475], [420, 475]],
+  "kitchen": [[1260, 280], [1500, 280], [1500, 440], [1260, 440]],
+  "edge_margin": 0.06
+}

@@ -1,0 +1,14 @@
+# BoT-SORT with appearance ReID for a static CCTV camera.
+tracker_type: botsort
+track_high_thresh: 0.25
+track_low_thresh: 0.1
+new_track_thresh: 0.25
+track_buffer: 30
+match_thresh: 0.8
+fuse_score: True
+gmc_method: none # static camera: motion compensation only adds jitter
+
+proximity_thresh: 0.5
+appearance_thresh: 0.8
+with_reid: True
+model: auto # appearance embeddings from the YOLO detector features

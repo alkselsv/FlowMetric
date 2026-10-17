@@ -1,0 +1,38 @@
+{
+  "source": "https://github.com/nofriendsatall/video_analytics/blob/main/Timings.txt",
+  "video": "hf_20260519_173215_0e502bf6-374c-4039-ab2e-fded1fdf5558.mp4",
+  "duration_s": 15.07,
+  "staff": [6, 7, 20, 27, 30],
+  "anchors": {
+    "note": "Head label centers (1920x1080) read from First.png (frame 0) and Second.png (frame 86).",
+    "0": {
+      "1": [489, 258], "2": [205, 366], "3": [304, 339], "4": [330, 349],
+      "5": [361, 366], "6": [233, 357], "7": [390, 335], "8": [135, 482],
+      "9": [171, 493], "10": [529, 533], "11": [638, 634], "12": [642, 339],
+      "13": [637, 298], "14": [739, 282], "15": [777, 325], "16": [822, 304],
+      "17": [899, 270], "18": [968, 261], "19": [919, 337], "20": [1080, 276],
+      "21": [1168, 303], "22": [1249, 402], "23": [1326, 391], "24": [1566, 477],
+      "25": [1731, 533], "26": [1692, 709], "27": [1386, 286]
+    },
+    "86": {
+      "28": [1084, 275], "29": [1106, 309], "30": [1388, 291]
+    }
+  },
+  "events": [
+    {"t": 0.000, "type": "service_end", "staff": 7, "customer": 5},
+    {"t": 1.562, "type": "enter", "person": 1},
+    {"t": 2.425, "type": "exit", "person": 6},
+    {"t": 2.657, "type": "leave_kitchen", "person": 30},
+    {"t": 7.362, "type": "seated", "person": 1},
+    {"t": 8.893, "type": "service_start", "staff": 7, "customer": 12},
+    {"t": 11.799, "type": "service_start", "staff": 30, "customer": 26},
+    {"t": 13.086, "type": "service_end", "staff": 7, "customer": 12},
+    {"t": 14.938, "type": "service_end", "staff": 30, "customer": 26}
+  ],
+  "states": [
+    {"type": "waiting", "person": 12, "start": 0.0, "end": 8.893},
+    {"type": "waiting", "person": 26, "start": 0.0, "end": 11.799},
+    {"type": "waiting", "person": 1, "start": 7.362, "end": 15.07},
+    {"type": "consuming", "persons": [2, 3, 4, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 28, 29], "start": 0.0, "end": 15.07}
+  ]
+}
