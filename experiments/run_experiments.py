@@ -13,8 +13,10 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import pickle
 import sys
+import tempfile
 import time
 import traceback
 from pathlib import Path
@@ -28,7 +30,7 @@ sys.path.insert(0, str(ROOT))
 
 from events import extract_events, load_camera  # noqa: E402
 from metrics import run_benchmark  # noqa: E402
-from track import LocalPass, build_tracks, sync_ids, weights_path  # noqa: E402
+from track import LocalPass, build_tracks, make_batches, sync_ids, weights_path  # noqa: E402
 
 EXP = ROOT / "data" / "experiments"
 REPORTS = ROOT / "reports"
@@ -39,6 +41,8 @@ DEVICE = "mps"
 
 def read_frames(video: Path) -> tuple[list[np.ndarray], float]:
     cap = cv2.VideoCapture(str(video))
+    if not cap.isOpened():
+        raise RuntimeError(f"Cannot open {video}")
     fps = cap.get(cv2.CAP_PROP_FPS) or 24.0
     frames = []
     while True:
@@ -48,6 +52,17 @@ def read_frames(video: Path) -> tuple[list[np.ndarray], float]:
         frames.append(f)
     cap.release()
     return frames, fps
+
+
+def video_info(video: Path) -> tuple[int, float]:
+    """Read cheap container metadata for cache-only evaluation runs."""
+    cap = cv2.VideoCapture(str(video))
+    if not cap.isOpened():
+        raise RuntimeError(f"Cannot open {video}")
+    frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    fps = cap.get(cv2.CAP_PROP_FPS) or 24.0
+    cap.release()
+    return frame_count, fps
 
 
 # ---------------------------------------------------------------------------
@@ -147,12 +162,17 @@ def calibrate_to(dets: list[np.ndarray], ref: list[np.ndarray]) -> list[np.ndarr
     return out
 
 
-def stage_detect(frames: list[np.ndarray], names: list[str], gt: dict) -> dict[str, dict]:
+def stage_detect(
+    frames: list[np.ndarray], names: list[str], gt: dict, *, compute: bool = True,
+) -> dict[str, dict]:
     out: dict[str, dict] = {}
     for name in names:
         path = EXP / "dets" / f"{name}.pkl"
         if path.exists():
             out[name] = pickle.loads(path.read_bytes())
+            continue
+        if not compute:
+            print(f"[detect] {name}: cache missing (detect stage disabled)", flush=True)
             continue
         if name.endswith("+cal"):
             base, ref = out.get(name[:-4]), out.get(CAL_REF)
@@ -364,6 +384,49 @@ def load_astra() -> dict[str, dict]:
     return out
 
 
+def _prepare_experiment_astra(lp: LocalPass, artifact: dict[str, Any]) -> None:
+    """Recover and verify the exact sample/batch protocol of a cached VLM run."""
+    meta = artifact.get("meta")
+    reids = artifact.get("reids")
+    if not isinstance(meta, dict) or not isinstance(reids, list):
+        raise ValueError("Astra experiment artifact must contain meta and reids")
+    sample_fps = meta.get("sample_fps")
+    if (
+        isinstance(sample_fps, bool)
+        or not isinstance(sample_fps, (int, float))
+        or not np.isfinite(sample_fps)
+        or sample_fps <= 0
+    ):
+        raise ValueError(f"invalid experiment sample_fps: {sample_fps!r}")
+    step = max(1, int(round(lp.fps / float(sample_fps))))
+    sample_indexes = list(range(0, lp.total, step))
+    expected_batches = [
+        [sample_indexes[i] for i in batch]
+        for batch in make_batches(len(sample_indexes), 16)
+    ]
+    if meta.get("frames") != len(sample_indexes):
+        raise ValueError(
+            f"Astra experiment frame count {meta.get('frames')!r} does not match "
+            f"the expected {len(sample_indexes)}"
+        )
+    if meta.get("calls") != len(expected_batches) or len(reids) != len(expected_batches):
+        raise ValueError(
+            f"Astra experiment has {len(reids)} response(s)/meta.calls={meta.get('calls')!r}; "
+            f"expected {len(expected_batches)}"
+        )
+    actual_batches = [
+        reid.get("_meta", {}).get("video_frames")
+        if isinstance(reid, dict) else None
+        for reid in reids
+    ]
+    if actual_batches != expected_batches:
+        raise ValueError(
+            f"Astra experiment batch frames do not match the sampling protocol: "
+            f"got {actual_batches!r}, expected {expected_batches!r}"
+        )
+    lp.sample_idx = sample_indexes
+
+
 def evaluate(run: dict, det_cache: dict, astra: dict, gt: dict, cam: dict) -> list[dict]:
     rec = pickle.loads(run["path"].read_bytes())
     lp = LocalPass(fps=rec["fps"], width=rec["w"], height=rec["h"], total=rec["n"], dets=rec["lp_dets"])
@@ -386,6 +449,7 @@ def evaluate(run: dict, det_cache: dict, astra: dict, gt: dict, cam: dict) -> li
         if a is None:
             tid_to_gid, gid_role, stats = {}, {}, {}
         else:
+            _prepare_experiment_astra(lp, a)
             tid_to_gid, gid_role, stats = sync_ids(lp, a["reids"], iou_thr=0.3)
         tracks = build_tracks(lp, tid_to_gid, gid_role, mode="local" if a is None else "hybrid")
         ev = extract_events(tracks, cam)
@@ -398,9 +462,14 @@ def evaluate(run: dict, det_cache: dict, astra: dict, gt: dict, cam: dict) -> li
             "astra_frames": a["meta"]["frames"] if a else 0,
             "pred_ids": b["identity"]["pred_ids"],
             "anchored": b["anchoring"]["mapped"],
+            "anchor_coverage": round(
+                b["anchoring"]["mapped"] / max(b["anchoring"]["gt_people"], 1), 3
+            ),
             "continuity": b["identity"]["continuity_mean"],
+            "continuity_mapped": b["identity"]["continuity_mapped"],
             "continuity_staff": b["identity"]["continuity_staff"],
             "role_acc": b["roles"]["accuracy"],
+            "role_acc_mapped": b["roles"]["accuracy_mapped"],
             "strict_p": es["precision"], "strict_r": es["recall"], "strict_f1": es["f1"],
             "strict_tp": es["tp"], "strict_fp": es["fp"], "strict_fn": es["fn"], "mae_s": es["mae_s"],
             "loose_f1": el["f1"],
@@ -421,14 +490,63 @@ def fmt(v: Any, pct: bool = False) -> str:
     return str(v)
 
 
+def _atomic_write_text(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary: str | None = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w", encoding="utf-8", dir=path.parent,
+            prefix=f".{path.name}.", suffix=".tmp", delete=False,
+        ) as handle:
+            temporary = handle.name
+            handle.write(content)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+    finally:
+        if temporary is not None:
+            try:
+                Path(temporary).unlink()
+            except FileNotFoundError:
+                pass
+
+
+def _atomic_write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
+    if not rows:
+        raise ValueError(f"refusing to replace {path}: no result rows")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary: str | None = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w", newline="", encoding="utf-8", dir=path.parent,
+            prefix=f".{path.name}.", suffix=".tmp", delete=False,
+        ) as handle:
+            temporary = handle.name
+            writer = csv.DictWriter(
+                handle, fieldnames=list(rows[0]), lineterminator="\n"
+            )
+            writer.writeheader()
+            writer.writerows(rows)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+    finally:
+        if temporary is not None:
+            try:
+                Path(temporary).unlink()
+            except FileNotFoundError:
+                pass
+
+
 def write_tables(rows: list[dict], det_cache: dict, path: Path) -> None:
     lines = ["# Experiment tables (auto-generated by experiments/run_experiments.py)", ""]
     lines += ["## Detectors", "", "| Detector | ms/frame (MPS) | GT heads found (conf ≥ 0.3) |", "|---|---:|---:|"]
     for k, d in det_cache.items():
         lines.append(f"| {DETECTORS[k][0]} | {d['ms']:.0f} | {d['anchor_hits']}/{d['anchor_total']} |")
-    hdr = ("| Detector | Tracker | ReID | Mode | IDs | Continuity | Staff cont. | Roles | Strict P | Strict R | "
-           "Strict F1 | Loose F1 | Waiting tIoU | Consuming tIoU | Track ms |")
-    sep = "|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"
+    hdr = ("| Detector | Tracker | ReID | Mode | IDs | Anchor coverage | Continuity e2e | Continuity mapped | "
+           "Staff cont. e2e | Roles e2e | Roles mapped | Strict P | Strict R | Strict F1 | Loose F1 | "
+           "Waiting tIoU | Consuming tIoU | Track ms |")
+    sep = "|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"
     for title, flt in [("Local only", lambda r: r["mode"] == "local"),
                        ("Hybrid (local + GPT-6 Astra 1 fps)", lambda r: r["mode"] == "astra_1fps"),
                        ("All hybrid variants", lambda r: r["mode"] not in ("local", "astra_1fps"))]:
@@ -438,15 +556,17 @@ def write_tables(rows: list[dict], det_cache: dict, path: Path) -> None:
         lines += ["", f"## {title}", "", hdr, sep]
         for r in sel:
             lines.append("| " + " | ".join([
-                r["detector"], r["tracker"], r["reid"], r["mode"], str(r["pred_ids"]), fmt(r["continuity"], True),
-                fmt(r["continuity_staff"], True), fmt(r["role_acc"], True), fmt(r["strict_p"]), fmt(r["strict_r"]),
+                r["detector"], r["tracker"], r["reid"], r["mode"], str(r["pred_ids"]),
+                fmt(r["anchor_coverage"], True), fmt(r["continuity"], True), fmt(r["continuity_mapped"], True),
+                fmt(r["continuity_staff"], True), fmt(r["role_acc"], True), fmt(r["role_acc_mapped"], True),
+                fmt(r["strict_p"]), fmt(r["strict_r"]),
                 fmt(r["strict_f1"]), fmt(r["loose_f1"]), fmt(r["waiting_tiou"]), fmt(r["consuming_tiou"]),
                 f"{r['trk_ms']:.0f}",
             ]) + " |")
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    _atomic_write_text(path, "\n".join(lines) + "\n")
 
 
-HYBRID_REPEATS = ("astra_1fps", "astra_1fps_r2", "astra_1fps_r3", "astra_1fps_medium")
+HYBRID_REPEATS = ("astra_1fps", "astra_1fps_r2", "astra_1fps_r3")
 
 
 def write_summary(rows: list[dict], path: Path) -> None:
@@ -461,10 +581,13 @@ def write_summary(rows: list[dict], path: Path) -> None:
         if loc is None:
             continue
         rec = {k: loc[k] for k in ("detector", "tracker", "reid", "det_ms", "trk_ms", "anchor_recall")}
-        rec |= {f"local_{k}": loc[k] for k in ("pred_ids", "continuity", "continuity_staff", "role_acc", "strict_p",
-                                              "strict_r", "strict_f1", "waiting_tiou", "consuming_tiou")}
-        for k in ("pred_ids", "continuity", "continuity_staff", "role_acc", "strict_p", "strict_r", "strict_f1",
-                  "waiting_tiou", "consuming_tiou"):
+        metric_keys = (
+            "pred_ids", "anchor_coverage", "continuity", "continuity_mapped",
+            "continuity_staff", "role_acc", "role_acc_mapped", "strict_p",
+            "strict_r", "strict_f1", "waiting_tiou", "consuming_tiou",
+        )
+        rec |= {f"local_{k}": loc[k] for k in metric_keys}
+        for k in metric_keys:
             vals = [r[k] for r in hyb if r[k] is not None]
             rec[f"hybrid_{k}"] = round(float(np.mean(vals)), 3) if vals else None
         f1 = [r["strict_f1"] for r in hyb]
@@ -472,15 +595,12 @@ def write_summary(rows: list[dict], path: Path) -> None:
         rec["hybrid_runs"] = len(hyb)
         out.append(rec)
     out.sort(key=lambda r: (-(r["hybrid_strict_f1"] or 0), -(r["hybrid_continuity"] or 0)))
-    with path.open("w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=list(out[0]))
-        w.writeheader()
-        w.writerows(out)
+    _atomic_write_csv(path, out)
 
 
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("--video", type=Path, default=next((ROOT / "data").glob("*.mp4")))
+    p.add_argument("--video", type=Path, default=next((ROOT / "data").glob("*.mp4"), None))
     p.add_argument("--detectors", nargs="*", default=list(DETECTORS))
     p.add_argument("--trackers", nargs="*", default=list(BOXMOT_TRACKERS))
     p.add_argument("--no-ul", action="store_true", help="skip ultralytics BoT-SORT reference runs")
@@ -488,9 +608,20 @@ def main() -> None:
     p.add_argument("--astra", nargs="*", default=None, help="subset of Astra variants to score (default: all)")
     p.add_argument("--table-gap", type=float, default=None,
                    help="score events with config/tables.json at this events.TABLE_GAP (outputs get a suffix)")
+    p.add_argument(
+        "--allow-partial", action="store_true",
+        help="publish reports even when one or more evaluation runs fail",
+    )
     args = p.parse_args()
 
+    if args.video is None or not args.video.exists():
+        raise SystemExit("No input video. Pass --video path/to/video.mp4")
     gt = json.loads(GT_PATH.read_text(encoding="utf-8"))
+    if args.video.name != gt.get("video"):
+        raise SystemExit(
+            f"Experiment caches and ground truth are tied to {gt.get('video')!r}; "
+            f"refusing video {args.video.name!r}"
+        )
     cam = load_camera(None)
     suffix = ""
     if args.table_gap is not None:
@@ -499,12 +630,18 @@ def main() -> None:
         cam["tables"] = json.loads((ROOT / "config" / "tables.json").read_text(encoding="utf-8"))["tables"]
         events.TABLE_GAP = args.table_gap
         suffix = f"_tablegap{args.table_gap:g}"
-    frames, fps = read_frames(args.video)
-    print(f"video: {len(frames)} frames @ {fps:.1f} fps", flush=True)
+    stages = {stage.strip() for stage in args.stages.split(",") if stage.strip()}
+    if stages & {"detect", "track"}:
+        frames, fps = read_frames(args.video)
+        frame_count = len(frames)
+    else:
+        frame_count, fps = video_info(args.video)
+        frames = []
+    print(f"video: {frame_count} frames @ {fps:.1f} fps", flush=True)
 
-    det_cache = stage_detect(frames, args.detectors, gt)
-    runs = stage_track(frames, fps, det_cache, args.trackers, ul=not args.no_ul, compute="track" in args.stages)
-    if "eval" not in args.stages:
+    det_cache = stage_detect(frames, args.detectors, gt, compute="detect" in stages)
+    runs = stage_track(frames, fps, det_cache, args.trackers, ul=not args.no_ul, compute="track" in stages)
+    if "eval" not in stages:
         return
 
     astra = load_astra()
@@ -512,18 +649,26 @@ def main() -> None:
         astra = {k: v for k, v in astra.items() if k in args.astra}
     print(f"[eval] {len(runs)} tracker runs x modes local + {list(astra)}", flush=True)
     rows = []
+    failures: list[str] = []
     for run in runs:
         try:
             rows += evaluate(run, det_cache, astra, gt, cam)
         except Exception as e:
+            failures.append(f"{run['det']} + {run['trk']}: {type(e).__name__}: {e}")
             print(f"[eval] {run['det']} + {run['trk']} FAILED: {type(e).__name__}: {e}", flush=True)
             traceback.print_exc()
 
+    if not rows:
+        raise RuntimeError("evaluation produced no rows; existing reports were left untouched")
+    if failures and not args.allow_partial:
+        raise RuntimeError(
+            f"{len(failures)} evaluation run(s) failed; existing reports were left untouched. "
+            "Fix the failures or pass --allow-partial explicitly. First failure: "
+            + failures[0]
+        )
+
     out_csv = REPORTS / f"experiments{suffix}.csv"
-    with out_csv.open("w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=list(rows[0]))
-        w.writeheader()
-        w.writerows(rows)
+    _atomic_write_csv(out_csv, rows)
     write_tables(rows, det_cache, REPORTS / f"experiments_tables{suffix}.md")
     write_summary(rows, REPORTS / f"experiments_summary{suffix}.csv")
     print(f"[eval] {len(rows)} rows → {out_csv}", flush=True)

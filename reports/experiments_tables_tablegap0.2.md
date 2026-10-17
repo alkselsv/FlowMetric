@@ -21,1125 +21,1125 @@
 
 ## Local only
 
-| Detector | Tracker | ReID | Mode | IDs | Continuity | Staff cont. | Roles | Strict P | Strict R | Strict F1 | Loose F1 | Waiting tIoU | Consuming tIoU | Track ms |
-|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| YOLO11s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | local | 76 | 69% | 76% | 100% | 0.35 | 0.67 | 0.46 | 0.54 | 0.56 | 0.56 | 17 |
-| YOLO11m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 50 | 80% | 79% | 96% | 0.39 | 0.56 | 0.46 | 0.64 | 0.44 | 0.54 | 31 |
-| YOLO11s 1280 | BoT-SORT | — | local | 48 | 72% | 84% | 100% | 0.33 | 0.67 | 0.44 | 0.52 | 0.56 | 0.50 | 1 |
-| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 35 | 87% | 92% | 96% | 0.36 | 0.56 | 0.43 | 0.52 | 0.56 | 0.70 | 36 |
-| YOLO11s 1280 | ByteTrack [BoxMOT 25] | — | local | 37 | 70% | 79% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.65 | 0.25 | 2 |
-| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 32 | 85% | 90% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.60 | 34 |
-| YOLO11m 1280 | ByteTrack [BoxMOT 25] | — | local | 34 | 84% | 82% | 100% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.42 | 1 |
-| YOLO11m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 61 | 70% | 82% | 93% | 0.33 | 0.56 | 0.42 | 0.50 | 0.56 | 0.52 | 30 |
-| YOLO11m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 48 | 70% | 74% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.58 | 0.47 | 31 |
-| YOLO11m 1280 | ByteTrack [BoxMOT 25, our thr] | — | local | 51 | 63% | 83% | 89% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.46 | 2 |
-| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 31 | 90% | 93% | 96% | 0.31 | 0.56 | 0.40 | 0.48 | 0.35 | 0.66 | 35 |
-| YOLO26s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 48 | 69% | 82% | 92% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.45 | 31 |
-| YOLO11m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | local | 48 | 67% | 79% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.58 | 0.45 | 24 |
-| YOLO11m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | local | 48 | 67% | 79% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.58 | 0.45 | 56 |
-| YOLO26m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 78 | 69% | 79% | 96% | 0.29 | 0.56 | 0.39 | 0.54 | 0.56 | 0.51 | 25 |
-| YOLO11s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 53 | 70% | 66% | 96% | 0.29 | 0.44 | 0.35 | 0.61 | 0.49 | 0.49 | 32 |
-| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 61 | 68% | 62% | 100% | 0.29 | 0.44 | 0.35 | 0.61 | 0.31 | 0.59 | 33 |
-| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 64 | 69% | 52% | 95% | 0.27 | 0.44 | 0.33 | 0.58 | 0.25 | 0.43 | 34 |
-| YOLO11s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 61 | 65% | 62% | 100% | 0.27 | 0.44 | 0.33 | 0.58 | 0.56 | 0.55 | 30 |
-| YOLO11s 1280 | SFSORT [BoxMOT 25, our thr] | — | local | 76 | 59% | 64% | 100% | 0.27 | 0.44 | 0.33 | 0.58 | 0.56 | 0.39 | 0 |
-| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 30 | 89% | 92% | 100% | 0.23 | 0.56 | 0.32 | 0.45 | 0.28 | 0.65 | 35 |
-| YOLO11x 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 73 | 64% | 77% | 100% | 0.23 | 0.56 | 0.32 | 0.52 | 0.48 | 0.52 | 25 |
-| YOLO11m 1280 | OC-SORT | — | local | 46 | 74% | 72% | 89% | 0.30 | 0.33 | 0.32 | 0.53 | 0.18 | 0.57 | 1 |
-| YOLO11m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 46 | 74% | 72% | 89% | 0.30 | 0.33 | 0.32 | 0.53 | 0.18 | 0.57 | 24 |
-| YOLO11m 1280 | OC-SORT [BoxMOT 25, our thr] | — | local | 46 | 74% | 72% | 89% | 0.30 | 0.33 | 0.32 | 0.53 | 0.18 | 0.57 | 1 |
-| YOLO11s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 56 | 70% | 62% | 100% | 0.23 | 0.44 | 0.31 | 0.54 | 0.56 | 0.50 | 31 |
-| YOLO11s 1280 | StrongSORT | OSNet x0.25 MSMT17 | local | 63 | 69% | 64% | 96% | 0.23 | 0.44 | 0.31 | 0.54 | 0.56 | 0.51 | 27 |
-| YOLO11s 1280 | BoT-SORT (ultralytics, prod) | — | local | 67 | 68% | 60% | 100% | 0.23 | 0.44 | 0.31 | 0.54 | 0.56 | 0.58 | 5 |
-| YOLO11s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 56 | 66% | 66% | 96% | 0.23 | 0.44 | 0.31 | 0.54 | 0.65 | 0.52 | 26 |
-| YOLO11s 1280 | OC-SORT | — | local | 56 | 65% | 66% | 96% | 0.23 | 0.44 | 0.31 | 0.54 | 0.65 | 0.51 | 1 |
-| YOLO11s 1280 | OC-SORT [BoxMOT 25, our thr] | — | local | 56 | 65% | 66% | 96% | 0.23 | 0.44 | 0.31 | 0.54 | 0.65 | 0.51 | 1 |
-| YOLO11s 1280 | ByteTrack | — | local | 70 | 63% | 60% | 100% | 0.23 | 0.44 | 0.31 | 0.54 | 0.56 | 0.52 | 2 |
-| YOLO11s 640 | BoT-SORT | OSNet x0.25 MSMT17 | local | 33 | 76% | 53% | 100% | 0.27 | 0.33 | 0.30 | 0.60 | 0.23 | 0.40 | 24 |
-| YOLO11s 640 | BoT-SORT | OSNet x1.0 MSMT17 | local | 33 | 76% | 53% | 100% | 0.27 | 0.33 | 0.30 | 0.60 | 0.23 | 0.40 | 38 |
-| YOLO11s 1280 | ByteTrack [BoxMOT 25, our thr] | — | local | 54 | 73% | 68% | 100% | 0.22 | 0.44 | 0.30 | 0.52 | 0.56 | 0.60 | 2 |
-| YOLO11s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | local | 50 | 69% | 68% | 100% | 0.22 | 0.44 | 0.30 | 0.52 | 0.56 | 0.50 | 25 |
-| YOLO11s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | local | 50 | 69% | 68% | 100% | 0.22 | 0.44 | 0.30 | 0.52 | 0.56 | 0.50 | 65 |
-| YOLO11s 1280 | BoT-SORT | CLIP-ReID Market1501 | local | 50 | 68% | 67% | 100% | 0.22 | 0.44 | 0.30 | 0.52 | 0.56 | 0.50 | 221 |
-| YOLO11m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 25 | 86% | 64% | 82% | 0.25 | 0.33 | 0.29 | 0.57 | 0.56 | 0.29 | 30 |
-| YOLO11s 640 | BoT-SORT | CLIP-ReID Market1501 | local | 33 | 82% | 96% | 100% | 0.25 | 0.33 | 0.29 | 0.57 | 0.23 | 0.40 | 124 |
-| YOLO11x 1280 | OC-SORT | — | local | 47 | 67% | 57% | 93% | 0.25 | 0.33 | 0.29 | 0.67 | 0.18 | 0.54 | 1 |
-| YOLO11x 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 47 | 67% | 57% | 93% | 0.25 | 0.33 | 0.29 | 0.67 | 0.18 | 0.54 | 25 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25] | — | local | 41 | 64% | 64% | 89% | 0.25 | 0.33 | 0.29 | 0.67 | 0.34 | 0.39 | 1 |
-| YOLO11x 1280 | StrongSORT | OSNet x0.25 MSMT17 | local | 62 | 64% | 54% | 93% | 0.25 | 0.33 | 0.29 | 0.67 | 0.18 | 0.47 | 27 |
-| YOLO26s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 25 | 81% | 62% | 100% | 0.23 | 0.33 | 0.27 | 0.55 | 0.56 | 0.32 | 31 |
-| YOLO11m 1280 | StrongSORT | OSNet x0.25 MSMT17 | local | 68 | 65% | 74% | 85% | 0.23 | 0.33 | 0.27 | 0.64 | 0.18 | 0.44 | 26 |
-| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 33 | 89% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 36 |
-| YOLO11s 640 | BoT-SORT | — | local | 34 | 82% | 98% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.23 | 0.40 | 1 |
-| YOLO26m 1280 | ByteTrack [BoxMOT 25] | — | local | 40 | 67% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.39 | 2 |
-| YOLO11m 1280 | BoT-SORT | — | local | 48 | 66% | 70% | 96% | 0.21 | 0.33 | 0.26 | 0.43 | 0.23 | 0.45 | 1 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 40 | 66% | 67% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.34 | 0.38 | 32 |
-| YOLO11x 1280 | BoT-SORT (ultralytics, prod) | — | local | 62 | 62% | 78% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.50 | 42 |
-| YOLO11s 640 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 76 | 60% | 52% | 95% | 0.21 | 0.33 | 0.26 | 0.52 | 0.19 | 0.39 | 28 |
-| YOLO11x 1280 | ByteTrack | — | local | 64 | 58% | 78% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.45 | 2 |
-| YOLO26m 1280 | ByteTrack | — | local | 65 | 58% | 67% | 93% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.43 | 2 |
-| YOLO26m 1280 | BoT-SORT (ultralytics, prod) | — | local | 68 | 58% | 66% | 93% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.42 | 12 |
-| YOLO11m 1280 | SFSORT [BoxMOT 25, our thr] | — | local | 75 | 57% | 49% | 92% | 0.21 | 0.33 | 0.26 | 0.61 | 0.18 | 0.38 | 0 |
-| YOLO26m 1280 | StrongSORT | OSNet x0.25 MSMT17 | local | 66 | 72% | 77% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.54 | 27 |
-| YOLO26m 1280 | ByteTrack [BoxMOT 25, our thr] | — | local | 48 | 70% | 73% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.54 | 2 |
-| YOLO26m 1280 | BoT-SORT | — | local | 50 | 69% | 83% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.51 | 2 |
-| YOLO26m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | local | 51 | 68% | 79% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.51 | 25 |
-| YOLO26m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | local | 51 | 68% | 79% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.51 | 63 |
-| YOLO26s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 51 | 68% | 79% | 92% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.45 | 32 |
-| YOLO26s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 39 | 68% | 67% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.56 | 0.31 | 31 |
-| YOLO11x 1280 | BoT-SORT | — | local | 51 | 66% | 79% | 93% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.50 | 2 |
-| YOLO11x 1280 | BoT-SORT | OSNet x0.25 MSMT17 | local | 51 | 66% | 79% | 93% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.50 | 25 |
-| YOLO11x 1280 | BoT-SORT | OSNet x1.0 MSMT17 | local | 51 | 66% | 79% | 93% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.50 | 56 |
-| YOLO11x 1280 | BoT-SORT | CLIP-ReID Market1501 | local | 51 | 66% | 79% | 93% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.50 | 216 |
-| YOLO26m 1280 | BoT-SORT | CLIP-ReID Market1501 | local | 52 | 65% | 58% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.51 | 228 |
-| YOLO11s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 70 | 62% | 50% | 96% | 0.20 | 0.33 | 0.25 | 0.50 | 0.65 | 0.53 | 26 |
-| YOLO11x 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | local | 70 | 60% | 57% | 96% | 0.20 | 0.33 | 0.25 | 0.50 | 0.23 | 0.50 | 87 |
-| YOLO26m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | local | 77 | 60% | 60% | 93% | 0.20 | 0.33 | 0.25 | 0.50 | 0.23 | 0.46 | 41 |
-| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 37 | 80% | 59% | 100% | 0.17 | 0.44 | 0.24 | 0.36 | 0.39 | 0.62 | 37 |
-| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 33 | 89% | 81% | 100% | 0.19 | 0.33 | 0.24 | 0.48 | 0.18 | 0.73 | 36 |
-| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 60 | 73% | 78% | 100% | 0.19 | 0.33 | 0.24 | 0.64 | 0.21 | 0.40 | 34 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | local | 52 | 68% | 64% | 100% | 0.19 | 0.33 | 0.24 | 0.56 | 0.21 | 0.59 | 2 |
-| YOLO26s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | local | 67 | 65% | 53% | 93% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.49 | 18 |
-| YOLO11m 1280 | BoT-SORT | CLIP-ReID Market1501 | local | 49 | 64% | 57% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.58 | 0.45 | 199 |
-| YOLO11m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 75 | 64% | 55% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.56 | 0.53 | 25 |
-| YOLO26s 1280 | BoT-SORT | — | local | 49 | 63% | 79% | 92% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.42 | 2 |
-| YOLO26s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | local | 49 | 63% | 79% | 92% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.42 | 25 |
-| YOLO26s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | local | 49 | 63% | 79% | 92% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.42 | 60 |
-| YOLO26s 1280 | BoT-SORT | CLIP-ReID Market1501 | local | 49 | 63% | 79% | 92% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.42 | 221 |
-| YOLO26s 1280 | BoT-SORT (ultralytics, prod) | — | local | 63 | 63% | 60% | 93% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.48 | 8 |
-| YOLO26m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 66 | 63% | 59% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.56 | 0.49 | 31 |
-| RF-DETR Medium | ByteTrack | — | local | 62 | 59% | 57% | 100% | 0.19 | 0.33 | 0.24 | 0.56 | 0.18 | 0.35 | 2 |
-| YOLO11m 1280 | ByteTrack | — | local | 74 | 53% | 54% | 93% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.39 | 2 |
-| YOLO26s 1280 | SFSORT [BoxMOT 25, our thr] | — | local | 75 | 53% | 53% | 92% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.38 | 0 |
-| RF-DETR Medium 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 107 | 55% | 35% | 96% | 0.25 | 0.22 | 0.23 | 0.47 | 0.56 | 0.43 | 27 |
-| YOLO26s 1280 | ByteTrack [BoxMOT 25] | — | local | 37 | 78% | 66% | 100% | 0.18 | 0.33 | 0.23 | 0.54 | 0.56 | 0.36 | 2 |
-| YOLO11s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 37 | 77% | 63% | 100% | 0.18 | 0.33 | 0.23 | 0.54 | 0.65 | 0.28 | 33 |
-| YOLO26m 1280 | OC-SORT | — | local | 54 | 73% | 70% | 93% | 0.18 | 0.33 | 0.23 | 0.54 | 0.18 | 0.56 | 1 |
-| YOLO26m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 54 | 73% | 70% | 93% | 0.18 | 0.33 | 0.23 | 0.54 | 0.18 | 0.56 | 24 |
-| YOLO26m 1280 | OC-SORT [BoxMOT 25, our thr] | — | local | 54 | 73% | 70% | 93% | 0.18 | 0.33 | 0.23 | 0.54 | 0.18 | 0.56 | 1 |
-| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | local | 59 | 66% | 67% | 100% | 0.18 | 0.33 | 0.23 | 0.61 | 0.21 | 0.37 | 53 |
-| RF-DETR Medium (calibrated) | BoT-SORT | CLIP-ReID Market1501 | local | 59 | 65% | 63% | 100% | 0.18 | 0.33 | 0.23 | 0.61 | 0.21 | 0.37 | 160 |
-| YOLO26m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 59 | 64% | 62% | 92% | 0.18 | 0.33 | 0.23 | 0.54 | 0.18 | 0.46 | 31 |
-| YOLO26s 1280 | StrongSORT | OSNet x0.25 MSMT17 | local | 71 | 62% | 53% | 93% | 0.18 | 0.33 | 0.23 | 0.54 | 0.56 | 0.47 | 27 |
-| YOLO11m 1280 | BoT-SORT (ultralytics, prod) | — | local | 69 | 62% | 74% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.49 | 14 |
-| YOLO11m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | local | 75 | 62% | 75% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.49 | 38 |
-| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 35 | 84% | 63% | 97% | 0.17 | 0.33 | 0.22 | 0.44 | 0.56 | 0.73 | 37 |
-| YOLO26s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 54 | 72% | 59% | 96% | 0.17 | 0.33 | 0.22 | 0.52 | 0.56 | 0.59 | 25 |
-| YOLO26s 1280 | OC-SORT | — | local | 55 | 70% | 59% | 96% | 0.17 | 0.33 | 0.22 | 0.52 | 0.56 | 0.55 | 1 |
-| YOLO26s 1280 | OC-SORT [BoxMOT 25, our thr] | — | local | 55 | 70% | 59% | 96% | 0.17 | 0.33 | 0.22 | 0.52 | 0.56 | 0.55 | 1 |
-| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | local | 60 | 69% | 64% | 96% | 0.16 | 0.33 | 0.21 | 0.57 | 0.17 | 0.50 | 2 |
-| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | local | 59 | 68% | 81% | 100% | 0.16 | 0.33 | 0.21 | 0.57 | 0.17 | 0.37 | 26 |
-| YOLO26s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 59 | 67% | 69% | 93% | 0.16 | 0.33 | 0.21 | 0.50 | 0.46 | 0.49 | 30 |
-| RF-DETR Medium (calibrated) | BoT-SORT | — | local | 56 | 66% | 55% | 100% | 0.16 | 0.33 | 0.21 | 0.57 | 0.21 | 0.40 | 1 |
-| RF-DETR Large (calibrated) | OC-SORT | — | local | 71 | 59% | 54% | 91% | 0.20 | 0.22 | 0.21 | 0.53 | 0.00 | 0.49 | 1 |
-| RF-DETR Large (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 71 | 59% | 54% | 91% | 0.20 | 0.22 | 0.21 | 0.53 | 0.00 | 0.49 | 24 |
-| YOLO26m 1280 | SFSORT [BoxMOT 25] | — | local | 68 | 52% | 43% | 94% | 0.20 | 0.22 | 0.21 | 0.42 | 0.00 | 0.30 | 0 |
-| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 34 | 88% | 85% | 100% | 0.15 | 0.33 | 0.21 | 0.48 | 0.26 | 0.54 | 38 |
-| YOLO26m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 56 | 73% | 77% | 96% | 0.15 | 0.33 | 0.21 | 0.55 | 0.45 | 0.51 | 32 |
-| YOLO26s 1280 | ByteTrack [BoxMOT 25, our thr] | — | local | 49 | 72% | 79% | 93% | 0.15 | 0.33 | 0.21 | 0.48 | 0.23 | 0.53 | 2 |
-| RF-DETR Small | OC-SORT | — | local | 59 | 60% | 59% | 100% | 0.15 | 0.33 | 0.21 | 0.41 | 0.58 | 0.37 | 1 |
-| RF-DETR Medium 1024 | OC-SORT | — | local | 48 | 62% | 60% | 87% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.48 | 1 |
-| RF-DETR Medium 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 48 | 62% | 60% | 87% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.48 | 24 |
-| RF-DETR Large 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 53 | 62% | 61% | 91% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.47 | 24 |
-| RF-DETR Large 1024 | OC-SORT | — | local | 54 | 60% | 57% | 91% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.46 | 1 |
-| YOLO26s 1280 | ByteTrack | — | local | 70 | 56% | 68% | 93% | 0.14 | 0.33 | 0.20 | 0.47 | 0.21 | 0.40 | 2 |
-| YOLO26s 1280 | SFSORT [BoxMOT 25] | — | local | 51 | 56% | 17% | 83% | 0.18 | 0.22 | 0.20 | 0.40 | 0.00 | 0.27 | 0 |
-| RF-DETR Medium 1024 | ByteTrack | — | local | 68 | 54% | 61% | 91% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.39 | 2 |
-| RF-DETR Medium | BoostTrack++ | OSNet x0.25 MSMT17 | local | 109 | 54% | 31% | 95% | 0.18 | 0.22 | 0.20 | 0.40 | 0.00 | 0.41 | 28 |
-| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 36 | 85% | 92% | 96% | 0.14 | 0.33 | 0.19 | 0.45 | 0.15 | 0.65 | 37 |
-| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 35 | 84% | 92% | 100% | 0.14 | 0.33 | 0.19 | 0.52 | 0.00 | 0.63 | 37 |
-| YOLO26m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 43 | 64% | 66% | 90% | 0.17 | 0.22 | 0.19 | 0.48 | 0.37 | 0.40 | 31 |
-| RF-DETR Medium (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 62 | 60% | 53% | 96% | 0.17 | 0.22 | 0.19 | 0.38 | 0.00 | 0.53 | 24 |
-| YOLO11m 1280 | SFSORT [BoxMOT 25] | — | local | 47 | 60% | 49% | 73% | 0.17 | 0.22 | 0.19 | 0.48 | 0.39 | 0.21 | 0 |
-| RF-DETR Medium (calibrated) | OC-SORT | — | local | 63 | 58% | 42% | 96% | 0.17 | 0.22 | 0.19 | 0.38 | 0.00 | 0.53 | 1 |
-| RF-DETR Medium (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | local | 113 | 58% | 33% | 96% | 0.17 | 0.22 | 0.19 | 0.38 | 0.00 | 0.51 | 30 |
-| YOLO11s 1280 | SFSORT [BoxMOT 25] | — | local | 53 | 57% | 49% | 85% | 0.17 | 0.22 | 0.19 | 0.48 | 0.29 | 0.20 | 0 |
-| YOLO11s 640 | ByteTrack | — | local | 68 | 56% | 70% | 94% | 0.17 | 0.22 | 0.19 | 0.57 | 0.23 | 0.31 | 1 |
-| RF-DETR Large 1024 | ByteTrack | — | local | 72 | 54% | 61% | 91% | 0.17 | 0.22 | 0.19 | 0.48 | 0.00 | 0.39 | 2 |
-| YOLO11s 640 | BoT-SORT (ultralytics, prod) | — | local | 73 | 50% | 60% | 86% | 0.17 | 0.22 | 0.19 | 0.67 | 0.23 | 0.34 | 7 |
-| RF-DETR Large (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | local | 84 | 49% | 30% | 92% | 0.17 | 0.22 | 0.19 | 0.57 | 0.00 | 0.43 | 27 |
-| YOLO26m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 32 | 84% | 71% | 93% | 0.15 | 0.22 | 0.18 | 0.55 | 0.44 | 0.41 | 29 |
-| YOLO11m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 35 | 74% | 61% | 85% | 0.15 | 0.22 | 0.18 | 0.55 | 0.28 | 0.34 | 31 |
-| YOLO26s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 37 | 73% | 67% | 100% | 0.15 | 0.22 | 0.18 | 0.55 | 0.56 | 0.36 | 32 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 60 | 71% | 58% | 88% | 0.15 | 0.22 | 0.18 | 0.46 | 0.22 | 0.60 | 32 |
-| YOLO11m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 38 | 70% | 54% | 88% | 0.15 | 0.22 | 0.18 | 0.55 | 0.22 | 0.43 | 30 |
-| YOLO11s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 40 | 68% | 52% | 93% | 0.15 | 0.22 | 0.18 | 0.46 | 0.41 | 0.26 | 30 |
-| YOLO26m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 41 | 64% | 72% | 94% | 0.15 | 0.22 | 0.18 | 0.55 | 0.15 | 0.31 | 30 |
-| RF-DETR Medium (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | local | 77 | 64% | 62% | 96% | 0.15 | 0.22 | 0.18 | 0.46 | 0.00 | 0.47 | 27 |
-| YOLO11s 640 | OC-SORT | — | local | 51 | 64% | 77% | 94% | 0.15 | 0.22 | 0.18 | 0.55 | 0.23 | 0.34 | 1 |
-| YOLO11s 640 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 51 | 64% | 77% | 94% | 0.15 | 0.22 | 0.18 | 0.55 | 0.23 | 0.34 | 19 |
-| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25, our thr] | — | local | 129 | 44% | 43% | 90% | 0.15 | 0.22 | 0.18 | 0.55 | 0.00 | 0.30 | 0 |
-| YOLO26s 1280 | OC-SORT [BoxMOT 25] | — | local | 41 | 77% | 68% | 100% | 0.14 | 0.22 | 0.17 | 0.52 | 0.56 | 0.36 | 1 |
-| YOLO26m 1280 | OC-SORT [BoxMOT 25] | — | local | 41 | 67% | 60% | 90% | 0.14 | 0.22 | 0.17 | 0.61 | 0.15 | 0.45 | 1 |
-| RF-DETR Large (calibrated) | ByteTrack | — | local | 82 | 57% | 55% | 88% | 0.14 | 0.22 | 0.17 | 0.61 | 0.00 | 0.44 | 2 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack | — | local | 68 | 55% | 73% | 88% | 0.14 | 0.22 | 0.17 | 0.52 | 0.00 | 0.45 | 2 |
-| YOLO11s 640 | BoT-SORT (ultralytics) | YOLO features (model: auto) | local | 80 | 51% | 60% | 91% | 0.14 | 0.22 | 0.17 | 0.61 | 0.23 | 0.37 | 13 |
-| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 63 | 70% | 63% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.34 | 0.55 | 33 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 56 | 70% | 74% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.00 | 0.53 | 33 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | local | 54 | 69% | 89% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.00 | 0.52 | 59 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | local | 54 | 69% | 89% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.00 | 0.52 | 25 |
-| YOLO11s 1280 | OC-SORT [BoxMOT 25] | — | local | 42 | 67% | 51% | 93% | 0.13 | 0.22 | 0.17 | 0.50 | 0.41 | 0.24 | 1 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | CLIP-ReID Market1501 | local | 55 | 66% | 71% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.00 | 0.52 | 208 |
-| RF-DETR Large (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | local | 63 | 63% | 70% | 100% | 0.13 | 0.22 | 0.17 | 0.58 | 0.00 | 0.54 | 24 |
-| RF-DETR Large (calibrated) | BoT-SORT | CLIP-ReID Market1501 | local | 63 | 62% | 70% | 100% | 0.13 | 0.22 | 0.17 | 0.58 | 0.00 | 0.52 | 177 |
-| RF-DETR Large (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | local | 63 | 60% | 70% | 100% | 0.13 | 0.22 | 0.17 | 0.58 | 0.00 | 0.50 | 54 |
-| RF-DETR Large (calibrated) | BoT-SORT | — | local | 60 | 60% | 50% | 92% | 0.13 | 0.22 | 0.17 | 0.58 | 0.00 | 0.49 | 2 |
-| YOLO26s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 81 | 54% | 58% | 89% | 0.13 | 0.22 | 0.17 | 0.50 | 0.34 | 0.41 | 26 |
-| YOLO11s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 30 | 80% | 89% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.65 | 0.23 | 33 |
-| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | local | 60 | 69% | 62% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.00 | 0.54 | 2 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | — | local | 54 | 66% | 75% | 96% | 0.12 | 0.22 | 0.16 | 0.48 | 0.00 | 0.52 | 1 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | local | 57 | 65% | 57% | 96% | 0.12 | 0.22 | 0.16 | 0.40 | 0.00 | 0.57 | 1 |
-| RF-DETR Large 1024 (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 58 | 65% | 57% | 96% | 0.12 | 0.22 | 0.16 | 0.40 | 0.00 | 0.57 | 24 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT | — | local | 58 | 65% | 57% | 96% | 0.12 | 0.22 | 0.16 | 0.40 | 0.00 | 0.57 | 1 |
-| YOLO26m 1280 | SFSORT [BoxMOT 25, our thr] | — | local | 77 | 56% | 57% | 92% | 0.12 | 0.22 | 0.15 | 0.46 | 0.00 | 0.43 | 0 |
-| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25, our thr] | — | local | 93 | 51% | 57% | 96% | 0.12 | 0.22 | 0.15 | 0.46 | 0.00 | 0.38 | 0 |
-| RF-DETR Medium (calibrated) | ByteTrack | — | local | 84 | 50% | 44% | 92% | 0.12 | 0.22 | 0.15 | 0.54 | 0.00 | 0.39 | 2 |
-| RF-DETR Small | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 61 | 57% | 47% | 100% | 0.11 | 0.22 | 0.15 | 0.37 | 0.35 | 0.37 | 24 |
-| RF-DETR Small | ByteTrack | — | local | 68 | 54% | 49% | 95% | 0.11 | 0.22 | 0.15 | 0.44 | 0.34 | 0.34 | 2 |
-| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 33 | 87% | 88% | 100% | 0.10 | 0.22 | 0.14 | 0.36 | 0.45 | 0.64 | 37 |
-| RF-DETR Large | OC-SORT | — | local | 57 | 65% | 54% | 86% | 0.10 | 0.11 | 0.10 | 0.53 | 0.00 | 0.46 | 1 |
-| RF-DETR Large | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 58 | 65% | 54% | 86% | 0.10 | 0.11 | 0.10 | 0.53 | 0.00 | 0.46 | 24 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 35 | 75% | 79% | 100% | 0.09 | 0.11 | 0.10 | 0.50 | 0.00 | 0.34 | 32 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25] | — | local | 33 | 72% | 83% | 94% | 0.09 | 0.11 | 0.10 | 0.60 | 0.00 | 0.40 | 2 |
-| RF-DETR Large 1024 | StrongSORT | OSNet x0.25 MSMT17 | local | 64 | 62% | 67% | 96% | 0.09 | 0.11 | 0.10 | 0.40 | 0.00 | 0.47 | 26 |
-| RF-DETR Medium 1024 | BoT-SORT | — | local | 37 | 70% | 90% | 100% | 0.08 | 0.11 | 0.10 | 0.48 | 0.00 | 0.38 | 1 |
-| RF-DETR Medium 1024 | BoT-SORT | OSNet x0.25 MSMT17 | local | 38 | 70% | 90% | 100% | 0.08 | 0.11 | 0.10 | 0.48 | 0.00 | 0.38 | 24 |
-| RF-DETR Medium 1024 | BoT-SORT | OSNet x1.0 MSMT17 | local | 37 | 70% | 90% | 100% | 0.08 | 0.11 | 0.10 | 0.48 | 0.00 | 0.38 | 50 |
-| RF-DETR Medium 1024 | BoT-SORT | CLIP-ReID Market1501 | local | 39 | 66% | 71% | 100% | 0.08 | 0.11 | 0.10 | 0.48 | 0.00 | 0.38 | 187 |
-| YOLO11m 1280 | OC-SORT [BoxMOT 25] | — | local | 39 | 72% | 63% | 87% | 0.08 | 0.11 | 0.09 | 0.55 | 0.22 | 0.37 | 1 |
-| RF-DETR Large 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 94 | 58% | 46% | 96% | 0.08 | 0.11 | 0.09 | 0.46 | 0.34 | 0.47 | 27 |
-| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25] | — | local | 34 | 75% | 57% | 100% | 0.07 | 0.11 | 0.09 | 0.52 | 0.00 | 0.41 | 2 |
-| RF-DETR Large | BoT-SORT | OSNet x0.25 MSMT17 | local | 35 | 71% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.34 | 24 |
-| RF-DETR Large | BoT-SORT | OSNet x1.0 MSMT17 | local | 35 | 71% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.34 | 51 |
-| RF-DETR Large | BoT-SORT | — | local | 34 | 71% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.34 | 1 |
-| RF-DETR Large 1024 | BoT-SORT | OSNet x0.25 MSMT17 | local | 38 | 71% | 93% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.38 | 25 |
-| RF-DETR Large 1024 | BoT-SORT | OSNet x1.0 MSMT17 | local | 37 | 71% | 93% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.38 | 52 |
-| RF-DETR Large 1024 | BoT-SORT | — | local | 38 | 70% | 90% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.38 | 1 |
-| RF-DETR Large | BoT-SORT | CLIP-ReID Market1501 | local | 36 | 70% | 65% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.36 | 189 |
-| RF-DETR Large 1024 | BoT-SORT | CLIP-ReID Market1501 | local | 39 | 67% | 74% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.38 | 195 |
-| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 34 | 66% | 47% | 100% | 0.07 | 0.11 | 0.09 | 0.52 | 0.00 | 0.37 | 33 |
-| RF-DETR Medium | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 53 | 57% | 48% | 95% | 0.07 | 0.11 | 0.09 | 0.43 | 0.00 | 0.37 | 23 |
-| RF-DETR Medium | StrongSORT | OSNet x0.25 MSMT17 | local | 68 | 54% | 44% | 95% | 0.07 | 0.11 | 0.09 | 0.35 | 0.00 | 0.36 | 25 |
-| RF-DETR Medium | OC-SORT | — | local | 53 | 52% | 48% | 95% | 0.07 | 0.11 | 0.09 | 0.43 | 0.00 | 0.33 | 1 |
-| RF-DETR Small | BoT-SORT | OSNet x0.25 MSMT17 | local | 34 | 84% | 54% | 100% | 0.07 | 0.11 | 0.08 | 0.42 | 0.34 | 0.34 | 22 |
-| RF-DETR Small | BoT-SORT | CLIP-ReID Market1501 | local | 35 | 83% | 74% | 100% | 0.07 | 0.11 | 0.08 | 0.42 | 0.34 | 0.32 | 180 |
-| RF-DETR Small | BoT-SORT | — | local | 35 | 83% | 74% | 100% | 0.07 | 0.11 | 0.08 | 0.42 | 0.34 | 0.32 | 1 |
-| RF-DETR Medium | BoT-SORT | OSNet x0.25 MSMT17 | local | 33 | 74% | 88% | 100% | 0.07 | 0.11 | 0.08 | 0.67 | 0.00 | 0.35 | 24 |
-| RF-DETR Medium | BoT-SORT | OSNet x1.0 MSMT17 | local | 33 | 74% | 88% | 100% | 0.07 | 0.11 | 0.08 | 0.67 | 0.00 | 0.35 | 47 |
-| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25] | — | local | 41 | 60% | 40% | 94% | 0.07 | 0.11 | 0.08 | 0.50 | 0.00 | 0.40 | 1 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | local | 95 | 53% | 43% | 96% | 0.07 | 0.11 | 0.08 | 0.50 | 0.34 | 0.50 | 27 |
-| RF-DETR Large | ByteTrack | — | local | 73 | 52% | 53% | 100% | 0.07 | 0.11 | 0.08 | 0.50 | 0.00 | 0.39 | 2 |
-| RF-DETR Small | BoT-SORT | OSNet x1.0 MSMT17 | local | 34 | 83% | 74% | 100% | 0.06 | 0.11 | 0.08 | 0.48 | 0.34 | 0.32 | 47 |
-| RF-DETR Medium | BoT-SORT | — | local | 32 | 80% | 91% | 100% | 0.06 | 0.11 | 0.08 | 0.64 | 0.00 | 0.39 | 1 |
-| RF-DETR Medium | BoT-SORT | CLIP-ReID Market1501 | local | 33 | 75% | 91% | 100% | 0.06 | 0.11 | 0.08 | 0.64 | 0.00 | 0.35 | 183 |
-| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 40 | 65% | 45% | 94% | 0.06 | 0.11 | 0.08 | 0.48 | 0.27 | 0.41 | 32 |
-| RF-DETR Small | BoostTrack++ | OSNet x0.25 MSMT17 | local | 111 | 60% | 54% | 100% | 0.06 | 0.11 | 0.08 | 0.48 | 0.00 | 0.40 | 30 |
-| RF-DETR Large (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | local | 106 | 48% | 26% | 92% | 0.06 | 0.11 | 0.08 | 0.48 | 0.31 | 0.42 | 30 |
-| RF-DETR Large 1024 (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | local | 70 | 63% | 59% | 100% | 0.06 | 0.11 | 0.08 | 0.39 | 0.00 | 0.53 | 27 |
-| RF-DETR Small | StrongSORT | OSNet x0.25 MSMT17 | local | 72 | 58% | 44% | 100% | 0.06 | 0.11 | 0.07 | 0.30 | 0.00 | 0.36 | 25 |
-| RF-DETR Large | BoostTrack++ | OSNet x0.25 MSMT17 | local | 109 | 50% | 25% | 91% | 0.06 | 0.11 | 0.07 | 0.59 | 0.31 | 0.42 | 29 |
-| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 21 | 85% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.38 | 0.27 | 0.31 | 32 |
-| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 24 | 84% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.29 | 0.27 | 0.31 | 34 |
-| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25] | — | local | 27 | 79% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.44 | 0.34 | 0.32 | 0 |
-| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25] | — | local | 36 | 74% | 82% | 100% | 0.00 | 0.00 | 0.00 | 0.35 | 0.00 | 0.30 | 0 |
-| RF-DETR Medium 1024 | StrongSORT | OSNet x0.25 MSMT17 | local | 59 | 63% | 60% | 91% | 0.00 | 0.00 | 0.00 | 0.32 | 0.00 | 0.48 | 25 |
-| RF-DETR Large | StrongSORT | OSNet x0.25 MSMT17 | local | 75 | 54% | 24% | 86% | 0.00 | 0.00 | 0.00 | 0.38 | 0.00 | 0.42 | 26 |
-| YOLO11s 640 | StrongSORT | OSNet x0.25 MSMT17 | local | 69 | 52% | 70% | 88% | 0.00 | 0.00 | 0.00 | 0.42 | 0.00 | 0.31 | 22 |
+| Detector | Tracker | ReID | Mode | IDs | Anchor coverage | Continuity e2e | Continuity mapped | Staff cont. e2e | Roles e2e | Roles mapped | Strict P | Strict R | Strict F1 | Loose F1 | Waiting tIoU | Consuming tIoU | Track ms |
+|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| YOLO11m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 50 | 83% | 67% | 80% | 63% | 80% | 96% | 0.46 | 0.56 | 0.50 | 0.70 | 0.45 | 0.54 | 31 |
+| YOLO11s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | local | 76 | 93% | 64% | 69% | 76% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.54 | 17 |
+| YOLO11s 1280 | BoT-SORT | — | local | 48 | 87% | 62% | 72% | 84% | 87% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.46 | 0.48 | 1 |
+| YOLO11m 1280 | StrongSORT | OSNet x0.25 MSMT17 | local | 68 | 90% | 58% | 65% | 59% | 77% | 85% | 0.42 | 0.56 | 0.48 | 0.67 | 0.37 | 0.42 | 26 |
+| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 35 | 90% | 78% | 87% | 74% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.55 | 0.42 | 0.64 | 36 |
+| YOLO11m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 61 | 90% | 63% | 70% | 65% | 83% | 93% | 0.39 | 0.56 | 0.46 | 0.55 | 0.58 | 0.50 | 30 |
+| YOLO26s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 51 | 80% | 55% | 68% | 63% | 73% | 92% | 0.39 | 0.56 | 0.46 | 0.64 | 0.42 | 0.43 | 32 |
+| YOLO26s 1280 | BoT-SORT | — | local | 49 | 80% | 51% | 63% | 64% | 73% | 92% | 0.39 | 0.56 | 0.46 | 0.64 | 0.42 | 0.40 | 2 |
+| YOLO26s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | local | 49 | 80% | 51% | 63% | 64% | 73% | 92% | 0.39 | 0.56 | 0.46 | 0.64 | 0.42 | 0.40 | 25 |
+| YOLO26s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | local | 49 | 80% | 51% | 63% | 63% | 73% | 92% | 0.39 | 0.56 | 0.46 | 0.64 | 0.42 | 0.40 | 60 |
+| YOLO26s 1280 | BoT-SORT | CLIP-ReID Market1501 | local | 49 | 80% | 51% | 63% | 64% | 73% | 92% | 0.39 | 0.56 | 0.46 | 0.64 | 0.42 | 0.40 | 221 |
+| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 31 | 87% | 78% | 90% | 74% | 83% | 96% | 0.36 | 0.56 | 0.43 | 0.52 | 0.34 | 0.64 | 35 |
+| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 32 | 83% | 70% | 85% | 72% | 80% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.45 | 0.60 | 34 |
+| YOLO26m 1280 | StrongSORT | OSNet x0.25 MSMT17 | local | 66 | 90% | 65% | 72% | 61% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.45 | 0.52 | 27 |
+| YOLO26m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 78 | 90% | 62% | 69% | 63% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.58 | 0.49 | 25 |
+| YOLO11x 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 73 | 93% | 60% | 64% | 62% | 93% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.58 | 0.51 | 25 |
+| YOLO11m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 48 | 83% | 58% | 70% | 60% | 80% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.45 | 0.47 | 31 |
+| YOLO11m 1280 | ByteTrack [BoxMOT 25, our thr] | — | local | 51 | 90% | 57% | 63% | 66% | 80% | 89% | 0.36 | 0.56 | 0.43 | 0.61 | 0.45 | 0.45 | 2 |
+| YOLO26s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 48 | 80% | 55% | 69% | 65% | 73% | 92% | 0.36 | 0.56 | 0.43 | 0.61 | 0.53 | 0.45 | 31 |
+| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 64 | 70% | 48% | 69% | 42% | 67% | 95% | 0.36 | 0.56 | 0.43 | 0.61 | 0.54 | 0.42 | 34 |
+| YOLO11m 1280 | ByteTrack [BoxMOT 25] | — | local | 34 | 53% | 45% | 84% | 65% | 53% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.45 | 0.42 | 1 |
+| YOLO11s 1280 | ByteTrack [BoxMOT 25] | — | local | 37 | 53% | 37% | 70% | 63% | 53% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.47 | 0.25 | 2 |
+| YOLO11m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | local | 48 | 83% | 56% | 67% | 63% | 80% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.39 | 0.45 | 24 |
+| YOLO11m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | local | 48 | 83% | 56% | 67% | 63% | 80% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.39 | 0.45 | 56 |
+| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 30 | 77% | 68% | 89% | 74% | 77% | 100% | 0.31 | 0.56 | 0.40 | 0.48 | 0.27 | 0.62 | 35 |
+| YOLO11s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 53 | 87% | 60% | 70% | 66% | 83% | 96% | 0.36 | 0.44 | 0.40 | 0.70 | 0.44 | 0.48 | 32 |
+| YOLO11m 1280 | BoT-SORT (ultralytics, prod) | — | local | 69 | 93% | 57% | 62% | 60% | 90% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.45 | 0.48 | 14 |
+| YOLO11m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | local | 75 | 93% | 57% | 62% | 60% | 90% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.45 | 0.48 | 38 |
+| YOLO26s 1280 | ByteTrack [BoxMOT 25, our thr] | — | local | 49 | 90% | 65% | 72% | 64% | 83% | 93% | 0.29 | 0.56 | 0.39 | 0.54 | 0.42 | 0.51 | 2 |
+| YOLO11s 640 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 76 | 67% | 40% | 60% | 31% | 63% | 95% | 0.43 | 0.33 | 0.38 | 0.38 | 0.23 | 0.39 | 28 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 35 | 50% | 37% | 75% | 64% | 50% | 100% | 0.43 | 0.33 | 0.38 | 0.62 | 0.36 | 0.34 | 32 |
+| YOLO11s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 61 | 93% | 61% | 65% | 62% | 93% | 100% | 0.31 | 0.44 | 0.36 | 0.64 | 0.53 | 0.53 | 30 |
+| RF-DETR Medium 1024 | BoT-SORT | — | local | 37 | 60% | 42% | 70% | 72% | 60% | 100% | 0.38 | 0.33 | 0.35 | 0.59 | 0.28 | 0.37 | 1 |
+| RF-DETR Medium 1024 | BoT-SORT | OSNet x0.25 MSMT17 | local | 38 | 60% | 42% | 70% | 72% | 60% | 100% | 0.38 | 0.33 | 0.35 | 0.59 | 0.28 | 0.37 | 24 |
+| RF-DETR Medium 1024 | BoT-SORT | OSNet x1.0 MSMT17 | local | 37 | 60% | 42% | 70% | 72% | 60% | 100% | 0.38 | 0.33 | 0.35 | 0.59 | 0.28 | 0.37 | 50 |
+| YOLO11s 640 | BoT-SORT | OSNet x0.25 MSMT17 | local | 33 | 50% | 38% | 76% | 21% | 50% | 100% | 0.38 | 0.33 | 0.35 | 0.47 | 0.18 | 0.40 | 24 |
+| YOLO11s 640 | BoT-SORT | OSNet x1.0 MSMT17 | local | 33 | 50% | 38% | 76% | 21% | 50% | 100% | 0.38 | 0.33 | 0.35 | 0.47 | 0.18 | 0.40 | 38 |
+| YOLO26s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 25 | 40% | 32% | 81% | 38% | 40% | 100% | 0.38 | 0.33 | 0.35 | 0.59 | 0.57 | 0.32 | 31 |
+| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 61 | 83% | 57% | 68% | 49% | 83% | 100% | 0.29 | 0.44 | 0.35 | 0.70 | 0.32 | 0.57 | 33 |
+| YOLO11m 1280 | OC-SORT | — | local | 46 | 90% | 66% | 74% | 57% | 80% | 89% | 0.33 | 0.33 | 0.33 | 0.56 | 0.15 | 0.55 | 1 |
+| YOLO11m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 46 | 90% | 66% | 74% | 57% | 80% | 89% | 0.33 | 0.33 | 0.33 | 0.56 | 0.15 | 0.55 | 24 |
+| YOLO11m 1280 | OC-SORT [BoxMOT 25, our thr] | — | local | 46 | 90% | 66% | 74% | 57% | 80% | 89% | 0.33 | 0.33 | 0.33 | 0.56 | 0.15 | 0.55 | 1 |
+| YOLO11s 1280 | StrongSORT | OSNet x0.25 MSMT17 | local | 63 | 93% | 65% | 69% | 64% | 90% | 96% | 0.27 | 0.44 | 0.33 | 0.58 | 0.46 | 0.49 | 27 |
+| YOLO11s 1280 | BoT-SORT (ultralytics, prod) | — | local | 67 | 93% | 63% | 68% | 60% | 93% | 100% | 0.27 | 0.44 | 0.33 | 0.58 | 0.46 | 0.56 | 5 |
+| YOLO11s 1280 | SFSORT [BoxMOT 25, our thr] | — | local | 76 | 87% | 51% | 59% | 64% | 87% | 100% | 0.27 | 0.44 | 0.33 | 0.58 | 0.58 | 0.38 | 0 |
+| YOLO11s 640 | BoT-SORT | — | local | 34 | 50% | 41% | 82% | 39% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.44 | 0.18 | 0.40 | 1 |
+| YOLO11s 640 | BoT-SORT | CLIP-ReID Market1501 | local | 33 | 50% | 41% | 82% | 38% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.44 | 0.18 | 0.40 | 124 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 40 | 60% | 40% | 66% | 53% | 60% | 100% | 0.33 | 0.33 | 0.33 | 0.67 | 0.29 | 0.38 | 32 |
+| YOLO26s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 39 | 53% | 36% | 68% | 53% | 53% | 100% | 0.33 | 0.33 | 0.33 | 0.67 | 0.45 | 0.30 | 31 |
+| YOLO11s 1280 | ByteTrack [BoxMOT 25, our thr] | — | local | 54 | 93% | 68% | 73% | 68% | 93% | 100% | 0.25 | 0.44 | 0.32 | 0.56 | 0.46 | 0.57 | 2 |
+| YOLO11s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 56 | 93% | 61% | 66% | 66% | 90% | 96% | 0.25 | 0.44 | 0.32 | 0.56 | 0.63 | 0.50 | 26 |
+| YOLO11s 1280 | OC-SORT | — | local | 56 | 93% | 61% | 65% | 66% | 90% | 96% | 0.25 | 0.44 | 0.32 | 0.56 | 0.63 | 0.50 | 1 |
+| YOLO11s 1280 | OC-SORT [BoxMOT 25, our thr] | — | local | 56 | 93% | 61% | 65% | 66% | 90% | 96% | 0.25 | 0.44 | 0.32 | 0.56 | 0.63 | 0.50 | 1 |
+| YOLO11s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 56 | 87% | 61% | 70% | 62% | 87% | 100% | 0.25 | 0.44 | 0.32 | 0.56 | 0.46 | 0.49 | 31 |
+| YOLO11s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | local | 50 | 87% | 60% | 69% | 68% | 87% | 100% | 0.25 | 0.44 | 0.32 | 0.56 | 0.46 | 0.48 | 25 |
+| YOLO11s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | local | 50 | 87% | 60% | 69% | 68% | 87% | 100% | 0.25 | 0.44 | 0.32 | 0.56 | 0.46 | 0.48 | 65 |
+| YOLO11s 1280 | BoT-SORT | CLIP-ReID Market1501 | local | 50 | 87% | 59% | 68% | 67% | 87% | 100% | 0.25 | 0.44 | 0.32 | 0.56 | 0.46 | 0.48 | 221 |
+| YOLO11s 1280 | ByteTrack | — | local | 70 | 93% | 59% | 63% | 60% | 93% | 100% | 0.25 | 0.44 | 0.32 | 0.56 | 0.46 | 0.50 | 2 |
+| YOLO26s 1280 | ByteTrack [BoxMOT 25] | — | local | 37 | 53% | 42% | 78% | 53% | 53% | 100% | 0.30 | 0.33 | 0.32 | 0.63 | 0.45 | 0.36 | 2 |
+| RF-DETR Medium | BoostTrack++ | OSNet x0.25 MSMT17 | local | 109 | 67% | 36% | 54% | 25% | 63% | 95% | 0.50 | 0.22 | 0.31 | 0.31 | 0.00 | 0.40 | 28 |
+| YOLO11x 1280 | OC-SORT | — | local | 47 | 93% | 62% | 67% | 46% | 87% | 93% | 0.27 | 0.33 | 0.30 | 0.70 | 0.12 | 0.51 | 1 |
+| YOLO11x 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 47 | 93% | 62% | 67% | 46% | 87% | 93% | 0.27 | 0.33 | 0.30 | 0.70 | 0.12 | 0.51 | 25 |
+| YOLO11x 1280 | StrongSORT | OSNet x0.25 MSMT17 | local | 62 | 93% | 60% | 64% | 43% | 87% | 93% | 0.27 | 0.33 | 0.30 | 0.70 | 0.12 | 0.44 | 27 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25] | — | local | 33 | 60% | 43% | 72% | 66% | 57% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.20 | 0.40 | 2 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25] | — | local | 41 | 60% | 39% | 64% | 52% | 53% | 89% | 0.27 | 0.33 | 0.30 | 0.70 | 0.23 | 0.39 | 1 |
+| RF-DETR Medium | ByteTrack | — | local | 62 | 67% | 39% | 59% | 46% | 67% | 100% | 0.25 | 0.33 | 0.29 | 0.76 | 0.12 | 0.33 | 2 |
+| YOLO11s 640 | BoT-SORT (ultralytics) | YOLO features (model: auto) | local | 80 | 73% | 38% | 51% | 36% | 67% | 91% | 0.40 | 0.22 | 0.29 | 0.29 | 0.18 | 0.37 | 13 |
+| YOLO11s 640 | BoT-SORT (ultralytics, prod) | — | local | 73 | 73% | 36% | 50% | 36% | 63% | 86% | 0.40 | 0.22 | 0.29 | 0.29 | 0.18 | 0.34 | 7 |
+| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 33 | 87% | 77% | 89% | 74% | 83% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.64 | 36 |
+| YOLO26s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 59 | 90% | 60% | 67% | 56% | 83% | 93% | 0.23 | 0.33 | 0.27 | 0.64 | 0.53 | 0.47 | 30 |
+| YOLO11x 1280 | BoT-SORT (ultralytics, prod) | — | local | 62 | 93% | 58% | 62% | 62% | 90% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.46 | 42 |
+| YOLO26s 1280 | StrongSORT | OSNet x0.25 MSMT17 | local | 71 | 90% | 56% | 62% | 42% | 83% | 93% | 0.23 | 0.33 | 0.27 | 0.64 | 0.42 | 0.46 | 27 |
+| YOLO11x 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | local | 70 | 93% | 56% | 60% | 46% | 90% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.46 | 87 |
+| YOLO11m 1280 | BoT-SORT | — | local | 48 | 83% | 55% | 66% | 56% | 80% | 96% | 0.23 | 0.33 | 0.27 | 0.46 | 0.15 | 0.45 | 1 |
+| YOLO11x 1280 | ByteTrack | — | local | 64 | 93% | 55% | 58% | 62% | 90% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.42 | 2 |
+| YOLO26m 1280 | BoT-SORT (ultralytics, prod) | — | local | 68 | 93% | 54% | 58% | 66% | 87% | 93% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.40 | 12 |
+| YOLO26m 1280 | ByteTrack | — | local | 65 | 90% | 52% | 58% | 54% | 83% | 93% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.40 | 2 |
+| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 60 | 70% | 51% | 73% | 62% | 70% | 100% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.37 | 34 |
+| YOLO26m 1280 | ByteTrack [BoxMOT 25] | — | local | 40 | 73% | 49% | 67% | 74% | 70% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.37 | 2 |
+| YOLO11m 1280 | SFSORT [BoxMOT 25, our thr] | — | local | 75 | 83% | 47% | 57% | 39% | 77% | 92% | 0.23 | 0.33 | 0.27 | 0.64 | 0.37 | 0.38 | 0 |
+| YOLO11s 640 | ByteTrack | — | local | 68 | 60% | 34% | 56% | 28% | 57% | 94% | 0.33 | 0.22 | 0.27 | 0.27 | 0.18 | 0.31 | 1 |
+| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 35 | 97% | 81% | 84% | 63% | 93% | 97% | 0.21 | 0.33 | 0.26 | 0.52 | 0.46 | 0.67 | 37 |
+| YOLO26m 1280 | ByteTrack [BoxMOT 25, our thr] | — | local | 48 | 90% | 63% | 70% | 58% | 90% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.51 | 2 |
+| YOLO26m 1280 | BoT-SORT | — | local | 50 | 87% | 60% | 69% | 67% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.49 | 2 |
+| YOLO11x 1280 | BoT-SORT | — | local | 51 | 90% | 59% | 66% | 63% | 83% | 93% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.46 | 2 |
+| YOLO11x 1280 | BoT-SORT | OSNet x0.25 MSMT17 | local | 51 | 90% | 59% | 66% | 63% | 83% | 93% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.46 | 25 |
+| YOLO11x 1280 | BoT-SORT | OSNet x1.0 MSMT17 | local | 51 | 90% | 59% | 66% | 63% | 83% | 93% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.46 | 56 |
+| YOLO11x 1280 | BoT-SORT | CLIP-ReID Market1501 | local | 51 | 90% | 59% | 66% | 63% | 83% | 93% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.46 | 216 |
+| YOLO26m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | local | 51 | 87% | 59% | 68% | 64% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.49 | 25 |
+| YOLO26m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | local | 51 | 87% | 59% | 68% | 64% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.49 | 63 |
+| YOLO26s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | local | 67 | 90% | 58% | 65% | 42% | 83% | 93% | 0.21 | 0.33 | 0.26 | 0.61 | 0.42 | 0.46 | 18 |
+| YOLO11m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 75 | 90% | 57% | 64% | 44% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.58 | 0.51 | 25 |
+| YOLO26s 1280 | BoT-SORT (ultralytics, prod) | — | local | 63 | 90% | 57% | 63% | 48% | 83% | 93% | 0.21 | 0.33 | 0.26 | 0.61 | 0.42 | 0.47 | 8 |
+| YOLO26m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 66 | 90% | 57% | 63% | 47% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.58 | 0.47 | 31 |
+| YOLO26m 1280 | BoT-SORT | CLIP-ReID Market1501 | local | 52 | 87% | 56% | 65% | 46% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.49 | 228 |
+| YOLO26m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | local | 77 | 93% | 56% | 60% | 60% | 87% | 93% | 0.21 | 0.33 | 0.26 | 0.52 | 0.14 | 0.43 | 41 |
+| YOLO26s 1280 | ByteTrack | — | local | 70 | 90% | 50% | 56% | 55% | 83% | 93% | 0.21 | 0.33 | 0.26 | 0.61 | 0.42 | 0.39 | 2 |
+| YOLO11m 1280 | ByteTrack | — | local | 74 | 90% | 48% | 53% | 43% | 83% | 93% | 0.21 | 0.33 | 0.26 | 0.61 | 0.45 | 0.38 | 2 |
+| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | local | 59 | 70% | 48% | 68% | 65% | 70% | 100% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.35 | 26 |
+| RF-DETR Medium (calibrated) | BoT-SORT | — | local | 56 | 70% | 46% | 66% | 44% | 70% | 100% | 0.21 | 0.33 | 0.26 | 0.70 | 0.42 | 0.39 | 1 |
+| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | local | 59 | 70% | 46% | 66% | 54% | 70% | 100% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.35 | 53 |
+| RF-DETR Medium (calibrated) | BoT-SORT | CLIP-ReID Market1501 | local | 59 | 70% | 46% | 65% | 50% | 70% | 100% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.35 | 160 |
+| YOLO26s 1280 | SFSORT [BoxMOT 25, our thr] | — | local | 75 | 80% | 43% | 53% | 43% | 73% | 92% | 0.21 | 0.33 | 0.26 | 0.61 | 0.42 | 0.38 | 0 |
+| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 33 | 90% | 80% | 89% | 65% | 90% | 100% | 0.20 | 0.33 | 0.25 | 0.50 | 0.12 | 0.67 | 36 |
+| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 36 | 80% | 68% | 85% | 74% | 77% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.11 | 0.62 | 37 |
+| YOLO26s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 54 | 90% | 65% | 72% | 47% | 87% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.42 | 0.56 | 25 |
+| YOLO26s 1280 | OC-SORT | — | local | 55 | 90% | 62% | 70% | 47% | 87% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.42 | 0.53 | 1 |
+| YOLO26s 1280 | OC-SORT [BoxMOT 25, our thr] | — | local | 55 | 90% | 62% | 70% | 47% | 87% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.42 | 0.53 | 1 |
+| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | local | 60 | 83% | 57% | 69% | 51% | 80% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.47 | 2 |
+| YOLO11m 1280 | BoT-SORT | CLIP-ReID Market1501 | local | 49 | 83% | 53% | 64% | 46% | 80% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.39 | 0.45 | 199 |
+| YOLO26m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 32 | 50% | 42% | 84% | 43% | 47% | 93% | 0.29 | 0.22 | 0.25 | 0.50 | 0.58 | 0.41 | 29 |
+| YOLO26s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 37 | 50% | 37% | 73% | 40% | 50% | 100% | 0.29 | 0.22 | 0.25 | 0.62 | 0.57 | 0.36 | 32 |
+| YOLO11s 640 | OC-SORT | — | local | 51 | 57% | 36% | 64% | 31% | 53% | 94% | 0.29 | 0.22 | 0.25 | 0.38 | 0.23 | 0.33 | 1 |
+| YOLO11s 640 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 51 | 57% | 36% | 64% | 31% | 53% | 94% | 0.29 | 0.22 | 0.25 | 0.38 | 0.23 | 0.33 | 19 |
+| YOLO26m 1280 | SFSORT [BoxMOT 25] | — | local | 68 | 57% | 29% | 52% | 35% | 53% | 94% | 0.29 | 0.22 | 0.25 | 0.38 | 0.00 | 0.29 | 0 |
+| YOLO26m 1280 | OC-SORT | — | local | 54 | 90% | 65% | 73% | 56% | 83% | 93% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.52 | 1 |
+| YOLO26m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 54 | 90% | 65% | 73% | 56% | 83% | 93% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.52 | 24 |
+| YOLO26m 1280 | OC-SORT [BoxMOT 25, our thr] | — | local | 54 | 90% | 65% | 73% | 56% | 83% | 93% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.52 | 1 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | local | 52 | 87% | 59% | 68% | 51% | 87% | 100% | 0.19 | 0.33 | 0.24 | 0.64 | 0.13 | 0.55 | 2 |
+| YOLO26m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 59 | 87% | 56% | 64% | 50% | 80% | 92% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.44 | 31 |
+| YOLO11s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 37 | 47% | 36% | 77% | 38% | 47% | 100% | 0.19 | 0.33 | 0.24 | 0.56 | 0.45 | 0.28 | 33 |
+| RF-DETR Medium 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 107 | 80% | 44% | 55% | 28% | 77% | 96% | 0.25 | 0.22 | 0.23 | 0.59 | 0.58 | 0.42 | 27 |
+| YOLO11m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 38 | 53% | 37% | 70% | 43% | 47% | 88% | 0.25 | 0.22 | 0.23 | 0.71 | 0.31 | 0.43 | 30 |
+| YOLO26m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 56 | 87% | 63% | 73% | 61% | 83% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.46 | 0.51 | 32 |
+| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 34 | 70% | 61% | 88% | 68% | 70% | 100% | 0.17 | 0.33 | 0.22 | 0.52 | 0.15 | 0.50 | 38 |
+| RF-DETR Medium (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | local | 113 | 83% | 49% | 58% | 26% | 80% | 96% | 0.22 | 0.22 | 0.22 | 0.33 | 0.00 | 0.50 | 30 |
+| YOLO26m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 41 | 60% | 38% | 64% | 43% | 57% | 94% | 0.22 | 0.22 | 0.22 | 0.56 | 0.12 | 0.30 | 30 |
+| RF-DETR Small | OC-SORT | — | local | 59 | 63% | 38% | 60% | 47% | 63% | 100% | 0.22 | 0.22 | 0.22 | 0.44 | 0.22 | 0.35 | 1 |
+| RF-DETR Small | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 61 | 63% | 36% | 57% | 38% | 63% | 100% | 0.22 | 0.22 | 0.22 | 0.44 | 0.22 | 0.35 | 24 |
+| RF-DETR Small | ByteTrack | — | local | 68 | 63% | 34% | 54% | 39% | 60% | 95% | 0.22 | 0.22 | 0.22 | 0.56 | 0.28 | 0.32 | 2 |
+| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25, our thr] | — | local | 129 | 70% | 31% | 44% | 34% | 63% | 90% | 0.22 | 0.22 | 0.22 | 0.67 | 0.00 | 0.29 | 0 |
+| RF-DETR Large 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 53 | 77% | 48% | 62% | 49% | 70% | 91% | 0.20 | 0.22 | 0.21 | 0.63 | 0.00 | 0.44 | 24 |
+| RF-DETR Large 1024 | OC-SORT | — | local | 54 | 77% | 46% | 60% | 46% | 70% | 91% | 0.20 | 0.22 | 0.21 | 0.63 | 0.00 | 0.43 | 1 |
+| RF-DETR Large (calibrated) | OC-SORT | — | local | 71 | 77% | 46% | 59% | 43% | 70% | 91% | 0.20 | 0.22 | 0.21 | 0.53 | 0.00 | 0.46 | 1 |
+| RF-DETR Large (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 71 | 77% | 46% | 59% | 43% | 70% | 91% | 0.20 | 0.22 | 0.21 | 0.53 | 0.00 | 0.45 | 24 |
+| YOLO11m 1280 | SFSORT [BoxMOT 25] | — | local | 47 | 37% | 22% | 60% | 29% | 27% | 73% | 0.20 | 0.22 | 0.21 | 0.42 | 0.36 | 0.21 | 0 |
+| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 35 | 77% | 64% | 84% | 73% | 77% | 100% | 0.15 | 0.33 | 0.21 | 0.62 | 0.11 | 0.60 | 37 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 60 | 87% | 62% | 71% | 47% | 77% | 88% | 0.18 | 0.22 | 0.20 | 0.60 | 0.28 | 0.59 | 32 |
+| RF-DETR Medium (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 62 | 83% | 50% | 60% | 43% | 80% | 96% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.49 | 24 |
+| RF-DETR Medium (calibrated) | OC-SORT | — | local | 63 | 83% | 49% | 58% | 34% | 80% | 96% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.49 | 1 |
+| RF-DETR Medium 1024 | OC-SORT | — | local | 48 | 77% | 48% | 62% | 48% | 67% | 87% | 0.18 | 0.22 | 0.20 | 0.60 | 0.00 | 0.45 | 1 |
+| RF-DETR Medium 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 48 | 77% | 48% | 62% | 48% | 67% | 87% | 0.18 | 0.22 | 0.20 | 0.60 | 0.00 | 0.45 | 24 |
+| YOLO26m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 43 | 70% | 45% | 64% | 40% | 63% | 90% | 0.18 | 0.22 | 0.20 | 0.50 | 0.38 | 0.40 | 31 |
+| RF-DETR Medium 1024 | ByteTrack | — | local | 68 | 77% | 41% | 54% | 49% | 70% | 91% | 0.18 | 0.22 | 0.20 | 0.60 | 0.00 | 0.38 | 2 |
+| RF-DETR Large (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | local | 84 | 80% | 40% | 49% | 24% | 73% | 92% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.40 | 27 |
+| YOLO26s 1280 | OC-SORT [BoxMOT 25] | — | local | 41 | 50% | 38% | 77% | 41% | 50% | 100% | 0.18 | 0.22 | 0.20 | 0.60 | 0.57 | 0.36 | 1 |
+| YOLO11m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 25 | 37% | 31% | 86% | 38% | 30% | 82% | 0.18 | 0.22 | 0.20 | 0.50 | 0.44 | 0.29 | 30 |
+| YOLO11s 1280 | SFSORT [BoxMOT 25] | — | local | 53 | 43% | 25% | 57% | 29% | 37% | 85% | 0.18 | 0.22 | 0.20 | 0.50 | 0.28 | 0.20 | 0 |
+| YOLO11s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 70 | 93% | 58% | 62% | 50% | 90% | 96% | 0.17 | 0.22 | 0.19 | 0.57 | 0.52 | 0.52 | 26 |
+| RF-DETR Medium (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | local | 77 | 83% | 53% | 64% | 49% | 80% | 96% | 0.17 | 0.22 | 0.19 | 0.57 | 0.00 | 0.44 | 27 |
+| YOLO26m 1280 | OC-SORT [BoxMOT 25] | — | local | 41 | 67% | 45% | 67% | 36% | 60% | 90% | 0.17 | 0.22 | 0.19 | 0.57 | 0.32 | 0.45 | 1 |
+| RF-DETR Large 1024 | ByteTrack | — | local | 72 | 77% | 41% | 54% | 49% | 70% | 91% | 0.17 | 0.22 | 0.19 | 0.57 | 0.00 | 0.36 | 2 |
+| YOLO11s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 40 | 50% | 34% | 68% | 31% | 47% | 93% | 0.17 | 0.22 | 0.19 | 0.57 | 0.37 | 0.26 | 30 |
+| YOLO11s 1280 | OC-SORT [BoxMOT 25] | — | local | 42 | 47% | 31% | 67% | 31% | 43% | 93% | 0.17 | 0.22 | 0.19 | 0.57 | 0.37 | 0.24 | 1 |
+| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 37 | 80% | 64% | 80% | 48% | 80% | 100% | 0.13 | 0.33 | 0.19 | 0.44 | 0.21 | 0.57 | 37 |
+| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | local | 60 | 83% | 57% | 69% | 50% | 83% | 100% | 0.15 | 0.22 | 0.18 | 0.64 | 0.00 | 0.51 | 2 |
+| YOLO26s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 81 | 90% | 49% | 54% | 46% | 80% | 89% | 0.15 | 0.22 | 0.18 | 0.55 | 0.36 | 0.39 | 26 |
+| RF-DETR Large (calibrated) | ByteTrack | — | local | 82 | 80% | 46% | 57% | 44% | 70% | 88% | 0.15 | 0.22 | 0.18 | 0.64 | 0.00 | 0.41 | 2 |
+| YOLO11m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 35 | 43% | 32% | 74% | 36% | 37% | 85% | 0.15 | 0.22 | 0.18 | 0.55 | 0.22 | 0.34 | 31 |
+| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 33 | 83% | 72% | 87% | 70% | 83% | 100% | 0.14 | 0.22 | 0.17 | 0.43 | 0.42 | 0.64 | 37 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | local | 57 | 83% | 54% | 65% | 45% | 80% | 96% | 0.14 | 0.22 | 0.17 | 0.52 | 0.00 | 0.54 | 1 |
+| RF-DETR Large 1024 (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 58 | 83% | 54% | 65% | 45% | 80% | 96% | 0.14 | 0.22 | 0.17 | 0.52 | 0.00 | 0.53 | 24 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT | — | local | 58 | 83% | 54% | 65% | 45% | 80% | 96% | 0.14 | 0.22 | 0.17 | 0.52 | 0.00 | 0.53 | 1 |
+| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 63 | 77% | 54% | 70% | 51% | 73% | 96% | 0.14 | 0.22 | 0.17 | 0.61 | 0.36 | 0.54 | 33 |
+| RF-DETR Large (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | local | 63 | 80% | 50% | 63% | 56% | 80% | 100% | 0.14 | 0.22 | 0.17 | 0.61 | 0.00 | 0.51 | 24 |
+| RF-DETR Large (calibrated) | BoT-SORT | CLIP-ReID Market1501 | local | 63 | 80% | 50% | 62% | 56% | 80% | 100% | 0.14 | 0.22 | 0.17 | 0.61 | 0.00 | 0.49 | 177 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack | — | local | 68 | 87% | 48% | 55% | 59% | 77% | 88% | 0.14 | 0.22 | 0.17 | 0.61 | 0.00 | 0.42 | 2 |
+| RF-DETR Large (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | local | 63 | 80% | 48% | 60% | 56% | 80% | 100% | 0.14 | 0.22 | 0.17 | 0.61 | 0.00 | 0.47 | 54 |
+| YOLO11s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 30 | 40% | 32% | 80% | 36% | 40% | 100% | 0.14 | 0.22 | 0.17 | 0.52 | 0.52 | 0.23 | 33 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | local | 56 | 77% | 54% | 70% | 59% | 73% | 96% | 0.13 | 0.22 | 0.17 | 0.58 | 0.00 | 0.49 | 33 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | local | 54 | 77% | 53% | 69% | 71% | 73% | 96% | 0.13 | 0.22 | 0.17 | 0.58 | 0.00 | 0.48 | 59 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | local | 54 | 77% | 53% | 69% | 71% | 73% | 96% | 0.13 | 0.22 | 0.17 | 0.58 | 0.00 | 0.48 | 25 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | CLIP-ReID Market1501 | local | 55 | 77% | 50% | 66% | 57% | 73% | 96% | 0.13 | 0.22 | 0.17 | 0.58 | 0.00 | 0.48 | 208 |
+| RF-DETR Large (calibrated) | BoT-SORT | — | local | 60 | 80% | 48% | 60% | 40% | 73% | 92% | 0.13 | 0.22 | 0.17 | 0.58 | 0.00 | 0.46 | 2 |
+| RF-DETR Medium (calibrated) | ByteTrack | — | local | 84 | 83% | 42% | 50% | 35% | 77% | 92% | 0.13 | 0.22 | 0.17 | 0.58 | 0.00 | 0.36 | 2 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | — | local | 54 | 77% | 51% | 66% | 60% | 73% | 96% | 0.12 | 0.22 | 0.16 | 0.56 | 0.28 | 0.50 | 1 |
+| YOLO26m 1280 | SFSORT [BoxMOT 25, our thr] | — | local | 77 | 87% | 49% | 56% | 46% | 80% | 92% | 0.12 | 0.22 | 0.16 | 0.48 | 0.23 | 0.43 | 0 |
+| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25, our thr] | — | local | 93 | 77% | 39% | 51% | 46% | 73% | 96% | 0.12 | 0.22 | 0.16 | 0.56 | 0.28 | 0.37 | 0 |
+| RF-DETR Small | BoostTrack++ | OSNet x0.25 MSMT17 | local | 111 | 63% | 38% | 60% | 43% | 63% | 100% | 0.20 | 0.11 | 0.14 | 0.43 | 0.00 | 0.38 | 30 |
+| RF-DETR Small | StrongSORT | OSNet x0.25 MSMT17 | local | 72 | 63% | 37% | 58% | 36% | 63% | 100% | 0.17 | 0.11 | 0.13 | 0.13 | 0.00 | 0.33 | 25 |
+| YOLO26s 1280 | SFSORT [BoxMOT 25] | — | local | 51 | 40% | 22% | 56% | 10% | 33% | 83% | 0.17 | 0.11 | 0.13 | 0.27 | 0.00 | 0.27 | 0 |
+| RF-DETR Large | OC-SORT | — | local | 57 | 70% | 45% | 65% | 43% | 60% | 86% | 0.12 | 0.11 | 0.12 | 0.59 | 0.00 | 0.43 | 1 |
+| RF-DETR Large | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 58 | 70% | 45% | 65% | 43% | 60% | 86% | 0.12 | 0.11 | 0.12 | 0.59 | 0.00 | 0.43 | 24 |
+| RF-DETR Medium 1024 | BoT-SORT | CLIP-ReID Market1501 | local | 39 | 60% | 40% | 66% | 57% | 60% | 100% | 0.12 | 0.11 | 0.12 | 0.59 | 0.28 | 0.37 | 187 |
+| RF-DETR Small | BoT-SORT | OSNet x0.25 MSMT17 | local | 34 | 37% | 31% | 84% | 22% | 37% | 100% | 0.12 | 0.11 | 0.12 | 0.47 | 0.28 | 0.34 | 22 |
+| RF-DETR Small | BoT-SORT | CLIP-ReID Market1501 | local | 35 | 37% | 30% | 83% | 30% | 37% | 100% | 0.12 | 0.11 | 0.12 | 0.47 | 0.28 | 0.32 | 180 |
+| RF-DETR Small | BoT-SORT | — | local | 35 | 37% | 30% | 83% | 30% | 37% | 100% | 0.12 | 0.11 | 0.12 | 0.47 | 0.28 | 0.32 | 1 |
+| RF-DETR Medium | Deep OC-SORT | OSNet x0.25 MSMT17 | local | 53 | 67% | 38% | 57% | 38% | 63% | 95% | 0.11 | 0.11 | 0.11 | 0.44 | 0.00 | 0.35 | 23 |
+| RF-DETR Large | BoT-SORT | OSNet x1.0 MSMT17 | local | 35 | 50% | 36% | 71% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.33 | 51 |
+| RF-DETR Large | BoT-SORT | OSNet x0.25 MSMT17 | local | 35 | 50% | 36% | 71% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.33 | 24 |
+| RF-DETR Large | BoT-SORT | — | local | 34 | 50% | 35% | 71% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.33 | 1 |
+| RF-DETR Medium | OC-SORT | — | local | 53 | 67% | 35% | 52% | 38% | 63% | 95% | 0.11 | 0.11 | 0.11 | 0.44 | 0.00 | 0.31 | 1 |
+| RF-DETR Large | BoT-SORT | CLIP-ReID Market1501 | local | 36 | 50% | 35% | 70% | 39% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.35 | 189 |
+| RF-DETR Small | BoT-SORT | OSNet x1.0 MSMT17 | local | 34 | 37% | 30% | 83% | 30% | 37% | 100% | 0.11 | 0.11 | 0.11 | 0.56 | 0.23 | 0.32 | 47 |
+| RF-DETR Large 1024 | BoT-SORT | OSNet x0.25 MSMT17 | local | 38 | 60% | 42% | 71% | 74% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.35 | 25 |
+| RF-DETR Large 1024 | BoT-SORT | OSNet x1.0 MSMT17 | local | 37 | 60% | 42% | 71% | 74% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.35 | 52 |
+| RF-DETR Large 1024 | BoT-SORT | — | local | 38 | 60% | 42% | 70% | 72% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.35 | 1 |
+| RF-DETR Large 1024 | BoT-SORT | CLIP-ReID Market1501 | local | 39 | 60% | 40% | 67% | 59% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.35 | 195 |
+| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25] | — | local | 34 | 53% | 40% | 75% | 46% | 53% | 100% | 0.10 | 0.11 | 0.10 | 0.63 | 0.00 | 0.39 | 2 |
+| RF-DETR Large (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | local | 106 | 83% | 40% | 48% | 20% | 77% | 92% | 0.10 | 0.11 | 0.10 | 0.53 | 0.27 | 0.41 | 30 |
+| RF-DETR Medium | StrongSORT | OSNet x0.25 MSMT17 | local | 68 | 67% | 36% | 54% | 35% | 63% | 95% | 0.10 | 0.11 | 0.10 | 0.53 | 0.00 | 0.34 | 25 |
+| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 34 | 50% | 33% | 66% | 38% | 50% | 100% | 0.10 | 0.11 | 0.10 | 0.63 | 0.00 | 0.35 | 33 |
+| RF-DETR Large 1024 | StrongSORT | OSNet x0.25 MSMT17 | local | 64 | 77% | 48% | 62% | 54% | 73% | 96% | 0.09 | 0.11 | 0.10 | 0.50 | 0.00 | 0.44 | 26 |
+| YOLO11m 1280 | OC-SORT [BoxMOT 25] | — | local | 39 | 50% | 36% | 72% | 38% | 43% | 87% | 0.09 | 0.11 | 0.10 | 0.60 | 0.23 | 0.37 | 1 |
+| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 40 | 53% | 35% | 65% | 36% | 50% | 94% | 0.09 | 0.11 | 0.10 | 0.70 | 0.24 | 0.41 | 32 |
+| RF-DETR Large | BoostTrack++ | OSNet x0.25 MSMT17 | local | 109 | 77% | 39% | 50% | 20% | 70% | 91% | 0.08 | 0.11 | 0.10 | 0.67 | 0.27 | 0.41 | 29 |
+| RF-DETR Large 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | local | 94 | 80% | 46% | 58% | 37% | 77% | 96% | 0.08 | 0.11 | 0.09 | 0.55 | 0.35 | 0.45 | 27 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | local | 95 | 87% | 46% | 53% | 34% | 83% | 96% | 0.08 | 0.11 | 0.09 | 0.55 | 0.35 | 0.48 | 27 |
+| RF-DETR Medium | BoT-SORT | — | local | 32 | 50% | 40% | 80% | 73% | 50% | 100% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.38 | 1 |
+| RF-DETR Medium | BoT-SORT | CLIP-ReID Market1501 | local | 33 | 50% | 37% | 75% | 73% | 50% | 100% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.33 | 183 |
+| RF-DETR Medium | BoT-SORT | OSNet x0.25 MSMT17 | local | 33 | 50% | 37% | 74% | 71% | 50% | 100% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.33 | 24 |
+| RF-DETR Medium | BoT-SORT | OSNet x1.0 MSMT17 | local | 33 | 50% | 37% | 74% | 71% | 50% | 100% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.33 | 47 |
+| RF-DETR Large | ByteTrack | — | local | 73 | 73% | 38% | 52% | 42% | 73% | 100% | 0.07 | 0.11 | 0.09 | 0.52 | 0.00 | 0.36 | 2 |
+| RF-DETR Large 1024 (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | local | 70 | 83% | 52% | 63% | 47% | 83% | 100% | 0.06 | 0.11 | 0.08 | 0.48 | 0.00 | 0.50 | 27 |
+| RF-DETR Medium 1024 | StrongSORT | OSNet x0.25 MSMT17 | local | 59 | 77% | 48% | 63% | 48% | 70% | 91% | 0.00 | 0.00 | 0.00 | 0.42 | 0.00 | 0.45 | 25 |
+| RF-DETR Large | StrongSORT | OSNet x0.25 MSMT17 | local | 75 | 70% | 38% | 54% | 20% | 60% | 86% | 0.00 | 0.00 | 0.00 | 0.38 | 0.00 | 0.40 | 26 |
+| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25] | — | local | 41 | 53% | 32% | 60% | 32% | 50% | 94% | 0.00 | 0.00 | 0.00 | 0.63 | 0.20 | 0.39 | 1 |
+| YOLO11s 640 | StrongSORT | OSNet x0.25 MSMT17 | local | 69 | 57% | 29% | 52% | 28% | 50% | 88% | 0.00 | 0.00 | 0.00 | 0.25 | 0.00 | 0.30 | 22 |
+| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25] | — | local | 27 | 33% | 26% | 79% | 17% | 33% | 100% | 0.00 | 0.00 | 0.00 | 0.50 | 0.36 | 0.32 | 0 |
+| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 21 | 30% | 25% | 85% | 17% | 30% | 100% | 0.00 | 0.00 | 0.00 | 0.59 | 0.24 | 0.31 | 32 |
+| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | local | 24 | 30% | 25% | 84% | 17% | 30% | 100% | 0.00 | 0.00 | 0.00 | 0.47 | 0.28 | 0.31 | 34 |
+| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25] | — | local | 36 | 33% | 25% | 74% | 16% | 33% | 100% | 0.00 | 0.00 | 0.00 | 0.53 | 0.28 | 0.30 | 0 |
 
 ## Hybrid (local + GPT-6 Astra 1 fps)
 
-| Detector | Tracker | ReID | Mode | IDs | Continuity | Staff cont. | Roles | Strict P | Strict R | Strict F1 | Loose F1 | Waiting tIoU | Consuming tIoU | Track ms |
-|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| YOLO11s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps | 41 | 92% | 92% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 5 |
-| YOLO11s 1280 | OC-SORT | — | astra_1fps | 38 | 90% | 87% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 1 |
-| YOLO11s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 39 | 90% | 87% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 26 |
-| YOLO11s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps | 38 | 90% | 87% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 1 |
-| YOLO11s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps | 42 | 92% | 90% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.44 | 0.66 | 0 |
-| YOLO11s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 42 | 90% | 89% | 100% | 0.35 | 0.67 | 0.46 | 0.54 | 0.56 | 0.73 | 27 |
-| YOLO26s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 20 | 92% | 85% | 100% | 0.39 | 0.56 | 0.46 | 0.55 | 0.56 | 0.36 | 31 |
-| YOLO11s 1280 | ByteTrack | — | astra_1fps | 41 | 93% | 90% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.44 | 0.74 | 2 |
-| YOLO11s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps | 49 | 92% | 90% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.42 | 0.74 | 17 |
-| YOLO11s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 42 | 91% | 89% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.33 | 0.75 | 30 |
-| YOLO11m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps | 24 | 93% | 87% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.56 | 0.50 | 1 |
-| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 31 | 89% | 93% | 96% | 0.36 | 0.56 | 0.43 | 0.52 | 0.56 | 0.70 | 36 |
-| YOLO11s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps | 29 | 88% | 90% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.65 | 0.35 | 2 |
-| YOLO26s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps | 28 | 87% | 74% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.56 | 0.36 | 0 |
-| YOLO11s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps | 36 | 93% | 89% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.75 | 2 |
-| YOLO11s 1280 | BoT-SORT | — | astra_1fps | 34 | 93% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.66 | 1 |
-| YOLO11s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 35 | 93% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.66 | 25 |
-| YOLO11s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 35 | 93% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.66 | 65 |
-| YOLO11s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 35 | 93% | 89% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.66 | 221 |
-| YOLO11s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 37 | 92% | 92% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.44 | 0.66 | 32 |
-| YOLO11m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps | 27 | 92% | 84% | 100% | 0.33 | 0.56 | 0.42 | 0.50 | 0.56 | 0.32 | 0 |
-| YOLO26s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps | 42 | 90% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.70 | 18 |
-| YOLO26s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 31 | 90% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 25 |
-| YOLO26s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 31 | 90% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 60 |
-| YOLO26s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 31 | 90% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 221 |
-| YOLO26s 1280 | BoT-SORT | — | astra_1fps | 31 | 90% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 2 |
-| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 28 | 90% | 92% | 100% | 0.33 | 0.56 | 0.42 | 0.50 | 0.40 | 0.65 | 35 |
-| YOLO26s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps | 38 | 90% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.70 | 8 |
-| YOLO26s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 34 | 90% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 32 |
-| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 42 | 90% | 84% | 100% | 0.33 | 0.56 | 0.42 | 0.67 | 0.41 | 0.70 | 33 |
-| YOLO26s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps | 38 | 90% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 0 |
-| YOLO11s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps | 24 | 89% | 87% | 100% | 0.33 | 0.56 | 0.42 | 0.50 | 0.65 | 0.30 | 0 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 44 | 87% | 88% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.41 | 0.73 | 32 |
-| YOLO11m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 37 | 94% | 93% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.66 | 31 |
-| YOLO11s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 39 | 93% | 89% | 100% | 0.29 | 0.67 | 0.40 | 0.53 | 0.33 | 0.62 | 31 |
-| YOLO11m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 26 | 92% | 90% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.58 | 0.41 | 31 |
-| YOLO11s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 27 | 90% | 90% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.65 | 0.35 | 33 |
-| YOLO26s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 33 | 90% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.65 | 31 |
-| YOLO26s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps | 26 | 90% | 80% | 100% | 0.31 | 0.56 | 0.40 | 0.48 | 0.56 | 0.42 | 2 |
-| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 43 | 90% | 89% | 96% | 0.31 | 0.56 | 0.40 | 0.64 | 0.52 | 0.65 | 33 |
-| YOLO26s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 45 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 27 |
-| YOLO26s 1280 | OC-SORT | — | astra_1fps | 37 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 1 |
-| YOLO26s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 37 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 25 |
-| YOLO26s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps | 37 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 1 |
-| YOLO26s 1280 | ByteTrack | — | astra_1fps | 38 | 90% | 90% | 96% | 0.29 | 0.56 | 0.39 | 0.54 | 0.56 | 0.70 | 2 |
-| YOLO26s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 51 | 90% | 92% | 96% | 0.29 | 0.56 | 0.39 | 0.61 | 0.56 | 0.70 | 26 |
-| YOLO26s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 42 | 88% | 91% | 96% | 0.29 | 0.56 | 0.39 | 0.61 | 0.56 | 0.69 | 30 |
-| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 33 | 88% | 78% | 100% | 0.29 | 0.56 | 0.39 | 0.46 | 0.67 | 0.77 | 37 |
-| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 45 | 93% | 91% | 100% | 0.28 | 0.56 | 0.37 | 0.59 | 0.41 | 0.54 | 34 |
-| YOLO26m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 43 | 93% | 93% | 100% | 0.28 | 0.56 | 0.37 | 0.59 | 0.56 | 0.70 | 31 |
-| YOLO26m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 41 | 91% | 92% | 96% | 0.28 | 0.56 | 0.37 | 0.59 | 0.56 | 0.66 | 32 |
-| YOLO11m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 49 | 90% | 92% | 96% | 0.28 | 0.56 | 0.37 | 0.59 | 0.56 | 0.70 | 25 |
-| YOLO11m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 43 | 89% | 89% | 96% | 0.28 | 0.56 | 0.37 | 0.52 | 0.40 | 0.70 | 30 |
-| YOLO26m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 53 | 94% | 93% | 100% | 0.26 | 0.56 | 0.36 | 0.57 | 0.56 | 0.70 | 25 |
-| YOLO26s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps | 34 | 90% | 90% | 96% | 0.26 | 0.56 | 0.36 | 0.57 | 0.40 | 0.70 | 2 |
-| YOLO26m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps | 38 | 93% | 92% | 100% | 0.27 | 0.44 | 0.33 | 0.58 | 0.23 | 0.74 | 12 |
-| YOLO11s 640 | BoT-SORT | — | astra_1fps | 25 | 93% | 98% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 1 |
-| YOLO11s 640 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 25 | 93% | 96% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 124 |
-| YOLO11s 640 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 25 | 92% | 95% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 24 |
-| YOLO11s 640 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 25 | 92% | 95% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 38 |
-| YOLO11x 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 48 | 92% | 89% | 100% | 0.22 | 0.56 | 0.31 | 0.50 | 0.34 | 0.75 | 25 |
-| YOLO26m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps | 42 | 93% | 89% | 100% | 0.22 | 0.44 | 0.30 | 0.59 | 0.23 | 0.74 | 41 |
-| RF-DETR Small | OC-SORT | — | astra_1fps | 40 | 80% | 78% | 100% | 0.21 | 0.44 | 0.29 | 0.50 | 0.48 | 0.50 | 1 |
-| RF-DETR Small | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 41 | 80% | 78% | 100% | 0.21 | 0.44 | 0.29 | 0.50 | 0.48 | 0.50 | 24 |
-| RF-DETR Medium 1024 | ByteTrack | — | astra_1fps | 39 | 86% | 89% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.21 | 0.65 | 2 |
-| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 30 | 94% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.70 | 36 |
-| YOLO26m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 32 | 94% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 25 |
-| YOLO26m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 32 | 94% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 63 |
-| YOLO26m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 32 | 94% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 228 |
-| YOLO26m 1280 | BoT-SORT | — | astra_1fps | 31 | 94% | 90% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 2 |
-| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 32 | 90% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 36 |
-| YOLO11m 1280 | BoT-SORT | — | astra_1fps | 33 | 89% | 84% | 96% | 0.21 | 0.33 | 0.26 | 0.43 | 0.21 | 0.58 | 1 |
-| YOLO26m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps | 29 | 89% | 93% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.56 | 2 |
-| RF-DETR Large 1024 | ByteTrack | — | astra_1fps | 41 | 89% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.21 | 0.65 | 2 |
-| RF-DETR Medium | ByteTrack | — | astra_1fps | 39 | 86% | 87% | 95% | 0.21 | 0.33 | 0.26 | 0.61 | 0.23 | 0.52 | 2 |
-| RF-DETR Large (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 44 | 85% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.66 | 24 |
-| RF-DETR Large (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 43 | 85% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.66 | 54 |
-| RF-DETR Large (calibrated) | BoT-SORT | — | astra_1fps | 40 | 85% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.61 | 2 |
-| RF-DETR Large 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 45 | 84% | 89% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 26 |
-| RF-DETR Large 1024 | OC-SORT | — | astra_1fps | 37 | 84% | 89% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 1 |
-| RF-DETR Large 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 37 | 83% | 86% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 24 |
-| RF-DETR Medium 1024 | OC-SORT | — | astra_1fps | 33 | 81% | 84% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 1 |
-| RF-DETR Medium 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 33 | 81% | 84% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 24 |
-| RF-DETR Large (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 53 | 81% | 89% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.67 | 27 |
-| YOLO26m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 47 | 94% | 92% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 27 |
-| YOLO26m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps | 39 | 94% | 90% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.66 | 0 |
-| YOLO11m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 33 | 91% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 31 |
-| YOLO11m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 33 | 90% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 24 |
-| YOLO11m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 33 | 90% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 56 |
-| YOLO11m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 33 | 90% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 199 |
-| YOLO11m 1280 | ByteTrack | — | astra_1fps | 40 | 90% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 2 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 37 | 90% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 59 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 37 | 89% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 25 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 39 | 89% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 33 |
-| YOLO26m 1280 | OC-SORT | — | astra_1fps | 36 | 89% | 85% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 1 |
-| YOLO26m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 36 | 89% | 85% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 24 |
-| YOLO26m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps | 36 | 89% | 85% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 1 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | — | astra_1fps | 36 | 89% | 90% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 1 |
-| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 30 | 87% | 90% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 34 |
-| YOLO11m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 44 | 87% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 26 |
-| YOLO11x 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 39 | 86% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.71 | 27 |
-| YOLO11x 1280 | OC-SORT | — | astra_1fps | 31 | 85% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.71 | 1 |
-| YOLO11x 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 31 | 85% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.71 | 25 |
-| RF-DETR Medium (calibrated) | OC-SORT | — | astra_1fps | 40 | 84% | 84% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.17 | 0.66 | 1 |
-| RF-DETR Medium (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 39 | 84% | 84% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.17 | 0.66 | 24 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 28 | 81% | 72% | 94% | 0.20 | 0.33 | 0.25 | 0.50 | 0.53 | 0.52 | 32 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps | 31 | 74% | 70% | 94% | 0.20 | 0.33 | 0.25 | 0.58 | 0.53 | 0.52 | 1 |
-| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 29 | 92% | 85% | 100% | 0.19 | 0.33 | 0.24 | 0.56 | 0.21 | 0.54 | 38 |
-| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 30 | 91% | 93% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.14 | 0.66 | 35 |
-| YOLO26m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 36 | 91% | 93% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.62 | 31 |
-| YOLO26m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps | 33 | 91% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.70 | 2 |
-| YOLO11m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps | 33 | 90% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 2 |
-| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps | 55 | 89% | 89% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.65 | 0 |
-| RF-DETR Medium (calibrated) | BoT-SORT | — | astra_1fps | 39 | 89% | 90% | 95% | 0.19 | 0.33 | 0.24 | 0.64 | 0.21 | 0.50 | 1 |
-| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps | 82 | 88% | 91% | 95% | 0.19 | 0.33 | 0.24 | 0.64 | 0.21 | 0.50 | 0 |
-| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 44 | 88% | 89% | 95% | 0.19 | 0.33 | 0.24 | 0.64 | 0.21 | 0.50 | 34 |
-| RF-DETR Medium (calibrated) | ByteTrack | — | astra_1fps | 52 | 88% | 89% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.17 | 0.66 | 2 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps | 36 | 88% | 93% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.21 | 0.72 | 2 |
-| YOLO26m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps | 35 | 87% | 84% | 100% | 0.19 | 0.33 | 0.24 | 0.48 | 0.19 | 0.50 | 0 |
-| YOLO11m 1280 | OC-SORT | — | astra_1fps | 35 | 86% | 88% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 1 |
-| YOLO11m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 35 | 86% | 88% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 24 |
-| YOLO11m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps | 35 | 86% | 88% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 1 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack | — | astra_1fps | 43 | 85% | 92% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.21 | 0.72 | 2 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps | 40 | 84% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.23 | 0.72 | 1 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT | — | astra_1fps | 40 | 84% | 91% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.23 | 0.72 | 1 |
-| RF-DETR Large 1024 (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 40 | 84% | 91% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.23 | 0.72 | 24 |
-| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 29 | 78% | 61% | 94% | 0.19 | 0.33 | 0.24 | 0.48 | 0.28 | 0.49 | 32 |
-| YOLO11s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 47 | 92% | 91% | 100% | 0.18 | 0.33 | 0.23 | 0.54 | 0.44 | 0.74 | 26 |
-| YOLO11x 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 32 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.70 | 56 |
-| YOLO11x 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 32 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.70 | 216 |
-| YOLO11x 1280 | BoT-SORT | — | astra_1fps | 32 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.70 | 2 |
-| YOLO11x 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 32 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.70 | 25 |
-| YOLO26m 1280 | ByteTrack | — | astra_1fps | 37 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.61 | 0.23 | 0.70 | 2 |
-| YOLO11m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps | 45 | 89% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.61 | 0.17 | 0.74 | 38 |
-| YOLO11m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps | 41 | 89% | 90% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.16 | 0.62 | 0 |
-| YOLO11m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps | 39 | 89% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.61 | 0.17 | 0.74 | 14 |
-| YOLO11x 1280 | ByteTrack | — | astra_1fps | 37 | 89% | 89% | 96% | 0.18 | 0.33 | 0.23 | 0.46 | 0.18 | 0.73 | 2 |
-| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 42 | 89% | 92% | 95% | 0.18 | 0.33 | 0.23 | 0.61 | 0.15 | 0.50 | 53 |
-| YOLO11x 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps | 36 | 88% | 89% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.18 | 0.72 | 42 |
-| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 34 | 87% | 92% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.16 | 0.69 | 37 |
-| RF-DETR Small | ByteTrack | — | astra_1fps | 40 | 86% | 84% | 95% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.48 | 2 |
-| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 34 | 85% | 92% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.17 | 0.63 | 37 |
-| RF-DETR Small | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 50 | 79% | 80% | 95% | 0.18 | 0.33 | 0.23 | 0.46 | 0.24 | 0.45 | 25 |
-| YOLO11s 640 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 54 | 92% | 95% | 100% | 0.17 | 0.33 | 0.22 | 0.52 | 0.19 | 0.56 | 28 |
-| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps | 46 | 88% | 89% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.14 | 0.66 | 2 |
-| YOLO11m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 20 | 88% | 64% | 91% | 0.17 | 0.33 | 0.22 | 0.44 | 0.44 | 0.32 | 30 |
-| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps | 41 | 87% | 84% | 100% | 0.17 | 0.33 | 0.22 | 0.59 | 0.14 | 0.70 | 2 |
-| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 43 | 89% | 92% | 95% | 0.16 | 0.33 | 0.21 | 0.57 | 0.13 | 0.50 | 26 |
-| RF-DETR Large 1024 (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 49 | 84% | 87% | 96% | 0.16 | 0.33 | 0.21 | 0.50 | 0.19 | 0.72 | 27 |
-| YOLO11s 640 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 46 | 81% | 95% | 94% | 0.20 | 0.22 | 0.21 | 0.53 | 0.23 | 0.52 | 22 |
-| YOLO11x 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps | 40 | 89% | 90% | 96% | 0.14 | 0.33 | 0.20 | 0.53 | 0.18 | 0.73 | 87 |
-| YOLO11s 640 | OC-SORT | — | astra_1fps | 38 | 79% | 90% | 94% | 0.18 | 0.22 | 0.20 | 0.60 | 0.23 | 0.52 | 1 |
-| YOLO11s 640 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 38 | 79% | 90% | 94% | 0.18 | 0.22 | 0.20 | 0.60 | 0.23 | 0.52 | 19 |
-| RF-DETR Medium 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 39 | 83% | 92% | 96% | 0.17 | 0.22 | 0.19 | 0.48 | 0.21 | 0.65 | 25 |
-| YOLO26s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps | 28 | 85% | 75% | 100% | 0.15 | 0.22 | 0.18 | 0.46 | 0.56 | 0.43 | 1 |
-| YOLO26s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 27 | 82% | 78% | 93% | 0.15 | 0.22 | 0.18 | 0.55 | 0.56 | 0.39 | 32 |
-| RF-DETR Large (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 69 | 88% | 91% | 96% | 0.14 | 0.22 | 0.17 | 0.52 | 0.41 | 0.69 | 30 |
-| RF-DETR Medium | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 36 | 85% | 78% | 100% | 0.14 | 0.22 | 0.17 | 0.52 | 0.23 | 0.56 | 23 |
-| RF-DETR Large (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 43 | 84% | 92% | 96% | 0.14 | 0.22 | 0.17 | 0.52 | 0.21 | 0.66 | 177 |
-| RF-DETR Medium | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 46 | 83% | 83% | 95% | 0.14 | 0.22 | 0.17 | 0.43 | 0.19 | 0.52 | 25 |
-| RF-DETR Medium | OC-SORT | — | astra_1fps | 37 | 81% | 78% | 95% | 0.14 | 0.22 | 0.17 | 0.52 | 0.23 | 0.52 | 1 |
-| YOLO11s 640 | BoT-SORT (ultralytics, prod) | — | astra_1fps | 42 | 77% | 82% | 96% | 0.14 | 0.22 | 0.17 | 0.61 | 0.20 | 0.60 | 7 |
-| YOLO11s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 24 | 92% | 93% | 100% | 0.13 | 0.22 | 0.17 | 0.50 | 0.65 | 0.30 | 33 |
-| RF-DETR Large 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 66 | 89% | 95% | 96% | 0.13 | 0.22 | 0.17 | 0.58 | 0.52 | 0.65 | 27 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 36 | 89% | 91% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.21 | 0.65 | 208 |
-| RF-DETR Medium 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 72 | 88% | 94% | 96% | 0.13 | 0.22 | 0.17 | 0.58 | 0.52 | 0.65 | 27 |
-| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 32 | 88% | 88% | 100% | 0.13 | 0.22 | 0.17 | 0.42 | 0.45 | 0.65 | 37 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 65 | 88% | 94% | 96% | 0.13 | 0.22 | 0.17 | 0.58 | 0.41 | 0.73 | 27 |
-| YOLO26s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 25 | 86% | 87% | 93% | 0.13 | 0.22 | 0.17 | 0.42 | 0.56 | 0.39 | 31 |
-| RF-DETR Medium (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 54 | 85% | 96% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.17 | 0.66 | 27 |
-| YOLO11m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps | 27 | 84% | 75% | 100% | 0.13 | 0.22 | 0.17 | 0.58 | 0.56 | 0.45 | 1 |
-| YOLO26m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 24 | 92% | 89% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.44 | 0.45 | 29 |
-| RF-DETR Small | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 75 | 90% | 90% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.55 | 0.52 | 30 |
-| YOLO26m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 27 | 88% | 90% | 94% | 0.12 | 0.22 | 0.16 | 0.48 | 0.18 | 0.48 | 30 |
-| YOLO11m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 26 | 87% | 76% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.44 | 0.50 | 30 |
-| YOLO11s 640 | ByteTrack | — | astra_1fps | 38 | 84% | 95% | 94% | 0.12 | 0.22 | 0.16 | 0.56 | 0.20 | 0.52 | 1 |
-| YOLO26m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps | 30 | 83% | 80% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.19 | 0.56 | 1 |
-| YOLO26m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 30 | 82% | 82% | 95% | 0.12 | 0.22 | 0.16 | 0.48 | 0.46 | 0.56 | 31 |
-| YOLO11s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 30 | 81% | 76% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.51 | 0.35 | 30 |
-| YOLO11s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps | 28 | 81% | 74% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.47 | 0.35 | 1 |
-| YOLO11s 640 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps | 48 | 78% | 83% | 96% | 0.12 | 0.22 | 0.16 | 0.56 | 0.23 | 0.61 | 13 |
-| RF-DETR Medium (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 42 | 89% | 91% | 95% | 0.12 | 0.22 | 0.15 | 0.54 | 0.15 | 0.50 | 160 |
-| RF-DETR Medium (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 73 | 92% | 92% | 100% | 0.11 | 0.22 | 0.15 | 0.52 | 0.34 | 0.70 | 30 |
-| RF-DETR Medium | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 70 | 87% | 88% | 95% | 0.10 | 0.22 | 0.14 | 0.50 | 0.44 | 0.52 | 28 |
-| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 30 | 89% | 95% | 96% | 0.10 | 0.22 | 0.13 | 0.40 | 0.21 | 0.57 | 37 |
-| RF-DETR Large | OC-SORT | — | astra_1fps | 38 | 81% | 82% | 86% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.58 | 1 |
-| RF-DETR Large | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 39 | 81% | 82% | 86% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.58 | 24 |
-| RF-DETR Large (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 42 | 80% | 90% | 91% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.64 | 24 |
-| RF-DETR Large (calibrated) | OC-SORT | — | astra_1fps | 43 | 80% | 90% | 91% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.64 | 1 |
-| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps | 25 | 86% | 80% | 94% | 0.08 | 0.11 | 0.10 | 0.48 | 0.00 | 0.45 | 2 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 23 | 86% | 85% | 93% | 0.08 | 0.11 | 0.10 | 0.57 | 0.00 | 0.39 | 32 |
-| RF-DETR Medium 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 26 | 89% | 92% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.52 | 24 |
-| RF-DETR Medium 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 26 | 89% | 92% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.52 | 50 |
-| RF-DETR Medium 1024 | BoT-SORT | — | astra_1fps | 26 | 88% | 90% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.52 | 1 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps | 25 | 87% | 86% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.48 | 2 |
-| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 23 | 82% | 70% | 93% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.45 | 33 |
-| RF-DETR Large | BoT-SORT | — | astra_1fps | 24 | 93% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.48 | 1 |
-| RF-DETR Large | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 25 | 93% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.48 | 24 |
-| RF-DETR Large | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 25 | 93% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.48 | 51 |
-| RF-DETR Large 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 28 | 89% | 93% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.52 | 25 |
-| RF-DETR Large 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 28 | 89% | 93% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.52 | 52 |
-| RF-DETR Large 1024 | BoT-SORT | — | astra_1fps | 28 | 88% | 90% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.52 | 1 |
-| RF-DETR Large | ByteTrack | — | astra_1fps | 41 | 85% | 90% | 96% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.62 | 2 |
-| RF-DETR Medium | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 25 | 88% | 88% | 93% | 0.07 | 0.11 | 0.08 | 0.67 | 0.00 | 0.45 | 24 |
-| RF-DETR Medium | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 25 | 88% | 88% | 93% | 0.07 | 0.11 | 0.08 | 0.67 | 0.00 | 0.45 | 47 |
-| RF-DETR Small | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 24 | 97% | 94% | 100% | 0.06 | 0.11 | 0.08 | 0.48 | 0.00 | 0.35 | 22 |
-| RF-DETR Medium | BoT-SORT | — | astra_1fps | 25 | 89% | 91% | 93% | 0.06 | 0.11 | 0.08 | 0.64 | 0.00 | 0.45 | 1 |
-| RF-DETR Medium | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 25 | 89% | 91% | 93% | 0.06 | 0.11 | 0.08 | 0.64 | 0.00 | 0.45 | 183 |
-| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps | 31 | 68% | 40% | 88% | 0.06 | 0.11 | 0.08 | 0.48 | 0.00 | 0.49 | 1 |
-| RF-DETR Small | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 24 | 95% | 85% | 100% | 0.00 | 0.00 | 0.00 | 0.40 | 0.00 | 0.35 | 47 |
-| RF-DETR Small | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 23 | 95% | 85% | 100% | 0.00 | 0.00 | 0.00 | 0.40 | 0.00 | 0.35 | 180 |
-| RF-DETR Small | BoT-SORT | — | astra_1fps | 24 | 95% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.40 | 0.00 | 0.35 | 1 |
-| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps | 18 | 94% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.50 | 0.34 | 0.41 | 0 |
-| RF-DETR Large | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 25 | 93% | 88% | 100% | 0.00 | 0.00 | 0.00 | 0.52 | 0.00 | 0.48 | 189 |
-| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 18 | 93% | 86% | 100% | 0.00 | 0.00 | 0.00 | 0.36 | 0.27 | 0.36 | 34 |
-| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 17 | 92% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.38 | 0.27 | 0.36 | 32 |
-| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps | 21 | 91% | 85% | 100% | 0.00 | 0.00 | 0.00 | 0.40 | 0.00 | 0.41 | 0 |
-| RF-DETR Medium 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 27 | 88% | 91% | 94% | 0.00 | 0.00 | 0.00 | 0.46 | 0.00 | 0.52 | 187 |
-| RF-DETR Large 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 29 | 88% | 92% | 94% | 0.00 | 0.00 | 0.00 | 0.52 | 0.00 | 0.52 | 195 |
-| RF-DETR Large | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 69 | 87% | 94% | 96% | 0.00 | 0.00 | 0.00 | 0.58 | 0.31 | 0.65 | 29 |
-| RF-DETR Large (calibrated) | ByteTrack | — | astra_1fps | 49 | 85% | 91% | 96% | 0.00 | 0.00 | 0.00 | 0.43 | 0.00 | 0.63 | 2 |
-| RF-DETR Large | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 50 | 82% | 89% | 90% | 0.00 | 0.00 | 0.00 | 0.48 | 0.00 | 0.60 | 26 |
+| Detector | Tracker | ReID | Mode | IDs | Anchor coverage | Continuity e2e | Continuity mapped | Staff cont. e2e | Roles e2e | Roles mapped | Strict P | Strict R | Strict F1 | Loose F1 | Waiting tIoU | Consuming tIoU | Track ms |
+|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| YOLO11m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps | 28 | 37% | 34% | 92% | 50% | 37% | 100% | 0.71 | 0.56 | 0.62 | 0.62 | 0.66 | 0.32 | 0 |
+| YOLO26s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 20 | 40% | 37% | 92% | 51% | 40% | 100% | 0.62 | 0.56 | 0.59 | 0.59 | 0.57 | 0.36 | 31 |
+| YOLO26s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps | 29 | 53% | 48% | 90% | 64% | 53% | 100% | 0.56 | 0.56 | 0.56 | 0.56 | 0.45 | 0.40 | 2 |
+| YOLO26s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps | 28 | 40% | 35% | 87% | 44% | 40% | 100% | 0.56 | 0.56 | 0.56 | 0.67 | 0.45 | 0.36 | 0 |
+| YOLO11s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps | 41 | 93% | 86% | 92% | 92% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 5 |
+| YOLO11s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 42 | 93% | 85% | 91% | 89% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.67 | 0.42 | 0.75 | 30 |
+| YOLO11s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 43 | 93% | 84% | 90% | 89% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 27 |
+| YOLO11s 1280 | OC-SORT | — | astra_1fps | 39 | 93% | 84% | 90% | 87% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 1 |
+| YOLO11s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps | 39 | 93% | 84% | 90% | 87% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 1 |
+| YOLO11s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 40 | 93% | 84% | 90% | 87% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 26 |
+| YOLO11s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 37 | 87% | 80% | 92% | 92% | 87% | 100% | 0.40 | 0.67 | 0.50 | 0.67 | 0.42 | 0.66 | 32 |
+| YOLO11s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps | 36 | 93% | 87% | 93% | 89% | 93% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.72 | 2 |
+| YOLO11s 1280 | ByteTrack | — | astra_1fps | 41 | 93% | 86% | 93% | 90% | 93% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.71 | 2 |
+| YOLO11s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps | 49 | 93% | 86% | 92% | 90% | 93% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.37 | 0.71 | 17 |
+| YOLO11s 1280 | BoT-SORT | — | astra_1fps | 34 | 87% | 80% | 93% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.64 | 1 |
+| YOLO11s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 35 | 87% | 80% | 93% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.64 | 25 |
+| YOLO11s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 35 | 87% | 80% | 93% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.64 | 65 |
+| YOLO11s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 35 | 87% | 80% | 93% | 89% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.64 | 221 |
+| YOLO11s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps | 43 | 87% | 80% | 92% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.63 | 0 |
+| YOLO26s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 51 | 90% | 81% | 90% | 73% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.64 | 0.53 | 0.70 | 26 |
+| YOLO11m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 44 | 90% | 80% | 89% | 71% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.55 | 0.58 | 0.70 | 30 |
+| YOLO26s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 45 | 90% | 80% | 88% | 74% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.64 | 0.42 | 0.67 | 27 |
+| YOLO26s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 42 | 90% | 79% | 88% | 73% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.64 | 0.53 | 0.69 | 30 |
+| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 44 | 77% | 69% | 90% | 71% | 73% | 96% | 0.39 | 0.56 | 0.46 | 0.73 | 0.53 | 0.65 | 33 |
+| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 45 | 70% | 65% | 93% | 73% | 70% | 100% | 0.39 | 0.56 | 0.46 | 0.73 | 0.53 | 0.54 | 34 |
+| YOLO11m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps | 25 | 53% | 50% | 93% | 70% | 53% | 100% | 0.39 | 0.56 | 0.46 | 0.55 | 0.45 | 0.48 | 1 |
+| YOLO11s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 40 | 87% | 78% | 90% | 89% | 87% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.38 | 0.61 | 31 |
+| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 33 | 97% | 85% | 88% | 78% | 97% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.46 | 0.74 | 37 |
+| YOLO26s 1280 | OC-SORT | — | astra_1fps | 37 | 90% | 79% | 88% | 73% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.67 | 1 |
+| YOLO26s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 37 | 90% | 79% | 88% | 73% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.67 | 25 |
+| YOLO26s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps | 37 | 90% | 79% | 88% | 73% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.67 | 1 |
+| YOLO11m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 37 | 83% | 78% | 94% | 74% | 83% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.58 | 0.66 | 31 |
+| YOLO11m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 51 | 90% | 78% | 86% | 74% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.57 | 0.66 | 25 |
+| YOLO26s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 33 | 80% | 72% | 90% | 74% | 77% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.53 | 0.65 | 31 |
+| YOLO11s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps | 29 | 53% | 47% | 88% | 72% | 53% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.46 | 0.35 | 2 |
+| YOLO11s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps | 24 | 43% | 38% | 89% | 52% | 43% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.48 | 0.30 | 0 |
+| YOLO26m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 53 | 87% | 81% | 94% | 74% | 87% | 100% | 0.33 | 0.56 | 0.42 | 0.58 | 0.58 | 0.70 | 25 |
+| YOLO26m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 44 | 87% | 81% | 93% | 74% | 87% | 100% | 0.33 | 0.56 | 0.42 | 0.58 | 0.58 | 0.70 | 31 |
+| YOLO26m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 41 | 87% | 79% | 91% | 74% | 83% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.58 | 0.66 | 32 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 44 | 87% | 76% | 87% | 70% | 83% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.42 | 0.73 | 32 |
+| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 42 | 83% | 75% | 90% | 68% | 83% | 100% | 0.33 | 0.56 | 0.42 | 0.75 | 0.42 | 0.70 | 33 |
+| YOLO11s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 27 | 47% | 42% | 90% | 54% | 47% | 100% | 0.33 | 0.56 | 0.42 | 0.58 | 0.44 | 0.35 | 33 |
+| YOLO11x 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 50 | 93% | 83% | 88% | 71% | 93% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.44 | 0.74 | 25 |
+| YOLO26s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps | 42 | 90% | 81% | 90% | 74% | 87% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.68 | 18 |
+| YOLO26s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps | 38 | 90% | 81% | 90% | 74% | 87% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.68 | 8 |
+| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 34 | 90% | 78% | 87% | 74% | 87% | 96% | 0.31 | 0.44 | 0.36 | 0.46 | 0.41 | 0.64 | 36 |
+| YOLO26s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 31 | 80% | 72% | 90% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 25 |
+| YOLO26s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 31 | 80% | 72% | 90% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 60 |
+| YOLO26s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 31 | 80% | 72% | 90% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 221 |
+| YOLO26s 1280 | BoT-SORT | — | astra_1fps | 31 | 80% | 72% | 90% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 2 |
+| YOLO26s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 34 | 80% | 72% | 90% | 74% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 32 |
+| RF-DETR Small | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 76 | 63% | 55% | 86% | 58% | 63% | 100% | 0.38 | 0.33 | 0.35 | 0.71 | 0.58 | 0.48 | 30 |
+| RF-DETR Small | OC-SORT | — | astra_1fps | 41 | 63% | 49% | 77% | 62% | 63% | 100% | 0.38 | 0.33 | 0.35 | 0.35 | 0.14 | 0.42 | 1 |
+| RF-DETR Small | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 42 | 63% | 49% | 77% | 62% | 63% | 100% | 0.38 | 0.33 | 0.35 | 0.35 | 0.14 | 0.42 | 24 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 28 | 60% | 49% | 81% | 58% | 57% | 94% | 0.38 | 0.33 | 0.35 | 0.71 | 0.28 | 0.52 | 32 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps | 31 | 60% | 44% | 74% | 56% | 57% | 94% | 0.38 | 0.33 | 0.35 | 0.71 | 0.28 | 0.52 | 1 |
+| YOLO26s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 26 | 53% | 44% | 82% | 56% | 50% | 94% | 0.38 | 0.33 | 0.35 | 0.59 | 0.45 | 0.37 | 31 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 23 | 50% | 43% | 86% | 68% | 47% | 93% | 0.38 | 0.33 | 0.35 | 0.71 | 0.28 | 0.39 | 32 |
+| YOLO26m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps | 38 | 93% | 87% | 93% | 92% | 93% | 100% | 0.29 | 0.44 | 0.35 | 0.61 | 0.14 | 0.71 | 12 |
+| YOLO26m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps | 43 | 93% | 86% | 93% | 89% | 93% | 100% | 0.29 | 0.44 | 0.35 | 0.61 | 0.14 | 0.71 | 41 |
+| YOLO26s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps | 34 | 90% | 81% | 90% | 72% | 87% | 96% | 0.29 | 0.44 | 0.35 | 0.52 | 0.41 | 0.68 | 2 |
+| YOLO26s 1280 | ByteTrack | — | astra_1fps | 39 | 90% | 81% | 90% | 72% | 87% | 96% | 0.29 | 0.44 | 0.35 | 0.52 | 0.41 | 0.68 | 2 |
+| YOLO26s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps | 38 | 80% | 72% | 90% | 75% | 77% | 96% | 0.29 | 0.44 | 0.35 | 0.52 | 0.41 | 0.62 | 0 |
+| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 29 | 77% | 68% | 89% | 74% | 77% | 100% | 0.27 | 0.44 | 0.33 | 0.50 | 0.27 | 0.62 | 35 |
+| YOLO11s 640 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 56 | 67% | 61% | 92% | 57% | 67% | 100% | 0.27 | 0.44 | 0.33 | 0.33 | 0.47 | 0.56 | 28 |
+| RF-DETR Small | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 50 | 63% | 50% | 79% | 64% | 60% | 95% | 0.33 | 0.33 | 0.33 | 0.44 | 0.14 | 0.42 | 25 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps | 26 | 57% | 49% | 87% | 69% | 53% | 94% | 0.33 | 0.33 | 0.33 | 0.67 | 0.23 | 0.48 | 2 |
+| YOLO11s 640 | BoT-SORT | — | astra_1fps | 26 | 50% | 46% | 93% | 39% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 1 |
+| YOLO11s 640 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 25 | 50% | 46% | 93% | 38% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 124 |
+| YOLO11s 640 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 25 | 50% | 46% | 92% | 38% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 24 |
+| YOLO11s 640 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 25 | 50% | 46% | 92% | 38% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 38 |
+| YOLO11m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 27 | 43% | 37% | 86% | 54% | 43% | 100% | 0.27 | 0.44 | 0.33 | 0.50 | 0.27 | 0.40 | 31 |
+| RF-DETR Medium | ByteTrack | — | astra_1fps | 40 | 67% | 57% | 86% | 69% | 63% | 95% | 0.30 | 0.33 | 0.32 | 0.74 | 0.14 | 0.49 | 2 |
+| RF-DETR Small | ByteTrack | — | astra_1fps | 42 | 63% | 54% | 86% | 67% | 60% | 95% | 0.30 | 0.33 | 0.32 | 0.63 | 0.14 | 0.46 | 2 |
+| YOLO26m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps | 35 | 57% | 50% | 87% | 67% | 57% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.12 | 0.48 | 0 |
+| RF-DETR Medium | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 71 | 63% | 55% | 86% | 49% | 60% | 95% | 0.27 | 0.33 | 0.30 | 0.70 | 0.78 | 0.52 | 28 |
+| RF-DETR Medium 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 26 | 60% | 53% | 89% | 74% | 57% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.23 | 0.52 | 24 |
+| RF-DETR Medium 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 26 | 60% | 53% | 89% | 74% | 57% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.23 | 0.52 | 50 |
+| RF-DETR Medium 1024 | BoT-SORT | — | astra_1fps | 27 | 60% | 53% | 88% | 72% | 57% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.23 | 0.52 | 1 |
+| YOLO11m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 28 | 53% | 44% | 82% | 47% | 53% | 100% | 0.27 | 0.33 | 0.30 | 0.70 | 0.66 | 0.50 | 30 |
+| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 29 | 53% | 42% | 78% | 49% | 50% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.24 | 0.49 | 32 |
+| RF-DETR Small | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 25 | 37% | 36% | 97% | 38% | 37% | 100% | 0.27 | 0.33 | 0.30 | 0.60 | 0.19 | 0.35 | 22 |
+| RF-DETR Large (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 52 | 80% | 65% | 81% | 72% | 77% | 96% | 0.25 | 0.33 | 0.29 | 0.57 | 0.13 | 0.65 | 27 |
+| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 32 | 90% | 82% | 91% | 75% | 90% | 100% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.67 | 36 |
+| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 33 | 87% | 77% | 89% | 74% | 83% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.64 | 36 |
+| YOLO11m 1280 | BoT-SORT | — | astra_1fps | 33 | 83% | 74% | 89% | 67% | 80% | 96% | 0.23 | 0.33 | 0.27 | 0.46 | 0.17 | 0.56 | 1 |
+| RF-DETR Large (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 44 | 80% | 68% | 85% | 74% | 77% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 24 |
+| RF-DETR Large (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 43 | 80% | 68% | 85% | 74% | 77% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 54 |
+| RF-DETR Medium 1024 | ByteTrack | — | astra_1fps | 41 | 77% | 66% | 86% | 71% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.60 | 2 |
+| RF-DETR Large 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 45 | 77% | 65% | 84% | 71% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 26 |
+| RF-DETR Large 1024 | OC-SORT | — | astra_1fps | 37 | 77% | 64% | 84% | 71% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 1 |
+| RF-DETR Large 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 38 | 77% | 64% | 83% | 69% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 24 |
+| YOLO26m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps | 29 | 70% | 62% | 89% | 74% | 70% | 100% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.54 | 2 |
+| RF-DETR Medium 1024 | OC-SORT | — | astra_1fps | 34 | 77% | 62% | 81% | 67% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 1 |
+| RF-DETR Medium 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 34 | 77% | 62% | 81% | 67% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 24 |
+| YOLO11x 1280 | BoT-SORT | — | astra_1fps | 32 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO11x 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 32 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 25 |
+| YOLO11x 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 32 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 56 |
+| YOLO11x 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 32 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 216 |
+| YOLO26m 1280 | ByteTrack | — | astra_1fps | 37 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO26m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps | 34 | 90% | 82% | 91% | 72% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO11m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps | 34 | 90% | 81% | 90% | 72% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO11m 1280 | ByteTrack | — | astra_1fps | 40 | 90% | 81% | 90% | 74% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO26m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 47 | 87% | 81% | 94% | 74% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 27 |
+| YOLO11x 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 39 | 93% | 80% | 86% | 73% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 27 |
+| YOLO11x 1280 | OC-SORT | — | astra_1fps | 31 | 93% | 80% | 85% | 73% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 1 |
+| YOLO11x 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 31 | 93% | 80% | 85% | 73% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 25 |
+| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 30 | 87% | 79% | 91% | 74% | 83% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.11 | 0.64 | 35 |
+| YOLO26m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 34 | 87% | 79% | 91% | 75% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 25 |
+| YOLO26m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 34 | 87% | 79% | 91% | 75% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 63 |
+| YOLO26m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 34 | 87% | 79% | 91% | 75% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 228 |
+| YOLO11m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 44 | 90% | 78% | 87% | 74% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 26 |
+| YOLO26m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps | 40 | 83% | 78% | 94% | 72% | 83% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 0 |
+| YOLO26m 1280 | BoT-SORT | — | astra_1fps | 34 | 87% | 78% | 90% | 72% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 2 |
+| YOLO11m 1280 | OC-SORT | — | astra_1fps | 36 | 90% | 77% | 86% | 70% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 1 |
+| YOLO11m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 36 | 90% | 77% | 86% | 70% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 24 |
+| YOLO11m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps | 36 | 90% | 77% | 86% | 70% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 1 |
+| YOLO26m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 37 | 87% | 77% | 89% | 74% | 83% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.61 | 31 |
+| YOLO11m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 33 | 83% | 75% | 90% | 75% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.60 | 24 |
+| YOLO11m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 33 | 83% | 75% | 90% | 75% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.60 | 56 |
+| YOLO11m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 33 | 83% | 75% | 90% | 74% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.60 | 199 |
+| YOLO11m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 34 | 83% | 73% | 88% | 74% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.57 | 31 |
+| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 32 | 83% | 70% | 85% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.58 | 34 |
+| RF-DETR Large 1024 (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 40 | 83% | 70% | 84% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.69 | 24 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps | 40 | 83% | 70% | 84% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.68 | 1 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT | — | astra_1fps | 40 | 83% | 70% | 84% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.69 | 1 |
+| RF-DETR Large 1024 | ByteTrack | — | astra_1fps | 42 | 77% | 68% | 89% | 72% | 73% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.62 | 2 |
+| RF-DETR Large (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 43 | 80% | 65% | 82% | 59% | 77% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.63 | 177 |
+| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 43 | 70% | 62% | 89% | 73% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 26 |
+| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 42 | 70% | 62% | 89% | 74% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 53 |
+| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps | 82 | 70% | 62% | 88% | 73% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.47 | 0 |
+| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 44 | 70% | 62% | 88% | 71% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 34 |
+| RF-DETR Medium (calibrated) | BoT-SORT | — | astra_1fps | 40 | 70% | 61% | 87% | 72% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.46 | 1 |
+| RF-DETR Medium (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 43 | 70% | 60% | 86% | 59% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 160 |
+| YOLO11x 1280 | ByteTrack | — | astra_1fps | 38 | 93% | 83% | 89% | 71% | 90% | 96% | 0.20 | 0.33 | 0.25 | 0.50 | 0.12 | 0.70 | 2 |
+| YOLO11m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps | 42 | 83% | 74% | 89% | 72% | 80% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.14 | 0.60 | 0 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 37 | 77% | 69% | 89% | 74% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 25 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 37 | 77% | 69% | 90% | 74% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 59 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 39 | 77% | 69% | 89% | 73% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 33 |
+| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps | 56 | 77% | 68% | 89% | 71% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.61 | 0 |
+| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 36 | 80% | 68% | 85% | 74% | 77% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.11 | 0.66 | 37 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | — | astra_1fps | 37 | 77% | 68% | 89% | 72% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 1 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 37 | 77% | 66% | 86% | 59% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 208 |
+| RF-DETR Large (calibrated) | BoT-SORT | — | astra_1fps | 41 | 80% | 65% | 82% | 60% | 73% | 92% | 0.20 | 0.33 | 0.25 | 0.58 | 0.13 | 0.58 | 2 |
+| YOLO26s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 27 | 50% | 41% | 82% | 47% | 47% | 93% | 0.29 | 0.22 | 0.25 | 0.62 | 0.57 | 0.39 | 32 |
+| YOLO11m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps | 45 | 93% | 84% | 89% | 74% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.11 | 0.71 | 38 |
+| YOLO11m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps | 39 | 93% | 83% | 89% | 74% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.11 | 0.71 | 14 |
+| YOLO11x 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps | 37 | 93% | 83% | 88% | 71% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.69 | 42 |
+| YOLO26m 1280 | OC-SORT | — | astra_1fps | 38 | 90% | 79% | 88% | 62% | 87% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.68 | 1 |
+| YOLO26m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 38 | 90% | 79% | 88% | 62% | 87% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.68 | 24 |
+| YOLO26m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps | 38 | 90% | 79% | 88% | 62% | 87% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.68 | 1 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack | — | astra_1fps | 43 | 87% | 74% | 85% | 74% | 83% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.13 | 0.69 | 2 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps | 36 | 83% | 73% | 88% | 74% | 80% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.13 | 0.69 | 2 |
+| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps | 41 | 83% | 72% | 87% | 67% | 83% | 100% | 0.19 | 0.33 | 0.24 | 0.72 | 0.11 | 0.67 | 2 |
+| RF-DETR Medium (calibrated) | OC-SORT | — | astra_1fps | 41 | 83% | 70% | 84% | 67% | 80% | 96% | 0.19 | 0.33 | 0.24 | 0.72 | 0.11 | 0.64 | 1 |
+| RF-DETR Medium (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 40 | 83% | 70% | 84% | 67% | 80% | 96% | 0.19 | 0.33 | 0.24 | 0.72 | 0.11 | 0.64 | 24 |
+| YOLO26m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 24 | 50% | 46% | 92% | 53% | 50% | 100% | 0.25 | 0.22 | 0.23 | 0.59 | 0.58 | 0.45 | 29 |
+| YOLO11x 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps | 41 | 93% | 83% | 89% | 72% | 90% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.12 | 0.70 | 87 |
+| RF-DETR Medium (calibrated) | ByteTrack | — | astra_1fps | 52 | 83% | 73% | 88% | 71% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.67 | 0.11 | 0.62 | 2 |
+| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps | 47 | 83% | 72% | 86% | 71% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.67 | 0.11 | 0.59 | 2 |
+| RF-DETR Large 1024 (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 50 | 83% | 70% | 84% | 70% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.12 | 0.67 | 27 |
+| RF-DETR Medium (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 55 | 83% | 69% | 82% | 60% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.11 | 0.63 | 27 |
+| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 33 | 70% | 62% | 88% | 68% | 70% | 100% | 0.17 | 0.33 | 0.22 | 0.52 | 0.15 | 0.52 | 38 |
+| RF-DETR Medium | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 36 | 67% | 57% | 85% | 62% | 67% | 100% | 0.22 | 0.22 | 0.22 | 0.56 | 0.14 | 0.54 | 23 |
+| RF-DETR Medium | OC-SORT | — | astra_1fps | 37 | 67% | 54% | 81% | 62% | 63% | 95% | 0.22 | 0.22 | 0.22 | 0.56 | 0.14 | 0.50 | 1 |
+| YOLO11s 640 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 46 | 57% | 46% | 81% | 38% | 53% | 94% | 0.22 | 0.22 | 0.22 | 0.56 | 0.17 | 0.48 | 22 |
+| YOLO11s 640 | OC-SORT | — | astra_1fps | 39 | 57% | 45% | 79% | 36% | 53% | 94% | 0.22 | 0.22 | 0.22 | 0.56 | 0.17 | 0.47 | 1 |
+| YOLO11s 640 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 39 | 57% | 45% | 79% | 36% | 53% | 94% | 0.22 | 0.22 | 0.22 | 0.56 | 0.17 | 0.47 | 19 |
+| YOLO11m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 21 | 37% | 32% | 87% | 38% | 33% | 91% | 0.22 | 0.22 | 0.22 | 0.44 | 0.56 | 0.32 | 30 |
+| RF-DETR Medium | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 47 | 63% | 53% | 83% | 50% | 60% | 95% | 0.20 | 0.22 | 0.21 | 0.63 | 0.12 | 0.50 | 25 |
+| YOLO26s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps | 28 | 50% | 42% | 85% | 45% | 50% | 100% | 0.20 | 0.22 | 0.21 | 0.53 | 0.45 | 0.41 | 1 |
+| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 35 | 77% | 64% | 84% | 73% | 73% | 96% | 0.15 | 0.33 | 0.21 | 0.62 | 0.11 | 0.60 | 37 |
+| RF-DETR Large (calibrated) | OC-SORT | — | astra_1fps | 44 | 77% | 60% | 78% | 71% | 70% | 91% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.61 | 1 |
+| RF-DETR Large (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 44 | 77% | 60% | 78% | 71% | 70% | 91% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.61 | 24 |
+| RF-DETR Medium 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 39 | 73% | 61% | 83% | 55% | 70% | 96% | 0.17 | 0.22 | 0.19 | 0.57 | 0.13 | 0.62 | 25 |
+| YOLO11s 640 | BoT-SORT (ultralytics, prod) | — | astra_1fps | 44 | 73% | 56% | 77% | 49% | 70% | 96% | 0.17 | 0.22 | 0.19 | 0.57 | 0.13 | 0.58 | 7 |
+| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps | 37 | 80% | 64% | 80% | 48% | 77% | 96% | 0.13 | 0.33 | 0.19 | 0.44 | 0.21 | 0.57 | 37 |
+| YOLO11s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 47 | 90% | 83% | 92% | 73% | 90% | 100% | 0.15 | 0.22 | 0.18 | 0.55 | 0.42 | 0.74 | 26 |
+| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 33 | 83% | 72% | 87% | 70% | 83% | 100% | 0.15 | 0.22 | 0.18 | 0.46 | 0.46 | 0.61 | 37 |
+| RF-DETR Large 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 66 | 77% | 68% | 89% | 57% | 73% | 96% | 0.15 | 0.22 | 0.18 | 0.64 | 0.53 | 0.65 | 27 |
+| RF-DETR Medium 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 72 | 77% | 68% | 88% | 56% | 73% | 96% | 0.15 | 0.22 | 0.18 | 0.64 | 0.53 | 0.65 | 27 |
+| YOLO26m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 27 | 60% | 53% | 88% | 54% | 57% | 94% | 0.15 | 0.22 | 0.18 | 0.55 | 0.14 | 0.46 | 30 |
+| YOLO11s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 24 | 40% | 37% | 92% | 37% | 40% | 100% | 0.15 | 0.22 | 0.18 | 0.55 | 0.52 | 0.30 | 33 |
+| RF-DETR Medium (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 74 | 80% | 74% | 92% | 55% | 80% | 100% | 0.14 | 0.22 | 0.17 | 0.52 | 0.42 | 0.70 | 30 |
+| RF-DETR Large (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 69 | 80% | 70% | 88% | 55% | 77% | 96% | 0.14 | 0.22 | 0.17 | 0.52 | 0.34 | 0.69 | 30 |
+| YOLO11s 640 | ByteTrack | — | astra_1fps | 38 | 60% | 50% | 84% | 38% | 57% | 94% | 0.14 | 0.22 | 0.17 | 0.52 | 0.13 | 0.50 | 1 |
+| YOLO11s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 30 | 50% | 41% | 81% | 46% | 50% | 100% | 0.14 | 0.22 | 0.17 | 0.61 | 0.42 | 0.35 | 30 |
+| YOLO11s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps | 28 | 47% | 38% | 81% | 44% | 47% | 100% | 0.14 | 0.22 | 0.17 | 0.52 | 0.35 | 0.35 | 1 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 66 | 83% | 72% | 86% | 48% | 80% | 96% | 0.13 | 0.22 | 0.17 | 0.58 | 0.42 | 0.71 | 27 |
+| YOLO26m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 30 | 70% | 57% | 82% | 49% | 67% | 95% | 0.13 | 0.22 | 0.17 | 0.50 | 0.46 | 0.56 | 31 |
+| YOLO26m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps | 30 | 63% | 52% | 83% | 48% | 63% | 100% | 0.13 | 0.22 | 0.17 | 0.42 | 0.12 | 0.54 | 1 |
+| RF-DETR Large (calibrated) | ByteTrack | — | astra_1fps | 50 | 80% | 64% | 79% | 58% | 73% | 92% | 0.12 | 0.22 | 0.16 | 0.56 | 0.00 | 0.60 | 2 |
+| YOLO11s 640 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps | 51 | 73% | 56% | 76% | 50% | 70% | 96% | 0.12 | 0.22 | 0.16 | 0.48 | 0.11 | 0.57 | 13 |
+| RF-DETR Large | BoT-SORT | — | astra_1fps | 24 | 50% | 47% | 93% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 1 |
+| RF-DETR Large | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 25 | 50% | 47% | 93% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 24 |
+| RF-DETR Large | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 25 | 50% | 47% | 93% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 51 |
+| RF-DETR Large | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 26 | 50% | 44% | 88% | 39% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 189 |
+| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps | 28 | 53% | 44% | 82% | 50% | 50% | 94% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.43 | 2 |
+| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 24 | 50% | 41% | 82% | 56% | 47% | 93% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.43 | 33 |
+| RF-DETR Large 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 28 | 60% | 53% | 89% | 74% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 25 |
+| RF-DETR Large 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 28 | 60% | 53% | 89% | 74% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 52 |
+| RF-DETR Large 1024 | BoT-SORT | — | astra_1fps | 29 | 60% | 53% | 88% | 72% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 1 |
+| RF-DETR Large 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 30 | 60% | 51% | 84% | 59% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 195 |
+| RF-DETR Large | OC-SORT | — | astra_1fps | 41 | 70% | 56% | 81% | 64% | 60% | 86% | 0.09 | 0.11 | 0.10 | 0.50 | 0.00 | 0.56 | 1 |
+| RF-DETR Large | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps | 42 | 70% | 56% | 81% | 64% | 60% | 86% | 0.09 | 0.11 | 0.10 | 0.50 | 0.00 | 0.56 | 24 |
+| RF-DETR Medium 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 28 | 60% | 51% | 85% | 59% | 57% | 94% | 0.09 | 0.11 | 0.10 | 0.70 | 0.23 | 0.52 | 187 |
+| RF-DETR Small | BoT-SORT | — | astra_1fps | 26 | 37% | 34% | 93% | 30% | 37% | 100% | 0.08 | 0.11 | 0.10 | 0.57 | 0.19 | 0.35 | 1 |
+| RF-DETR Small | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 26 | 37% | 34% | 93% | 30% | 37% | 100% | 0.08 | 0.11 | 0.10 | 0.57 | 0.19 | 0.35 | 47 |
+| RF-DETR Small | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 25 | 37% | 34% | 93% | 30% | 37% | 100% | 0.08 | 0.11 | 0.10 | 0.57 | 0.19 | 0.35 | 180 |
+| RF-DETR Large | ByteTrack | — | astra_1fps | 41 | 73% | 62% | 85% | 72% | 70% | 96% | 0.08 | 0.11 | 0.09 | 0.64 | 0.00 | 0.58 | 2 |
+| RF-DETR Medium | BoT-SORT | CLIP-ReID Market1501 | astra_1fps | 25 | 50% | 44% | 89% | 73% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.43 | 183 |
+| RF-DETR Medium | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps | 25 | 50% | 44% | 88% | 71% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.43 | 24 |
+| RF-DETR Medium | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps | 25 | 50% | 44% | 88% | 71% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.43 | 47 |
+| RF-DETR Medium | BoT-SORT | — | astra_1fps | 26 | 50% | 43% | 86% | 73% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.41 | 1 |
+| YOLO11m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps | 28 | 50% | 40% | 79% | 45% | 47% | 93% | 0.07 | 0.11 | 0.09 | 0.52 | 0.23 | 0.45 | 1 |
+| RF-DETR Large | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps | 69 | 73% | 64% | 87% | 56% | 70% | 96% | 0.00 | 0.00 | 0.00 | 0.60 | 0.27 | 0.65 | 29 |
+| RF-DETR Large | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps | 51 | 67% | 55% | 82% | 53% | 60% | 90% | 0.00 | 0.00 | 0.00 | 0.50 | 0.00 | 0.57 | 26 |
+| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps | 32 | 53% | 36% | 68% | 32% | 47% | 88% | 0.00 | 0.00 | 0.00 | 0.63 | 0.00 | 0.47 | 1 |
+| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps | 18 | 33% | 31% | 94% | 17% | 33% | 100% | 0.00 | 0.00 | 0.00 | 0.62 | 0.28 | 0.41 | 0 |
+| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps | 21 | 33% | 30% | 91% | 17% | 33% | 100% | 0.00 | 0.00 | 0.00 | 0.60 | 0.21 | 0.41 | 0 |
+| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 18 | 30% | 28% | 93% | 17% | 30% | 100% | 0.00 | 0.00 | 0.00 | 0.56 | 0.24 | 0.36 | 34 |
+| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps | 17 | 30% | 28% | 92% | 17% | 30% | 100% | 0.00 | 0.00 | 0.00 | 0.59 | 0.24 | 0.36 | 32 |
 
 ## All hybrid variants
 
-| Detector | Tracker | ReID | Mode | IDs | Continuity | Staff cont. | Roles | Strict P | Strict R | Strict F1 | Loose F1 | Waiting tIoU | Consuming tIoU | Track ms |
-|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| YOLO11s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_medium | 42 | 92% | 92% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 5 |
-| YOLO11s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r3 | 42 | 92% | 92% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 5 |
-| YOLO11s 1280 | OC-SORT | — | astra_1fps_medium | 39 | 90% | 87% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 1 |
-| YOLO11s 1280 | OC-SORT | — | astra_1fps_r2 | 38 | 90% | 87% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 1 |
-| YOLO11s 1280 | OC-SORT | — | astra_1fps_r3 | 39 | 90% | 87% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 1 |
-| YOLO11s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 40 | 90% | 87% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 26 |
-| YOLO11s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 39 | 90% | 87% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 26 |
-| YOLO11s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 40 | 90% | 87% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 26 |
-| YOLO11s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 39 | 90% | 87% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 1 |
-| YOLO11s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 38 | 90% | 87% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 1 |
-| YOLO11s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 39 | 90% | 87% | 100% | 0.38 | 0.67 | 0.48 | 0.56 | 0.56 | 0.73 | 1 |
-| YOLO11s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 42 | 92% | 90% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.44 | 0.66 | 0 |
-| YOLO11s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 43 | 92% | 90% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.44 | 0.66 | 0 |
-| YOLO11s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r2 | 42 | 92% | 92% | 100% | 0.35 | 0.67 | 0.46 | 0.54 | 0.56 | 0.73 | 5 |
-| YOLO11s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 43 | 90% | 89% | 100% | 0.35 | 0.67 | 0.46 | 0.54 | 0.56 | 0.73 | 27 |
-| YOLO11s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 43 | 90% | 88% | 100% | 0.35 | 0.67 | 0.46 | 0.54 | 0.56 | 0.73 | 27 |
-| YOLO11s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 43 | 90% | 90% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.44 | 0.63 | 0 |
-| YOLO11s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 44 | 88% | 88% | 100% | 0.35 | 0.67 | 0.46 | 0.54 | 0.56 | 0.70 | 27 |
-| YOLO26s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 20 | 92% | 85% | 100% | 0.39 | 0.56 | 0.46 | 0.55 | 0.56 | 0.36 | 31 |
-| YOLO26s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 20 | 92% | 85% | 100% | 0.39 | 0.56 | 0.46 | 0.55 | 0.56 | 0.36 | 31 |
-| YOLO26s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 20 | 92% | 85% | 100% | 0.39 | 0.56 | 0.46 | 0.55 | 0.56 | 0.36 | 31 |
-| YOLO11s 1280 | ByteTrack | — | astra_1fps_r3 | 42 | 93% | 90% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.44 | 0.74 | 2 |
-| YOLO11s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_medium | 50 | 92% | 90% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.42 | 0.74 | 17 |
-| YOLO11s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r3 | 50 | 92% | 90% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.42 | 0.74 | 17 |
-| YOLO11s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 48 | 92% | 90% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.44 | 0.74 | 26 |
-| YOLO11s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 42 | 91% | 89% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.33 | 0.75 | 30 |
-| YOLO11s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 43 | 91% | 89% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.33 | 0.75 | 30 |
-| YOLO11s 1280 | ByteTrack | — | astra_1fps_medium | 43 | 90% | 90% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.44 | 0.71 | 2 |
-| YOLO11s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 49 | 90% | 90% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.44 | 0.71 | 26 |
-| YOLO11s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 43 | 89% | 89% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.33 | 0.72 | 30 |
-| YOLO11m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_medium | 24 | 93% | 87% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.56 | 0.50 | 1 |
-| YOLO11m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r2 | 24 | 93% | 87% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.56 | 0.50 | 1 |
-| YOLO11m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r3 | 24 | 93% | 87% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.56 | 0.50 | 1 |
-| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 31 | 90% | 93% | 96% | 0.36 | 0.56 | 0.43 | 0.52 | 0.56 | 0.70 | 36 |
-| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 31 | 89% | 93% | 96% | 0.36 | 0.56 | 0.43 | 0.52 | 0.56 | 0.70 | 36 |
-| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 31 | 89% | 93% | 96% | 0.36 | 0.56 | 0.43 | 0.52 | 0.56 | 0.70 | 36 |
-| YOLO11s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_medium | 30 | 88% | 90% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.65 | 0.35 | 2 |
-| YOLO11s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r2 | 29 | 88% | 90% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.65 | 0.35 | 2 |
-| YOLO11s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r3 | 29 | 88% | 90% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.65 | 0.35 | 2 |
-| YOLO26s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_medium | 28 | 87% | 74% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.56 | 0.36 | 0 |
-| YOLO26s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r3 | 28 | 87% | 74% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.56 | 0.36 | 0 |
-| YOLO11s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r2 | 36 | 93% | 89% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.75 | 2 |
-| YOLO11s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r3 | 37 | 93% | 89% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.75 | 2 |
-| YOLO11s 1280 | BoT-SORT | — | astra_1fps_r2 | 34 | 93% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.66 | 1 |
-| YOLO11s 1280 | BoT-SORT | — | astra_1fps_r3 | 34 | 93% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.66 | 1 |
-| YOLO11s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 35 | 93% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.66 | 25 |
-| YOLO11s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 35 | 93% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.66 | 25 |
-| YOLO11s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 35 | 93% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.66 | 65 |
-| YOLO11s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 35 | 93% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.66 | 65 |
-| YOLO11s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 35 | 93% | 89% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.66 | 221 |
-| YOLO11s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 35 | 93% | 89% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.66 | 221 |
-| YOLO11s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 37 | 92% | 92% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.44 | 0.66 | 32 |
-| YOLO11s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 37 | 92% | 92% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.44 | 0.66 | 32 |
-| YOLO11s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 37 | 92% | 92% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.44 | 0.66 | 32 |
-| YOLO11s 1280 | ByteTrack | — | astra_1fps_r2 | 43 | 92% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.44 | 0.74 | 2 |
-| YOLO11s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r2 | 51 | 92% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.42 | 0.74 | 17 |
-| YOLO11s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_medium | 38 | 91% | 89% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.72 | 2 |
-| YOLO11s 1280 | BoT-SORT | — | astra_1fps_medium | 35 | 90% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.64 | 1 |
-| YOLO11s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 36 | 90% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.64 | 25 |
-| YOLO11s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 36 | 90% | 90% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.64 | 65 |
-| YOLO11s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 36 | 90% | 89% | 100% | 0.32 | 0.67 | 0.43 | 0.57 | 0.33 | 0.64 | 221 |
-| YOLO11m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_medium | 27 | 92% | 84% | 100% | 0.33 | 0.56 | 0.42 | 0.50 | 0.56 | 0.32 | 0 |
-| YOLO11m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r3 | 27 | 92% | 84% | 100% | 0.33 | 0.56 | 0.42 | 0.50 | 0.56 | 0.32 | 0 |
-| YOLO26s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r2 | 42 | 90% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.70 | 18 |
-| YOLO26s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r3 | 42 | 90% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.70 | 18 |
-| YOLO26s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 31 | 90% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 25 |
-| YOLO26s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 31 | 90% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 25 |
-| YOLO26s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 31 | 90% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 60 |
-| YOLO26s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 31 | 90% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 60 |
-| YOLO26s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 31 | 90% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 221 |
-| YOLO26s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 31 | 90% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 221 |
-| YOLO26s 1280 | BoT-SORT | — | astra_1fps_r2 | 31 | 90% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 2 |
-| YOLO26s 1280 | BoT-SORT | — | astra_1fps_r3 | 31 | 90% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 2 |
-| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 28 | 90% | 92% | 100% | 0.33 | 0.56 | 0.42 | 0.50 | 0.40 | 0.65 | 35 |
-| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 28 | 90% | 92% | 100% | 0.33 | 0.56 | 0.42 | 0.50 | 0.40 | 0.65 | 35 |
-| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 28 | 90% | 92% | 100% | 0.33 | 0.56 | 0.42 | 0.50 | 0.40 | 0.65 | 35 |
-| YOLO26s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r2 | 38 | 90% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.70 | 8 |
-| YOLO26s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r3 | 38 | 90% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.70 | 8 |
-| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 41 | 90% | 84% | 100% | 0.33 | 0.56 | 0.42 | 0.67 | 0.41 | 0.70 | 33 |
-| YOLO26s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 34 | 90% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 32 |
-| YOLO26s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 34 | 90% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 32 |
-| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 42 | 90% | 84% | 100% | 0.33 | 0.56 | 0.42 | 0.67 | 0.41 | 0.70 | 33 |
-| YOLO26s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 38 | 90% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 0 |
-| YOLO26s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 39 | 89% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.65 | 0 |
-| YOLO11s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_medium | 24 | 89% | 87% | 100% | 0.33 | 0.56 | 0.42 | 0.50 | 0.65 | 0.30 | 0 |
-| YOLO11s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r3 | 24 | 89% | 87% | 100% | 0.33 | 0.56 | 0.42 | 0.50 | 0.65 | 0.30 | 0 |
-| YOLO26s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_medium | 43 | 88% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.68 | 18 |
-| YOLO26s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 31 | 88% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.62 | 25 |
-| YOLO26s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 31 | 88% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.62 | 60 |
-| YOLO26s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 31 | 88% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.62 | 221 |
-| YOLO26s 1280 | BoT-SORT | — | astra_1fps_medium | 31 | 88% | 94% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.62 | 2 |
-| YOLO26s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_medium | 38 | 88% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.68 | 8 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 44 | 87% | 88% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.41 | 0.73 | 32 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 44 | 87% | 88% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.41 | 0.73 | 32 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 45 | 87% | 88% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.41 | 0.73 | 32 |
-| YOLO26s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 34 | 87% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.62 | 32 |
-| RF-DETR Large (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 69 | 87% | 88% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.41 | 0.69 | 30 |
-| YOLO26s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 38 | 87% | 93% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.56 | 0.62 | 0 |
-| RF-DETR Large (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 71 | 87% | 88% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.41 | 0.69 | 30 |
-| YOLO11s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 40 | 90% | 89% | 100% | 0.30 | 0.67 | 0.41 | 0.55 | 0.33 | 0.64 | 31 |
-| YOLO11m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 37 | 94% | 93% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.66 | 31 |
-| YOLO11m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 37 | 94% | 93% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.66 | 31 |
-| YOLO11m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 37 | 94% | 93% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.66 | 31 |
-| YOLO11s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 39 | 93% | 89% | 100% | 0.29 | 0.67 | 0.40 | 0.53 | 0.33 | 0.62 | 31 |
-| YOLO11s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 39 | 93% | 89% | 100% | 0.29 | 0.67 | 0.40 | 0.53 | 0.33 | 0.62 | 31 |
-| YOLO11m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 26 | 92% | 90% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.58 | 0.41 | 31 |
-| YOLO11m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 26 | 92% | 90% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.58 | 0.41 | 31 |
-| YOLO11m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 26 | 92% | 90% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.58 | 0.41 | 31 |
-| YOLO11s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 28 | 90% | 90% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.65 | 0.35 | 33 |
-| YOLO11s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 27 | 90% | 90% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.65 | 0.35 | 33 |
-| YOLO26s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 34 | 90% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.65 | 31 |
-| YOLO26s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 33 | 90% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.65 | 31 |
-| YOLO26s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 33 | 90% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.65 | 31 |
-| YOLO26s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_medium | 26 | 90% | 80% | 100% | 0.31 | 0.56 | 0.40 | 0.48 | 0.56 | 0.42 | 2 |
-| YOLO26s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r2 | 26 | 90% | 80% | 100% | 0.31 | 0.56 | 0.40 | 0.48 | 0.56 | 0.42 | 2 |
-| YOLO26s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r3 | 26 | 90% | 80% | 100% | 0.31 | 0.56 | 0.40 | 0.48 | 0.56 | 0.42 | 2 |
-| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 45 | 90% | 89% | 96% | 0.31 | 0.56 | 0.40 | 0.64 | 0.52 | 0.65 | 33 |
-| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 43 | 90% | 89% | 96% | 0.31 | 0.56 | 0.40 | 0.64 | 0.52 | 0.65 | 33 |
-| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 43 | 90% | 89% | 96% | 0.31 | 0.56 | 0.40 | 0.64 | 0.52 | 0.65 | 33 |
-| RF-DETR Large 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 66 | 89% | 93% | 96% | 0.31 | 0.56 | 0.40 | 0.64 | 0.52 | 0.65 | 27 |
-| RF-DETR Large 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 67 | 89% | 93% | 96% | 0.31 | 0.56 | 0.40 | 0.64 | 0.52 | 0.65 | 27 |
-| YOLO26s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 45 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 27 |
-| YOLO26s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 45 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 27 |
-| RF-DETR Medium 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 72 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.64 | 0.52 | 0.65 | 27 |
-| RF-DETR Medium 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 72 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.64 | 0.52 | 0.65 | 27 |
-| YOLO26s 1280 | OC-SORT | — | astra_1fps_medium | 36 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 1 |
-| YOLO26s 1280 | OC-SORT | — | astra_1fps_r2 | 37 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 1 |
-| YOLO26s 1280 | OC-SORT | — | astra_1fps_r3 | 37 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 1 |
-| YOLO26s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 36 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 25 |
-| YOLO26s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 37 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 25 |
-| YOLO26s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 37 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 25 |
-| YOLO26s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 36 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 1 |
-| YOLO26s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 37 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 1 |
-| YOLO26s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 37 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.70 | 1 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 68 | 88% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.64 | 0.41 | 0.73 | 27 |
-| YOLO26s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 45 | 86% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.56 | 0.56 | 0.68 | 27 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 67 | 86% | 92% | 96% | 0.31 | 0.56 | 0.40 | 0.64 | 0.41 | 0.70 | 27 |
-| YOLO26s 1280 | ByteTrack | — | astra_1fps_r2 | 38 | 90% | 90% | 96% | 0.29 | 0.56 | 0.39 | 0.54 | 0.56 | 0.70 | 2 |
-| YOLO26s 1280 | ByteTrack | — | astra_1fps_r3 | 38 | 90% | 90% | 96% | 0.29 | 0.56 | 0.39 | 0.54 | 0.56 | 0.70 | 2 |
-| YOLO26s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 51 | 90% | 92% | 96% | 0.29 | 0.56 | 0.39 | 0.61 | 0.56 | 0.70 | 26 |
-| YOLO26s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 52 | 90% | 92% | 96% | 0.29 | 0.56 | 0.39 | 0.61 | 0.56 | 0.70 | 26 |
-| YOLO26s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 42 | 88% | 91% | 96% | 0.29 | 0.56 | 0.39 | 0.61 | 0.56 | 0.69 | 30 |
-| YOLO26s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 42 | 88% | 91% | 96% | 0.29 | 0.56 | 0.39 | 0.61 | 0.56 | 0.69 | 30 |
-| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 33 | 88% | 78% | 100% | 0.29 | 0.56 | 0.39 | 0.46 | 0.67 | 0.77 | 37 |
-| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 33 | 88% | 78% | 100% | 0.29 | 0.56 | 0.39 | 0.46 | 0.67 | 0.77 | 37 |
-| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 33 | 88% | 78% | 100% | 0.29 | 0.56 | 0.39 | 0.46 | 0.67 | 0.77 | 37 |
-| YOLO26s 1280 | ByteTrack | — | astra_1fps_medium | 40 | 88% | 90% | 96% | 0.29 | 0.56 | 0.39 | 0.54 | 0.56 | 0.68 | 2 |
-| YOLO26s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 51 | 88% | 92% | 96% | 0.29 | 0.56 | 0.39 | 0.61 | 0.56 | 0.68 | 26 |
-| YOLO26s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 44 | 86% | 91% | 96% | 0.29 | 0.56 | 0.39 | 0.61 | 0.56 | 0.66 | 30 |
-| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 45 | 93% | 91% | 100% | 0.28 | 0.56 | 0.37 | 0.59 | 0.41 | 0.54 | 34 |
-| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 45 | 93% | 91% | 100% | 0.28 | 0.56 | 0.37 | 0.59 | 0.41 | 0.54 | 34 |
-| YOLO26m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 43 | 93% | 93% | 100% | 0.28 | 0.56 | 0.37 | 0.59 | 0.56 | 0.70 | 31 |
-| YOLO26m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 43 | 93% | 93% | 100% | 0.28 | 0.56 | 0.37 | 0.59 | 0.56 | 0.70 | 31 |
-| YOLO26m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 44 | 91% | 93% | 100% | 0.28 | 0.56 | 0.37 | 0.59 | 0.56 | 0.68 | 31 |
-| YOLO26m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 40 | 91% | 92% | 96% | 0.28 | 0.56 | 0.37 | 0.59 | 0.56 | 0.66 | 32 |
-| YOLO26m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 41 | 91% | 92% | 96% | 0.28 | 0.56 | 0.37 | 0.59 | 0.56 | 0.66 | 32 |
-| YOLO26m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 40 | 91% | 92% | 96% | 0.28 | 0.56 | 0.37 | 0.59 | 0.56 | 0.66 | 32 |
-| YOLO11m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 49 | 90% | 92% | 96% | 0.28 | 0.56 | 0.37 | 0.59 | 0.56 | 0.70 | 25 |
-| YOLO11m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 50 | 90% | 92% | 96% | 0.28 | 0.56 | 0.37 | 0.59 | 0.56 | 0.70 | 25 |
-| YOLO11m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 43 | 89% | 89% | 96% | 0.28 | 0.56 | 0.37 | 0.52 | 0.40 | 0.70 | 30 |
-| YOLO11m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 43 | 89% | 89% | 96% | 0.28 | 0.56 | 0.37 | 0.52 | 0.40 | 0.70 | 30 |
-| YOLO11m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 49 | 88% | 92% | 96% | 0.28 | 0.56 | 0.37 | 0.59 | 0.56 | 0.68 | 25 |
-| YOLO11m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 43 | 87% | 89% | 96% | 0.28 | 0.56 | 0.37 | 0.52 | 0.40 | 0.68 | 30 |
-| YOLO26m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 54 | 94% | 93% | 100% | 0.26 | 0.56 | 0.36 | 0.57 | 0.56 | 0.70 | 25 |
-| YOLO26m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 53 | 94% | 93% | 100% | 0.26 | 0.56 | 0.36 | 0.57 | 0.56 | 0.70 | 25 |
-| RF-DETR Medium (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 75 | 92% | 89% | 100% | 0.26 | 0.56 | 0.36 | 0.57 | 0.34 | 0.70 | 30 |
-| RF-DETR Medium (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 75 | 92% | 89% | 100% | 0.26 | 0.56 | 0.36 | 0.57 | 0.34 | 0.70 | 30 |
-| YOLO26m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 53 | 91% | 93% | 100% | 0.26 | 0.56 | 0.36 | 0.57 | 0.56 | 0.68 | 25 |
-| YOLO26s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r2 | 34 | 90% | 90% | 96% | 0.26 | 0.56 | 0.36 | 0.57 | 0.40 | 0.70 | 2 |
-| YOLO26s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r3 | 34 | 90% | 90% | 96% | 0.26 | 0.56 | 0.36 | 0.57 | 0.40 | 0.70 | 2 |
-| YOLO26s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_medium | 36 | 88% | 90% | 96% | 0.26 | 0.56 | 0.36 | 0.57 | 0.40 | 0.68 | 2 |
-| RF-DETR Medium | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 72 | 87% | 86% | 95% | 0.25 | 0.56 | 0.34 | 0.55 | 0.44 | 0.52 | 28 |
-| RF-DETR Medium | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 72 | 87% | 86% | 95% | 0.25 | 0.56 | 0.34 | 0.55 | 0.44 | 0.52 | 28 |
-| YOLO26m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r3 | 38 | 93% | 92% | 100% | 0.27 | 0.44 | 0.33 | 0.58 | 0.23 | 0.74 | 12 |
-| YOLO26m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r2 | 39 | 93% | 92% | 100% | 0.27 | 0.44 | 0.33 | 0.58 | 0.23 | 0.74 | 12 |
-| YOLO26m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_medium | 39 | 91% | 92% | 100% | 0.27 | 0.44 | 0.33 | 0.58 | 0.23 | 0.71 | 12 |
-| YOLO11s 640 | BoT-SORT | — | astra_1fps_medium | 25 | 93% | 98% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 1 |
-| YOLO11s 640 | BoT-SORT | — | astra_1fps_r3 | 25 | 93% | 98% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 1 |
-| YOLO11s 640 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 25 | 93% | 96% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 124 |
-| YOLO11s 640 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 25 | 93% | 96% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 124 |
-| YOLO11s 640 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 25 | 92% | 95% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 24 |
-| YOLO11s 640 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 25 | 92% | 95% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 24 |
-| YOLO11s 640 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 25 | 92% | 95% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 24 |
-| YOLO11s 640 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 25 | 92% | 95% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 38 |
-| YOLO11s 640 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 25 | 92% | 95% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 38 |
-| YOLO11s 640 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 25 | 92% | 95% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.23 | 0.48 | 38 |
-| YOLO11x 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 48 | 92% | 89% | 100% | 0.22 | 0.56 | 0.31 | 0.50 | 0.34 | 0.75 | 25 |
-| YOLO11x 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 48 | 92% | 89% | 100% | 0.22 | 0.56 | 0.31 | 0.50 | 0.34 | 0.75 | 25 |
-| YOLO11x 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 49 | 90% | 89% | 100% | 0.22 | 0.56 | 0.31 | 0.50 | 0.34 | 0.72 | 25 |
-| YOLO26m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r3 | 42 | 93% | 89% | 100% | 0.22 | 0.44 | 0.30 | 0.59 | 0.23 | 0.74 | 41 |
-| YOLO26m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r2 | 43 | 92% | 89% | 100% | 0.22 | 0.44 | 0.30 | 0.59 | 0.23 | 0.74 | 41 |
-| YOLO26m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_medium | 43 | 90% | 89% | 100% | 0.22 | 0.44 | 0.30 | 0.59 | 0.23 | 0.71 | 41 |
-| RF-DETR Small | OC-SORT | — | astra_1fps_medium | 40 | 80% | 78% | 100% | 0.21 | 0.44 | 0.29 | 0.50 | 0.48 | 0.50 | 1 |
-| RF-DETR Small | OC-SORT | — | astra_1fps_r3 | 40 | 80% | 78% | 100% | 0.21 | 0.44 | 0.29 | 0.50 | 0.48 | 0.50 | 1 |
-| RF-DETR Small | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 41 | 80% | 78% | 100% | 0.21 | 0.44 | 0.29 | 0.50 | 0.48 | 0.50 | 24 |
-| RF-DETR Small | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 41 | 80% | 78% | 100% | 0.21 | 0.44 | 0.29 | 0.50 | 0.48 | 0.50 | 24 |
-| RF-DETR Medium 1024 | ByteTrack | — | astra_1fps_medium | 38 | 86% | 89% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.21 | 0.65 | 2 |
-| RF-DETR Medium 1024 | ByteTrack | — | astra_1fps_r2 | 38 | 86% | 89% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.21 | 0.65 | 2 |
-| RF-DETR Medium 1024 | ByteTrack | — | astra_1fps_r3 | 38 | 86% | 89% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.21 | 0.65 | 2 |
-| RF-DETR Medium 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 39 | 83% | 88% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.21 | 0.65 | 25 |
-| RF-DETR Medium 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 39 | 83% | 88% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.21 | 0.65 | 25 |
-| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 30 | 94% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.70 | 36 |
-| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 30 | 94% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.70 | 36 |
-| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 30 | 94% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.70 | 36 |
-| YOLO26m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 32 | 94% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 25 |
-| YOLO26m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 32 | 94% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 25 |
-| YOLO26m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 32 | 94% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 63 |
-| YOLO26m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 32 | 94% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 63 |
-| YOLO26m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 32 | 94% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 228 |
-| YOLO26m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 32 | 94% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 228 |
-| YOLO26m 1280 | BoT-SORT | — | astra_1fps_r2 | 31 | 94% | 90% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 2 |
-| YOLO26m 1280 | BoT-SORT | — | astra_1fps_r3 | 31 | 94% | 90% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 2 |
-| YOLO26m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 33 | 92% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.64 | 25 |
-| YOLO26m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 33 | 92% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.64 | 63 |
-| YOLO26m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 33 | 92% | 94% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.64 | 228 |
-| YOLO26m 1280 | BoT-SORT | — | astra_1fps_medium | 32 | 91% | 90% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.64 | 2 |
-| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 32 | 90% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 36 |
-| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 32 | 90% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 36 |
-| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 32 | 90% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.66 | 36 |
-| YOLO11m 1280 | BoT-SORT | — | astra_1fps_r2 | 33 | 89% | 84% | 96% | 0.21 | 0.33 | 0.26 | 0.43 | 0.21 | 0.58 | 1 |
-| YOLO11m 1280 | BoT-SORT | — | astra_1fps_r3 | 33 | 89% | 84% | 96% | 0.21 | 0.33 | 0.26 | 0.43 | 0.21 | 0.58 | 1 |
-| YOLO26m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_medium | 29 | 89% | 93% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.56 | 2 |
-| YOLO26m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r2 | 29 | 89% | 93% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.56 | 2 |
-| YOLO26m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r3 | 29 | 89% | 93% | 100% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.56 | 2 |
-| RF-DETR Large 1024 | ByteTrack | — | astra_1fps_medium | 41 | 89% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.21 | 0.65 | 2 |
-| RF-DETR Large 1024 | ByteTrack | — | astra_1fps_r2 | 41 | 89% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.21 | 0.65 | 2 |
-| RF-DETR Large 1024 | ByteTrack | — | astra_1fps_r3 | 41 | 89% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.21 | 0.65 | 2 |
-| YOLO11m 1280 | BoT-SORT | — | astra_1fps_medium | 34 | 87% | 84% | 96% | 0.21 | 0.33 | 0.26 | 0.43 | 0.21 | 0.55 | 1 |
-| RF-DETR Medium | ByteTrack | — | astra_1fps_medium | 39 | 86% | 87% | 95% | 0.21 | 0.33 | 0.26 | 0.61 | 0.23 | 0.52 | 2 |
-| RF-DETR Medium | ByteTrack | — | astra_1fps_r2 | 39 | 86% | 87% | 95% | 0.21 | 0.33 | 0.26 | 0.61 | 0.23 | 0.52 | 2 |
-| RF-DETR Medium | ByteTrack | — | astra_1fps_r3 | 39 | 86% | 87% | 95% | 0.21 | 0.33 | 0.26 | 0.61 | 0.23 | 0.52 | 2 |
-| RF-DETR Large (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 44 | 85% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.66 | 24 |
-| RF-DETR Large (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 45 | 85% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.66 | 24 |
-| RF-DETR Large (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 42 | 85% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.66 | 24 |
-| RF-DETR Large (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 43 | 85% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.66 | 54 |
-| RF-DETR Large (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 44 | 85% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.66 | 54 |
-| RF-DETR Large (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 41 | 85% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.66 | 54 |
-| RF-DETR Large (calibrated) | BoT-SORT | — | astra_1fps_medium | 40 | 85% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.61 | 2 |
-| RF-DETR Large (calibrated) | BoT-SORT | — | astra_1fps_r2 | 41 | 85% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.61 | 2 |
-| RF-DETR Large (calibrated) | BoT-SORT | — | astra_1fps_r3 | 38 | 85% | 93% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.61 | 2 |
-| RF-DETR Large (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 43 | 85% | 92% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.66 | 177 |
-| RF-DETR Large 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 45 | 84% | 89% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 26 |
-| RF-DETR Large 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 45 | 84% | 89% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 26 |
-| RF-DETR Large 1024 | OC-SORT | — | astra_1fps_medium | 37 | 84% | 89% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 1 |
-| RF-DETR Large 1024 | OC-SORT | — | astra_1fps_r2 | 37 | 84% | 89% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 1 |
-| RF-DETR Large 1024 | OC-SORT | — | astra_1fps_r3 | 37 | 84% | 89% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 1 |
-| RF-DETR Large 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 37 | 83% | 86% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 24 |
-| RF-DETR Large 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 37 | 83% | 86% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 24 |
-| RF-DETR Large 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 37 | 83% | 86% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 24 |
-| RF-DETR Medium 1024 | OC-SORT | — | astra_1fps_medium | 33 | 81% | 84% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 1 |
-| RF-DETR Medium 1024 | OC-SORT | — | astra_1fps_r2 | 33 | 81% | 84% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 1 |
-| RF-DETR Medium 1024 | OC-SORT | — | astra_1fps_r3 | 33 | 81% | 84% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 1 |
-| RF-DETR Medium 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 33 | 81% | 84% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 24 |
-| RF-DETR Medium 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 33 | 81% | 84% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 24 |
-| RF-DETR Medium 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 33 | 81% | 84% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.23 | 0.65 | 24 |
-| RF-DETR Large (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 53 | 81% | 89% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.67 | 27 |
-| RF-DETR Large (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 54 | 81% | 89% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.21 | 0.67 | 27 |
-| YOLO26m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 47 | 94% | 92% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 27 |
-| YOLO26m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 47 | 94% | 92% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 27 |
-| YOLO26m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 47 | 94% | 92% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 27 |
-| YOLO26m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 39 | 94% | 90% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.66 | 0 |
-| YOLO26m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 40 | 93% | 90% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.66 | 0 |
-| YOLO26m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 40 | 91% | 90% | 100% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.64 | 0 |
-| YOLO11m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 33 | 91% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 31 |
-| YOLO11m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 33 | 91% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 31 |
-| YOLO11m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 33 | 90% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 24 |
-| YOLO11m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 33 | 90% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 24 |
-| YOLO11m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 33 | 90% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 56 |
-| YOLO11m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 33 | 90% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 56 |
-| YOLO11m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 33 | 90% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 199 |
-| YOLO11m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 33 | 90% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 199 |
-| YOLO11m 1280 | ByteTrack | — | astra_1fps_r2 | 40 | 90% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 2 |
-| YOLO11m 1280 | ByteTrack | — | astra_1fps_r3 | 40 | 90% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 2 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 38 | 90% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 59 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 37 | 90% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 59 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 37 | 90% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 59 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 38 | 89% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 25 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 37 | 89% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 25 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 37 | 89% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 25 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 40 | 89% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 33 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 39 | 89% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 33 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 39 | 89% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 33 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 36 | 89% | 91% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 208 |
-| YOLO26m 1280 | OC-SORT | — | astra_1fps_medium | 36 | 89% | 85% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 1 |
-| YOLO26m 1280 | OC-SORT | — | astra_1fps_r2 | 36 | 89% | 85% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 1 |
-| YOLO26m 1280 | OC-SORT | — | astra_1fps_r3 | 36 | 89% | 85% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 1 |
-| YOLO26m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 36 | 89% | 85% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 24 |
-| YOLO26m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 36 | 89% | 85% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 24 |
-| YOLO26m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 36 | 89% | 85% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 24 |
-| YOLO26m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 36 | 89% | 85% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 1 |
-| YOLO26m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 36 | 89% | 85% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 1 |
-| YOLO26m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 36 | 89% | 85% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 1 |
-| YOLO26m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 36 | 89% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.64 | 31 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | — | astra_1fps_medium | 37 | 89% | 90% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 1 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | — | astra_1fps_r2 | 36 | 89% | 90% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 1 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | — | astra_1fps_r3 | 36 | 89% | 90% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.21 | 0.65 | 1 |
-| YOLO11m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 34 | 88% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.59 | 24 |
-| YOLO11m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 34 | 88% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.59 | 56 |
-| YOLO11m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 34 | 88% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.59 | 199 |
-| YOLO11m 1280 | ByteTrack | — | astra_1fps_medium | 41 | 88% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.68 | 2 |
-| YOLO11m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 33 | 88% | 93% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.59 | 31 |
-| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 30 | 87% | 90% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 34 |
-| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 30 | 87% | 90% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 34 |
-| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 30 | 87% | 90% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.62 | 34 |
-| YOLO11m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 44 | 87% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 26 |
-| YOLO11m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 44 | 87% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.70 | 26 |
-| YOLO11x 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 39 | 86% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.71 | 27 |
-| YOLO11x 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 39 | 86% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.71 | 27 |
-| YOLO11x 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 39 | 86% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.71 | 27 |
-| YOLO26s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 25 | 86% | 85% | 94% | 0.20 | 0.33 | 0.25 | 0.50 | 0.56 | 0.39 | 31 |
-| YOLO11x 1280 | OC-SORT | — | astra_1fps_medium | 31 | 85% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.71 | 1 |
-| YOLO11x 1280 | OC-SORT | — | astra_1fps_r2 | 31 | 85% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.71 | 1 |
-| YOLO11x 1280 | OC-SORT | — | astra_1fps_r3 | 31 | 85% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.71 | 1 |
-| YOLO11x 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 31 | 85% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.71 | 25 |
-| YOLO11x 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 31 | 85% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.71 | 25 |
-| YOLO11x 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 31 | 85% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.71 | 25 |
-| YOLO11m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 45 | 85% | 92% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.23 | 0.67 | 26 |
-| RF-DETR Medium (calibrated) | OC-SORT | — | astra_1fps_medium | 40 | 84% | 84% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.17 | 0.66 | 1 |
-| RF-DETR Medium (calibrated) | OC-SORT | — | astra_1fps_r3 | 40 | 84% | 84% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.17 | 0.66 | 1 |
-| RF-DETR Medium (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 39 | 84% | 84% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.17 | 0.66 | 24 |
-| RF-DETR Medium (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 39 | 84% | 84% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.17 | 0.66 | 24 |
-| RF-DETR Medium | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 46 | 82% | 74% | 95% | 0.20 | 0.33 | 0.25 | 0.50 | 0.19 | 0.52 | 25 |
-| RF-DETR Medium | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 47 | 81% | 74% | 95% | 0.20 | 0.33 | 0.25 | 0.50 | 0.19 | 0.52 | 25 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 28 | 81% | 72% | 94% | 0.20 | 0.33 | 0.25 | 0.50 | 0.53 | 0.52 | 32 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 28 | 81% | 72% | 94% | 0.20 | 0.33 | 0.25 | 0.50 | 0.53 | 0.52 | 32 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps_medium | 31 | 74% | 70% | 94% | 0.20 | 0.33 | 0.25 | 0.58 | 0.53 | 0.52 | 1 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps_r3 | 31 | 74% | 70% | 94% | 0.20 | 0.33 | 0.25 | 0.58 | 0.53 | 0.52 | 1 |
-| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 29 | 92% | 85% | 100% | 0.19 | 0.33 | 0.24 | 0.56 | 0.21 | 0.54 | 38 |
-| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 29 | 92% | 85% | 100% | 0.19 | 0.33 | 0.24 | 0.56 | 0.21 | 0.54 | 38 |
-| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 29 | 92% | 85% | 100% | 0.19 | 0.33 | 0.24 | 0.56 | 0.21 | 0.54 | 38 |
-| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 30 | 91% | 93% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.14 | 0.66 | 35 |
-| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 30 | 91% | 93% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.14 | 0.66 | 35 |
-| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 30 | 91% | 93% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.14 | 0.66 | 35 |
-| YOLO26m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 36 | 91% | 93% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.62 | 31 |
-| YOLO26m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 36 | 91% | 93% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.62 | 31 |
-| YOLO26m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r2 | 33 | 91% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.70 | 2 |
-| YOLO26m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r3 | 33 | 91% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.70 | 2 |
-| YOLO11m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r2 | 33 | 90% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 2 |
-| YOLO11m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r3 | 33 | 90% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 2 |
-| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 56 | 89% | 89% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.65 | 0 |
-| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 55 | 89% | 89% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.65 | 0 |
-| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 55 | 89% | 89% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.65 | 0 |
-| RF-DETR Medium (calibrated) | BoT-SORT | — | astra_1fps_medium | 39 | 89% | 90% | 95% | 0.19 | 0.33 | 0.24 | 0.64 | 0.21 | 0.50 | 1 |
-| RF-DETR Medium (calibrated) | BoT-SORT | — | astra_1fps_r3 | 39 | 89% | 90% | 95% | 0.19 | 0.33 | 0.24 | 0.64 | 0.21 | 0.50 | 1 |
-| YOLO26m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_medium | 34 | 89% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.23 | 0.68 | 2 |
-| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 82 | 88% | 91% | 95% | 0.19 | 0.33 | 0.24 | 0.64 | 0.21 | 0.50 | 0 |
-| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 82 | 88% | 91% | 95% | 0.19 | 0.33 | 0.24 | 0.64 | 0.21 | 0.50 | 0 |
-| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 44 | 88% | 89% | 95% | 0.19 | 0.33 | 0.24 | 0.64 | 0.21 | 0.50 | 34 |
-| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 44 | 88% | 89% | 95% | 0.19 | 0.33 | 0.24 | 0.64 | 0.21 | 0.50 | 34 |
-| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 44 | 88% | 89% | 95% | 0.19 | 0.33 | 0.24 | 0.64 | 0.21 | 0.50 | 34 |
-| YOLO11m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_medium | 34 | 88% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.68 | 2 |
-| RF-DETR Medium (calibrated) | ByteTrack | — | astra_1fps_medium | 53 | 88% | 89% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.17 | 0.66 | 2 |
-| RF-DETR Medium (calibrated) | ByteTrack | — | astra_1fps_r3 | 52 | 88% | 89% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.17 | 0.66 | 2 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r2 | 36 | 88% | 93% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.21 | 0.72 | 2 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r3 | 36 | 88% | 93% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.21 | 0.72 | 2 |
-| YOLO26m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_medium | 35 | 87% | 84% | 100% | 0.19 | 0.33 | 0.24 | 0.48 | 0.19 | 0.50 | 0 |
-| YOLO26m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r3 | 35 | 87% | 84% | 100% | 0.19 | 0.33 | 0.24 | 0.48 | 0.19 | 0.50 | 0 |
-| RF-DETR Large | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 69 | 87% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.31 | 0.65 | 29 |
-| RF-DETR Large | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 72 | 87% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.31 | 0.65 | 29 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_medium | 37 | 86% | 93% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.21 | 0.69 | 2 |
-| YOLO11m 1280 | OC-SORT | — | astra_1fps_medium | 35 | 86% | 88% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 1 |
-| YOLO11m 1280 | OC-SORT | — | astra_1fps_r2 | 35 | 86% | 88% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 1 |
-| YOLO11m 1280 | OC-SORT | — | astra_1fps_r3 | 35 | 86% | 88% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 1 |
-| YOLO11m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 35 | 86% | 88% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 24 |
-| YOLO11m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 35 | 86% | 88% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 24 |
-| YOLO11m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 35 | 86% | 88% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 24 |
-| YOLO11m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 35 | 86% | 88% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 1 |
-| YOLO11m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 35 | 86% | 88% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 1 |
-| YOLO11m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 35 | 86% | 88% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.16 | 0.70 | 1 |
-| YOLO11m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 26 | 86% | 74% | 100% | 0.19 | 0.33 | 0.24 | 0.56 | 0.44 | 0.50 | 30 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack | — | astra_1fps_r2 | 43 | 85% | 92% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.21 | 0.72 | 2 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack | — | astra_1fps_r3 | 43 | 85% | 92% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.21 | 0.72 | 2 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 40 | 84% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.23 | 0.72 | 1 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 40 | 84% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.23 | 0.72 | 1 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT | — | astra_1fps_r2 | 40 | 84% | 91% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.23 | 0.72 | 1 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT | — | astra_1fps_r3 | 40 | 84% | 91% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.23 | 0.72 | 1 |
-| RF-DETR Large 1024 (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 40 | 84% | 91% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.23 | 0.72 | 24 |
-| RF-DETR Large 1024 (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 40 | 84% | 91% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.23 | 0.72 | 24 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack | — | astra_1fps_medium | 44 | 84% | 92% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.21 | 0.69 | 2 |
-| RF-DETR Large 1024 (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 41 | 83% | 91% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.23 | 0.69 | 24 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 41 | 83% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.23 | 0.69 | 1 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT | — | astra_1fps_medium | 41 | 83% | 91% | 96% | 0.19 | 0.33 | 0.24 | 0.48 | 0.23 | 0.69 | 1 |
-| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 29 | 78% | 61% | 94% | 0.19 | 0.33 | 0.24 | 0.48 | 0.28 | 0.49 | 32 |
-| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 29 | 78% | 61% | 94% | 0.19 | 0.33 | 0.24 | 0.48 | 0.28 | 0.49 | 32 |
-| YOLO11s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 47 | 92% | 91% | 100% | 0.18 | 0.33 | 0.23 | 0.54 | 0.44 | 0.74 | 26 |
-| YOLO11x 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 32 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.70 | 56 |
-| YOLO11x 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 32 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.70 | 56 |
-| YOLO11x 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 32 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.70 | 216 |
-| YOLO11x 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 32 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.70 | 216 |
-| YOLO11x 1280 | BoT-SORT | — | astra_1fps_r2 | 32 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.70 | 2 |
-| YOLO11x 1280 | BoT-SORT | — | astra_1fps_r3 | 32 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.70 | 2 |
-| YOLO11x 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 32 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.70 | 25 |
-| YOLO11x 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 32 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.70 | 25 |
-| YOLO26m 1280 | ByteTrack | — | astra_1fps_r2 | 37 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.61 | 0.23 | 0.70 | 2 |
-| YOLO26m 1280 | ByteTrack | — | astra_1fps_r3 | 37 | 91% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.61 | 0.23 | 0.70 | 2 |
-| RF-DETR Small | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 74 | 90% | 89% | 100% | 0.18 | 0.33 | 0.23 | 0.54 | 0.55 | 0.52 | 30 |
-| YOLO11m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r2 | 45 | 89% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.61 | 0.17 | 0.74 | 38 |
-| YOLO11m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r3 | 46 | 89% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.61 | 0.17 | 0.74 | 38 |
-| YOLO11m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 41 | 89% | 90% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.16 | 0.62 | 0 |
-| YOLO11m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r2 | 39 | 89% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.61 | 0.17 | 0.74 | 14 |
-| YOLO11m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r3 | 40 | 89% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.61 | 0.17 | 0.74 | 14 |
-| YOLO11x 1280 | BoT-SORT | — | astra_1fps_medium | 33 | 89% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.68 | 2 |
-| YOLO11x 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 33 | 89% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.68 | 25 |
-| YOLO11x 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 33 | 89% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.68 | 56 |
-| YOLO11x 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 33 | 89% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.68 | 216 |
-| YOLO26m 1280 | ByteTrack | — | astra_1fps_medium | 38 | 89% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.61 | 0.23 | 0.68 | 2 |
-| YOLO11x 1280 | ByteTrack | — | astra_1fps_r2 | 37 | 89% | 89% | 96% | 0.18 | 0.33 | 0.23 | 0.46 | 0.18 | 0.73 | 2 |
-| YOLO11x 1280 | ByteTrack | — | astra_1fps_r3 | 37 | 89% | 89% | 96% | 0.18 | 0.33 | 0.23 | 0.46 | 0.18 | 0.73 | 2 |
-| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 42 | 89% | 92% | 95% | 0.18 | 0.33 | 0.23 | 0.61 | 0.15 | 0.50 | 53 |
-| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 42 | 89% | 92% | 95% | 0.18 | 0.33 | 0.23 | 0.61 | 0.15 | 0.50 | 53 |
-| RF-DETR Medium (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 42 | 89% | 91% | 95% | 0.18 | 0.33 | 0.23 | 0.61 | 0.15 | 0.50 | 160 |
-| YOLO11x 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r2 | 36 | 88% | 89% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.18 | 0.72 | 42 |
-| YOLO11x 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r3 | 36 | 88% | 89% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.18 | 0.72 | 42 |
-| YOLO11m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_medium | 47 | 87% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.61 | 0.17 | 0.71 | 38 |
-| YOLO11m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 42 | 87% | 90% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.16 | 0.59 | 0 |
-| YOLO11m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_medium | 41 | 87% | 93% | 96% | 0.18 | 0.33 | 0.23 | 0.61 | 0.17 | 0.71 | 14 |
-| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 34 | 87% | 92% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.16 | 0.69 | 37 |
-| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 34 | 87% | 92% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.16 | 0.69 | 37 |
-| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 34 | 87% | 92% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.16 | 0.69 | 37 |
-| YOLO11x 1280 | ByteTrack | — | astra_1fps_medium | 38 | 87% | 89% | 96% | 0.18 | 0.33 | 0.23 | 0.46 | 0.18 | 0.71 | 2 |
-| YOLO11x 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_medium | 37 | 86% | 89% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.18 | 0.69 | 42 |
-| RF-DETR Small | ByteTrack | — | astra_1fps_medium | 40 | 86% | 84% | 95% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.48 | 2 |
-| RF-DETR Small | ByteTrack | — | astra_1fps_r3 | 40 | 86% | 84% | 95% | 0.18 | 0.33 | 0.23 | 0.54 | 0.23 | 0.48 | 2 |
-| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 34 | 85% | 92% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.17 | 0.63 | 37 |
-| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 34 | 85% | 92% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.17 | 0.63 | 37 |
-| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 34 | 85% | 92% | 96% | 0.18 | 0.33 | 0.23 | 0.54 | 0.17 | 0.63 | 37 |
-| RF-DETR Small | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 50 | 79% | 80% | 95% | 0.18 | 0.33 | 0.23 | 0.46 | 0.24 | 0.45 | 25 |
-| RF-DETR Small | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 50 | 79% | 80% | 95% | 0.18 | 0.33 | 0.23 | 0.46 | 0.24 | 0.45 | 25 |
-| YOLO11s 640 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 54 | 92% | 95% | 100% | 0.17 | 0.33 | 0.22 | 0.52 | 0.19 | 0.56 | 28 |
-| YOLO11s 640 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 54 | 92% | 95% | 100% | 0.17 | 0.33 | 0.22 | 0.52 | 0.19 | 0.56 | 28 |
-| YOLO11s 640 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 54 | 90% | 95% | 100% | 0.17 | 0.33 | 0.22 | 0.52 | 0.19 | 0.56 | 28 |
-| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_medium | 46 | 88% | 89% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.14 | 0.66 | 2 |
-| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r3 | 46 | 88% | 89% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.14 | 0.66 | 2 |
-| YOLO11m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 20 | 88% | 64% | 91% | 0.17 | 0.33 | 0.22 | 0.44 | 0.44 | 0.32 | 30 |
-| YOLO11m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 20 | 88% | 64% | 91% | 0.17 | 0.33 | 0.22 | 0.44 | 0.44 | 0.32 | 30 |
-| YOLO11m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 20 | 88% | 64% | 91% | 0.17 | 0.33 | 0.22 | 0.44 | 0.44 | 0.32 | 30 |
-| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 41 | 87% | 84% | 100% | 0.17 | 0.33 | 0.22 | 0.59 | 0.14 | 0.70 | 2 |
-| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 41 | 87% | 84% | 100% | 0.17 | 0.33 | 0.22 | 0.59 | 0.14 | 0.70 | 2 |
-| RF-DETR Small | OC-SORT | — | astra_1fps_r2 | 40 | 82% | 89% | 100% | 0.17 | 0.33 | 0.22 | 0.44 | 0.48 | 0.50 | 1 |
-| RF-DETR Small | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 41 | 82% | 89% | 100% | 0.17 | 0.33 | 0.22 | 0.44 | 0.48 | 0.50 | 24 |
-| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 43 | 89% | 92% | 95% | 0.16 | 0.33 | 0.21 | 0.57 | 0.13 | 0.50 | 26 |
-| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 43 | 89% | 92% | 95% | 0.16 | 0.33 | 0.21 | 0.57 | 0.13 | 0.50 | 26 |
-| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 43 | 89% | 92% | 95% | 0.16 | 0.33 | 0.21 | 0.57 | 0.13 | 0.50 | 26 |
-| RF-DETR Large 1024 (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 49 | 84% | 87% | 96% | 0.16 | 0.33 | 0.21 | 0.50 | 0.19 | 0.72 | 27 |
-| RF-DETR Large 1024 (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 49 | 84% | 87% | 96% | 0.16 | 0.33 | 0.21 | 0.50 | 0.19 | 0.72 | 27 |
-| RF-DETR Large 1024 (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 50 | 83% | 87% | 96% | 0.16 | 0.33 | 0.21 | 0.50 | 0.19 | 0.69 | 27 |
-| YOLO11s 640 | BoT-SORT | — | astra_1fps_r2 | 25 | 93% | 100% | 100% | 0.20 | 0.22 | 0.21 | 0.42 | 0.23 | 0.48 | 1 |
-| YOLO11s 640 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 25 | 92% | 96% | 100% | 0.20 | 0.22 | 0.21 | 0.42 | 0.23 | 0.48 | 124 |
-| YOLO11s 640 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 46 | 81% | 95% | 94% | 0.20 | 0.22 | 0.21 | 0.53 | 0.23 | 0.52 | 22 |
-| YOLO11s 640 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 46 | 81% | 95% | 94% | 0.20 | 0.22 | 0.21 | 0.42 | 0.23 | 0.52 | 22 |
-| YOLO11s 640 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 46 | 81% | 95% | 94% | 0.20 | 0.22 | 0.21 | 0.53 | 0.23 | 0.52 | 22 |
-| YOLO11x 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r2 | 40 | 89% | 90% | 96% | 0.14 | 0.33 | 0.20 | 0.53 | 0.18 | 0.73 | 87 |
-| YOLO11x 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r3 | 40 | 89% | 90% | 96% | 0.14 | 0.33 | 0.20 | 0.53 | 0.18 | 0.73 | 87 |
-| YOLO11x 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_medium | 41 | 87% | 90% | 96% | 0.14 | 0.33 | 0.20 | 0.53 | 0.18 | 0.70 | 87 |
-| YOLO11s 640 | OC-SORT | — | astra_1fps_medium | 38 | 79% | 90% | 94% | 0.18 | 0.22 | 0.20 | 0.60 | 0.23 | 0.52 | 1 |
-| YOLO11s 640 | OC-SORT | — | astra_1fps_r2 | 38 | 79% | 90% | 94% | 0.18 | 0.22 | 0.20 | 0.60 | 0.23 | 0.52 | 1 |
-| YOLO11s 640 | OC-SORT | — | astra_1fps_r3 | 38 | 79% | 90% | 94% | 0.18 | 0.22 | 0.20 | 0.60 | 0.23 | 0.52 | 1 |
-| YOLO11s 640 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 38 | 79% | 90% | 94% | 0.18 | 0.22 | 0.20 | 0.60 | 0.23 | 0.52 | 19 |
-| YOLO11s 640 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 38 | 79% | 90% | 94% | 0.18 | 0.22 | 0.20 | 0.60 | 0.23 | 0.52 | 19 |
-| YOLO11s 640 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 38 | 79% | 90% | 94% | 0.18 | 0.22 | 0.20 | 0.60 | 0.23 | 0.52 | 19 |
-| RF-DETR Medium 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 39 | 83% | 92% | 96% | 0.17 | 0.22 | 0.19 | 0.48 | 0.21 | 0.65 | 25 |
-| RF-DETR Large 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 45 | 85% | 96% | 96% | 0.15 | 0.22 | 0.18 | 0.46 | 0.23 | 0.65 | 26 |
-| YOLO26s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_medium | 28 | 85% | 75% | 100% | 0.15 | 0.22 | 0.18 | 0.46 | 0.56 | 0.43 | 1 |
-| YOLO26s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r2 | 28 | 85% | 75% | 100% | 0.15 | 0.22 | 0.18 | 0.46 | 0.56 | 0.43 | 1 |
-| YOLO26s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r3 | 28 | 85% | 75% | 100% | 0.15 | 0.22 | 0.18 | 0.46 | 0.56 | 0.43 | 1 |
-| YOLO26s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 27 | 84% | 88% | 93% | 0.15 | 0.22 | 0.18 | 0.46 | 0.56 | 0.39 | 32 |
-| YOLO26s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 27 | 82% | 78% | 93% | 0.15 | 0.22 | 0.18 | 0.55 | 0.56 | 0.39 | 32 |
-| YOLO26s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 27 | 82% | 78% | 93% | 0.15 | 0.22 | 0.18 | 0.55 | 0.56 | 0.39 | 32 |
-| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 42 | 91% | 91% | 100% | 0.14 | 0.22 | 0.17 | 0.61 | 0.41 | 0.70 | 33 |
-| YOLO26s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r2 | 28 | 91% | 88% | 100% | 0.14 | 0.22 | 0.17 | 0.52 | 0.56 | 0.36 | 0 |
-| RF-DETR Medium | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 36 | 85% | 78% | 100% | 0.14 | 0.22 | 0.17 | 0.52 | 0.23 | 0.56 | 23 |
-| RF-DETR Medium | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 36 | 85% | 78% | 100% | 0.14 | 0.22 | 0.17 | 0.52 | 0.23 | 0.56 | 23 |
-| RF-DETR Large (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 43 | 84% | 92% | 96% | 0.14 | 0.22 | 0.17 | 0.52 | 0.21 | 0.66 | 177 |
-| RF-DETR Large (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 41 | 84% | 92% | 96% | 0.14 | 0.22 | 0.17 | 0.52 | 0.21 | 0.66 | 177 |
-| RF-DETR Large (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 53 | 81% | 96% | 96% | 0.14 | 0.22 | 0.17 | 0.52 | 0.21 | 0.67 | 27 |
-| RF-DETR Medium | OC-SORT | — | astra_1fps_medium | 37 | 81% | 78% | 95% | 0.14 | 0.22 | 0.17 | 0.52 | 0.23 | 0.52 | 1 |
-| RF-DETR Medium | OC-SORT | — | astra_1fps_r3 | 37 | 81% | 78% | 95% | 0.14 | 0.22 | 0.17 | 0.52 | 0.23 | 0.52 | 1 |
-| YOLO11s 640 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r2 | 43 | 78% | 92% | 96% | 0.14 | 0.22 | 0.17 | 0.52 | 0.20 | 0.60 | 7 |
-| YOLO11s 640 | BoT-SORT (ultralytics, prod) | — | astra_1fps_medium | 42 | 77% | 82% | 96% | 0.14 | 0.22 | 0.17 | 0.61 | 0.20 | 0.60 | 7 |
-| YOLO11s 640 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r3 | 42 | 77% | 82% | 96% | 0.14 | 0.22 | 0.17 | 0.61 | 0.20 | 0.60 | 7 |
-| YOLO11m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r2 | 27 | 92% | 83% | 100% | 0.13 | 0.22 | 0.17 | 0.42 | 0.56 | 0.32 | 0 |
-| YOLO11s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 24 | 92% | 93% | 100% | 0.13 | 0.22 | 0.17 | 0.50 | 0.65 | 0.30 | 33 |
-| YOLO11s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 24 | 92% | 93% | 100% | 0.13 | 0.22 | 0.17 | 0.50 | 0.65 | 0.30 | 33 |
-| RF-DETR Medium (calibrated) | BoT-SORT | — | astra_1fps_r2 | 39 | 90% | 94% | 95% | 0.13 | 0.22 | 0.17 | 0.58 | 0.21 | 0.50 | 1 |
-| YOLO11s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r2 | 24 | 89% | 88% | 100% | 0.13 | 0.22 | 0.17 | 0.42 | 0.65 | 0.30 | 0 |
-| RF-DETR Large 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 67 | 89% | 95% | 96% | 0.13 | 0.22 | 0.17 | 0.58 | 0.52 | 0.65 | 27 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 37 | 89% | 91% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.21 | 0.65 | 208 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 36 | 89% | 91% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.21 | 0.65 | 208 |
-| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 82 | 89% | 96% | 95% | 0.13 | 0.22 | 0.17 | 0.58 | 0.21 | 0.50 | 0 |
-| YOLO26m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r2 | 35 | 89% | 90% | 100% | 0.13 | 0.22 | 0.17 | 0.42 | 0.19 | 0.50 | 0 |
-| RF-DETR Medium (calibrated) | ByteTrack | — | astra_1fps_r2 | 51 | 88% | 93% | 96% | 0.13 | 0.22 | 0.17 | 0.58 | 0.17 | 0.66 | 2 |
-| RF-DETR Medium 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 73 | 88% | 94% | 96% | 0.13 | 0.22 | 0.17 | 0.58 | 0.52 | 0.65 | 27 |
-| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 32 | 88% | 88% | 100% | 0.13 | 0.22 | 0.17 | 0.42 | 0.45 | 0.65 | 37 |
-| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 32 | 88% | 88% | 100% | 0.13 | 0.22 | 0.17 | 0.42 | 0.45 | 0.65 | 37 |
-| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 32 | 88% | 88% | 100% | 0.13 | 0.22 | 0.17 | 0.42 | 0.45 | 0.65 | 37 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 66 | 88% | 94% | 96% | 0.13 | 0.22 | 0.17 | 0.58 | 0.41 | 0.73 | 27 |
-| YOLO26s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 25 | 86% | 87% | 93% | 0.13 | 0.22 | 0.17 | 0.42 | 0.56 | 0.39 | 31 |
-| YOLO26s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 25 | 86% | 87% | 93% | 0.13 | 0.22 | 0.17 | 0.42 | 0.56 | 0.39 | 31 |
-| YOLO11m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r2 | 27 | 86% | 84% | 100% | 0.13 | 0.22 | 0.17 | 0.50 | 0.56 | 0.45 | 1 |
-| RF-DETR Medium (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 54 | 85% | 96% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.17 | 0.66 | 27 |
-| RF-DETR Medium (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 53 | 85% | 96% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.17 | 0.66 | 27 |
-| RF-DETR Medium (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 54 | 85% | 96% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.17 | 0.66 | 27 |
-| RF-DETR Large (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 69 | 85% | 93% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.41 | 0.69 | 30 |
-| RF-DETR Medium (calibrated) | OC-SORT | — | astra_1fps_r2 | 40 | 85% | 91% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.17 | 0.66 | 1 |
-| RF-DETR Medium (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 39 | 85% | 91% | 96% | 0.13 | 0.22 | 0.17 | 0.50 | 0.17 | 0.66 | 24 |
-| YOLO11m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_medium | 27 | 84% | 75% | 100% | 0.13 | 0.22 | 0.17 | 0.58 | 0.56 | 0.45 | 1 |
-| YOLO11m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r3 | 27 | 84% | 75% | 100% | 0.13 | 0.22 | 0.17 | 0.58 | 0.56 | 0.45 | 1 |
-| RF-DETR Medium | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 46 | 84% | 84% | 95% | 0.13 | 0.22 | 0.17 | 0.42 | 0.19 | 0.52 | 25 |
-| YOLO26m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 24 | 92% | 89% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.44 | 0.45 | 29 |
-| YOLO26m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 24 | 92% | 89% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.44 | 0.45 | 29 |
-| YOLO26m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 24 | 92% | 89% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.44 | 0.45 | 29 |
-| YOLO11s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 24 | 92% | 93% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.65 | 0.30 | 33 |
-| YOLO11s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 27 | 91% | 93% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.65 | 0.35 | 33 |
-| RF-DETR Small | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 77 | 90% | 90% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.55 | 0.52 | 30 |
-| RF-DETR Small | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 75 | 90% | 90% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.55 | 0.52 | 30 |
-| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 42 | 90% | 97% | 95% | 0.12 | 0.22 | 0.16 | 0.56 | 0.15 | 0.50 | 53 |
-| YOLO26m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 27 | 88% | 90% | 94% | 0.12 | 0.22 | 0.16 | 0.48 | 0.18 | 0.48 | 30 |
-| YOLO26m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 27 | 88% | 90% | 94% | 0.12 | 0.22 | 0.16 | 0.48 | 0.18 | 0.48 | 30 |
-| YOLO26m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 27 | 88% | 90% | 94% | 0.12 | 0.22 | 0.16 | 0.48 | 0.18 | 0.48 | 30 |
-| YOLO11m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 26 | 87% | 76% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.44 | 0.50 | 30 |
-| YOLO11m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 26 | 87% | 76% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.44 | 0.50 | 30 |
-| YOLO11s 640 | ByteTrack | — | astra_1fps_medium | 38 | 84% | 95% | 94% | 0.12 | 0.22 | 0.16 | 0.56 | 0.20 | 0.52 | 1 |
-| YOLO11s 640 | ByteTrack | — | astra_1fps_r2 | 38 | 84% | 95% | 94% | 0.12 | 0.22 | 0.16 | 0.48 | 0.20 | 0.52 | 1 |
-| YOLO11s 640 | ByteTrack | — | astra_1fps_r3 | 38 | 84% | 95% | 94% | 0.12 | 0.22 | 0.16 | 0.56 | 0.20 | 0.52 | 1 |
-| YOLO26m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_medium | 30 | 83% | 80% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.19 | 0.56 | 1 |
-| YOLO26m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r2 | 30 | 83% | 80% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.19 | 0.56 | 1 |
-| YOLO26m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r3 | 30 | 83% | 80% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.19 | 0.56 | 1 |
-| YOLO11s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 30 | 82% | 82% | 100% | 0.12 | 0.22 | 0.16 | 0.40 | 0.51 | 0.35 | 30 |
-| YOLO11s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r2 | 28 | 82% | 82% | 100% | 0.12 | 0.22 | 0.16 | 0.40 | 0.47 | 0.35 | 1 |
-| YOLO26m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 30 | 82% | 82% | 95% | 0.12 | 0.22 | 0.16 | 0.48 | 0.46 | 0.56 | 31 |
-| YOLO26m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 30 | 82% | 82% | 95% | 0.12 | 0.22 | 0.16 | 0.48 | 0.46 | 0.56 | 31 |
-| YOLO26m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 30 | 82% | 82% | 95% | 0.12 | 0.22 | 0.16 | 0.48 | 0.46 | 0.56 | 31 |
-| YOLO11s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 30 | 81% | 76% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.51 | 0.35 | 30 |
-| YOLO11s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 30 | 81% | 76% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.51 | 0.35 | 30 |
-| YOLO11s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_medium | 29 | 81% | 74% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.47 | 0.35 | 1 |
-| YOLO11s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r3 | 28 | 81% | 74% | 100% | 0.12 | 0.22 | 0.16 | 0.48 | 0.47 | 0.35 | 1 |
-| RF-DETR Small | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 50 | 80% | 89% | 94% | 0.12 | 0.22 | 0.16 | 0.40 | 0.24 | 0.45 | 25 |
-| YOLO11s 640 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r2 | 50 | 79% | 92% | 96% | 0.12 | 0.22 | 0.16 | 0.48 | 0.23 | 0.61 | 13 |
-| YOLO11s 640 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_medium | 48 | 78% | 83% | 96% | 0.12 | 0.22 | 0.16 | 0.56 | 0.23 | 0.61 | 13 |
-| YOLO11s 640 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r3 | 48 | 78% | 83% | 96% | 0.12 | 0.22 | 0.16 | 0.56 | 0.23 | 0.61 | 13 |
-| YOLO11m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 41 | 90% | 94% | 96% | 0.12 | 0.22 | 0.15 | 0.46 | 0.16 | 0.62 | 0 |
-| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r2 | 45 | 89% | 93% | 96% | 0.12 | 0.22 | 0.15 | 0.54 | 0.14 | 0.66 | 2 |
-| RF-DETR Medium (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 42 | 89% | 91% | 95% | 0.12 | 0.22 | 0.15 | 0.54 | 0.15 | 0.50 | 160 |
-| RF-DETR Medium (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 42 | 89% | 91% | 95% | 0.12 | 0.22 | 0.15 | 0.54 | 0.15 | 0.50 | 160 |
-| RF-DETR Small | ByteTrack | — | astra_1fps_r2 | 40 | 87% | 90% | 94% | 0.12 | 0.22 | 0.15 | 0.46 | 0.23 | 0.48 | 2 |
-| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 45 | 94% | 97% | 100% | 0.11 | 0.22 | 0.15 | 0.52 | 0.41 | 0.54 | 34 |
-| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 41 | 88% | 91% | 100% | 0.11 | 0.22 | 0.15 | 0.52 | 0.14 | 0.70 | 2 |
-| RF-DETR Medium (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 75 | 92% | 94% | 100% | 0.10 | 0.22 | 0.14 | 0.50 | 0.34 | 0.70 | 30 |
-| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 30 | 89% | 98% | 96% | 0.10 | 0.22 | 0.14 | 0.43 | 0.21 | 0.57 | 37 |
-| RF-DETR Medium | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 72 | 88% | 90% | 95% | 0.10 | 0.22 | 0.14 | 0.48 | 0.44 | 0.52 | 28 |
-| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 30 | 89% | 95% | 96% | 0.10 | 0.22 | 0.13 | 0.40 | 0.21 | 0.57 | 37 |
-| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 30 | 89% | 95% | 96% | 0.10 | 0.22 | 0.13 | 0.40 | 0.21 | 0.57 | 37 |
-| RF-DETR Large | OC-SORT | — | astra_1fps_medium | 38 | 81% | 82% | 86% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.58 | 1 |
-| RF-DETR Large | OC-SORT | — | astra_1fps_r2 | 38 | 81% | 82% | 86% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.58 | 1 |
-| RF-DETR Large | OC-SORT | — | astra_1fps_r3 | 38 | 81% | 82% | 86% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.58 | 1 |
-| RF-DETR Large | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 39 | 81% | 82% | 86% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.58 | 24 |
-| RF-DETR Large | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 39 | 81% | 82% | 86% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.58 | 24 |
-| RF-DETR Large | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 39 | 81% | 82% | 86% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.58 | 24 |
-| RF-DETR Large (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 42 | 80% | 90% | 91% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.64 | 24 |
-| RF-DETR Large (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 43 | 80% | 90% | 91% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.64 | 24 |
-| RF-DETR Large (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 42 | 80% | 90% | 91% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.64 | 24 |
-| RF-DETR Large (calibrated) | OC-SORT | — | astra_1fps_medium | 43 | 80% | 90% | 91% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.64 | 1 |
-| RF-DETR Large (calibrated) | OC-SORT | — | astra_1fps_r2 | 43 | 80% | 90% | 91% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.64 | 1 |
-| RF-DETR Large (calibrated) | OC-SORT | — | astra_1fps_r3 | 43 | 80% | 90% | 91% | 0.10 | 0.11 | 0.10 | 0.42 | 0.00 | 0.64 | 1 |
-| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps_medium | 25 | 86% | 80% | 94% | 0.08 | 0.11 | 0.10 | 0.48 | 0.00 | 0.45 | 2 |
-| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps_r3 | 25 | 86% | 80% | 94% | 0.08 | 0.11 | 0.10 | 0.48 | 0.00 | 0.45 | 2 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 23 | 86% | 85% | 93% | 0.08 | 0.11 | 0.10 | 0.57 | 0.00 | 0.39 | 32 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 23 | 86% | 85% | 93% | 0.08 | 0.11 | 0.10 | 0.57 | 0.00 | 0.39 | 32 |
-| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 23 | 86% | 85% | 93% | 0.08 | 0.11 | 0.10 | 0.57 | 0.00 | 0.39 | 32 |
-| RF-DETR Medium 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 26 | 89% | 92% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.52 | 24 |
-| RF-DETR Medium 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 26 | 89% | 92% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.52 | 24 |
-| RF-DETR Medium 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 26 | 89% | 92% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.52 | 24 |
-| RF-DETR Medium 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 26 | 89% | 92% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.52 | 50 |
-| RF-DETR Medium 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 26 | 89% | 92% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.52 | 50 |
-| RF-DETR Medium 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 26 | 89% | 92% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.52 | 50 |
-| RF-DETR Medium 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 27 | 88% | 91% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.52 | 187 |
-| RF-DETR Medium 1024 | BoT-SORT | — | astra_1fps_medium | 26 | 88% | 90% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.52 | 1 |
-| RF-DETR Medium 1024 | BoT-SORT | — | astra_1fps_r2 | 26 | 88% | 90% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.52 | 1 |
-| RF-DETR Medium 1024 | BoT-SORT | — | astra_1fps_r3 | 26 | 88% | 90% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.52 | 1 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps_medium | 25 | 87% | 86% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.48 | 2 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps_r2 | 25 | 87% | 86% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.48 | 2 |
-| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps_r3 | 25 | 87% | 86% | 94% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.48 | 2 |
-| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 23 | 82% | 70% | 93% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.45 | 33 |
-| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 23 | 82% | 70% | 93% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.45 | 33 |
-| RF-DETR Large | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 50 | 82% | 84% | 90% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.60 | 26 |
-| RF-DETR Large | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 50 | 82% | 84% | 90% | 0.08 | 0.11 | 0.09 | 0.55 | 0.00 | 0.60 | 26 |
-| RF-DETR Large | BoT-SORT | — | astra_1fps_medium | 24 | 93% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.48 | 1 |
-| RF-DETR Large | BoT-SORT | — | astra_1fps_r2 | 24 | 93% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.48 | 1 |
-| RF-DETR Large | BoT-SORT | — | astra_1fps_r3 | 24 | 93% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.48 | 1 |
-| RF-DETR Large | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 25 | 93% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.48 | 24 |
-| RF-DETR Large | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 25 | 93% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.48 | 24 |
-| RF-DETR Large | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 25 | 93% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.48 | 24 |
-| RF-DETR Large | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 25 | 93% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.48 | 51 |
-| RF-DETR Large | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 25 | 93% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.48 | 51 |
-| RF-DETR Large | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 25 | 93% | 90% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.48 | 51 |
-| RF-DETR Large | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 25 | 93% | 88% | 100% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.48 | 189 |
-| RF-DETR Large 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 28 | 89% | 93% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.52 | 25 |
-| RF-DETR Large 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 28 | 89% | 93% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.52 | 25 |
-| RF-DETR Large 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 28 | 89% | 93% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.52 | 25 |
-| RF-DETR Large 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 28 | 89% | 93% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.52 | 52 |
-| RF-DETR Large 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 28 | 89% | 93% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.52 | 52 |
-| RF-DETR Large 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 28 | 89% | 93% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.52 | 52 |
-| RF-DETR Large 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 29 | 88% | 92% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.52 | 195 |
-| RF-DETR Large 1024 | BoT-SORT | — | astra_1fps_medium | 28 | 88% | 90% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.52 | 1 |
-| RF-DETR Large 1024 | BoT-SORT | — | astra_1fps_r2 | 28 | 88% | 90% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.52 | 1 |
-| RF-DETR Large 1024 | BoT-SORT | — | astra_1fps_r3 | 28 | 88% | 90% | 94% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.52 | 1 |
-| RF-DETR Medium | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 37 | 85% | 88% | 100% | 0.07 | 0.11 | 0.09 | 0.43 | 0.23 | 0.56 | 23 |
-| RF-DETR Large (calibrated) | ByteTrack | — | astra_1fps_r2 | 49 | 85% | 91% | 96% | 0.07 | 0.11 | 0.09 | 0.52 | 0.00 | 0.63 | 2 |
-| RF-DETR Large | ByteTrack | — | astra_1fps_medium | 41 | 85% | 90% | 96% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.62 | 2 |
-| RF-DETR Large | ByteTrack | — | astra_1fps_r2 | 41 | 85% | 90% | 96% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.62 | 2 |
-| RF-DETR Large | ByteTrack | — | astra_1fps_r3 | 41 | 85% | 90% | 96% | 0.07 | 0.11 | 0.09 | 0.61 | 0.00 | 0.62 | 2 |
-| RF-DETR Medium | OC-SORT | — | astra_1fps_r2 | 38 | 81% | 88% | 95% | 0.07 | 0.11 | 0.09 | 0.43 | 0.23 | 0.52 | 1 |
-| RF-DETR Medium | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 25 | 88% | 88% | 93% | 0.07 | 0.11 | 0.08 | 0.67 | 0.00 | 0.45 | 24 |
-| RF-DETR Medium | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 25 | 88% | 88% | 93% | 0.07 | 0.11 | 0.08 | 0.67 | 0.00 | 0.45 | 24 |
-| RF-DETR Medium | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 25 | 88% | 88% | 93% | 0.07 | 0.11 | 0.08 | 0.67 | 0.00 | 0.45 | 24 |
-| RF-DETR Medium | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 25 | 88% | 88% | 93% | 0.07 | 0.11 | 0.08 | 0.67 | 0.00 | 0.45 | 47 |
-| RF-DETR Medium | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 25 | 88% | 88% | 93% | 0.07 | 0.11 | 0.08 | 0.67 | 0.00 | 0.45 | 47 |
-| RF-DETR Medium | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 25 | 88% | 88% | 93% | 0.07 | 0.11 | 0.08 | 0.67 | 0.00 | 0.45 | 47 |
-| RF-DETR Small | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 24 | 97% | 94% | 100% | 0.06 | 0.11 | 0.08 | 0.48 | 0.00 | 0.35 | 22 |
-| RF-DETR Small | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 24 | 97% | 94% | 100% | 0.06 | 0.11 | 0.08 | 0.48 | 0.00 | 0.35 | 22 |
-| RF-DETR Small | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 24 | 97% | 94% | 100% | 0.06 | 0.11 | 0.08 | 0.48 | 0.00 | 0.35 | 22 |
-| RF-DETR Small | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 24 | 95% | 83% | 100% | 0.06 | 0.11 | 0.08 | 0.48 | 0.00 | 0.35 | 47 |
-| RF-DETR Small | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 23 | 95% | 83% | 100% | 0.06 | 0.11 | 0.08 | 0.48 | 0.00 | 0.35 | 180 |
-| RF-DETR Small | BoT-SORT | — | astra_1fps_r2 | 24 | 94% | 82% | 100% | 0.06 | 0.11 | 0.08 | 0.48 | 0.00 | 0.35 | 1 |
-| RF-DETR Medium | BoT-SORT | — | astra_1fps_medium | 25 | 89% | 91% | 93% | 0.06 | 0.11 | 0.08 | 0.64 | 0.00 | 0.45 | 1 |
-| RF-DETR Medium | BoT-SORT | — | astra_1fps_r2 | 25 | 89% | 91% | 93% | 0.06 | 0.11 | 0.08 | 0.64 | 0.00 | 0.45 | 1 |
-| RF-DETR Medium | BoT-SORT | — | astra_1fps_r3 | 25 | 89% | 91% | 93% | 0.06 | 0.11 | 0.08 | 0.64 | 0.00 | 0.45 | 1 |
-| RF-DETR Medium | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 25 | 89% | 91% | 93% | 0.06 | 0.11 | 0.08 | 0.64 | 0.00 | 0.45 | 183 |
-| RF-DETR Medium | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 25 | 89% | 91% | 93% | 0.06 | 0.11 | 0.08 | 0.64 | 0.00 | 0.45 | 183 |
-| RF-DETR Medium | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 25 | 89% | 91% | 93% | 0.06 | 0.11 | 0.08 | 0.64 | 0.00 | 0.45 | 183 |
-| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps_r2 | 30 | 71% | 50% | 88% | 0.06 | 0.11 | 0.08 | 0.48 | 0.00 | 0.49 | 1 |
-| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps_medium | 31 | 68% | 40% | 88% | 0.06 | 0.11 | 0.08 | 0.48 | 0.00 | 0.49 | 1 |
-| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps_r3 | 31 | 68% | 40% | 88% | 0.06 | 0.11 | 0.08 | 0.48 | 0.00 | 0.49 | 1 |
-| RF-DETR Small | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 24 | 95% | 85% | 100% | 0.00 | 0.00 | 0.00 | 0.40 | 0.00 | 0.35 | 47 |
-| RF-DETR Small | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 24 | 95% | 85% | 100% | 0.00 | 0.00 | 0.00 | 0.40 | 0.00 | 0.35 | 47 |
-| RF-DETR Small | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 23 | 95% | 85% | 100% | 0.00 | 0.00 | 0.00 | 0.40 | 0.00 | 0.35 | 180 |
-| RF-DETR Small | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 23 | 95% | 85% | 100% | 0.00 | 0.00 | 0.00 | 0.40 | 0.00 | 0.35 | 180 |
-| RF-DETR Small | BoT-SORT | — | astra_1fps_medium | 24 | 95% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.40 | 0.00 | 0.35 | 1 |
-| RF-DETR Small | BoT-SORT | — | astra_1fps_r3 | 24 | 95% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.40 | 0.00 | 0.35 | 1 |
-| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps_medium | 18 | 94% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.50 | 0.34 | 0.41 | 0 |
-| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps_r2 | 18 | 94% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.50 | 0.34 | 0.41 | 0 |
-| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps_r3 | 18 | 94% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.50 | 0.34 | 0.41 | 0 |
-| RF-DETR Large | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 25 | 93% | 88% | 100% | 0.00 | 0.00 | 0.00 | 0.52 | 0.00 | 0.48 | 189 |
-| RF-DETR Large | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 25 | 93% | 88% | 100% | 0.00 | 0.00 | 0.00 | 0.52 | 0.00 | 0.48 | 189 |
-| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 18 | 93% | 86% | 100% | 0.00 | 0.00 | 0.00 | 0.36 | 0.27 | 0.36 | 34 |
-| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 18 | 93% | 86% | 100% | 0.00 | 0.00 | 0.00 | 0.36 | 0.27 | 0.36 | 34 |
-| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 18 | 93% | 86% | 100% | 0.00 | 0.00 | 0.00 | 0.36 | 0.27 | 0.36 | 34 |
-| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 17 | 92% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.38 | 0.27 | 0.36 | 32 |
-| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 17 | 92% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.38 | 0.27 | 0.36 | 32 |
-| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 17 | 92% | 84% | 100% | 0.00 | 0.00 | 0.00 | 0.38 | 0.27 | 0.36 | 32 |
-| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps_medium | 21 | 91% | 85% | 100% | 0.00 | 0.00 | 0.00 | 0.40 | 0.00 | 0.41 | 0 |
-| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps_r2 | 21 | 91% | 85% | 100% | 0.00 | 0.00 | 0.00 | 0.40 | 0.00 | 0.41 | 0 |
-| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps_r3 | 21 | 91% | 85% | 100% | 0.00 | 0.00 | 0.00 | 0.40 | 0.00 | 0.41 | 0 |
-| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps_r2 | 25 | 89% | 91% | 93% | 0.00 | 0.00 | 0.00 | 0.38 | 0.00 | 0.45 | 2 |
-| RF-DETR Medium 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 27 | 88% | 91% | 94% | 0.00 | 0.00 | 0.00 | 0.46 | 0.00 | 0.52 | 187 |
-| RF-DETR Medium 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 27 | 88% | 91% | 94% | 0.00 | 0.00 | 0.00 | 0.46 | 0.00 | 0.52 | 187 |
-| RF-DETR Large 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 29 | 88% | 92% | 94% | 0.00 | 0.00 | 0.00 | 0.52 | 0.00 | 0.52 | 195 |
-| RF-DETR Large 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 29 | 88% | 92% | 94% | 0.00 | 0.00 | 0.00 | 0.52 | 0.00 | 0.52 | 195 |
-| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 23 | 85% | 81% | 93% | 0.00 | 0.00 | 0.00 | 0.46 | 0.00 | 0.45 | 33 |
-| RF-DETR Large | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 70 | 85% | 96% | 96% | 0.00 | 0.00 | 0.00 | 0.56 | 0.31 | 0.65 | 29 |
-| RF-DETR Large (calibrated) | ByteTrack | — | astra_1fps_medium | 49 | 85% | 91% | 96% | 0.00 | 0.00 | 0.00 | 0.43 | 0.00 | 0.63 | 2 |
-| RF-DETR Large (calibrated) | ByteTrack | — | astra_1fps_r3 | 49 | 85% | 91% | 96% | 0.00 | 0.00 | 0.00 | 0.43 | 0.00 | 0.63 | 2 |
-| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 28 | 84% | 84% | 94% | 0.00 | 0.00 | 0.00 | 0.42 | 0.53 | 0.52 | 32 |
-| RF-DETR Large | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 50 | 82% | 89% | 90% | 0.00 | 0.00 | 0.00 | 0.48 | 0.00 | 0.60 | 26 |
-| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 29 | 82% | 75% | 93% | 0.00 | 0.00 | 0.00 | 0.40 | 0.28 | 0.49 | 32 |
-| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps_r2 | 31 | 76% | 81% | 94% | 0.00 | 0.00 | 0.00 | 0.50 | 0.53 | 0.52 | 1 |
+| Detector | Tracker | ReID | Mode | IDs | Anchor coverage | Continuity e2e | Continuity mapped | Staff cont. e2e | Roles e2e | Roles mapped | Strict P | Strict R | Strict F1 | Loose F1 | Waiting tIoU | Consuming tIoU | Track ms |
+|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| YOLO11m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_medium | 28 | 37% | 34% | 92% | 50% | 37% | 100% | 0.71 | 0.56 | 0.62 | 0.62 | 0.66 | 0.32 | 0 |
+| YOLO11m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r3 | 28 | 37% | 34% | 92% | 50% | 37% | 100% | 0.71 | 0.56 | 0.62 | 0.62 | 0.66 | 0.32 | 0 |
+| YOLO26s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 20 | 40% | 37% | 92% | 51% | 40% | 100% | 0.62 | 0.56 | 0.59 | 0.59 | 0.57 | 0.36 | 31 |
+| YOLO26s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 20 | 40% | 37% | 92% | 51% | 40% | 100% | 0.62 | 0.56 | 0.59 | 0.59 | 0.57 | 0.36 | 31 |
+| YOLO26s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 20 | 40% | 37% | 92% | 51% | 40% | 100% | 0.62 | 0.56 | 0.59 | 0.59 | 0.57 | 0.36 | 31 |
+| RF-DETR Medium | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 73 | 67% | 57% | 86% | 65% | 63% | 95% | 0.50 | 0.67 | 0.57 | 0.76 | 0.78 | 0.52 | 28 |
+| RF-DETR Medium | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 73 | 67% | 57% | 86% | 65% | 63% | 95% | 0.50 | 0.67 | 0.57 | 0.76 | 0.78 | 0.52 | 28 |
+| YOLO26s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_medium | 29 | 53% | 48% | 90% | 64% | 53% | 100% | 0.56 | 0.56 | 0.56 | 0.56 | 0.45 | 0.40 | 2 |
+| YOLO26s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r2 | 29 | 53% | 48% | 90% | 64% | 53% | 100% | 0.56 | 0.56 | 0.56 | 0.56 | 0.45 | 0.40 | 2 |
+| YOLO26s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r3 | 29 | 53% | 48% | 90% | 64% | 53% | 100% | 0.56 | 0.56 | 0.56 | 0.56 | 0.45 | 0.40 | 2 |
+| YOLO26s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_medium | 28 | 40% | 35% | 87% | 44% | 40% | 100% | 0.56 | 0.56 | 0.56 | 0.67 | 0.45 | 0.36 | 0 |
+| YOLO26s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r3 | 28 | 40% | 35% | 87% | 44% | 40% | 100% | 0.56 | 0.56 | 0.56 | 0.67 | 0.45 | 0.36 | 0 |
+| YOLO11s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_medium | 42 | 93% | 86% | 92% | 92% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 5 |
+| YOLO11s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r2 | 42 | 93% | 86% | 92% | 92% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 5 |
+| YOLO11s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r3 | 42 | 93% | 86% | 92% | 92% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 5 |
+| YOLO11s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 42 | 93% | 85% | 91% | 89% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.67 | 0.42 | 0.75 | 30 |
+| YOLO11s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 43 | 93% | 85% | 91% | 89% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.67 | 0.42 | 0.75 | 30 |
+| YOLO11s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 44 | 93% | 84% | 90% | 89% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 27 |
+| YOLO11s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 44 | 93% | 84% | 90% | 88% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 27 |
+| YOLO11s 1280 | OC-SORT | — | astra_1fps_r2 | 39 | 93% | 84% | 90% | 87% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 1 |
+| YOLO11s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 39 | 93% | 84% | 90% | 87% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 1 |
+| YOLO11s 1280 | OC-SORT | — | astra_1fps_medium | 40 | 93% | 84% | 90% | 87% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 1 |
+| YOLO11s 1280 | OC-SORT | — | astra_1fps_r3 | 40 | 93% | 84% | 90% | 87% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 1 |
+| YOLO11s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 41 | 93% | 84% | 90% | 87% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 26 |
+| YOLO11s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 40 | 93% | 84% | 90% | 87% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 26 |
+| YOLO11s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 41 | 93% | 84% | 90% | 87% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 26 |
+| YOLO11s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 40 | 93% | 84% | 90% | 87% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 1 |
+| YOLO11s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 40 | 93% | 84% | 90% | 87% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.70 | 1 |
+| YOLO11s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 43 | 93% | 83% | 89% | 89% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.67 | 0.42 | 0.72 | 30 |
+| YOLO11s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 45 | 93% | 82% | 88% | 88% | 93% | 100% | 0.40 | 0.67 | 0.50 | 0.58 | 0.46 | 0.67 | 27 |
+| YOLO11s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 37 | 87% | 80% | 92% | 92% | 87% | 100% | 0.40 | 0.67 | 0.50 | 0.67 | 0.42 | 0.66 | 32 |
+| YOLO11s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 37 | 87% | 80% | 92% | 92% | 87% | 100% | 0.40 | 0.67 | 0.50 | 0.67 | 0.42 | 0.66 | 32 |
+| YOLO11s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 37 | 87% | 80% | 92% | 92% | 87% | 100% | 0.40 | 0.67 | 0.50 | 0.67 | 0.42 | 0.66 | 32 |
+| YOLO11s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r2 | 36 | 93% | 87% | 93% | 89% | 93% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.72 | 2 |
+| YOLO11s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r3 | 37 | 93% | 87% | 93% | 89% | 93% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.72 | 2 |
+| YOLO11s 1280 | ByteTrack | — | astra_1fps_r3 | 42 | 93% | 86% | 93% | 90% | 93% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.71 | 2 |
+| YOLO11s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_medium | 50 | 93% | 86% | 92% | 90% | 93% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.37 | 0.71 | 17 |
+| YOLO11s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r3 | 50 | 93% | 86% | 92% | 90% | 93% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.37 | 0.71 | 17 |
+| YOLO11s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r2 | 51 | 93% | 86% | 92% | 90% | 93% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.37 | 0.71 | 17 |
+| YOLO11s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_medium | 38 | 93% | 85% | 91% | 89% | 93% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.69 | 2 |
+| YOLO11s 1280 | ByteTrack | — | astra_1fps_medium | 43 | 93% | 84% | 90% | 90% | 93% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.68 | 2 |
+| YOLO11s 1280 | BoT-SORT | — | astra_1fps_r2 | 34 | 87% | 80% | 93% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.64 | 1 |
+| YOLO11s 1280 | BoT-SORT | — | astra_1fps_r3 | 34 | 87% | 80% | 93% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.64 | 1 |
+| YOLO11s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 35 | 87% | 80% | 93% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.64 | 25 |
+| YOLO11s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 35 | 87% | 80% | 93% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.64 | 25 |
+| YOLO11s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 35 | 87% | 80% | 93% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.64 | 65 |
+| YOLO11s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 35 | 87% | 80% | 93% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.64 | 65 |
+| YOLO11s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 35 | 87% | 80% | 93% | 89% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.64 | 221 |
+| YOLO11s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 35 | 87% | 80% | 93% | 89% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.64 | 221 |
+| YOLO11s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 43 | 87% | 80% | 92% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.63 | 0 |
+| YOLO11s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 44 | 87% | 80% | 92% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.63 | 0 |
+| YOLO11s 1280 | BoT-SORT | — | astra_1fps_medium | 35 | 87% | 78% | 90% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.61 | 1 |
+| YOLO11s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 36 | 87% | 78% | 90% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.61 | 25 |
+| YOLO11s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 36 | 87% | 78% | 90% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.61 | 65 |
+| YOLO11s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 36 | 87% | 78% | 90% | 89% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.61 | 221 |
+| YOLO11s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 44 | 87% | 78% | 90% | 90% | 87% | 100% | 0.35 | 0.67 | 0.46 | 0.61 | 0.38 | 0.60 | 0 |
+| YOLO26s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 51 | 90% | 81% | 90% | 73% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.64 | 0.53 | 0.70 | 26 |
+| YOLO26s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 52 | 90% | 81% | 90% | 73% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.64 | 0.53 | 0.70 | 26 |
+| YOLO11m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 44 | 90% | 80% | 89% | 71% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.55 | 0.58 | 0.70 | 30 |
+| YOLO11m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 44 | 90% | 80% | 89% | 71% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.55 | 0.58 | 0.70 | 30 |
+| YOLO26s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 45 | 90% | 80% | 88% | 74% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.64 | 0.42 | 0.67 | 27 |
+| YOLO26s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 45 | 90% | 80% | 88% | 74% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.64 | 0.42 | 0.67 | 27 |
+| YOLO26s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 42 | 90% | 79% | 88% | 73% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.64 | 0.53 | 0.69 | 30 |
+| YOLO26s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 42 | 90% | 79% | 88% | 73% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.64 | 0.53 | 0.69 | 30 |
+| YOLO26s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 51 | 90% | 79% | 88% | 73% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.64 | 0.53 | 0.68 | 26 |
+| YOLO11m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 44 | 90% | 78% | 87% | 71% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.55 | 0.58 | 0.68 | 30 |
+| YOLO26s 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 45 | 90% | 78% | 86% | 74% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.64 | 0.42 | 0.64 | 27 |
+| YOLO26s 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 44 | 90% | 77% | 86% | 73% | 87% | 96% | 0.39 | 0.56 | 0.46 | 0.64 | 0.53 | 0.66 | 30 |
+| RF-DETR Large (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 68 | 83% | 73% | 88% | 70% | 80% | 96% | 0.39 | 0.56 | 0.46 | 0.55 | 0.42 | 0.69 | 30 |
+| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 44 | 77% | 69% | 90% | 71% | 73% | 96% | 0.39 | 0.56 | 0.46 | 0.73 | 0.53 | 0.65 | 33 |
+| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 44 | 77% | 69% | 90% | 71% | 73% | 96% | 0.39 | 0.56 | 0.46 | 0.73 | 0.53 | 0.65 | 33 |
+| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 46 | 77% | 69% | 90% | 71% | 73% | 96% | 0.39 | 0.56 | 0.46 | 0.73 | 0.53 | 0.65 | 33 |
+| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 45 | 70% | 65% | 93% | 73% | 70% | 100% | 0.39 | 0.56 | 0.46 | 0.73 | 0.53 | 0.54 | 34 |
+| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 45 | 70% | 65% | 93% | 73% | 70% | 100% | 0.39 | 0.56 | 0.46 | 0.73 | 0.53 | 0.54 | 34 |
+| YOLO11m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_medium | 25 | 53% | 50% | 93% | 70% | 53% | 100% | 0.39 | 0.56 | 0.46 | 0.55 | 0.45 | 0.48 | 1 |
+| YOLO11m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r2 | 25 | 53% | 50% | 93% | 70% | 53% | 100% | 0.39 | 0.56 | 0.46 | 0.55 | 0.45 | 0.48 | 1 |
+| YOLO11m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r3 | 25 | 53% | 50% | 93% | 70% | 53% | 100% | 0.39 | 0.56 | 0.46 | 0.55 | 0.45 | 0.48 | 1 |
+| YOLO11s 1280 | ByteTrack | — | astra_1fps_r2 | 43 | 93% | 86% | 92% | 90% | 93% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.38 | 0.71 | 2 |
+| YOLO11s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 40 | 87% | 78% | 90% | 89% | 87% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.38 | 0.61 | 31 |
+| YOLO11s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 40 | 87% | 78% | 90% | 89% | 87% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.38 | 0.61 | 31 |
+| YOLO11s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 40 | 87% | 78% | 90% | 89% | 87% | 100% | 0.33 | 0.67 | 0.44 | 0.59 | 0.38 | 0.61 | 31 |
+| YOLO11s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 48 | 93% | 86% | 92% | 90% | 93% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.74 | 26 |
+| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 33 | 97% | 85% | 88% | 78% | 97% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.46 | 0.74 | 37 |
+| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 33 | 97% | 85% | 88% | 78% | 97% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.46 | 0.74 | 37 |
+| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 33 | 97% | 85% | 88% | 78% | 97% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.46 | 0.74 | 37 |
+| YOLO11s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 49 | 93% | 84% | 90% | 90% | 93% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.71 | 26 |
+| YOLO26m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 53 | 87% | 79% | 91% | 74% | 87% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.58 | 0.68 | 25 |
+| YOLO26s 1280 | OC-SORT | — | astra_1fps_medium | 36 | 90% | 79% | 88% | 73% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.67 | 1 |
+| YOLO26s 1280 | OC-SORT | — | astra_1fps_r2 | 37 | 90% | 79% | 88% | 73% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.67 | 1 |
+| YOLO26s 1280 | OC-SORT | — | astra_1fps_r3 | 37 | 90% | 79% | 88% | 73% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.67 | 1 |
+| YOLO26s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 36 | 90% | 79% | 88% | 73% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.67 | 25 |
+| YOLO26s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 37 | 90% | 79% | 88% | 73% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.67 | 25 |
+| YOLO26s 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 37 | 90% | 79% | 88% | 73% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.67 | 25 |
+| YOLO26s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 36 | 90% | 79% | 88% | 73% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.67 | 1 |
+| YOLO26s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 37 | 90% | 79% | 88% | 73% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.67 | 1 |
+| YOLO26s 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 37 | 90% | 79% | 88% | 73% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.42 | 0.67 | 1 |
+| YOLO26m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 45 | 87% | 79% | 91% | 74% | 87% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.58 | 0.68 | 31 |
+| YOLO11m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 37 | 83% | 78% | 94% | 74% | 83% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.58 | 0.66 | 31 |
+| YOLO11m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 37 | 83% | 78% | 94% | 74% | 83% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.58 | 0.66 | 31 |
+| YOLO11m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 37 | 83% | 78% | 94% | 74% | 83% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.58 | 0.66 | 31 |
+| YOLO11m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 51 | 90% | 78% | 86% | 74% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.57 | 0.66 | 25 |
+| YOLO11m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 52 | 90% | 77% | 86% | 74% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.57 | 0.66 | 25 |
+| YOLO11m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 51 | 90% | 76% | 84% | 74% | 87% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.57 | 0.63 | 25 |
+| YOLO26s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 34 | 80% | 72% | 90% | 74% | 77% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.53 | 0.65 | 31 |
+| YOLO26s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 33 | 80% | 72% | 90% | 74% | 77% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.53 | 0.65 | 31 |
+| YOLO26s 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 33 | 80% | 72% | 90% | 74% | 77% | 96% | 0.36 | 0.56 | 0.43 | 0.61 | 0.53 | 0.65 | 31 |
+| RF-DETR Large 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 66 | 80% | 71% | 89% | 74% | 77% | 96% | 0.36 | 0.56 | 0.43 | 0.70 | 0.53 | 0.65 | 27 |
+| RF-DETR Large 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 67 | 80% | 71% | 89% | 74% | 77% | 96% | 0.36 | 0.56 | 0.43 | 0.70 | 0.53 | 0.65 | 27 |
+| RF-DETR Medium 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 72 | 80% | 71% | 88% | 73% | 77% | 96% | 0.36 | 0.56 | 0.43 | 0.70 | 0.53 | 0.65 | 27 |
+| RF-DETR Medium 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 72 | 80% | 71% | 88% | 73% | 77% | 96% | 0.36 | 0.56 | 0.43 | 0.70 | 0.53 | 0.65 | 27 |
+| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 46 | 70% | 64% | 91% | 63% | 70% | 100% | 0.36 | 0.56 | 0.43 | 0.70 | 0.53 | 0.54 | 34 |
+| YOLO11s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_medium | 30 | 53% | 47% | 88% | 72% | 53% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.46 | 0.35 | 2 |
+| YOLO11s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r2 | 29 | 53% | 47% | 88% | 72% | 53% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.46 | 0.35 | 2 |
+| YOLO11s 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r3 | 29 | 53% | 47% | 88% | 72% | 53% | 100% | 0.36 | 0.56 | 0.43 | 0.61 | 0.46 | 0.35 | 2 |
+| YOLO11s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_medium | 24 | 43% | 38% | 89% | 52% | 43% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.48 | 0.30 | 0 |
+| YOLO11s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r3 | 24 | 43% | 38% | 89% | 52% | 43% | 100% | 0.36 | 0.56 | 0.43 | 0.52 | 0.48 | 0.30 | 0 |
+| YOLO26m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 54 | 87% | 81% | 94% | 74% | 87% | 100% | 0.33 | 0.56 | 0.42 | 0.58 | 0.58 | 0.70 | 25 |
+| YOLO26m 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 53 | 87% | 81% | 94% | 74% | 87% | 100% | 0.33 | 0.56 | 0.42 | 0.58 | 0.58 | 0.70 | 25 |
+| YOLO26m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 44 | 87% | 81% | 93% | 74% | 87% | 100% | 0.33 | 0.56 | 0.42 | 0.58 | 0.58 | 0.70 | 31 |
+| YOLO26m 1280 | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 44 | 87% | 81% | 93% | 74% | 87% | 100% | 0.33 | 0.56 | 0.42 | 0.58 | 0.58 | 0.70 | 31 |
+| YOLO26m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 40 | 87% | 79% | 91% | 74% | 83% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.58 | 0.66 | 32 |
+| YOLO26m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 41 | 87% | 79% | 91% | 74% | 83% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.58 | 0.66 | 32 |
+| YOLO26m 1280 | OccluBoost [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 40 | 87% | 79% | 91% | 74% | 83% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.58 | 0.66 | 32 |
+| RF-DETR Medium (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 76 | 83% | 77% | 92% | 72% | 83% | 100% | 0.33 | 0.56 | 0.42 | 0.58 | 0.42 | 0.70 | 30 |
+| RF-DETR Medium (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 76 | 83% | 77% | 92% | 72% | 83% | 100% | 0.33 | 0.56 | 0.42 | 0.58 | 0.42 | 0.70 | 30 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 44 | 87% | 76% | 87% | 70% | 83% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.42 | 0.73 | 32 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 44 | 87% | 76% | 87% | 70% | 83% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.42 | 0.73 | 32 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 45 | 87% | 76% | 87% | 70% | 83% | 96% | 0.33 | 0.56 | 0.42 | 0.67 | 0.42 | 0.73 | 32 |
+| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 41 | 83% | 75% | 90% | 68% | 83% | 100% | 0.33 | 0.56 | 0.42 | 0.75 | 0.42 | 0.70 | 33 |
+| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 42 | 83% | 75% | 90% | 68% | 83% | 100% | 0.33 | 0.56 | 0.42 | 0.75 | 0.42 | 0.70 | 33 |
+| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 43 | 83% | 73% | 88% | 59% | 83% | 100% | 0.33 | 0.56 | 0.42 | 0.75 | 0.42 | 0.70 | 33 |
+| RF-DETR Large (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 71 | 83% | 73% | 87% | 70% | 80% | 96% | 0.33 | 0.56 | 0.42 | 0.58 | 0.34 | 0.69 | 30 |
+| YOLO11s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 28 | 47% | 42% | 90% | 54% | 47% | 100% | 0.33 | 0.56 | 0.42 | 0.58 | 0.44 | 0.35 | 33 |
+| YOLO11s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 27 | 47% | 42% | 90% | 54% | 47% | 100% | 0.33 | 0.56 | 0.42 | 0.58 | 0.44 | 0.35 | 33 |
+| YOLO11x 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 50 | 93% | 83% | 88% | 71% | 93% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.44 | 0.74 | 25 |
+| YOLO11x 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 50 | 93% | 83% | 88% | 71% | 93% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.44 | 0.74 | 25 |
+| YOLO11x 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 51 | 93% | 81% | 86% | 71% | 93% | 100% | 0.31 | 0.56 | 0.40 | 0.56 | 0.44 | 0.71 | 25 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 69 | 87% | 74% | 86% | 66% | 83% | 96% | 0.31 | 0.56 | 0.40 | 0.72 | 0.42 | 0.71 | 27 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 68 | 87% | 73% | 84% | 66% | 83% | 96% | 0.31 | 0.56 | 0.40 | 0.72 | 0.42 | 0.68 | 27 |
+| YOLO11m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r2 | 29 | 37% | 31% | 85% | 35% | 37% | 100% | 0.43 | 0.33 | 0.38 | 0.62 | 0.66 | 0.32 | 0 |
+| YOLO26s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r2 | 42 | 90% | 81% | 90% | 74% | 87% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.68 | 18 |
+| YOLO26s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r3 | 42 | 90% | 81% | 90% | 74% | 87% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.68 | 18 |
+| YOLO26s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r2 | 38 | 90% | 81% | 90% | 74% | 87% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.68 | 8 |
+| YOLO26s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r3 | 38 | 90% | 81% | 90% | 74% | 87% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.68 | 8 |
+| YOLO26s 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_medium | 43 | 90% | 79% | 88% | 74% | 87% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.65 | 18 |
+| YOLO26s 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_medium | 38 | 90% | 79% | 88% | 74% | 87% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.65 | 8 |
+| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 34 | 90% | 78% | 87% | 74% | 87% | 96% | 0.31 | 0.44 | 0.36 | 0.46 | 0.41 | 0.64 | 36 |
+| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 34 | 90% | 78% | 87% | 74% | 87% | 96% | 0.31 | 0.44 | 0.36 | 0.46 | 0.41 | 0.64 | 36 |
+| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 34 | 90% | 78% | 87% | 74% | 87% | 96% | 0.31 | 0.44 | 0.36 | 0.46 | 0.41 | 0.64 | 36 |
+| YOLO26s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 31 | 80% | 72% | 90% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 25 |
+| YOLO26s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 31 | 80% | 72% | 90% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 25 |
+| YOLO26s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 31 | 80% | 72% | 90% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 60 |
+| YOLO26s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 31 | 80% | 72% | 90% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 60 |
+| YOLO26s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 31 | 80% | 72% | 90% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 221 |
+| YOLO26s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 31 | 80% | 72% | 90% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 221 |
+| YOLO26s 1280 | BoT-SORT | — | astra_1fps_r2 | 31 | 80% | 72% | 90% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 2 |
+| YOLO26s 1280 | BoT-SORT | — | astra_1fps_r3 | 31 | 80% | 72% | 90% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 2 |
+| YOLO26s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 34 | 80% | 72% | 90% | 74% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 32 |
+| YOLO26s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 34 | 80% | 72% | 90% | 74% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.62 | 32 |
+| YOLO26s 1280 | BoT-SORT | — | astra_1fps_medium | 31 | 80% | 70% | 88% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.59 | 2 |
+| YOLO26s 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 31 | 80% | 70% | 88% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.59 | 25 |
+| YOLO26s 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 31 | 80% | 70% | 88% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.59 | 60 |
+| YOLO26s 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 31 | 80% | 70% | 88% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.59 | 221 |
+| YOLO26s 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 34 | 80% | 70% | 87% | 74% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.59 | 32 |
+| YOLO26s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 38 | 80% | 70% | 87% | 75% | 77% | 96% | 0.31 | 0.44 | 0.36 | 0.55 | 0.41 | 0.59 | 0 |
+| RF-DETR Medium | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 74 | 67% | 55% | 83% | 53% | 63% | 95% | 0.31 | 0.44 | 0.36 | 0.73 | 0.78 | 0.52 | 28 |
+| RF-DETR Small | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 75 | 63% | 57% | 90% | 71% | 63% | 100% | 0.38 | 0.33 | 0.35 | 0.71 | 0.58 | 0.48 | 30 |
+| RF-DETR Small | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 78 | 63% | 55% | 86% | 58% | 63% | 100% | 0.38 | 0.33 | 0.35 | 0.71 | 0.58 | 0.48 | 30 |
+| RF-DETR Small | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 76 | 63% | 55% | 86% | 58% | 63% | 100% | 0.38 | 0.33 | 0.35 | 0.71 | 0.58 | 0.48 | 30 |
+| RF-DETR Small | OC-SORT | — | astra_1fps_medium | 41 | 63% | 49% | 77% | 62% | 63% | 100% | 0.38 | 0.33 | 0.35 | 0.35 | 0.14 | 0.42 | 1 |
+| RF-DETR Small | OC-SORT | — | astra_1fps_r3 | 41 | 63% | 49% | 77% | 62% | 63% | 100% | 0.38 | 0.33 | 0.35 | 0.35 | 0.14 | 0.42 | 1 |
+| RF-DETR Small | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 42 | 63% | 49% | 77% | 62% | 63% | 100% | 0.38 | 0.33 | 0.35 | 0.35 | 0.14 | 0.42 | 24 |
+| RF-DETR Small | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 42 | 63% | 49% | 77% | 62% | 63% | 100% | 0.38 | 0.33 | 0.35 | 0.35 | 0.14 | 0.42 | 24 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 28 | 60% | 49% | 81% | 58% | 57% | 94% | 0.38 | 0.33 | 0.35 | 0.71 | 0.28 | 0.52 | 32 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 28 | 60% | 49% | 81% | 58% | 57% | 94% | 0.38 | 0.33 | 0.35 | 0.71 | 0.28 | 0.52 | 32 |
+| RF-DETR Small | OC-SORT | — | astra_1fps_r2 | 43 | 63% | 47% | 74% | 49% | 63% | 100% | 0.38 | 0.33 | 0.35 | 0.35 | 0.14 | 0.42 | 1 |
+| RF-DETR Small | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 45 | 63% | 46% | 73% | 46% | 63% | 100% | 0.38 | 0.33 | 0.35 | 0.35 | 0.14 | 0.42 | 24 |
+| YOLO26s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 25 | 53% | 46% | 86% | 68% | 50% | 94% | 0.38 | 0.33 | 0.35 | 0.59 | 0.45 | 0.37 | 31 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps_medium | 31 | 60% | 44% | 74% | 56% | 57% | 94% | 0.38 | 0.33 | 0.35 | 0.71 | 0.28 | 0.52 | 1 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps_r3 | 31 | 60% | 44% | 74% | 56% | 57% | 94% | 0.38 | 0.33 | 0.35 | 0.71 | 0.28 | 0.52 | 1 |
+| YOLO26s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 26 | 53% | 44% | 82% | 56% | 50% | 94% | 0.38 | 0.33 | 0.35 | 0.59 | 0.45 | 0.37 | 31 |
+| YOLO26s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 26 | 53% | 44% | 82% | 56% | 50% | 94% | 0.38 | 0.33 | 0.35 | 0.59 | 0.45 | 0.37 | 31 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 23 | 50% | 43% | 86% | 68% | 47% | 93% | 0.38 | 0.33 | 0.35 | 0.71 | 0.28 | 0.39 | 32 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 23 | 50% | 43% | 86% | 68% | 47% | 93% | 0.38 | 0.33 | 0.35 | 0.71 | 0.28 | 0.39 | 32 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 23 | 50% | 43% | 86% | 68% | 47% | 93% | 0.38 | 0.33 | 0.35 | 0.71 | 0.28 | 0.39 | 32 |
+| YOLO26m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r3 | 38 | 93% | 87% | 93% | 92% | 93% | 100% | 0.29 | 0.44 | 0.35 | 0.61 | 0.14 | 0.71 | 12 |
+| YOLO26m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r2 | 39 | 93% | 87% | 93% | 92% | 93% | 100% | 0.29 | 0.44 | 0.35 | 0.61 | 0.14 | 0.71 | 12 |
+| YOLO26m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r3 | 43 | 93% | 86% | 93% | 89% | 93% | 100% | 0.29 | 0.44 | 0.35 | 0.61 | 0.14 | 0.71 | 41 |
+| YOLO26m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r2 | 44 | 93% | 86% | 92% | 89% | 93% | 100% | 0.29 | 0.44 | 0.35 | 0.61 | 0.14 | 0.71 | 41 |
+| YOLO26m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_medium | 39 | 93% | 85% | 91% | 92% | 93% | 100% | 0.29 | 0.44 | 0.35 | 0.61 | 0.14 | 0.68 | 12 |
+| YOLO26m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_medium | 44 | 93% | 84% | 90% | 89% | 93% | 100% | 0.29 | 0.44 | 0.35 | 0.61 | 0.14 | 0.68 | 41 |
+| YOLO26s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r2 | 34 | 90% | 81% | 90% | 72% | 87% | 96% | 0.29 | 0.44 | 0.35 | 0.52 | 0.41 | 0.68 | 2 |
+| YOLO26s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r3 | 34 | 90% | 81% | 90% | 72% | 87% | 96% | 0.29 | 0.44 | 0.35 | 0.52 | 0.41 | 0.68 | 2 |
+| YOLO26s 1280 | ByteTrack | — | astra_1fps_r2 | 39 | 90% | 81% | 90% | 72% | 87% | 96% | 0.29 | 0.44 | 0.35 | 0.52 | 0.41 | 0.68 | 2 |
+| YOLO26s 1280 | ByteTrack | — | astra_1fps_r3 | 39 | 90% | 81% | 90% | 72% | 87% | 96% | 0.29 | 0.44 | 0.35 | 0.52 | 0.41 | 0.68 | 2 |
+| YOLO26s 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_medium | 36 | 90% | 79% | 88% | 72% | 87% | 96% | 0.29 | 0.44 | 0.35 | 0.52 | 0.41 | 0.65 | 2 |
+| YOLO26s 1280 | ByteTrack | — | astra_1fps_medium | 41 | 90% | 79% | 88% | 72% | 87% | 96% | 0.29 | 0.44 | 0.35 | 0.52 | 0.41 | 0.65 | 2 |
+| YOLO26s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 38 | 80% | 72% | 90% | 75% | 77% | 96% | 0.29 | 0.44 | 0.35 | 0.52 | 0.41 | 0.62 | 0 |
+| YOLO26s 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 39 | 80% | 72% | 89% | 75% | 77% | 96% | 0.29 | 0.44 | 0.35 | 0.52 | 0.41 | 0.62 | 0 |
+| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 29 | 77% | 68% | 89% | 74% | 77% | 100% | 0.27 | 0.44 | 0.33 | 0.50 | 0.27 | 0.62 | 35 |
+| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 29 | 77% | 68% | 89% | 74% | 77% | 100% | 0.27 | 0.44 | 0.33 | 0.50 | 0.27 | 0.62 | 35 |
+| YOLO26s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 29 | 77% | 68% | 89% | 74% | 77% | 100% | 0.27 | 0.44 | 0.33 | 0.50 | 0.27 | 0.62 | 35 |
+| YOLO11s 640 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 56 | 67% | 61% | 92% | 57% | 67% | 100% | 0.27 | 0.44 | 0.33 | 0.33 | 0.47 | 0.56 | 28 |
+| YOLO11s 640 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 56 | 67% | 61% | 92% | 57% | 67% | 100% | 0.27 | 0.44 | 0.33 | 0.33 | 0.47 | 0.56 | 28 |
+| YOLO11s 640 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 56 | 67% | 61% | 92% | 57% | 67% | 100% | 0.27 | 0.44 | 0.33 | 0.33 | 0.47 | 0.56 | 28 |
+| RF-DETR Small | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 50 | 63% | 50% | 79% | 64% | 60% | 95% | 0.33 | 0.33 | 0.33 | 0.44 | 0.14 | 0.42 | 25 |
+| RF-DETR Small | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 50 | 63% | 50% | 79% | 64% | 60% | 95% | 0.33 | 0.33 | 0.33 | 0.44 | 0.14 | 0.42 | 25 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps_medium | 26 | 57% | 49% | 87% | 69% | 53% | 94% | 0.33 | 0.33 | 0.33 | 0.67 | 0.23 | 0.48 | 2 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps_r2 | 26 | 57% | 49% | 87% | 69% | 53% | 94% | 0.33 | 0.33 | 0.33 | 0.67 | 0.23 | 0.48 | 2 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps_r3 | 26 | 57% | 49% | 87% | 69% | 53% | 94% | 0.33 | 0.33 | 0.33 | 0.67 | 0.23 | 0.48 | 2 |
+| RF-DETR Small | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 51 | 63% | 48% | 76% | 55% | 60% | 95% | 0.33 | 0.33 | 0.33 | 0.44 | 0.14 | 0.42 | 25 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 29 | 60% | 48% | 80% | 54% | 57% | 94% | 0.33 | 0.33 | 0.33 | 0.67 | 0.28 | 0.52 | 32 |
+| YOLO11s 640 | BoT-SORT | — | astra_1fps_medium | 26 | 50% | 46% | 93% | 39% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 1 |
+| YOLO11s 640 | BoT-SORT | — | astra_1fps_r3 | 26 | 50% | 46% | 93% | 39% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 1 |
+| YOLO11s 640 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 25 | 50% | 46% | 93% | 38% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 124 |
+| YOLO11s 640 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 25 | 50% | 46% | 93% | 38% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 124 |
+| YOLO11s 640 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 25 | 50% | 46% | 92% | 38% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 24 |
+| YOLO11s 640 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 25 | 50% | 46% | 92% | 38% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 24 |
+| YOLO11s 640 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 25 | 50% | 46% | 92% | 38% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 24 |
+| YOLO11s 640 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 25 | 50% | 46% | 92% | 38% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 38 |
+| YOLO11s 640 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 25 | 50% | 46% | 92% | 38% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 38 |
+| YOLO11s 640 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 25 | 50% | 46% | 92% | 38% | 50% | 100% | 0.33 | 0.33 | 0.33 | 0.56 | 0.14 | 0.46 | 38 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps_r2 | 32 | 60% | 44% | 73% | 53% | 57% | 94% | 0.33 | 0.33 | 0.33 | 0.67 | 0.28 | 0.52 | 1 |
+| YOLO11m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 27 | 43% | 37% | 86% | 54% | 43% | 100% | 0.27 | 0.44 | 0.33 | 0.50 | 0.27 | 0.40 | 31 |
+| YOLO11m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 27 | 43% | 37% | 86% | 54% | 43% | 100% | 0.27 | 0.44 | 0.33 | 0.50 | 0.27 | 0.40 | 31 |
+| YOLO11m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 27 | 43% | 37% | 86% | 54% | 43% | 100% | 0.27 | 0.44 | 0.33 | 0.50 | 0.27 | 0.40 | 31 |
+| RF-DETR Medium | ByteTrack | — | astra_1fps_medium | 40 | 67% | 57% | 86% | 69% | 63% | 95% | 0.30 | 0.33 | 0.32 | 0.74 | 0.14 | 0.49 | 2 |
+| RF-DETR Medium | ByteTrack | — | astra_1fps_r2 | 40 | 67% | 57% | 86% | 69% | 63% | 95% | 0.30 | 0.33 | 0.32 | 0.74 | 0.14 | 0.49 | 2 |
+| RF-DETR Medium | ByteTrack | — | astra_1fps_r3 | 40 | 67% | 57% | 86% | 69% | 63% | 95% | 0.30 | 0.33 | 0.32 | 0.74 | 0.14 | 0.49 | 2 |
+| RF-DETR Small | ByteTrack | — | astra_1fps_medium | 42 | 63% | 54% | 86% | 67% | 60% | 95% | 0.30 | 0.33 | 0.32 | 0.63 | 0.14 | 0.46 | 2 |
+| RF-DETR Small | ByteTrack | — | astra_1fps_r3 | 42 | 63% | 54% | 86% | 67% | 60% | 95% | 0.30 | 0.33 | 0.32 | 0.63 | 0.14 | 0.46 | 2 |
+| RF-DETR Small | ByteTrack | — | astra_1fps_r2 | 43 | 63% | 52% | 83% | 56% | 60% | 95% | 0.30 | 0.33 | 0.32 | 0.63 | 0.14 | 0.46 | 2 |
+| YOLO26m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_medium | 35 | 57% | 50% | 87% | 67% | 57% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.12 | 0.48 | 0 |
+| YOLO26m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r3 | 35 | 57% | 50% | 87% | 67% | 57% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.12 | 0.48 | 0 |
+| YOLO26m 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r2 | 36 | 57% | 48% | 84% | 56% | 57% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.12 | 0.48 | 0 |
+| YOLO11s 640 | BoT-SORT | — | astra_1fps_r2 | 27 | 50% | 46% | 93% | 39% | 50% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.14 | 0.46 | 1 |
+| YOLO11s 640 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 26 | 50% | 46% | 93% | 38% | 50% | 100% | 0.30 | 0.33 | 0.32 | 0.53 | 0.14 | 0.46 | 124 |
+| RF-DETR Medium | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 47 | 67% | 54% | 82% | 59% | 63% | 95% | 0.27 | 0.33 | 0.30 | 0.70 | 0.12 | 0.50 | 25 |
+| RF-DETR Medium | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 47 | 67% | 54% | 82% | 59% | 63% | 95% | 0.27 | 0.33 | 0.30 | 0.70 | 0.12 | 0.50 | 25 |
+| RF-DETR Medium 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 26 | 60% | 53% | 89% | 74% | 57% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.23 | 0.52 | 24 |
+| RF-DETR Medium 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 26 | 60% | 53% | 89% | 74% | 57% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.23 | 0.52 | 24 |
+| RF-DETR Medium 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 26 | 60% | 53% | 89% | 74% | 57% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.23 | 0.52 | 24 |
+| RF-DETR Medium 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 26 | 60% | 53% | 89% | 74% | 57% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.23 | 0.52 | 50 |
+| RF-DETR Medium 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 26 | 60% | 53% | 89% | 74% | 57% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.23 | 0.52 | 50 |
+| RF-DETR Medium 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 26 | 60% | 53% | 89% | 74% | 57% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.23 | 0.52 | 50 |
+| RF-DETR Medium 1024 | BoT-SORT | — | astra_1fps_medium | 27 | 60% | 53% | 88% | 72% | 57% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.23 | 0.52 | 1 |
+| RF-DETR Medium 1024 | BoT-SORT | — | astra_1fps_r2 | 27 | 60% | 53% | 88% | 72% | 57% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.23 | 0.52 | 1 |
+| RF-DETR Medium 1024 | BoT-SORT | — | astra_1fps_r3 | 27 | 60% | 53% | 88% | 72% | 57% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.23 | 0.52 | 1 |
+| YOLO11m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 27 | 53% | 46% | 86% | 59% | 53% | 100% | 0.27 | 0.33 | 0.30 | 0.70 | 0.66 | 0.50 | 30 |
+| YOLO11m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 28 | 53% | 44% | 82% | 47% | 53% | 100% | 0.27 | 0.33 | 0.30 | 0.70 | 0.66 | 0.50 | 30 |
+| YOLO11m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 28 | 53% | 44% | 82% | 47% | 53% | 100% | 0.27 | 0.33 | 0.30 | 0.70 | 0.66 | 0.50 | 30 |
+| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 29 | 53% | 42% | 78% | 49% | 50% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.24 | 0.49 | 32 |
+| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 29 | 53% | 42% | 78% | 49% | 50% | 94% | 0.27 | 0.33 | 0.30 | 0.70 | 0.24 | 0.49 | 32 |
+| RF-DETR Small | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 25 | 37% | 36% | 97% | 38% | 37% | 100% | 0.27 | 0.33 | 0.30 | 0.60 | 0.19 | 0.35 | 22 |
+| RF-DETR Small | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 25 | 37% | 36% | 97% | 38% | 37% | 100% | 0.27 | 0.33 | 0.30 | 0.60 | 0.19 | 0.35 | 22 |
+| RF-DETR Small | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 25 | 37% | 36% | 97% | 38% | 37% | 100% | 0.27 | 0.33 | 0.30 | 0.60 | 0.19 | 0.35 | 22 |
+| RF-DETR Large | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_medium | 69 | 77% | 67% | 87% | 72% | 73% | 96% | 0.25 | 0.33 | 0.29 | 0.67 | 0.27 | 0.65 | 29 |
+| RF-DETR Large | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r3 | 72 | 77% | 66% | 87% | 72% | 73% | 96% | 0.25 | 0.33 | 0.29 | 0.67 | 0.27 | 0.65 | 29 |
+| RF-DETR Large (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 53 | 80% | 65% | 81% | 72% | 77% | 96% | 0.25 | 0.33 | 0.29 | 0.57 | 0.13 | 0.63 | 27 |
+| RF-DETR Large (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 54 | 80% | 65% | 81% | 72% | 77% | 96% | 0.25 | 0.33 | 0.29 | 0.57 | 0.13 | 0.63 | 27 |
+| RF-DETR Medium | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 48 | 67% | 53% | 80% | 52% | 63% | 95% | 0.25 | 0.33 | 0.29 | 0.67 | 0.12 | 0.50 | 25 |
+| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 32 | 90% | 82% | 91% | 75% | 90% | 100% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.67 | 36 |
+| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 32 | 90% | 82% | 91% | 75% | 90% | 100% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.67 | 36 |
+| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 32 | 90% | 82% | 91% | 75% | 90% | 100% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.67 | 36 |
+| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 33 | 87% | 77% | 89% | 74% | 83% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.64 | 36 |
+| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 33 | 87% | 77% | 89% | 74% | 83% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.64 | 36 |
+| YOLO26m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 33 | 87% | 77% | 89% | 74% | 83% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.64 | 36 |
+| YOLO11m 1280 | BoT-SORT | — | astra_1fps_r2 | 33 | 83% | 74% | 89% | 67% | 80% | 96% | 0.23 | 0.33 | 0.27 | 0.46 | 0.17 | 0.56 | 1 |
+| YOLO11m 1280 | BoT-SORT | — | astra_1fps_r3 | 33 | 83% | 74% | 89% | 67% | 80% | 96% | 0.23 | 0.33 | 0.27 | 0.46 | 0.17 | 0.56 | 1 |
+| YOLO11m 1280 | BoT-SORT | — | astra_1fps_medium | 34 | 83% | 72% | 87% | 67% | 80% | 96% | 0.23 | 0.33 | 0.27 | 0.46 | 0.17 | 0.53 | 1 |
+| RF-DETR Large (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 44 | 80% | 68% | 85% | 74% | 77% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 24 |
+| RF-DETR Large (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 45 | 80% | 68% | 85% | 74% | 77% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 24 |
+| RF-DETR Large (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 42 | 80% | 68% | 85% | 74% | 77% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 24 |
+| RF-DETR Large (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 43 | 80% | 68% | 85% | 74% | 77% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 54 |
+| RF-DETR Large (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 44 | 80% | 68% | 85% | 74% | 77% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 54 |
+| RF-DETR Large (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 41 | 80% | 68% | 85% | 74% | 77% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 54 |
+| RF-DETR Large (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 44 | 80% | 68% | 85% | 74% | 77% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.63 | 177 |
+| RF-DETR Medium 1024 | ByteTrack | — | astra_1fps_medium | 40 | 77% | 66% | 86% | 71% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 2 |
+| RF-DETR Medium 1024 | ByteTrack | — | astra_1fps_r2 | 40 | 77% | 66% | 86% | 71% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 2 |
+| RF-DETR Medium 1024 | ByteTrack | — | astra_1fps_r3 | 40 | 77% | 66% | 86% | 71% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 2 |
+| RF-DETR Large 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 45 | 77% | 65% | 84% | 71% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 26 |
+| RF-DETR Large 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 45 | 77% | 65% | 84% | 71% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 26 |
+| RF-DETR Large 1024 | OC-SORT | — | astra_1fps_medium | 37 | 77% | 64% | 84% | 71% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 1 |
+| RF-DETR Large 1024 | OC-SORT | — | astra_1fps_r2 | 37 | 77% | 64% | 84% | 71% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 1 |
+| RF-DETR Large 1024 | OC-SORT | — | astra_1fps_r3 | 37 | 77% | 64% | 84% | 71% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 1 |
+| RF-DETR Large 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 38 | 77% | 64% | 83% | 69% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 24 |
+| RF-DETR Large 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 38 | 77% | 64% | 83% | 69% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 24 |
+| RF-DETR Large 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 38 | 77% | 64% | 83% | 69% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 24 |
+| RF-DETR Medium 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 39 | 77% | 64% | 83% | 70% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 25 |
+| RF-DETR Medium 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 39 | 77% | 64% | 83% | 70% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 25 |
+| RF-DETR Large (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 55 | 80% | 63% | 78% | 61% | 77% | 96% | 0.23 | 0.33 | 0.27 | 0.55 | 0.13 | 0.63 | 27 |
+| YOLO26m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_medium | 29 | 70% | 62% | 89% | 74% | 70% | 100% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.54 | 2 |
+| YOLO26m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r2 | 29 | 70% | 62% | 89% | 74% | 70% | 100% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.54 | 2 |
+| YOLO26m 1280 | ByteTrack [BoxMOT 25] | — | astra_1fps_r3 | 29 | 70% | 62% | 89% | 74% | 70% | 100% | 0.23 | 0.33 | 0.27 | 0.55 | 0.14 | 0.54 | 2 |
+| RF-DETR Medium 1024 | OC-SORT | — | astra_1fps_medium | 34 | 77% | 62% | 81% | 67% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 1 |
+| RF-DETR Medium 1024 | OC-SORT | — | astra_1fps_r2 | 34 | 77% | 62% | 81% | 67% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 1 |
+| RF-DETR Medium 1024 | OC-SORT | — | astra_1fps_r3 | 34 | 77% | 62% | 81% | 67% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 1 |
+| RF-DETR Medium 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 34 | 77% | 62% | 81% | 67% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 24 |
+| RF-DETR Medium 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 34 | 77% | 62% | 81% | 67% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 24 |
+| RF-DETR Medium 1024 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 34 | 77% | 62% | 81% | 67% | 73% | 96% | 0.23 | 0.33 | 0.27 | 0.64 | 0.13 | 0.62 | 24 |
+| YOLO11x 1280 | BoT-SORT | — | astra_1fps_r2 | 32 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO11x 1280 | BoT-SORT | — | astra_1fps_r3 | 32 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO11x 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 32 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 25 |
+| YOLO11x 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 32 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 25 |
+| YOLO11x 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 32 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 56 |
+| YOLO11x 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 32 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 56 |
+| YOLO11x 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 32 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 216 |
+| YOLO11x 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 32 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 216 |
+| YOLO26m 1280 | ByteTrack | — | astra_1fps_r2 | 37 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO26m 1280 | ByteTrack | — | astra_1fps_r3 | 37 | 90% | 82% | 91% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO26m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r2 | 34 | 90% | 82% | 91% | 72% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO26m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r3 | 34 | 90% | 82% | 91% | 72% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO11m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r2 | 34 | 90% | 81% | 90% | 72% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO11m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r3 | 34 | 90% | 81% | 90% | 72% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO11m 1280 | ByteTrack | — | astra_1fps_r2 | 40 | 90% | 81% | 90% | 74% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO11m 1280 | ByteTrack | — | astra_1fps_r3 | 40 | 90% | 81% | 90% | 74% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 2 |
+| YOLO26m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 47 | 87% | 81% | 94% | 74% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 27 |
+| YOLO26m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 47 | 87% | 81% | 94% | 74% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 27 |
+| YOLO26m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 47 | 87% | 81% | 94% | 74% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 27 |
+| YOLO11x 1280 | BoT-SORT | — | astra_1fps_medium | 33 | 90% | 80% | 89% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.65 | 2 |
+| YOLO11x 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 33 | 90% | 80% | 89% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.65 | 25 |
+| YOLO11x 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 33 | 90% | 80% | 89% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.65 | 56 |
+| YOLO11x 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 33 | 90% | 80% | 89% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.65 | 216 |
+| YOLO26m 1280 | ByteTrack | — | astra_1fps_medium | 38 | 90% | 80% | 89% | 75% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.65 | 2 |
+| YOLO11x 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 39 | 93% | 80% | 86% | 73% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 27 |
+| YOLO11x 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 39 | 93% | 80% | 86% | 73% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 27 |
+| YOLO11x 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 39 | 93% | 80% | 86% | 73% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 27 |
+| YOLO26m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_medium | 35 | 90% | 80% | 89% | 72% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.65 | 2 |
+| YOLO11x 1280 | OC-SORT | — | astra_1fps_medium | 31 | 93% | 80% | 85% | 73% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 1 |
+| YOLO11x 1280 | OC-SORT | — | astra_1fps_r2 | 31 | 93% | 80% | 85% | 73% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 1 |
+| YOLO11x 1280 | OC-SORT | — | astra_1fps_r3 | 31 | 93% | 80% | 85% | 73% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 1 |
+| YOLO11x 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 31 | 93% | 80% | 85% | 73% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 25 |
+| YOLO11x 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 31 | 93% | 80% | 85% | 73% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 25 |
+| YOLO11x 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 31 | 93% | 80% | 85% | 73% | 90% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.68 | 25 |
+| YOLO11m 1280 | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_medium | 35 | 90% | 79% | 88% | 72% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.65 | 2 |
+| YOLO11m 1280 | ByteTrack | — | astra_1fps_medium | 41 | 90% | 79% | 88% | 74% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.65 | 2 |
+| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 30 | 87% | 79% | 91% | 74% | 83% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.11 | 0.64 | 35 |
+| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 30 | 87% | 79% | 91% | 74% | 83% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.11 | 0.64 | 35 |
+| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 30 | 87% | 79% | 91% | 74% | 83% | 96% | 0.21 | 0.33 | 0.26 | 0.52 | 0.11 | 0.64 | 35 |
+| YOLO26m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 34 | 87% | 79% | 91% | 75% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 25 |
+| YOLO26m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 34 | 87% | 79% | 91% | 75% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 25 |
+| YOLO26m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 34 | 87% | 79% | 91% | 75% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 63 |
+| YOLO26m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 34 | 87% | 79% | 91% | 75% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 63 |
+| YOLO26m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 34 | 87% | 79% | 91% | 75% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 228 |
+| YOLO26m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 34 | 87% | 79% | 91% | 75% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 228 |
+| YOLO11m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 44 | 90% | 78% | 87% | 74% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 26 |
+| YOLO11m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 44 | 90% | 78% | 87% | 74% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 26 |
+| YOLO26m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 40 | 83% | 78% | 94% | 72% | 83% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 0 |
+| YOLO26m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 41 | 83% | 78% | 93% | 72% | 83% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 0 |
+| YOLO26m 1280 | BoT-SORT | — | astra_1fps_r2 | 34 | 87% | 78% | 90% | 72% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 2 |
+| YOLO26m 1280 | BoT-SORT | — | astra_1fps_r3 | 34 | 87% | 78% | 90% | 72% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.64 | 2 |
+| YOLO11m 1280 | OC-SORT | — | astra_1fps_medium | 36 | 90% | 77% | 86% | 70% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 1 |
+| YOLO11m 1280 | OC-SORT | — | astra_1fps_r2 | 36 | 90% | 77% | 86% | 70% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 1 |
+| YOLO11m 1280 | OC-SORT | — | astra_1fps_r3 | 36 | 90% | 77% | 86% | 70% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 1 |
+| YOLO11m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 36 | 90% | 77% | 86% | 70% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 24 |
+| YOLO11m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 36 | 90% | 77% | 86% | 70% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 24 |
+| YOLO11m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 36 | 90% | 77% | 86% | 70% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 24 |
+| YOLO11m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 36 | 90% | 77% | 86% | 70% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 1 |
+| YOLO11m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 36 | 90% | 77% | 86% | 70% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 1 |
+| YOLO11m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 36 | 90% | 77% | 86% | 70% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.67 | 1 |
+| YOLO26m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 35 | 87% | 77% | 89% | 75% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.62 | 25 |
+| YOLO26m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 35 | 87% | 77% | 89% | 75% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.62 | 63 |
+| YOLO26m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 37 | 87% | 77% | 89% | 74% | 83% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.61 | 31 |
+| YOLO26m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 37 | 87% | 77% | 89% | 74% | 83% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.61 | 31 |
+| YOLO26m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 37 | 87% | 77% | 89% | 74% | 83% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.61 | 31 |
+| YOLO26m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 35 | 87% | 77% | 89% | 75% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.62 | 228 |
+| YOLO11m 1280 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 45 | 90% | 76% | 85% | 74% | 87% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.65 | 26 |
+| YOLO26m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 41 | 83% | 76% | 91% | 72% | 83% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.61 | 0 |
+| YOLO26m 1280 | BoT-SORT | — | astra_1fps_medium | 35 | 87% | 76% | 87% | 72% | 87% | 100% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.62 | 2 |
+| YOLO11m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 33 | 83% | 75% | 90% | 75% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.60 | 24 |
+| YOLO11m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 33 | 83% | 75% | 90% | 75% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.60 | 24 |
+| YOLO11m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 33 | 83% | 75% | 90% | 75% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.60 | 56 |
+| YOLO11m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 33 | 83% | 75% | 90% | 75% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.60 | 56 |
+| YOLO11m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 33 | 83% | 75% | 90% | 74% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.60 | 199 |
+| YOLO11m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 33 | 83% | 75% | 90% | 74% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.60 | 199 |
+| YOLO11m 1280 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 34 | 83% | 73% | 88% | 75% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.57 | 24 |
+| YOLO11m 1280 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 34 | 83% | 73% | 88% | 75% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.57 | 56 |
+| YOLO11m 1280 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 34 | 83% | 73% | 88% | 74% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.57 | 199 |
+| YOLO11m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 34 | 83% | 73% | 88% | 74% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.57 | 31 |
+| YOLO11m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 34 | 83% | 73% | 88% | 74% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.57 | 31 |
+| YOLO11m 1280 | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 34 | 83% | 73% | 88% | 74% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.57 | 31 |
+| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 32 | 83% | 70% | 85% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.58 | 34 |
+| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 32 | 83% | 70% | 85% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.58 | 34 |
+| YOLO11m 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 32 | 83% | 70% | 85% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.14 | 0.58 | 34 |
+| RF-DETR Large 1024 (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 40 | 83% | 70% | 84% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.69 | 24 |
+| RF-DETR Large 1024 (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 40 | 83% | 70% | 84% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.69 | 24 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 40 | 83% | 70% | 84% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.68 | 1 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 40 | 83% | 70% | 84% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.68 | 1 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT | — | astra_1fps_r2 | 40 | 83% | 70% | 84% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.69 | 1 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT | — | astra_1fps_r3 | 40 | 83% | 70% | 84% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.69 | 1 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 41 | 83% | 69% | 83% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.65 | 1 |
+| RF-DETR Large 1024 (calibrated) | OC-SORT | — | astra_1fps_medium | 41 | 83% | 69% | 83% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.66 | 1 |
+| RF-DETR Large 1024 (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 41 | 83% | 69% | 83% | 72% | 80% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.66 | 24 |
+| RF-DETR Large 1024 | ByteTrack | — | astra_1fps_medium | 42 | 77% | 68% | 89% | 72% | 73% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.62 | 2 |
+| RF-DETR Large 1024 | ByteTrack | — | astra_1fps_r2 | 42 | 77% | 68% | 89% | 72% | 73% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.62 | 2 |
+| RF-DETR Large 1024 | ByteTrack | — | astra_1fps_r3 | 42 | 77% | 68% | 89% | 72% | 73% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.62 | 2 |
+| RF-DETR Large (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 44 | 80% | 65% | 82% | 59% | 77% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.63 | 177 |
+| RF-DETR Large (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 42 | 80% | 65% | 82% | 59% | 77% | 96% | 0.21 | 0.33 | 0.26 | 0.61 | 0.13 | 0.63 | 177 |
+| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 43 | 70% | 62% | 89% | 73% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 26 |
+| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 43 | 70% | 62% | 89% | 73% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 26 |
+| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 43 | 70% | 62% | 89% | 73% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 26 |
+| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 42 | 70% | 62% | 89% | 74% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 53 |
+| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 42 | 70% | 62% | 89% | 74% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 53 |
+| RF-DETR Medium (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 42 | 70% | 62% | 89% | 72% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 160 |
+| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 82 | 70% | 62% | 88% | 73% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.47 | 0 |
+| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 82 | 70% | 62% | 88% | 73% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.47 | 0 |
+| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 44 | 70% | 62% | 88% | 71% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 34 |
+| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 44 | 70% | 62% | 88% | 71% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 34 |
+| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 44 | 70% | 62% | 88% | 71% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 34 |
+| RF-DETR Medium (calibrated) | BoT-SORT | — | astra_1fps_medium | 40 | 70% | 61% | 87% | 72% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.46 | 1 |
+| RF-DETR Medium (calibrated) | BoT-SORT | — | astra_1fps_r3 | 40 | 70% | 61% | 87% | 72% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.46 | 1 |
+| RF-DETR Medium (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 43 | 70% | 60% | 86% | 62% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 53 |
+| RF-DETR Medium (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 43 | 70% | 60% | 86% | 59% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 160 |
+| RF-DETR Medium (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 43 | 70% | 60% | 86% | 59% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.48 | 160 |
+| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 84 | 70% | 60% | 85% | 59% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.47 | 0 |
+| RF-DETR Medium (calibrated) | BoT-SORT | — | astra_1fps_r2 | 41 | 70% | 59% | 84% | 59% | 67% | 95% | 0.21 | 0.33 | 0.26 | 0.70 | 0.13 | 0.46 | 1 |
+| YOLO11x 1280 | ByteTrack | — | astra_1fps_r2 | 38 | 93% | 83% | 89% | 71% | 90% | 96% | 0.20 | 0.33 | 0.25 | 0.50 | 0.12 | 0.70 | 2 |
+| YOLO11x 1280 | ByteTrack | — | astra_1fps_r3 | 38 | 93% | 83% | 89% | 71% | 90% | 96% | 0.20 | 0.33 | 0.25 | 0.50 | 0.12 | 0.70 | 2 |
+| YOLO11x 1280 | ByteTrack | — | astra_1fps_medium | 39 | 93% | 81% | 87% | 71% | 90% | 96% | 0.20 | 0.33 | 0.25 | 0.50 | 0.12 | 0.68 | 2 |
+| YOLO11m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 42 | 83% | 74% | 89% | 72% | 80% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.14 | 0.60 | 0 |
+| YOLO11m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 43 | 83% | 72% | 87% | 72% | 80% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.14 | 0.57 | 0 |
+| YOLO11m 1280 | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 43 | 83% | 72% | 87% | 59% | 80% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.14 | 0.60 | 0 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 38 | 77% | 69% | 89% | 74% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 25 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 37 | 77% | 69% | 89% | 74% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 25 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 37 | 77% | 69% | 89% | 74% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 25 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 38 | 77% | 69% | 90% | 74% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 59 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 37 | 77% | 69% | 90% | 74% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 59 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 37 | 77% | 69% | 90% | 74% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 59 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 40 | 77% | 69% | 89% | 73% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 33 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 39 | 77% | 69% | 89% | 73% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 33 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 39 | 77% | 69% | 89% | 73% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 33 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 36 | 77% | 68% | 89% | 73% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 208 |
+| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 57 | 77% | 68% | 89% | 71% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.61 | 0 |
+| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 56 | 77% | 68% | 89% | 71% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.61 | 0 |
+| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 56 | 77% | 68% | 89% | 71% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.61 | 0 |
+| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 36 | 80% | 68% | 85% | 74% | 77% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.11 | 0.66 | 37 |
+| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 36 | 80% | 68% | 85% | 74% | 77% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.11 | 0.66 | 37 |
+| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 36 | 80% | 68% | 85% | 74% | 77% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.11 | 0.66 | 37 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | — | astra_1fps_medium | 38 | 77% | 68% | 89% | 72% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 1 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | — | astra_1fps_r2 | 37 | 77% | 68% | 89% | 72% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 1 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | — | astra_1fps_r3 | 37 | 77% | 68% | 89% | 72% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 1 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 38 | 77% | 66% | 86% | 59% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 208 |
+| RF-DETR Large 1024 (calibrated) | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 37 | 77% | 66% | 86% | 59% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.67 | 0.13 | 0.62 | 208 |
+| RF-DETR Large (calibrated) | BoT-SORT | — | astra_1fps_medium | 41 | 80% | 65% | 82% | 60% | 73% | 92% | 0.20 | 0.33 | 0.25 | 0.58 | 0.13 | 0.58 | 2 |
+| RF-DETR Large (calibrated) | BoT-SORT | — | astra_1fps_r2 | 42 | 80% | 65% | 82% | 60% | 73% | 92% | 0.20 | 0.33 | 0.25 | 0.58 | 0.13 | 0.58 | 2 |
+| RF-DETR Large (calibrated) | BoT-SORT | — | astra_1fps_r3 | 39 | 80% | 65% | 82% | 60% | 73% | 92% | 0.20 | 0.33 | 0.25 | 0.58 | 0.13 | 0.58 | 2 |
+| RF-DETR Large 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 46 | 77% | 64% | 83% | 63% | 73% | 96% | 0.20 | 0.33 | 0.25 | 0.58 | 0.12 | 0.62 | 26 |
+| YOLO26s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 27 | 50% | 41% | 82% | 47% | 47% | 93% | 0.29 | 0.22 | 0.25 | 0.62 | 0.57 | 0.39 | 32 |
+| YOLO26s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 27 | 50% | 41% | 82% | 47% | 47% | 93% | 0.29 | 0.22 | 0.25 | 0.62 | 0.57 | 0.39 | 32 |
+| YOLO26s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 28 | 50% | 40% | 81% | 42% | 47% | 93% | 0.29 | 0.22 | 0.25 | 0.62 | 0.57 | 0.39 | 32 |
+| YOLO11s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r2 | 25 | 43% | 36% | 83% | 38% | 43% | 100% | 0.20 | 0.33 | 0.25 | 0.50 | 0.48 | 0.30 | 0 |
+| YOLO11m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r2 | 45 | 93% | 84% | 89% | 74% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.11 | 0.71 | 38 |
+| YOLO11m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r3 | 46 | 93% | 84% | 89% | 74% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.11 | 0.71 | 38 |
+| YOLO11m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r2 | 39 | 93% | 83% | 89% | 74% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.11 | 0.71 | 14 |
+| YOLO11m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r3 | 40 | 93% | 83% | 89% | 74% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.11 | 0.71 | 14 |
+| YOLO11x 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r2 | 37 | 93% | 83% | 88% | 71% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.69 | 42 |
+| YOLO11x 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r3 | 37 | 93% | 83% | 88% | 71% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.69 | 42 |
+| YOLO11m 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_medium | 47 | 93% | 82% | 87% | 74% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.11 | 0.68 | 38 |
+| YOLO11m 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_medium | 41 | 93% | 81% | 87% | 74% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.11 | 0.68 | 14 |
+| YOLO11x 1280 | BoT-SORT (ultralytics, prod) | — | astra_1fps_medium | 38 | 93% | 80% | 86% | 71% | 90% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.67 | 42 |
+| YOLO26m 1280 | OC-SORT | — | astra_1fps_medium | 38 | 90% | 79% | 88% | 62% | 87% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.68 | 1 |
+| YOLO26m 1280 | OC-SORT | — | astra_1fps_r2 | 38 | 90% | 79% | 88% | 62% | 87% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.68 | 1 |
+| YOLO26m 1280 | OC-SORT | — | astra_1fps_r3 | 38 | 90% | 79% | 88% | 62% | 87% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.68 | 1 |
+| YOLO26m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 38 | 90% | 79% | 88% | 62% | 87% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.68 | 24 |
+| YOLO26m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 38 | 90% | 79% | 88% | 62% | 87% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.68 | 24 |
+| YOLO26m 1280 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 38 | 90% | 79% | 88% | 62% | 87% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.68 | 24 |
+| YOLO26m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 38 | 90% | 79% | 88% | 62% | 87% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.68 | 1 |
+| YOLO26m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 38 | 90% | 79% | 88% | 62% | 87% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.68 | 1 |
+| YOLO26m 1280 | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 38 | 90% | 79% | 88% | 62% | 87% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.12 | 0.68 | 1 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack | — | astra_1fps_r2 | 43 | 87% | 74% | 85% | 74% | 83% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.13 | 0.69 | 2 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack | — | astra_1fps_r3 | 43 | 87% | 74% | 85% | 74% | 83% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.13 | 0.69 | 2 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r2 | 36 | 83% | 73% | 88% | 74% | 80% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.13 | 0.69 | 2 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r3 | 36 | 83% | 73% | 88% | 74% | 80% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.13 | 0.69 | 2 |
+| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_medium | 41 | 83% | 72% | 87% | 67% | 83% | 100% | 0.19 | 0.33 | 0.24 | 0.72 | 0.11 | 0.67 | 2 |
+| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r3 | 41 | 83% | 72% | 87% | 67% | 83% | 100% | 0.19 | 0.33 | 0.24 | 0.72 | 0.11 | 0.67 | 2 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack | — | astra_1fps_medium | 44 | 87% | 72% | 84% | 74% | 83% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.13 | 0.66 | 2 |
+| RF-DETR Large 1024 (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_medium | 37 | 83% | 72% | 86% | 74% | 80% | 96% | 0.19 | 0.33 | 0.24 | 0.64 | 0.13 | 0.66 | 2 |
+| RF-DETR Medium (calibrated) | OC-SORT | — | astra_1fps_medium | 41 | 83% | 70% | 84% | 67% | 80% | 96% | 0.19 | 0.33 | 0.24 | 0.72 | 0.11 | 0.64 | 1 |
+| RF-DETR Medium (calibrated) | OC-SORT | — | astra_1fps_r3 | 41 | 83% | 70% | 84% | 67% | 80% | 96% | 0.19 | 0.33 | 0.24 | 0.72 | 0.11 | 0.64 | 1 |
+| RF-DETR Medium (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 40 | 83% | 70% | 84% | 67% | 80% | 96% | 0.19 | 0.33 | 0.24 | 0.72 | 0.11 | 0.64 | 24 |
+| RF-DETR Medium (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 40 | 83% | 70% | 84% | 67% | 80% | 96% | 0.19 | 0.33 | 0.24 | 0.72 | 0.11 | 0.64 | 24 |
+| RF-DETR Large (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 70 | 83% | 68% | 82% | 58% | 80% | 96% | 0.19 | 0.33 | 0.24 | 0.56 | 0.34 | 0.69 | 30 |
+| RF-DETR Medium (calibrated) | OC-SORT | — | astra_1fps_r2 | 42 | 83% | 68% | 82% | 56% | 80% | 96% | 0.19 | 0.33 | 0.24 | 0.72 | 0.11 | 0.64 | 1 |
+| YOLO11s 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 28 | 47% | 40% | 85% | 39% | 47% | 100% | 0.19 | 0.33 | 0.24 | 0.56 | 0.44 | 0.35 | 33 |
+| YOLO26m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 24 | 50% | 46% | 92% | 53% | 50% | 100% | 0.25 | 0.22 | 0.23 | 0.59 | 0.58 | 0.45 | 29 |
+| YOLO26m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 24 | 50% | 46% | 92% | 53% | 50% | 100% | 0.25 | 0.22 | 0.23 | 0.59 | 0.58 | 0.45 | 29 |
+| YOLO26m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 24 | 50% | 46% | 92% | 53% | 50% | 100% | 0.25 | 0.22 | 0.23 | 0.59 | 0.58 | 0.45 | 29 |
+| YOLO11s 640 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 47 | 57% | 46% | 81% | 38% | 53% | 94% | 0.25 | 0.22 | 0.23 | 0.47 | 0.17 | 0.48 | 22 |
+| RF-DETR Medium (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 78 | 83% | 74% | 89% | 58% | 83% | 100% | 0.18 | 0.33 | 0.23 | 0.54 | 0.42 | 0.70 | 30 |
+| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25, our thr] | — | astra_1fps_r2 | 42 | 83% | 71% | 86% | 59% | 83% | 100% | 0.18 | 0.33 | 0.23 | 0.69 | 0.11 | 0.67 | 2 |
+| RF-DETR Medium (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 41 | 83% | 68% | 82% | 58% | 80% | 96% | 0.18 | 0.33 | 0.23 | 0.69 | 0.11 | 0.64 | 24 |
+| YOLO11x 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r2 | 41 | 93% | 83% | 89% | 72% | 90% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.12 | 0.70 | 87 |
+| YOLO11x 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r3 | 41 | 93% | 83% | 89% | 72% | 90% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.12 | 0.70 | 87 |
+| YOLO11x 1280 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_medium | 42 | 93% | 81% | 87% | 72% | 90% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.12 | 0.67 | 87 |
+| RF-DETR Medium (calibrated) | ByteTrack | — | astra_1fps_medium | 53 | 83% | 73% | 88% | 71% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.67 | 0.11 | 0.62 | 2 |
+| RF-DETR Medium (calibrated) | ByteTrack | — | astra_1fps_r3 | 52 | 83% | 73% | 88% | 71% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.67 | 0.11 | 0.62 | 2 |
+| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_medium | 47 | 83% | 72% | 86% | 71% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.67 | 0.11 | 0.59 | 2 |
+| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r3 | 47 | 83% | 72% | 86% | 71% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.67 | 0.11 | 0.59 | 2 |
+| RF-DETR Medium (calibrated) | ByteTrack | — | astra_1fps_r2 | 52 | 83% | 71% | 85% | 57% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.67 | 0.11 | 0.64 | 2 |
+| RF-DETR Large 1024 (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 50 | 83% | 70% | 84% | 70% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.12 | 0.67 | 27 |
+| RF-DETR Large 1024 (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 50 | 83% | 70% | 84% | 70% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.12 | 0.67 | 27 |
+| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25, our thr] | — | astra_1fps_r2 | 47 | 83% | 70% | 84% | 60% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.67 | 0.11 | 0.61 | 2 |
+| RF-DETR Large 1024 (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 51 | 83% | 69% | 83% | 70% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.12 | 0.64 | 27 |
+| RF-DETR Medium (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 55 | 83% | 69% | 82% | 60% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.11 | 0.63 | 27 |
+| RF-DETR Medium (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 54 | 83% | 69% | 82% | 60% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.11 | 0.63 | 27 |
+| RF-DETR Medium (calibrated) | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 55 | 83% | 69% | 82% | 60% | 80% | 96% | 0.17 | 0.33 | 0.22 | 0.59 | 0.11 | 0.63 | 27 |
+| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 33 | 70% | 62% | 88% | 68% | 70% | 100% | 0.17 | 0.33 | 0.22 | 0.52 | 0.15 | 0.52 | 38 |
+| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 33 | 70% | 62% | 88% | 68% | 70% | 100% | 0.17 | 0.33 | 0.22 | 0.52 | 0.15 | 0.52 | 38 |
+| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 33 | 70% | 62% | 88% | 68% | 70% | 100% | 0.17 | 0.33 | 0.22 | 0.52 | 0.15 | 0.52 | 38 |
+| RF-DETR Medium | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 36 | 67% | 57% | 85% | 62% | 67% | 100% | 0.22 | 0.22 | 0.22 | 0.56 | 0.14 | 0.54 | 23 |
+| RF-DETR Medium | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 36 | 67% | 57% | 85% | 62% | 67% | 100% | 0.22 | 0.22 | 0.22 | 0.56 | 0.14 | 0.54 | 23 |
+| RF-DETR Medium | OC-SORT | — | astra_1fps_medium | 37 | 67% | 54% | 81% | 62% | 63% | 95% | 0.22 | 0.22 | 0.22 | 0.56 | 0.14 | 0.50 | 1 |
+| RF-DETR Medium | OC-SORT | — | astra_1fps_r3 | 37 | 67% | 54% | 81% | 62% | 63% | 95% | 0.22 | 0.22 | 0.22 | 0.56 | 0.14 | 0.50 | 1 |
+| YOLO11s 640 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 46 | 57% | 46% | 81% | 38% | 53% | 94% | 0.22 | 0.22 | 0.22 | 0.56 | 0.17 | 0.48 | 22 |
+| YOLO11s 640 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 46 | 57% | 46% | 81% | 38% | 53% | 94% | 0.22 | 0.22 | 0.22 | 0.56 | 0.17 | 0.48 | 22 |
+| YOLO11s 640 | OC-SORT | — | astra_1fps_medium | 39 | 57% | 45% | 79% | 36% | 53% | 94% | 0.22 | 0.22 | 0.22 | 0.56 | 0.17 | 0.47 | 1 |
+| YOLO11s 640 | OC-SORT | — | astra_1fps_r2 | 39 | 57% | 45% | 79% | 36% | 53% | 94% | 0.22 | 0.22 | 0.22 | 0.56 | 0.17 | 0.47 | 1 |
+| YOLO11s 640 | OC-SORT | — | astra_1fps_r3 | 39 | 57% | 45% | 79% | 36% | 53% | 94% | 0.22 | 0.22 | 0.22 | 0.56 | 0.17 | 0.47 | 1 |
+| YOLO11s 640 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 39 | 57% | 45% | 79% | 36% | 53% | 94% | 0.22 | 0.22 | 0.22 | 0.56 | 0.17 | 0.47 | 19 |
+| YOLO11s 640 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 39 | 57% | 45% | 79% | 36% | 53% | 94% | 0.22 | 0.22 | 0.22 | 0.56 | 0.17 | 0.47 | 19 |
+| YOLO11s 640 | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 39 | 57% | 45% | 79% | 36% | 53% | 94% | 0.22 | 0.22 | 0.22 | 0.56 | 0.17 | 0.47 | 19 |
+| YOLO26s 1280 | SFSORT [BoxMOT 25] | — | astra_1fps_r2 | 29 | 40% | 34% | 84% | 37% | 37% | 92% | 0.22 | 0.22 | 0.22 | 0.56 | 0.45 | 0.36 | 0 |
+| YOLO11m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 21 | 37% | 32% | 87% | 38% | 33% | 91% | 0.22 | 0.22 | 0.22 | 0.44 | 0.56 | 0.32 | 30 |
+| YOLO11m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 21 | 37% | 32% | 87% | 38% | 33% | 91% | 0.22 | 0.22 | 0.22 | 0.44 | 0.56 | 0.32 | 30 |
+| YOLO11m 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 21 | 37% | 32% | 87% | 38% | 33% | 91% | 0.22 | 0.22 | 0.22 | 0.44 | 0.56 | 0.32 | 30 |
+| RF-DETR Medium | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 38 | 67% | 55% | 82% | 56% | 67% | 100% | 0.20 | 0.22 | 0.21 | 0.53 | 0.14 | 0.54 | 23 |
+| RF-DETR Medium | OC-SORT | — | astra_1fps_r2 | 39 | 67% | 52% | 78% | 56% | 63% | 95% | 0.20 | 0.22 | 0.21 | 0.53 | 0.14 | 0.50 | 1 |
+| YOLO26s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_medium | 28 | 50% | 42% | 85% | 45% | 50% | 100% | 0.20 | 0.22 | 0.21 | 0.53 | 0.45 | 0.41 | 1 |
+| YOLO26s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r2 | 28 | 50% | 42% | 85% | 45% | 50% | 100% | 0.20 | 0.22 | 0.21 | 0.53 | 0.45 | 0.41 | 1 |
+| YOLO26s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r3 | 28 | 50% | 42% | 85% | 45% | 50% | 100% | 0.20 | 0.22 | 0.21 | 0.53 | 0.45 | 0.41 | 1 |
+| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 35 | 77% | 64% | 84% | 73% | 73% | 96% | 0.15 | 0.33 | 0.21 | 0.62 | 0.11 | 0.60 | 37 |
+| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 35 | 77% | 64% | 84% | 73% | 73% | 96% | 0.15 | 0.33 | 0.21 | 0.62 | 0.11 | 0.60 | 37 |
+| RF-DETR Large 1024 (calibrated) | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 35 | 77% | 64% | 84% | 73% | 73% | 96% | 0.15 | 0.33 | 0.21 | 0.62 | 0.11 | 0.60 | 37 |
+| RF-DETR Large (calibrated) | OC-SORT | — | astra_1fps_medium | 45 | 77% | 60% | 78% | 71% | 70% | 91% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.60 | 1 |
+| RF-DETR Large (calibrated) | OC-SORT | — | astra_1fps_r2 | 46 | 77% | 60% | 78% | 71% | 70% | 91% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.60 | 1 |
+| RF-DETR Large (calibrated) | OC-SORT | — | astra_1fps_r3 | 44 | 77% | 60% | 78% | 71% | 70% | 91% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.61 | 1 |
+| RF-DETR Large (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 44 | 77% | 60% | 78% | 71% | 70% | 91% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.61 | 24 |
+| RF-DETR Large (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 45 | 77% | 60% | 78% | 71% | 70% | 91% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.61 | 24 |
+| RF-DETR Large (calibrated) | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 44 | 77% | 60% | 78% | 71% | 70% | 91% | 0.18 | 0.22 | 0.20 | 0.50 | 0.00 | 0.61 | 24 |
+| RF-DETR Medium 1024 | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 39 | 73% | 61% | 83% | 55% | 70% | 96% | 0.17 | 0.22 | 0.19 | 0.57 | 0.13 | 0.62 | 25 |
+| YOLO11s 640 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r2 | 46 | 73% | 57% | 78% | 55% | 70% | 96% | 0.17 | 0.22 | 0.19 | 0.48 | 0.13 | 0.58 | 7 |
+| YOLO11s 640 | BoT-SORT (ultralytics, prod) | — | astra_1fps_medium | 44 | 73% | 56% | 77% | 49% | 70% | 96% | 0.17 | 0.22 | 0.19 | 0.57 | 0.13 | 0.58 | 7 |
+| YOLO11s 640 | BoT-SORT (ultralytics, prod) | — | astra_1fps_r3 | 44 | 73% | 56% | 77% | 49% | 70% | 96% | 0.17 | 0.22 | 0.19 | 0.57 | 0.13 | 0.58 | 7 |
+| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_medium | 37 | 80% | 64% | 80% | 48% | 77% | 96% | 0.13 | 0.33 | 0.19 | 0.44 | 0.21 | 0.57 | 37 |
+| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 37 | 80% | 64% | 80% | 48% | 77% | 96% | 0.13 | 0.33 | 0.19 | 0.44 | 0.21 | 0.57 | 37 |
+| RF-DETR Medium (calibrated) | Hybrid-SORT [BoxMOT 25, our thr] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 37 | 80% | 64% | 80% | 48% | 77% | 96% | 0.13 | 0.33 | 0.19 | 0.44 | 0.21 | 0.57 | 37 |
+| YOLO11s 1280 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 47 | 90% | 83% | 92% | 73% | 90% | 100% | 0.15 | 0.22 | 0.18 | 0.55 | 0.42 | 0.74 | 26 |
+| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 33 | 83% | 72% | 87% | 70% | 83% | 100% | 0.15 | 0.22 | 0.18 | 0.46 | 0.46 | 0.61 | 37 |
+| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 33 | 83% | 72% | 87% | 70% | 83% | 100% | 0.15 | 0.22 | 0.18 | 0.46 | 0.46 | 0.61 | 37 |
+| YOLO11s 1280 | Hybrid-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 33 | 83% | 72% | 87% | 70% | 83% | 100% | 0.15 | 0.22 | 0.18 | 0.46 | 0.46 | 0.61 | 37 |
+| RF-DETR Large 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 67 | 77% | 68% | 89% | 57% | 73% | 96% | 0.15 | 0.22 | 0.18 | 0.64 | 0.53 | 0.65 | 27 |
+| RF-DETR Medium 1024 | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 74 | 77% | 68% | 88% | 56% | 73% | 96% | 0.15 | 0.22 | 0.18 | 0.64 | 0.53 | 0.65 | 27 |
+| YOLO26m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 27 | 60% | 53% | 88% | 54% | 57% | 94% | 0.15 | 0.22 | 0.18 | 0.55 | 0.14 | 0.46 | 30 |
+| YOLO26m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 27 | 60% | 53% | 88% | 54% | 57% | 94% | 0.15 | 0.22 | 0.18 | 0.55 | 0.14 | 0.46 | 30 |
+| YOLO26m 1280 | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 27 | 60% | 53% | 88% | 54% | 57% | 94% | 0.15 | 0.22 | 0.18 | 0.55 | 0.14 | 0.46 | 30 |
+| YOLO11s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 24 | 40% | 37% | 92% | 37% | 40% | 100% | 0.15 | 0.22 | 0.18 | 0.55 | 0.52 | 0.30 | 33 |
+| YOLO11s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 24 | 40% | 37% | 92% | 37% | 40% | 100% | 0.15 | 0.22 | 0.18 | 0.55 | 0.52 | 0.30 | 33 |
+| YOLO11s 640 | ByteTrack | — | astra_1fps_medium | 38 | 60% | 50% | 84% | 38% | 57% | 94% | 0.14 | 0.22 | 0.17 | 0.52 | 0.13 | 0.50 | 1 |
+| YOLO11s 640 | ByteTrack | — | astra_1fps_r2 | 39 | 60% | 50% | 84% | 38% | 57% | 94% | 0.14 | 0.22 | 0.17 | 0.43 | 0.13 | 0.50 | 1 |
+| YOLO11s 640 | ByteTrack | — | astra_1fps_r3 | 38 | 60% | 50% | 84% | 38% | 57% | 94% | 0.14 | 0.22 | 0.17 | 0.52 | 0.13 | 0.50 | 1 |
+| YOLO11s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 31 | 50% | 41% | 82% | 49% | 50% | 100% | 0.14 | 0.22 | 0.17 | 0.52 | 0.42 | 0.35 | 30 |
+| YOLO11s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 30 | 50% | 41% | 81% | 46% | 50% | 100% | 0.14 | 0.22 | 0.17 | 0.61 | 0.42 | 0.35 | 30 |
+| YOLO11s 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 30 | 50% | 41% | 81% | 46% | 50% | 100% | 0.14 | 0.22 | 0.17 | 0.61 | 0.42 | 0.35 | 30 |
+| YOLO11s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r2 | 29 | 47% | 38% | 82% | 49% | 47% | 100% | 0.14 | 0.22 | 0.17 | 0.43 | 0.35 | 0.35 | 1 |
+| YOLO11s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_medium | 29 | 47% | 38% | 81% | 44% | 47% | 100% | 0.14 | 0.22 | 0.17 | 0.52 | 0.35 | 0.35 | 1 |
+| YOLO11s 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r3 | 28 | 47% | 38% | 81% | 44% | 47% | 100% | 0.14 | 0.22 | 0.17 | 0.52 | 0.35 | 0.35 | 1 |
+| YOLO11s 1280 | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 24 | 40% | 37% | 92% | 37% | 40% | 100% | 0.14 | 0.22 | 0.17 | 0.52 | 0.52 | 0.30 | 33 |
+| RF-DETR Large 1024 (calibrated) | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 67 | 83% | 72% | 86% | 48% | 80% | 96% | 0.13 | 0.22 | 0.17 | 0.58 | 0.42 | 0.71 | 27 |
+| RF-DETR Large (calibrated) | ByteTrack | — | astra_1fps_r2 | 51 | 80% | 66% | 82% | 73% | 73% | 92% | 0.13 | 0.22 | 0.17 | 0.58 | 0.00 | 0.59 | 2 |
+| YOLO26m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 30 | 70% | 57% | 82% | 49% | 67% | 95% | 0.13 | 0.22 | 0.17 | 0.50 | 0.46 | 0.56 | 31 |
+| YOLO26m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 30 | 70% | 57% | 82% | 49% | 67% | 95% | 0.13 | 0.22 | 0.17 | 0.50 | 0.46 | 0.56 | 31 |
+| YOLO26m 1280 | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 30 | 70% | 57% | 82% | 49% | 67% | 95% | 0.13 | 0.22 | 0.17 | 0.50 | 0.46 | 0.56 | 31 |
+| YOLO26m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_medium | 30 | 63% | 52% | 83% | 48% | 63% | 100% | 0.13 | 0.22 | 0.17 | 0.42 | 0.12 | 0.54 | 1 |
+| YOLO26m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r2 | 30 | 63% | 52% | 83% | 48% | 63% | 100% | 0.13 | 0.22 | 0.17 | 0.42 | 0.12 | 0.54 | 1 |
+| YOLO26m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r3 | 30 | 63% | 52% | 83% | 48% | 63% | 100% | 0.13 | 0.22 | 0.17 | 0.42 | 0.12 | 0.54 | 1 |
+| RF-DETR Large (calibrated) | ByteTrack | — | astra_1fps_medium | 51 | 80% | 64% | 79% | 58% | 73% | 92% | 0.12 | 0.22 | 0.16 | 0.56 | 0.00 | 0.59 | 2 |
+| RF-DETR Large (calibrated) | ByteTrack | — | astra_1fps_r3 | 52 | 80% | 64% | 79% | 58% | 73% | 92% | 0.12 | 0.22 | 0.16 | 0.56 | 0.00 | 0.59 | 2 |
+| YOLO11s 640 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r2 | 54 | 73% | 57% | 78% | 55% | 70% | 96% | 0.12 | 0.22 | 0.16 | 0.40 | 0.11 | 0.57 | 13 |
+| YOLO11s 640 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_medium | 51 | 73% | 56% | 76% | 50% | 70% | 96% | 0.12 | 0.22 | 0.16 | 0.48 | 0.11 | 0.57 | 13 |
+| YOLO11s 640 | BoT-SORT (ultralytics) | YOLO features (model: auto) | astra_1fps_r3 | 51 | 73% | 56% | 76% | 50% | 70% | 96% | 0.12 | 0.22 | 0.16 | 0.48 | 0.11 | 0.57 | 13 |
+| RF-DETR Large | BoT-SORT | — | astra_1fps_medium | 24 | 50% | 47% | 93% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 1 |
+| RF-DETR Large | BoT-SORT | — | astra_1fps_r2 | 24 | 50% | 47% | 93% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 1 |
+| RF-DETR Large | BoT-SORT | — | astra_1fps_r3 | 24 | 50% | 47% | 93% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 1 |
+| RF-DETR Large | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 25 | 50% | 47% | 93% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 24 |
+| RF-DETR Large | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 25 | 50% | 47% | 93% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 24 |
+| RF-DETR Large | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 25 | 50% | 47% | 93% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 24 |
+| RF-DETR Large | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 25 | 50% | 47% | 93% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 51 |
+| RF-DETR Large | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 25 | 50% | 47% | 93% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 51 |
+| RF-DETR Large | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 25 | 50% | 47% | 93% | 54% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 51 |
+| RF-DETR Large | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 25 | 50% | 46% | 93% | 53% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 189 |
+| RF-DETR Large | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 26 | 50% | 44% | 88% | 39% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 189 |
+| RF-DETR Large | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 26 | 50% | 44% | 88% | 39% | 50% | 100% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.46 | 189 |
+| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps_medium | 28 | 53% | 44% | 82% | 50% | 50% | 94% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.43 | 2 |
+| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps_r3 | 28 | 53% | 44% | 82% | 50% | 50% | 94% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.43 | 2 |
+| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 24 | 50% | 41% | 82% | 56% | 47% | 93% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.43 | 33 |
+| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 24 | 50% | 41% | 82% | 56% | 47% | 93% | 0.11 | 0.11 | 0.11 | 0.67 | 0.00 | 0.43 | 33 |
+| RF-DETR Large 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 28 | 60% | 53% | 89% | 74% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 25 |
+| RF-DETR Large 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 28 | 60% | 53% | 89% | 74% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 25 |
+| RF-DETR Large 1024 | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 28 | 60% | 53% | 89% | 74% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 25 |
+| RF-DETR Large 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 28 | 60% | 53% | 89% | 74% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 52 |
+| RF-DETR Large 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 28 | 60% | 53% | 89% | 74% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 52 |
+| RF-DETR Large 1024 | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 28 | 60% | 53% | 89% | 74% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 52 |
+| RF-DETR Large 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 29 | 60% | 53% | 88% | 73% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 195 |
+| RF-DETR Large 1024 | BoT-SORT | — | astra_1fps_medium | 29 | 60% | 53% | 88% | 72% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 1 |
+| RF-DETR Large 1024 | BoT-SORT | — | astra_1fps_r2 | 29 | 60% | 53% | 88% | 72% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 1 |
+| RF-DETR Large 1024 | BoT-SORT | — | astra_1fps_r3 | 29 | 60% | 53% | 88% | 72% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 1 |
+| RF-DETR Large 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 30 | 60% | 51% | 84% | 59% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 195 |
+| RF-DETR Large 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 30 | 60% | 51% | 84% | 59% | 57% | 94% | 0.10 | 0.11 | 0.10 | 0.74 | 0.00 | 0.50 | 195 |
+| RF-DETR Medium (calibrated) | ByteTrack [BoxMOT 25] | — | astra_1fps_r2 | 28 | 53% | 45% | 85% | 58% | 50% | 94% | 0.10 | 0.11 | 0.10 | 0.63 | 0.00 | 0.43 | 2 |
+| RF-DETR Medium (calibrated) | BoT-SORT [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 25 | 50% | 40% | 80% | 50% | 47% | 93% | 0.10 | 0.11 | 0.10 | 0.63 | 0.00 | 0.43 | 33 |
+| RF-DETR Large | OC-SORT | — | astra_1fps_medium | 41 | 70% | 56% | 81% | 64% | 60% | 86% | 0.09 | 0.11 | 0.10 | 0.50 | 0.00 | 0.56 | 1 |
+| RF-DETR Large | OC-SORT | — | astra_1fps_r2 | 41 | 70% | 56% | 81% | 64% | 60% | 86% | 0.09 | 0.11 | 0.10 | 0.50 | 0.00 | 0.56 | 1 |
+| RF-DETR Large | OC-SORT | — | astra_1fps_r3 | 41 | 70% | 56% | 81% | 64% | 60% | 86% | 0.09 | 0.11 | 0.10 | 0.50 | 0.00 | 0.56 | 1 |
+| RF-DETR Large | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 42 | 70% | 56% | 81% | 64% | 60% | 86% | 0.09 | 0.11 | 0.10 | 0.50 | 0.00 | 0.56 | 24 |
+| RF-DETR Large | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 42 | 70% | 56% | 81% | 64% | 60% | 86% | 0.09 | 0.11 | 0.10 | 0.50 | 0.00 | 0.56 | 24 |
+| RF-DETR Large | Deep OC-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 42 | 70% | 56% | 81% | 64% | 60% | 86% | 0.09 | 0.11 | 0.10 | 0.50 | 0.00 | 0.56 | 24 |
+| RF-DETR Medium 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 27 | 60% | 53% | 88% | 73% | 57% | 94% | 0.09 | 0.11 | 0.10 | 0.70 | 0.23 | 0.52 | 187 |
+| RF-DETR Medium 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 28 | 60% | 51% | 85% | 59% | 57% | 94% | 0.09 | 0.11 | 0.10 | 0.70 | 0.23 | 0.52 | 187 |
+| RF-DETR Medium 1024 | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 28 | 60% | 51% | 85% | 59% | 57% | 94% | 0.09 | 0.11 | 0.10 | 0.70 | 0.23 | 0.52 | 187 |
+| RF-DETR Small | BoT-SORT | — | astra_1fps_r2 | 25 | 37% | 35% | 94% | 33% | 37% | 100% | 0.09 | 0.11 | 0.10 | 0.60 | 0.19 | 0.35 | 1 |
+| RF-DETR Small | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 25 | 37% | 35% | 95% | 33% | 37% | 100% | 0.09 | 0.11 | 0.10 | 0.60 | 0.19 | 0.35 | 47 |
+| RF-DETR Small | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 24 | 37% | 35% | 95% | 33% | 37% | 100% | 0.09 | 0.11 | 0.10 | 0.60 | 0.19 | 0.35 | 180 |
+| RF-DETR Large | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 51 | 70% | 57% | 82% | 67% | 63% | 90% | 0.08 | 0.11 | 0.10 | 0.57 | 0.00 | 0.57 | 26 |
+| RF-DETR Large | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 51 | 70% | 57% | 82% | 67% | 63% | 90% | 0.08 | 0.11 | 0.10 | 0.57 | 0.00 | 0.57 | 26 |
+| RF-DETR Medium (calibrated) | BoostTrack [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 30 | 53% | 41% | 77% | 46% | 50% | 94% | 0.08 | 0.11 | 0.10 | 0.67 | 0.24 | 0.49 | 32 |
+| RF-DETR Small | BoT-SORT | — | astra_1fps_medium | 26 | 37% | 34% | 93% | 30% | 37% | 100% | 0.08 | 0.11 | 0.10 | 0.57 | 0.19 | 0.35 | 1 |
+| RF-DETR Small | BoT-SORT | — | astra_1fps_r3 | 26 | 37% | 34% | 93% | 30% | 37% | 100% | 0.08 | 0.11 | 0.10 | 0.57 | 0.19 | 0.35 | 1 |
+| RF-DETR Small | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 26 | 37% | 34% | 93% | 30% | 37% | 100% | 0.08 | 0.11 | 0.10 | 0.57 | 0.19 | 0.35 | 47 |
+| RF-DETR Small | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 26 | 37% | 34% | 93% | 30% | 37% | 100% | 0.08 | 0.11 | 0.10 | 0.57 | 0.19 | 0.35 | 47 |
+| RF-DETR Small | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 25 | 37% | 34% | 93% | 30% | 37% | 100% | 0.08 | 0.11 | 0.10 | 0.57 | 0.19 | 0.35 | 180 |
+| RF-DETR Small | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 25 | 37% | 34% | 93% | 30% | 37% | 100% | 0.08 | 0.11 | 0.10 | 0.57 | 0.19 | 0.35 | 180 |
+| RF-DETR Large | BoostTrack++ | OSNet x0.25 MSMT17 | astra_1fps_r2 | 72 | 77% | 62% | 82% | 59% | 73% | 96% | 0.08 | 0.11 | 0.09 | 0.64 | 0.27 | 0.65 | 29 |
+| RF-DETR Large | ByteTrack | — | astra_1fps_medium | 41 | 73% | 62% | 85% | 72% | 70% | 96% | 0.08 | 0.11 | 0.09 | 0.64 | 0.00 | 0.58 | 2 |
+| RF-DETR Large | ByteTrack | — | astra_1fps_r2 | 41 | 73% | 62% | 85% | 72% | 70% | 96% | 0.08 | 0.11 | 0.09 | 0.64 | 0.00 | 0.58 | 2 |
+| RF-DETR Large | ByteTrack | — | astra_1fps_r3 | 41 | 73% | 62% | 85% | 72% | 70% | 96% | 0.08 | 0.11 | 0.09 | 0.64 | 0.00 | 0.58 | 2 |
+| RF-DETR Medium | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_medium | 25 | 50% | 44% | 89% | 73% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.43 | 183 |
+| RF-DETR Medium | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r2 | 25 | 50% | 44% | 89% | 73% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.43 | 183 |
+| RF-DETR Medium | BoT-SORT | CLIP-ReID Market1501 | astra_1fps_r3 | 25 | 50% | 44% | 89% | 73% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.43 | 183 |
+| RF-DETR Medium | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_medium | 25 | 50% | 44% | 88% | 71% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.43 | 24 |
+| RF-DETR Medium | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 25 | 50% | 44% | 88% | 71% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.43 | 24 |
+| RF-DETR Medium | BoT-SORT | OSNet x0.25 MSMT17 | astra_1fps_r3 | 25 | 50% | 44% | 88% | 71% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.43 | 24 |
+| RF-DETR Medium | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_medium | 25 | 50% | 44% | 88% | 71% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.43 | 47 |
+| RF-DETR Medium | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r2 | 25 | 50% | 44% | 88% | 71% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.43 | 47 |
+| RF-DETR Medium | BoT-SORT | OSNet x1.0 MSMT17 | astra_1fps_r3 | 25 | 50% | 44% | 88% | 71% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.43 | 47 |
+| RF-DETR Medium | BoT-SORT | — | astra_1fps_medium | 26 | 50% | 43% | 86% | 73% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.41 | 1 |
+| RF-DETR Medium | BoT-SORT | — | astra_1fps_r2 | 26 | 50% | 43% | 86% | 73% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.41 | 1 |
+| RF-DETR Medium | BoT-SORT | — | astra_1fps_r3 | 26 | 50% | 43% | 86% | 73% | 47% | 93% | 0.08 | 0.11 | 0.09 | 0.82 | 0.00 | 0.41 | 1 |
+| YOLO11m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r2 | 29 | 50% | 40% | 81% | 51% | 47% | 93% | 0.07 | 0.11 | 0.09 | 0.43 | 0.23 | 0.45 | 1 |
+| YOLO11m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_medium | 28 | 50% | 40% | 79% | 45% | 47% | 93% | 0.07 | 0.11 | 0.09 | 0.52 | 0.23 | 0.45 | 1 |
+| YOLO11m 1280 | OC-SORT [BoxMOT 25] | — | astra_1fps_r3 | 28 | 50% | 40% | 79% | 45% | 47% | 93% | 0.07 | 0.11 | 0.09 | 0.52 | 0.23 | 0.45 | 1 |
+| RF-DETR Large | StrongSORT | OSNet x0.25 MSMT17 | astra_1fps_r2 | 51 | 67% | 55% | 82% | 53% | 60% | 90% | 0.00 | 0.00 | 0.00 | 0.50 | 0.00 | 0.57 | 26 |
+| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps_r2 | 31 | 53% | 38% | 71% | 40% | 47% | 88% | 0.00 | 0.00 | 0.00 | 0.63 | 0.00 | 0.47 | 1 |
+| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps_medium | 32 | 53% | 36% | 68% | 32% | 47% | 88% | 0.00 | 0.00 | 0.00 | 0.63 | 0.00 | 0.47 | 1 |
+| RF-DETR Medium (calibrated) | OC-SORT [BoxMOT 25] | — | astra_1fps_r3 | 32 | 53% | 36% | 68% | 32% | 47% | 88% | 0.00 | 0.00 | 0.00 | 0.63 | 0.00 | 0.47 | 1 |
+| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps_medium | 18 | 33% | 31% | 94% | 17% | 33% | 100% | 0.00 | 0.00 | 0.00 | 0.62 | 0.28 | 0.41 | 0 |
+| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps_r2 | 18 | 33% | 31% | 94% | 17% | 33% | 100% | 0.00 | 0.00 | 0.00 | 0.62 | 0.28 | 0.41 | 0 |
+| RF-DETR Large 1024 (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps_r3 | 18 | 33% | 31% | 94% | 17% | 33% | 100% | 0.00 | 0.00 | 0.00 | 0.62 | 0.28 | 0.41 | 0 |
+| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps_medium | 21 | 33% | 30% | 91% | 17% | 33% | 100% | 0.00 | 0.00 | 0.00 | 0.60 | 0.21 | 0.41 | 0 |
+| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps_r2 | 21 | 33% | 30% | 91% | 17% | 33% | 100% | 0.00 | 0.00 | 0.00 | 0.60 | 0.21 | 0.41 | 0 |
+| RF-DETR Medium (calibrated) | SFSORT [BoxMOT 25] | — | astra_1fps_r3 | 21 | 33% | 30% | 91% | 17% | 33% | 100% | 0.00 | 0.00 | 0.00 | 0.60 | 0.21 | 0.41 | 0 |
+| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 18 | 30% | 28% | 93% | 17% | 30% | 100% | 0.00 | 0.00 | 0.00 | 0.56 | 0.24 | 0.36 | 34 |
+| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 18 | 30% | 28% | 93% | 17% | 30% | 100% | 0.00 | 0.00 | 0.00 | 0.56 | 0.24 | 0.36 | 34 |
+| RF-DETR Medium (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 18 | 30% | 28% | 93% | 17% | 30% | 100% | 0.00 | 0.00 | 0.00 | 0.56 | 0.24 | 0.36 | 34 |
+| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_medium | 17 | 30% | 28% | 92% | 17% | 30% | 100% | 0.00 | 0.00 | 0.00 | 0.59 | 0.24 | 0.36 | 32 |
+| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r2 | 17 | 30% | 28% | 92% | 17% | 30% | 100% | 0.00 | 0.00 | 0.00 | 0.59 | 0.24 | 0.36 | 32 |
+| RF-DETR Large 1024 (calibrated) | OccluBoost [BoxMOT 25] | OSNet x0.25 MSMT17 | astra_1fps_r3 | 17 | 30% | 28% | 92% | 17% | 30% | 100% | 0.00 | 0.00 | 0.00 | 0.59 | 0.24 | 0.36 | 32 |

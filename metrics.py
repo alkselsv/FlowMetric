@@ -4,8 +4,8 @@
 GT persons are tied to predicted IDs through head labels on two reference frames
 (First.png = frame 0, Second.png = frame 86). Metrics:
   - anchoring:  GT people found by the detector on the reference frames
-  - identity:   predicted ID count vs 30, ID continuity of mapped people
-  - roles:      staff/customer accuracy on mapped people
+  - identity:   predicted ID count and end-to-end ID continuity
+  - roles:      end-to-end staff/customer accuracy and staff detection counts
   - events:     P/R/F1 + timing error; strict = type + people + time, loose = type + time
   - states:     temporal IoU for waiting / consuming
 """
@@ -73,15 +73,37 @@ def map_gt_to_pred(gt: dict[str, Any], tracks: dict[str, Any]) -> dict[int, str]
     return mapping
 
 
+def gt_person_ids(gt: dict[str, Any]) -> set[int]:
+    """Return every person explicitly referenced by the ground truth.
+
+    Anchor labels are the primary source, but collecting references from roles,
+    events and states keeps the scorer correct for sparse/non-contiguous labels
+    and for ground truth where a person has no usable anchor.
+    """
+    people: set[int] = set()
+    for frame, points in gt.get("anchors", {}).items():
+        if str(frame).isdigit():
+            people.update(int(person) for person in points)
+    people.update(int(person) for person in gt.get("staff", []))
+    for event in gt.get("events", []):
+        for field in ("person", "staff", "customer"):
+            if event.get(field) is not None:
+                people.add(int(event[field]))
+    for state in gt.get("states", []):
+        persons = state.get("persons", [state.get("person")])
+        people.update(int(person) for person in persons if person is not None)
+    return people
+
+
 def gt_presence(gt: dict[str, Any]) -> dict[int, tuple[float, float]]:
     """Expected on-screen interval per GT person (whole clip unless an event says otherwise)."""
     dur = gt["duration_s"]
-    pres = {p: [0.0, dur] for p in range(1, 31)}
-    for e in gt["events"]:
+    pres = {person: [0.0, dur] for person in gt_person_ids(gt)}
+    for e in gt.get("events", []):
         if e["type"] == "exit":
-            pres[e["person"]][1] = e["t"]
+            pres[int(e["person"])][1] = e["t"]
         if e["type"] == "leave_kitchen":
-            pres[e["person"]][0] = e["t"]
+            pres[int(e["person"])][0] = e["t"]
     return {p: (a, b) for p, (a, b) in pres.items()}
 
 
@@ -142,42 +164,81 @@ def score_events(
     }
 
 
+def _merge_intervals(intervals: list[tuple[float, float]]) -> list[tuple[float, float]]:
+    """Return the union of positive-length intervals as disjoint intervals."""
+    valid = sorted((float(start), float(end)) for start, end in intervals if end > start)
+    merged: list[list[float]] = []
+    for start, end in valid:
+        if not merged or start > merged[-1][1]:
+            merged.append([start, end])
+        else:
+            merged[-1][1] = max(merged[-1][1], end)
+    return [(start, end) for start, end in merged]
+
+
+def _interval_length(intervals: list[tuple[float, float]]) -> float:
+    return sum(end - start for start, end in _merge_intervals(intervals))
+
+
+def _intersection_length(a: list[tuple[float, float]], b: list[tuple[float, float]]) -> float:
+    """Measure the intersection of two interval unions without double counting."""
+    left, right = _merge_intervals(a), _merge_intervals(b)
+    total = 0.0
+    i = j = 0
+    while i < len(left) and j < len(right):
+        total += max(0.0, min(left[i][1], right[j][1]) - max(left[i][0], right[j][0]))
+        if left[i][1] <= right[j][1]:
+            i += 1
+        else:
+            j += 1
+    return total
+
+
 def score_states(gt: dict[str, Any], pred_states: list[dict[str, Any]], pred2gt: dict[str, int]) -> dict[str, Any]:
-    def intervals(states: list[dict[str, Any]], to_gt: bool) -> dict[tuple[str, int], list[tuple[float, float]]]:
-        out: dict[tuple[str, int], list[tuple[float, float]]] = {}
-        for s in states:
-            persons = s.get("persons", [s.get("person")])
-            for p in persons:
-                pid = pred2gt.get(str(p)) if to_gt else p
-                if pid is None:
+    # Tag identities so an unmapped predicted ID cannot collide with a GT ID.
+    PersonKey = tuple[str, int | str]
+
+    def intervals(
+        states: list[dict[str, Any]], to_gt: bool,
+    ) -> dict[tuple[str, PersonKey], list[tuple[float, float]]]:
+        out: dict[tuple[str, PersonKey], list[tuple[float, float]]] = {}
+        for state in states:
+            persons = state.get("persons", [state.get("person")])
+            for person in persons:
+                if person is None:
                     continue
-                out.setdefault((s["type"], pid), []).append((s["start"], s["end"]))
+                if to_gt:
+                    mapped = pred2gt.get(str(person))
+                    person_key: PersonKey = (
+                        ("gt", int(mapped)) if mapped is not None else ("pred", str(person))
+                    )
+                else:
+                    person_key = ("gt", int(person))
+                out.setdefault((state["type"], person_key), []).append(
+                    (state["start"], state["end"])
+                )
         return out
 
-    def length(iv: list[tuple[float, float]]) -> float:
-        iv = sorted(iv)
-        total, cur = 0.0, None
-        for a, b in iv:
-            if cur is None or a > cur[1]:
-                if cur:
-                    total += cur[1] - cur[0]
-                cur = [a, b]
-            else:
-                cur[1] = max(cur[1], b)
-        return total + (cur[1] - cur[0] if cur else 0.0)
-
-    def inter(a: list[tuple[float, float]], b: list[tuple[float, float]]) -> float:
-        return sum(max(0.0, min(x2, y2) - max(x1, y1)) for x1, x2 in a for y1, y2 in b)
-
-    G, P = intervals(gt["states"], False), intervals(pred_states, True)
+    G, P = intervals(gt.get("states", []), False), intervals(pred_states, True)
     res: dict[str, Any] = {}
     for typ in sorted({k[0] for k in G} | {k[0] for k in P}):
         keys = {k for k in G if k[0] == typ} | {k for k in P if k[0] == typ}
-        i_sum = sum(inter(G.get(k, []), P.get(k, [])) for k in keys)
-        u_sum = sum(length(G.get(k, [])) + length(P.get(k, [])) - inter(G.get(k, []), P.get(k, [])) for k in keys)
-        res[typ] = {"tiou": round(i_sum / u_sum, 3) if u_sum else None,
-                    "gt_people": sum(1 for k in G if k[0] == typ),
-                    "pred_people_mapped": sum(1 for k in P if k[0] == typ)}
+        i_sum = sum(_intersection_length(G.get(k, []), P.get(k, [])) for k in keys)
+        u_sum = sum(
+            _interval_length(G.get(k, []))
+            + _interval_length(P.get(k, []))
+            - _intersection_length(G.get(k, []), P.get(k, []))
+            for k in keys
+        )
+        tiou = i_sum / u_sum if u_sum else 0.0
+        # Guard against tiny floating-point excursions outside the metric range.
+        tiou = min(1.0, max(0.0, tiou))
+        res[typ] = {
+            "tiou": round(tiou, 3),
+            "gt_people": sum(1 for k in G if k[0] == typ),
+            "pred_people_mapped": sum(1 for k in P if k[0] == typ and k[1][0] == "gt"),
+            "pred_people_unmapped": sum(1 for k in P if k[0] == typ and k[1][0] == "pred"),
+        }
     return res
 
 
@@ -185,36 +246,67 @@ def run_benchmark(tracks: dict[str, Any], events: dict[str, Any], gt: dict[str, 
     fps = tracks["fps"]
     gt2pred = map_gt_to_pred(gt, tracks)
     pred2gt = {v: k for k, v in gt2pred.items()}
-    n_people = sum(len(v) for k, v in gt["anchors"].items() if k.isdigit())
+    gt_people = gt_person_ids(gt)
+    n_people = len(gt_people)
 
     # identity continuity: share of expected on-screen time covered by the mapped ID
     pres = gt_presence(gt)
-    cont = []
+    continuity_by_person = {person: 0.0 for person in gt_people}
     for p, gid in gt2pred.items():
         t = tracks["tracks"][gid]
         a, b = pres[p]
         covered = sum(1 for f in t["frames"] if a <= f / fps <= b) / max(1.0, (b - a) * fps)
-        cont.append(min(1.0, covered))
+        continuity_by_person[p] = min(1.0, covered)
+    mapped_continuity = [continuity_by_person[p] for p in gt2pred]
+    mapped_continuity_mean = float(np.mean(mapped_continuity)) if mapped_continuity else 0.0
+    continuity_coverage = len(gt2pred) / n_people if n_people else 0.0
     long_ids = sum(1 for t in tracks["tracks"].values() if (t["frames"][-1] - t["frames"][0]) / fps >= 0.5)
 
-    staff = set(gt["staff"])
-    roles = events.get("roles", {})
-    role_hits = [
-        (roles.get(gid, "") == ("staff" if p in staff else "customer"))
+    staff = {int(person) for person in gt.get("staff", [])}
+    roles = {str(gid): role for gid, role in events.get("roles", {}).items()}
+    mapped_role_hits = [
+        (roles.get(str(gid), "") == ("staff" if p in staff else "customer"))
         for p, gid in gt2pred.items()
     ]
-    staff_pred = {p for p, gid in gt2pred.items() if roles.get(gid) == "staff"}
+    role_hits = sum(mapped_role_hits)
+    conditional_role_accuracy = float(np.mean(mapped_role_hits)) if mapped_role_hits else 0.0
+    role_coverage = len(gt2pred) / n_people if n_people else 0.0
+    staff_pred_mapped = {
+        person for person, gid in gt2pred.items() if roles.get(str(gid)) == "staff"
+    }
+    unmapped_pred_staff = {
+        gid for gid, role in roles.items() if role == "staff" and gid not in pred2gt
+    }
+    staff_tp = len(staff_pred_mapped & staff)
 
     return {
-        "anchoring": {"mapped": len(gt2pred), "gt_people": n_people, "unmapped": sorted(set(range(1, n_people + 1)) - set(gt2pred))},
+        "anchoring": {
+            "mapped": len(gt2pred),
+            "gt_people": n_people,
+            "unmapped": sorted(gt_people - set(gt2pred)),
+        },
         "identity": {
             "pred_ids": len(tracks["tracks"]), "pred_ids_ge_0.5s": long_ids, "gt_people": n_people,
-            "continuity_mean": round(float(np.mean(cont)), 3) if cont else 0.0,
-            "continuity_staff": round(float(np.mean([c for (p, _), c in zip(gt2pred.items(), cont) if p in staff])), 3) if staff & set(gt2pred) else None,
+            "continuity_mean": round(float(np.mean(list(continuity_by_person.values()))), 3) if gt_people else 0.0,
+            "continuity_mapped": round(mapped_continuity_mean, 3),
+            "continuity_mean_mapped": round(mapped_continuity_mean, 3),
+            "continuity_mapped_people": len(gt2pred),
+            "continuity_coverage": round(continuity_coverage, 3),
+            "continuity_staff": round(float(np.mean([continuity_by_person[p] for p in staff])), 3) if staff else None,
+            "continuity_staff_mapped": round(
+                float(np.mean([continuity_by_person[p] for p in staff & set(gt2pred)])), 3
+            ) if staff & set(gt2pred) else None,
         },
         "roles": {
-            "accuracy": round(float(np.mean(role_hits)), 3) if role_hits else 0.0,
-            "staff_tp": len(staff_pred & staff), "staff_fp": len(staff_pred - staff), "staff_fn": len((staff & set(gt2pred)) - staff_pred),
+            "accuracy": round(role_hits / n_people, 3) if n_people else 0.0,
+            "accuracy_conditional": round(conditional_role_accuracy, 3),
+            "accuracy_mapped": round(conditional_role_accuracy, 3),
+            "mapped": len(gt2pred),
+            "coverage": round(role_coverage, 3),
+            "staff_tp": staff_tp,
+            "staff_fp": len(staff_pred_mapped - staff) + len(unmapped_pred_staff),
+            "staff_fn": len(staff) - staff_tp,
+            "staff_unmapped_pred": len(unmapped_pred_staff),
         },
         "events_strict": score_events(gt["events"], events["events"], pred2gt, tol=tol, strict=True),
         "events_loose": score_events(gt["events"], events["events"], pred2gt, tol=tol, strict=False),
@@ -229,8 +321,10 @@ def print_report(r: dict[str, Any]) -> None:
     staff_cont = "n/a" if i["continuity_staff"] is None else f"{i['continuity_staff']:.0%}"
     print(f"Anchoring  : {a['mapped']}/{a['gt_people']} GT people matched on reference frames (missing: {a['unmapped']})")
     print(f"Identity   : {i['pred_ids']} predicted IDs ({i['pred_ids_ge_0.5s']} ≥0.5s) vs {i['gt_people']} people; "
-          f"continuity {i['continuity_mean']:.0%} (staff {staff_cont})")
-    print(f"Roles      : accuracy {ro['accuracy']:.0%}; staff TP {ro['staff_tp']} FP {ro['staff_fp']} FN {ro['staff_fn']}")
+          f"continuity {i['continuity_mean']:.0%} end-to-end, {i['continuity_mapped']:.0%} mapped "
+          f"(coverage {i['continuity_coverage']:.0%}, staff {staff_cont})")
+    print(f"Roles      : accuracy {ro['accuracy']:.0%} end-to-end, {ro['accuracy_conditional']:.0%} mapped "
+          f"(coverage {ro['coverage']:.0%}); staff TP {ro['staff_tp']} FP {ro['staff_fp']} FN {ro['staff_fn']}")
     for name in ("events_strict", "events_loose"):
         e = r[name]
         print(f"{'Events ' + name.split('_')[1]:11s}: P {e['precision']:.2f} R {e['recall']:.2f} F1 {e['f1']:.2f} "

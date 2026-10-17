@@ -1,12 +1,30 @@
 # Benchmark: эталон для клипа `data/hf_*.mp4`
 
-Источник: [nofriendsatall/video_analytics](https://github.com/nofriendsatall/video_analytics).
+Источник исходной разметки: [nofriendsatall/video_analytics](https://github.com/nofriendsatall/video_analytics).
 
 | Файл | Что это |
 |---|---|
-| `Timings.txt` | Исходная разметка: сотрудники, события с таймингами, интервалы потребления |
+| `Timings.txt` | Сотрудники, события с таймингами и интервалы потребления |
 | `First.png`, `Second.png` | Кадры 0 и 86 с номерами людей над головами |
-| `ground_truth.json` | Машиночитаемая версия: якоря голов (координаты 1920×1080, кадры 0 и 86), роли, события, состояния |
+| `ground_truth.json` | Якоря голов в координатах 1920×1080, роли, события и состояния |
 
-Сравнение с эталоном: `python metrics.py --tracks data/output/tracks.json --events data/output/events.json`
-(или `run_hybrid(..., gt=...)` в `track.py`). Результаты экспериментов — в [`../reports/EXPERIMENTS.md`](../reports/EXPERIMENTS.md).
+Запуск оценки:
+
+```bash
+python metrics.py \
+  --tracks data/output/tracks.json \
+  --events data/output/events.json \
+  --gt benchmark/ground_truth.json
+```
+
+`metrics.py` сначала связывает GT-людей с предсказанными ID по якорям на кадрах 0 и 86, затем считает:
+
+- `continuity_mean` — end-to-end покрытие присутствия всех GT-людей одним главным ID; несопоставленные люди дают ноль;
+- `continuity_mapped` — та же величина только для сопоставленных людей, вместе с coverage;
+- точность ролей end-to-end и условную точность только на mapped-подмножестве;
+- strict события (тип + участники + время ±1 с) и loose события (тип + время);
+- tIoU ожидания/потребления как IoU объединений временных интервалов без двойного учёта перекрытий. Интервалы несопоставленных предсказанных ID остаются false positive, а не исчезают из оценки.
+
+Поэтому старые значения continuity `0.92` и ролей `100%`, рассчитанные только на сопоставленных людях, нельзя напрямую сравнивать с основными end-to-end колонками новых CSV.
+
+Актуальные результаты и ограничения одного короткого клипа описаны в [`../reports/EXPERIMENTS.md`](../reports/EXPERIMENTS.md).

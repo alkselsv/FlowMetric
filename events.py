@@ -25,9 +25,13 @@ MOVE_SPEED = 0.2  # body heights per second
 STATIONARY_SPEED = 0.12
 SEATED_MIN_S = 2.0
 REACQUIRE_S = 1.5  # a birth this soon after a nearby death is the same person
+EXIT_MAX_GAP_S = 0.2  # larger terminal observation gaps are not a continuous exit track
+EXIT_MIN_COVERAGE = 0.5
 SERVICE_DIST = 0.9  # staff-customer center distance, in staff box heights
 SERVICE_MIN_S = 1.0
 SERVICE_GAP_S = 0.5
+SERVICE_MIN_OBSERVATIONS = 3
+SERVICE_MIN_COVERAGE = 0.5
 TABLE_GAP = 0.35  # max staff-box to customer-table gap during service, in staff box heights
 TABLE_REACH = 0.3  # seated "lap point" may lie this far (customer heights) outside a table box
 
@@ -160,6 +164,61 @@ def runs(mask: np.ndarray) -> list[tuple[int, int]]:
     return out
 
 
+def _service_runs(
+    labels: list[str | None], frames: np.ndarray, fps: float
+) -> list[tuple[int, int, str]]:
+    """Categorical service runs, with only short same-customer gaps bridged.
+
+    Track observations are not necessarily present on every video frame.  A long
+    gap in those observations must therefore split a service even when the
+    customer label happens to be the same on both sides.
+    """
+    if not labels:
+        return []
+
+    bridged = list(labels)
+    max_gap_frames = max(1, int(SERVICE_GAP_S * fps))
+    missing = np.asarray([label is None for label in bridged], dtype=bool)
+    for a, b in runs(missing):
+        left, right = a - 1, b + 1
+        if (
+            left >= 0
+            and right < len(bridged)
+            and bridged[left] is not None
+            and bridged[left] == bridged[right]
+            and frames[b] - frames[a] + 1 <= max_gap_frames
+            and frames[right] - frames[left] <= max_gap_frames
+            and np.all(np.diff(frames[left : right + 1]) <= max_gap_frames)
+        ):
+            bridged[a : b + 1] = [bridged[left]] * (b - a + 1)
+
+    out: list[tuple[int, int, str]] = []
+    start: int | None = None
+    current: str | None = None
+    for i, label in enumerate(bridged):
+        observation_gap = i > 0 and frames[i] - frames[i - 1] > max_gap_frames
+        if label is None or observation_gap or (current is not None and label != current):
+            if start is not None and current is not None:
+                out.append((start, i - 1, current))
+            start = i if label is not None else None
+            current = label
+        elif start is None:
+            start, current = i, label
+    if start is not None and current is not None:
+        out.append((start, len(bridged) - 1, current))
+    return out
+
+
+def _valid_service_run(frames: np.ndarray, a: int, b: int, fps: float) -> bool:
+    """Reject short or poorly observed candidate service intervals."""
+    duration = (frames[b] - frames[a]) / fps
+    if duration < SERVICE_MIN_S or b - a + 1 < SERVICE_MIN_OBSERVATIONS:
+        return False
+    expected = int(frames[b] - frames[a]) + 1
+    coverage = (b - a + 1) / max(expected, 1)
+    return coverage >= SERVICE_MIN_COVERAGE
+
+
 # ---------------------------------------------------------------------------
 # Roles (fallback when Astra did not label a track)
 # ---------------------------------------------------------------------------
@@ -230,6 +289,20 @@ def _reacquired_death(tr: Track, tracks: list[Track]) -> bool:
     return False
 
 
+def _reliable_exit_tail(tr: Track) -> bool:
+    """Whether the track ends with a dense, continuous segment long enough to trust."""
+    max_gap_frames = max(1, int(EXIT_MAX_GAP_S * tr.fps))
+    start = len(tr.frames) - 1
+    while start > 0 and tr.frames[start] - tr.frames[start - 1] <= max_gap_frames:
+        start -= 1
+
+    span_frames = int(tr.frames[-1] - tr.frames[start])
+    if span_frames / tr.fps < MIN_TRACK_S:
+        return False
+    coverage = (len(tr.frames) - start) / (span_frames + 1)
+    return coverage >= EXIT_MIN_COVERAGE
+
+
 def extract_events(data: dict[str, Any], cam: dict[str, Any]) -> dict[str, Any]:
     fps = float(data["fps"])
     W, H, n_frames = data["width"], data["height"], data["n_frames"]
@@ -262,11 +335,16 @@ def extract_events(data: dict[str, Any], cam: dict[str, Any]) -> dict[str, Any]:
                 events.append({"t": round(tr.frames[i] / fps, 3), "type": "enter", "person": tr.gid})
 
         # leave_kitchen: staff appears out of the (unseen) kitchen
-        if born_mid and in_zone(foot(tr.boxes[0]), cam.get("kitchen")) and not _reacquired_birth(tr, all_tracks):
+        if (
+            tr.role == "staff"
+            and born_mid
+            and in_zone(foot(tr.boxes[0]), cam.get("kitchen"))
+            and not _reacquired_birth(tr, all_tracks)
+        ):
             events.append({"t": round(tr.t0, 3), "type": "leave_kitchen", "person": tr.gid})
 
         # exit: track ends at the frame edge or in the doorway, and nobody picks it up
-        if tr.frames[-1] < n_frames - 1:
+        if tr.frames[-1] < n_frames - 1 and _reliable_exit_tail(tr):
             b = tr.boxes[-1]
             cx = (b[0] + b[2]) / 2
             at_edge = cx < margin * W or cx > (1 - margin) * W or b[3] > (1 - margin) * H and b[1] > 0.5 * H
@@ -285,14 +363,30 @@ def extract_events(data: dict[str, Any], cam: dict[str, Any]) -> dict[str, Any]:
 
     # service: staff stops next to a seated customer
     customers = [t for t in tracks if t.role == "customer"]
+    # A customer visible from the beginning may already be seated when the clip
+    # starts.  A customer first seen mid-video must have an observed seated
+    # transition before they are eligible for a service event.
+    eligible_from = {
+        c.gid: 0 if c.frames[0] == 0 else int(c.frames[seat_idx[c.gid]])
+        for c in customers
+        if c.frames[0] == 0 or c.gid in seat_idx
+    }
+    cust_table = {
+        c.gid: home_table(c, tables, 0 if c.frames[0] == 0 else seat_idx[c.gid])
+        for c in customers
+        if c.gid in eligible_from
+    } if tables else {}
+    eligible_customers = [
+        c for c in customers
+        if c.gid in eligible_from and (not tables or cust_table[c.gid] is not None)
+    ]
     cust_pos = {  # head point: the table side a waiter actually approaches
         c.gid: dict(zip(
             c.frames.tolist(),
             np.c_[(c.boxes[:, 0] + c.boxes[:, 2]) / 2, c.boxes[:, 1] + 0.12 * c.heights],
         ))
-        for c in customers
+        for c in eligible_customers
     }
-    cust_table = {c.gid: home_table(c, tables, seat_idx.get(c.gid, 0)) for c in customers} if tables else {}
     services: list[tuple[str, str, float, float]] = []
     for s in (t for t in tracks if t.role == "staff"):
         v = s.speed()
@@ -301,6 +395,8 @@ def extract_events(data: dict[str, Any], cam: dict[str, Any]) -> dict[str, Any]:
             best, best_d = None, SERVICE_DIST
             if v[i] < MOVE_SPEED:
                 for gid, pos in cust_pos.items():
+                    if f < eligible_from[gid]:
+                        continue
                     p = pos.get(f)
                     if p is None:
                         continue
@@ -312,19 +408,9 @@ def extract_events(data: dict[str, Any], cam: dict[str, Any]) -> dict[str, Any]:
                         best, best_d = gid, d
             near.append(best)
 
-        mask = np.array([n is not None for n in near])
-        # bridge short gaps
-        gap = int(SERVICE_GAP_S * fps)
-        for a, b_ in runs(~mask):
-            if 0 < a and b_ < len(mask) - 1 and (b_ - a + 1) <= gap:
-                mask[a : b_ + 1] = True
-        for a, b_ in runs(mask):
-            if (s.frames[b_] - s.frames[a]) / fps < SERVICE_MIN_S:
+        for a, b_, cust in _service_runs(near, s.frames, fps):
+            if not _valid_service_run(s.frames, a, b_, fps):
                 continue
-            who = Counter(n for n in near[a : b_ + 1] if n).most_common(1)
-            if not who:
-                continue
-            cust = who[0][0]
             ts, te = s.frames[a] / fps, s.frames[b_] / fps
             services.append((s.gid, cust, ts, te))
             if s.frames[a] > 0:

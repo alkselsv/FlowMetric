@@ -32,10 +32,14 @@ def detect_tables(
     min_support: float = 0.3,
     match_iou: float = 0.4,
 ) -> list[dict]:
+    if step <= 0:
+        raise ValueError("step must be positive")
+    cap = cv2.VideoCapture(str(video))
+    if not cap.isOpened():
+        raise RuntimeError(f"Cannot open {video}")
     from ultralytics import YOLO
 
     model = YOLO(weights_path(model_name))
-    cap = cv2.VideoCapture(str(video))
     clusters: list[list[np.ndarray]] = []
     n_samples, i = 0, 0
     while True:
@@ -60,6 +64,8 @@ def detect_tables(
                 clusters += [[b] for b in boxes]
         i += 1
     cap.release()
+    if n_samples == 0:
+        raise RuntimeError(f"No frames decoded from {video}")
 
     tables = [
         {"box": np.median(c, axis=0).round(1).tolist(), "support": round(len(c) / n_samples, 2)}
@@ -90,8 +96,20 @@ def main() -> None:
     p.add_argument("--preview", type=Path, default=ROOT / "data" / "output" / "tables.jpg")
     args = p.parse_args()
 
+    if args.video is None or not args.video.exists():
+        raise SystemExit("No input video. Pass --video path/to/video.mp4")
+    cap = cv2.VideoCapture(str(args.video))
+    if not cap.isOpened():
+        raise SystemExit(f"Cannot open {args.video}")
+    resolution = [int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))]
+    cap.release()
+
     tables = detect_tables(args.video)
-    args.out.write_text(json.dumps({"source": args.video.name, "tables": tables}, indent=2), encoding="utf-8")
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    args.out.write_text(
+        json.dumps({"source": args.video.name, "resolution": resolution, "tables": tables}, indent=2),
+        encoding="utf-8",
+    )
     print(f"{len(tables)} tables → {args.out}")
 
     cap = cv2.VideoCapture(str(args.video))
