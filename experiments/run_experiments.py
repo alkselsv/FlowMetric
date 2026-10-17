@@ -262,6 +262,17 @@ BOXMOT_TRACKERS = {
     "strongsort+osnet025": ("StrongSORT", "OSNet x0.25 MSMT17"),
     "boosttrack+osnet025": ("BoostTrack++", "OSNet x0.25 MSMT17"),
 }
+# Computed by experiments/boxmot25_tracks.py (BoxMOT 25 can't share a process with 12); here only scored.
+# "-u" = our shared thresholds instead of BoxMOT 25's MOT17-tuned defaults.
+BM25_TRACKERS = {
+    f"bm25-{key}{suffix}": (f"{label} [BoxMOT 25{', our thr' if suffix else ''}]", reid)
+    for key, label, reid in [
+        ("occluboost", "OccluBoost", "OSNet x0.25 MSMT17"), ("botsort", "BoT-SORT", "OSNet x0.25 MSMT17"),
+        ("hybridsort", "Hybrid-SORT", "OSNet x0.25 MSMT17"), ("boosttrack", "BoostTrack", "OSNet x0.25 MSMT17"),
+        ("bytetrack", "ByteTrack", "—"), ("ocsort", "OC-SORT", "—"), ("sfsort", "SFSORT", "—"),
+    ]
+    for suffix in ("", "-u")
+}
 UL_TRACKERS = {
     "ul-botsort": ("BoT-SORT (ultralytics, prod)", "—", "botsort.yaml"),
     "ul-botsort+auto": ("BoT-SORT (ultralytics)", "YOLO features (model: auto)", str(ROOT / "config" / "botsort_reid.yaml")),
@@ -312,14 +323,14 @@ def run_ultralytics(frames: list[np.ndarray], fps: float, weights: str, imgsz: i
 def stage_track(frames, fps, det_cache: dict[str, dict], trackers: list[str], ul: bool, compute: bool) -> list[dict]:
     runs = []
     for det_name, det in det_cache.items():
-        jobs = list(trackers)
+        jobs = list(trackers) + list(BM25_TRACKERS)
         if ul and det_name.startswith("yolo"):
             jobs += list(UL_TRACKERS)
         for trk in jobs:
             tag = "" if trk in UL_TRACKERS else f".w{WARMUP_FRAMES}"
             path = EXP / "tracks" / f"{det_name}__{trk}{tag}.pkl"
             if not path.exists():
-                if not compute:
+                if not compute or trk in BM25_TRACKERS:
                     continue
                 print(f"[track] {det_name} + {trk}", flush=True)
                 try:
@@ -359,6 +370,8 @@ def evaluate(run: dict, det_cache: dict, astra: dict, gt: dict, cam: dict) -> li
     det = det_cache[run["det"]]
     if run["trk"] in UL_TRACKERS:
         trk_label, reid_label, _ = UL_TRACKERS[run["trk"]]
+    elif run["trk"] in BM25_TRACKERS:
+        trk_label, reid_label = BM25_TRACKERS[run["trk"]]
     else:
         trk_label, reid_label = BOXMOT_TRACKERS[run["trk"]]
     base = {
@@ -472,10 +485,20 @@ def main() -> None:
     p.add_argument("--trackers", nargs="*", default=list(BOXMOT_TRACKERS))
     p.add_argument("--no-ul", action="store_true", help="skip ultralytics BoT-SORT reference runs")
     p.add_argument("--stages", default="detect,track,eval")
+    p.add_argument("--astra", nargs="*", default=None, help="subset of Astra variants to score (default: all)")
+    p.add_argument("--table-gap", type=float, default=None,
+                   help="score events with config/tables.json at this events.TABLE_GAP (outputs get a suffix)")
     args = p.parse_args()
 
     gt = json.loads(GT_PATH.read_text(encoding="utf-8"))
     cam = load_camera(None)
+    suffix = ""
+    if args.table_gap is not None:
+        import events
+
+        cam["tables"] = json.loads((ROOT / "config" / "tables.json").read_text(encoding="utf-8"))["tables"]
+        events.TABLE_GAP = args.table_gap
+        suffix = f"_tablegap{args.table_gap:g}"
     frames, fps = read_frames(args.video)
     print(f"video: {len(frames)} frames @ {fps:.1f} fps", flush=True)
 
@@ -485,6 +508,8 @@ def main() -> None:
         return
 
     astra = load_astra()
+    if args.astra is not None:
+        astra = {k: v for k, v in astra.items() if k in args.astra}
     print(f"[eval] {len(runs)} tracker runs x modes local + {list(astra)}", flush=True)
     rows = []
     for run in runs:
@@ -494,13 +519,13 @@ def main() -> None:
             print(f"[eval] {run['det']} + {run['trk']} FAILED: {type(e).__name__}: {e}", flush=True)
             traceback.print_exc()
 
-    out_csv = REPORTS / "experiments.csv"
+    out_csv = REPORTS / f"experiments{suffix}.csv"
     with out_csv.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]))
         w.writeheader()
         w.writerows(rows)
-    write_tables(rows, det_cache, REPORTS / "experiments_tables.md")
-    write_summary(rows, REPORTS / "experiments_summary.csv")
+    write_tables(rows, det_cache, REPORTS / f"experiments_tables{suffix}.md")
+    write_summary(rows, REPORTS / f"experiments_summary{suffix}.csv")
     print(f"[eval] {len(rows)} rows → {out_csv}", flush=True)
 
 

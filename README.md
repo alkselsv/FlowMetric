@@ -17,8 +17,9 @@ track.py                  пайплайн: детекция+трекинг → 
 astra.py                  клиент GPT-6 Astra (VseLLM / OpenAI), JSON-схема ответа
 events.py                 события и состояния по траекториям
 metrics.py                сравнение с эталоном (ID, роли, события P/R/F1, tIoU состояний)
+tables.py                 карта столов по видео (опционально для событий)
 notebook.ipynb            запуск гибрида и локального режима, сравнение
-config/                   camera.json (зоны: дверь, кухня), botsort_reid.yaml
+config/                   camera.json (зоны: дверь, кухня), tables.json, botsort_reid.yaml
 benchmark/                эталон: Timings.txt, ground_truth.json, кадры с якорями
 experiments/              сетка экспериментов (детекторы × трекеры × ReID × VLM)
 reports/                  результаты экспериментов (EXPERIMENTS.md, CSV)
@@ -55,6 +56,6 @@ python metrics.py                     # пересчитать метрики п
 | Число ID | 34 на 30 человек |
 | Точность ролей | 100% |
 
-Только локальный трекинг даёт F1 0.29 и непрерывность 0.68. Сравнение 138 конфигураций (YOLO, RF-DETR, 9 трекеров, ReID, варианты VLM) — в [`reports/EXPERIMENTS.md`](reports/EXPERIMENTS.md).
+Только локальный трекинг даёт F1 0.29 и непрерывность 0.68. Сравнение 222 конфигураций (YOLO, RF-DETR, трекеры BoxMOT 12 и 25, ReID, варианты VLM, столы) — в [`reports/EXPERIMENTS.md`](reports/EXPERIMENTS.md).
 
 Чтобы повторить эксперименты, нужны дополнительные зависимости из `requirements-experiments.txt`; порядок установки описан в отчёте.

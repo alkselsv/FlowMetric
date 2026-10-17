@@ -11,4 +11,5 @@ data/experiments/dets/
 data/experiments/tracks/
 data/experiments/*.log
 runs/
+.boxmot25/
 .DS_Store

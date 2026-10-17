@@ -28,6 +28,8 @@ REACQUIRE_S = 1.5  # a birth this soon after a nearby death is the same person
 SERVICE_DIST = 0.9  # staff-customer center distance, in staff box heights
 SERVICE_MIN_S = 1.0
 SERVICE_GAP_S = 0.5
+TABLE_GAP = 0.35  # max staff-box to customer-table gap during service, in staff box heights
+TABLE_REACH = 0.3  # seated "lap point" may lie this far (customer heights) outside a table box
 
 
 @dataclass
@@ -114,6 +116,34 @@ def in_zone(pt: np.ndarray, poly: list[list[float]] | None) -> bool:
 
 def foot(box: np.ndarray) -> np.ndarray:
     return np.array([(box[0] + box[2]) / 2, box[3]])
+
+
+def rect_gap(a: np.ndarray, b: list[float]) -> float:
+    """Euclidean gap between two xyxy boxes (0 when they overlap)."""
+    dx = max(0.0, max(a[0], b[0]) - min(a[2], b[2]))
+    dy = max(0.0, max(a[1], b[1]) - min(a[3], b[3]))
+    return float(np.hypot(dx, dy))
+
+
+def table_at(box: np.ndarray, tables: list[list[float]]) -> int | None:
+    """Table a (seated) person is at: the one around their lap point, nearest to its center."""
+    h = box[3] - box[1]
+    lap = np.array([(box[0] + box[2]) / 2, box[1] + 0.6 * h])
+    m = TABLE_REACH * h
+    best, best_d = None, np.inf
+    for k, t in enumerate(tables):
+        if t[0] - m <= lap[0] <= t[2] + m and t[1] - m <= lap[1] <= t[3] + m:
+            d = np.linalg.norm(lap - [(t[0] + t[2]) / 2, (t[1] + t[3]) / 2]) / np.hypot(t[2] - t[0], t[3] - t[1])
+            if d < best_d:
+                best, best_d = k, d
+    return best
+
+
+def home_table(tr: "Track", tables: list[list[float]], start: int = 0) -> int | None:
+    """Most frequent table of a customer from index `start` on (None if never at a table)."""
+    votes = Counter(table_at(b, tables) for b in tr.boxes[start:])
+    votes.pop(None, None)
+    return votes.most_common(1)[0][0] if votes else None
 
 
 def runs(mask: np.ndarray) -> list[tuple[int, int]]:
@@ -214,7 +244,9 @@ def extract_events(data: dict[str, Any], cam: dict[str, Any]) -> dict[str, Any]:
 
     events: list[dict[str, Any]] = []
     seated_at: dict[str, float] = {}
+    seat_idx: dict[str, int] = {}
     margin = cam.get("edge_margin", 0.06)
+    tables = [t["box"] if isinstance(t, dict) else t for t in cam.get("tables", [])]
 
     for tr in tracks:
         v = tr.speed()
@@ -244,7 +276,10 @@ def extract_events(data: dict[str, Any], cam: dict[str, Any]) -> dict[str, Any]:
         # seated: a customer who walked (≥1 body height) comes to rest
         if tr.role == "customer":
             i_seat = _seated_index(tr, v)
+            if i_seat is not None and tables and home_table(tr, tables, i_seat) is None:
+                i_seat = None  # came to rest away from any table (standing in the aisle, queueing)
             if i_seat is not None:
+                seat_idx[tr.gid] = i_seat
                 seated_at[tr.gid] = tr.frames[i_seat] / fps
                 events.append({"t": round(seated_at[tr.gid], 3), "type": "seated", "person": tr.gid})
 
@@ -257,6 +292,7 @@ def extract_events(data: dict[str, Any], cam: dict[str, Any]) -> dict[str, Any]:
         ))
         for c in customers
     }
+    cust_table = {c.gid: home_table(c, tables, seat_idx.get(c.gid, 0)) for c in customers} if tables else {}
     services: list[tuple[str, str, float, float]] = []
     for s in (t for t in tracks if t.role == "staff"):
         v = s.speed()
@@ -268,6 +304,9 @@ def extract_events(data: dict[str, Any], cam: dict[str, Any]) -> dict[str, Any]:
                     p = pos.get(f)
                     if p is None:
                         continue
+                    ct = cust_table.get(gid)
+                    if ct is not None and rect_gap(s.boxes[i], tables[ct]) > TABLE_GAP * s.heights[i]:
+                        continue  # next to the customer but not at their table (passing by, other table)
                     d = np.linalg.norm(p - s.centers[i]) / max(s.heights[i], 1.0)
                     if d < best_d:
                         best, best_d = gid, d
