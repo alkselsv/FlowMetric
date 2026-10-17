@@ -1,7 +1,7 @@
 # Эксперименты: детекция × трекинг × ReID × гибрид с GPT-6 Astra
 
 Клип: `data/hf_*.mp4` (15 с, 361 кадр, 1920×1080, 24 fps, 30 человек), эталон — `benchmark/ground_truth.json`
-(Timings.txt + якоря голов на кадрах 0 и 86). Метрики считает `benchmark.py`, события — `events.py`.
+(Timings.txt + якоря голов на кадрах 0 и 86). Метрики считает `metrics.py`, события — `events.py`.
 
 - **Всего:** 14 вариантов детектора × 9–11 трекеров = 138 конфигураций; каждая в 9 режимах (локально + 8 ответов VLM) = **1242 прогона**.
 - **Все прогоны:** [`experiments.csv`](experiments.csv)
@@ -163,8 +163,8 @@
 ## Воспроизведение
 
 ```bash
-pip install rfdetr
-pip install --no-deps boxmot==12.0.2 && pip install filterpy lapx loguru gdown yacs ftfy regex scikit-learn pandas gitpython "setuptools<81"
+pip install -r requirements-experiments.txt
+pip install --no-deps boxmot==12.0.2
 python experiments/astra_variants.py          # ответы VLM → data/experiments/astra/*.json (нужен VSELLM_API_KEY)
 python experiments/run_experiments.py         # детекция, трекинг и оценка (кэш в data/experiments/)
 python experiments/run_experiments.py --stages eval   # пересчитать только метрики

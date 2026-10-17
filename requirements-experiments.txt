@@ -1,0 +1,16 @@
+# Extra deps for experiments/run_experiments.py (on top of requirements.txt).
+# boxmot itself pins numpy==1.26 / torchvision<0.18, which don't build on Python 3.14, so install it separately:
+#   pip install -r requirements-experiments.txt
+#   pip install --no-deps boxmot==12.0.2
+rfdetr>=1.11
+filterpy>=1.4.5
+lapx>=0.5
+loguru>=0.7
+gdown>=5.0
+yacs>=0.1.8
+ftfy>=6.0
+regex
+scikit-learn>=1.3
+pandas>=2.0
+gitpython>=3.1
+setuptools<81

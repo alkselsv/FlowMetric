@@ -4,6 +4,7 @@ __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
 *.pt
+weights/
 data/output/
 data/frames/
 data/experiments/dets/

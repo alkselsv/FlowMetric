@@ -5,7 +5,7 @@ Stages (each cached under data/experiments/, so re-runs only compute what is mis
   1. detect  – person boxes for every frame per detector (conf >= 0.1) + ms/frame + anchor recall
   2. track   – BoxMOT trackers on cached detections; ultralytics BoT-SORT references for YOLO
   3. eval    – events + benchmark for local mode and for each cached Astra response
-Output: benchmark/experiments.csv (every run), experiments_summary.csv (per config), experiments_tables.md
+Output: reports/experiments.csv (every run), experiments_summary.csv (per config), experiments_tables.md
 """
 
 from __future__ import annotations
@@ -26,11 +26,12 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from benchmark import run_benchmark  # noqa: E402
 from events import extract_events, load_camera  # noqa: E402
-from track import LocalPass, build_tracks, sync_ids  # noqa: E402
+from metrics import run_benchmark  # noqa: E402
+from track import LocalPass, build_tracks, sync_ids, weights_path  # noqa: E402
 
 EXP = ROOT / "data" / "experiments"
+REPORTS = ROOT / "reports"
 GT_PATH = ROOT / "benchmark" / "ground_truth.json"
 DET_CONF = 0.1
 DEVICE = "mps"
@@ -57,7 +58,7 @@ def read_frames(video: Path) -> tuple[list[np.ndarray], float]:
 def yolo_detector(weights: str, imgsz: int) -> Callable[[np.ndarray], np.ndarray]:
     from ultralytics import YOLO
 
-    model = YOLO(weights)
+    model = YOLO(weights_path(weights))
 
     def detect(frame: np.ndarray) -> np.ndarray:
         r = model.predict(frame, conf=DET_CONF, iou=0.5, imgsz=imgsz, classes=[0], device=DEVICE, verbose=False)[0]
@@ -221,7 +222,8 @@ def boxmot_tracker(name: str, fps: float):
 
     _patch_boxmot_numpy2()
 
-    w = {"osnet025": "osnet_x0_25_msmt17.pt", "osnet10": "osnet_x1_0_msmt17.pt", "clip": "clip_market1501.pt"}
+    w = {k: Path(weights_path(v)) for k, v in
+         {"osnet025": "osnet_x0_25_msmt17.pt", "osnet10": "osnet_x1_0_msmt17.pt", "clip": "clip_market1501.pt"}.items()}
     common = {"device": DEVICE, "half": False}
     fr = int(round(fps))
     if name == "bytetrack":
@@ -231,20 +233,20 @@ def boxmot_tracker(name: str, fps: float):
     if name.startswith("botsort"):
         reid = name.split("+")[1] if "+" in name else None
         t = boxmot.BotSort(
-            reid_weights=Path(w[reid or "osnet025"]), **common, track_high_thresh=0.3, track_low_thresh=DET_CONF,
+            reid_weights=w[reid or "osnet025"], **common, track_high_thresh=0.3, track_low_thresh=DET_CONF,
             new_track_thresh=0.4, track_buffer=30, frame_rate=fr, cmc_method="sof", with_reid=reid is not None,
         )
         t.cmc = _NoCMC()
         return t
     if name.startswith("deepocsort"):
-        return boxmot.DeepOcSort(reid_weights=Path(w[name.split("+")[1]]), **common, det_thresh=0.3,
+        return boxmot.DeepOcSort(reid_weights=w[name.split("+")[1]], **common, det_thresh=0.3,
                                  max_age=30, min_hits=3, cmc_off=True)
     if name.startswith("strongsort"):
-        t = boxmot.StrongSort(reid_weights=Path(w[name.split("+")[1]]), **common, min_conf=0.3, max_age=30, n_init=3)
+        t = boxmot.StrongSort(reid_weights=w[name.split("+")[1]], **common, min_conf=0.3, max_age=30, n_init=3)
         t.cmc = _NoCMC()
         return t
     if name.startswith("boosttrack"):
-        return boxmot.BoostTrack(reid_weights=Path(w[name.split("+")[1]]), **common, det_thresh=0.3,
+        return boxmot.BoostTrack(reid_weights=w[name.split("+")[1]], **common, det_thresh=0.3,
                                  max_age=30, min_hits=3, use_ecc=False, with_reid=True)
     raise ValueError(name)
 
@@ -293,7 +295,7 @@ def run_boxmot(frames: list[np.ndarray], fps: float, dets: list[np.ndarray], trk
 def run_ultralytics(frames: list[np.ndarray], fps: float, weights: str, imgsz: int, cfg: str) -> tuple[LocalPass, float]:
     from ultralytics import YOLO
 
-    model = YOLO(weights)
+    model = YOLO(weights_path(weights))
     lp = _lp(frames, fps)
     t0 = time.perf_counter()
     for fi, frame in enumerate(frames):
@@ -492,13 +494,13 @@ def main() -> None:
             print(f"[eval] {run['det']} + {run['trk']} FAILED: {type(e).__name__}: {e}", flush=True)
             traceback.print_exc()
 
-    out_csv = ROOT / "benchmark" / "experiments.csv"
+    out_csv = REPORTS / "experiments.csv"
     with out_csv.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]))
         w.writeheader()
         w.writerows(rows)
-    write_tables(rows, det_cache, ROOT / "benchmark" / "experiments_tables.md")
-    write_summary(rows, ROOT / "benchmark" / "experiments_summary.csv")
+    write_tables(rows, det_cache, REPORTS / "experiments_tables.md")
+    write_summary(rows, REPORTS / "experiments_summary.csv")
     print(f"[eval] {len(rows)} rows → {out_csv}", flush=True)
 
 

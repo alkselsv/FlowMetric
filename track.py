@@ -6,7 +6,7 @@
 via VseLLM (VSELLM_API_KEY) or OpenAI directly (OPENAI_API_KEY).
 Local tracks are synced to Astra identities via IoU matching + constrained union-find,
 which merges fragmented tracker IDs into stable person IDs. Service events are derived
-from the trajectories (events.py) and scored against benchmark/ground_truth.json.
+from the trajectories (events.py) and scored against benchmark/ground_truth.json (metrics.py).
 Output: annotated video, tracks.json, events.json, benchmark_report.json.
 """
 
@@ -26,6 +26,12 @@ from scipy.optimize import linear_sum_assignment
 from ultralytics import YOLO
 
 ROOT = Path(__file__).resolve().parent
+WEIGHTS = ROOT / "weights"
+
+
+def weights_path(name: str) -> str:
+    """Bare file names live in weights/; ultralytics/BoxMOT download missing ones to that path."""
+    return str(WEIGHTS / name) if Path(name).parent == Path(".") else name
 
 
 # ---------------------------------------------------------------------------
@@ -55,7 +61,7 @@ def local_track(
     sample_fps: float,
     imgsz: int = 1280,
 ) -> LocalPass:
-    model = YOLO(model_name)
+    model = YOLO(weights_path(model_name))
     cap = cv2.VideoCapture(str(source))
     if not cap.isOpened():
         raise RuntimeError(f"Cannot open {source}")
@@ -506,7 +512,7 @@ def run_hybrid(
 
     bench = None
     if gt is not None and gt.exists():
-        from benchmark import print_report, run_benchmark
+        from metrics import print_report, run_benchmark
 
         bench = run_benchmark(tracks, ev, json.loads(gt.read_text(encoding="utf-8")))
         (out_dir / "benchmark_report.json").write_text(json.dumps(bench, ensure_ascii=False, indent=2), encoding="utf-8")
