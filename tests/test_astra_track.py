@@ -281,7 +281,9 @@ class LegacyExperimentCompatibilityTests(unittest.TestCase):
             },
         }
 
-        tid_to_gid, gid_role, stats = sync_ids(lp, [legacy], iou_thr=0.3)
+        tid_to_gid, gid_role, stats = sync_ids(
+            lp, [legacy], iou_thr=0.3, min_support=1
+        )
 
         self.assertEqual(tid_to_gid, {7: 1})
         self.assertEqual(gid_role, {1: "customer"})
@@ -309,7 +311,10 @@ class SyncConstraintTests(unittest.TestCase):
 
         # Ungated maximization prefers 0.9 + 0.1; the 0.1 edge is then lost.
         # Gating first selects the two valid 0.4 off-diagonal edges instead.
-        with patch("track.iou_matrix", return_value=np.asarray([[0.9, 0.4], [0.4, 0.1]])):
+        with patch(
+            "flowmetric.identity.sync.iou_matrix",
+            return_value=np.asarray([[0.9, 0.4], [0.4, 0.1]]),
+        ):
             _, _, stats = sync_ids(lp, [response], iou_thr=0.3)
 
         self.assertEqual(stats["matched_boxes"], 2)
@@ -329,12 +334,15 @@ class SyncConstraintTests(unittest.TestCase):
             {"frame_index": 1, "xyxy": box.tolist()},
         ]
 
-        tid_to_gid, _, stats = sync_ids(lp, [response], iou_thr=0.3)
+        tid_to_gid, _, stats = sync_ids(
+            lp, [response], iou_thr=0.3, min_support=1
+        )
 
         self.assertNotEqual(tid_to_gid[1], tid_to_gid[2])
         self.assertEqual(stats["rejected_merge_reasons"], {"temporal_overlap": 1})
         self.assertEqual(stats["simultaneous_local_pairs"], 1)
         self.assertEqual(stats["spatial_cannot_link_pairs"], 1)
+        self.assertEqual(stats["track_identity"]["2"]["status"], "rejected")
 
     def test_nested_duplicate_tracks_may_merge_despite_coexistence(self) -> None:
         lp = LocalPass(fps=10.0, width=200, height=100, total=11)
@@ -352,12 +360,15 @@ class SyncConstraintTests(unittest.TestCase):
             {"frame_index": 1, "xyxy": outer.tolist()},
         ]
 
-        tid_to_gid, _, stats = sync_ids(lp, [response], iou_thr=0.3)
+        tid_to_gid, _, stats = sync_ids(
+            lp, [response], iou_thr=0.3, min_support=1
+        )
 
         self.assertEqual(tid_to_gid[1], tid_to_gid[2])
         self.assertEqual(stats["rejected_merges"], 0)
         self.assertEqual(stats["simultaneous_local_pairs"], 1)
         self.assertEqual(stats["spatial_cannot_link_pairs"], 0)
+        self.assertEqual(stats["track_identity"]["2"]["status"], "merged")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,21 @@
+"""Identity association and tracklet-gallery components."""
+
+from .gallery import (
+    astra_reid_tracklet_gallery,
+    build_tracklet_gallery,
+    normalize_gallery_response,
+    validate_normalized_gallery_metadata,
+    validate_tracklet_reid_response,
+)
+from .sync import iou_matrix, sync_ids, validate_reids_against_local
+
+__all__ = [
+    "astra_reid_tracklet_gallery",
+    "build_tracklet_gallery",
+    "normalize_gallery_response",
+    "validate_normalized_gallery_metadata",
+    "validate_tracklet_reid_response",
+    "iou_matrix",
+    "sync_ids",
+    "validate_reids_against_local",
+]

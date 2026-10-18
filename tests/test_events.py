@@ -1,6 +1,6 @@
 import unittest
 
-from events import extract_events
+from events import ServiceDecision, extract_events
 
 
 FPS = 10.0
@@ -271,6 +271,160 @@ class EventExtractionTests(unittest.TestCase):
             [("service_start", 1.3), ("service_end", 3.0)],
         )
         self.assertTrue(all(0.0 <= event["confidence"] <= 1.0 for event in service))
+
+    def test_service_verifier_rejection_removes_candidate_before_event_derivation(self):
+        data = _data(
+            50,
+            {
+                "staff": _track(range(50), _approach_stop_depart, "staff"),
+                "customer": _track(range(50), 100, "customer", customer=True),
+            },
+        )
+
+        def reject(candidates):
+            self.assertEqual(len(candidates), 1)
+            interval = candidates[0].interval
+            return [
+                ServiceDecision(
+                    is_service=False,
+                    staff_id=interval.staff,
+                    customer_id=interval.customer,
+                    confidence=0.93,
+                    source="astra",
+                    sampled_frames=(5, 10, 15, 20),
+                    model="test-model",
+                )
+            ]
+
+        result = extract_events(data, {}, service_verifier=reject)
+
+        self.assertEqual(_service_events(result), [])
+        self.assertEqual(result["service_intervals"], [])
+        self.assertEqual(len(result["service_candidates"]), 1)
+        candidate = result["service_candidates"][0]
+        self.assertFalse(candidate["decision"]["is_service"])
+        self.assertEqual(candidate["decision"]["source"], "astra")
+        self.assertFalse(any(state["type"] == "waiting" for state in result["states"]))
+
+    def test_service_verifier_rejection_recomputes_waiting_from_accepted_services(self):
+        def customer_arrives_and_sits(frame):
+            return 400 - 15 * (frame - 5) if frame < 25 else 100
+
+        def staff_serves_later(frame):
+            if frame < 35:
+                return 300
+            if frame < 45:
+                return 300 - 15 * (frame - 35)
+            if frame < 65:
+                return 150
+            return 150 + 10 * (frame - 65)
+
+        data = _data(
+            80,
+            {
+                "staff": _track(range(80), staff_serves_later, "staff"),
+                "customer": _track(
+                    range(5, 80), customer_arrives_and_sits,
+                    "customer", customer=True,
+                ),
+            },
+        )
+        baseline = extract_events(data, {})
+        baseline_waiting = [
+            state for state in baseline["states"] if state["type"] == "waiting"
+        ]
+        self.assertEqual(len(baseline_waiting), 1)
+        self.assertTrue(_service_events(baseline))
+
+        def reject(candidates):
+            return [
+                ServiceDecision(
+                    is_service=False,
+                    staff_id=candidate.interval.staff,
+                    customer_id=candidate.interval.customer,
+                    confidence=0.9,
+                    source="astra",
+                )
+                for candidate in candidates
+            ]
+
+        result = extract_events(data, {}, service_verifier=reject)
+        waiting = [state for state in result["states"] if state["type"] == "waiting"]
+
+        self.assertEqual(_service_events(result), [])
+        self.assertEqual(len(waiting), 1)
+        self.assertLess(baseline_waiting[0]["end"], waiting[0]["end"])
+        self.assertEqual(waiting[0]["end"], 7.9)
+
+    def test_service_verifier_acceptance_preserves_fsm_confidence(self):
+        data = _data(
+            50,
+            {
+                "staff": _track(range(50), _approach_stop_depart, "staff"),
+                "customer": _track(range(50), 100, "customer", customer=True),
+            },
+        )
+        baseline = extract_events(data, {})
+        baseline_confidence = baseline["service_intervals"][0]["confidence"]
+
+        def accept(candidates):
+            interval = candidates[0].interval
+            return [
+                ServiceDecision(
+                    is_service=True,
+                    staff_id=interval.staff,
+                    customer_id=interval.customer,
+                    confidence=0.91,
+                    source="local_mlp",
+                    sampled_frames=(5, 10, 15, 20),
+                    model="test-local-mlp",
+                    details={
+                        "classifier_probability": 0.91,
+                        "features": {"pose_coverage": 1.0},
+                    },
+                )
+            ]
+
+        result = extract_events(data, {}, service_verifier=accept)
+
+        self.assertEqual(len(result["service_intervals"]), 1)
+        self.assertEqual(
+            result["service_intervals"][0]["confidence"], baseline_confidence
+        )
+        self.assertEqual(result["service_intervals"][0]["verifier_confidence"], 0.91)
+        self.assertTrue(all(
+            event["verifier_confidence"] == 0.91
+            for event in _service_events(result)
+        ))
+        decision = result["service_candidates"][0]["decision"]
+        self.assertEqual(decision["source"], "local_mlp")
+        self.assertEqual(decision["model"], "test-local-mlp")
+        self.assertEqual(decision["details"]["features"]["pose_coverage"], 1.0)
+        self.assertNotIn("service_candidates", baseline)
+
+    def test_service_verifier_cannot_change_candidate_ids(self):
+        data = _data(
+            50,
+            {
+                "staff": _track(range(50), _approach_stop_depart, "staff"),
+                "customer": _track(range(50), 100, "customer", customer=True),
+            },
+        )
+
+        def wrong_pair(candidates):
+            interval = candidates[0].interval
+            return [
+                ServiceDecision(
+                    is_service=True,
+                    staff_id=interval.staff,
+                    customer_id="somebody-else",
+                    confidence=0.9,
+                    source="astra",
+                )
+            ]
+
+        with self.assertRaisesRegex(ValueError, "changed candidate identities"):
+            extract_events(data, {}, service_verifier=wrong_pair)
 
     def test_lingering_motion_is_not_service(self):
         def approach_then_drift(frame):
