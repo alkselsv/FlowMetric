@@ -377,7 +377,8 @@ def run_hybrid(
             "      sync: "
             f"{sync_stats['local_tracks']} local → {sync_stats['global_ids']} IDs, "
             f"verified {sync_stats['astra_verified']}, decisions {dict(decision_counts)}, "
-            f"cannot-link rejects {sync_stats['rejected_merges']}"
+            f"rejected merges {sync_stats['rejected_merges']}, "
+            f"retrospective revisions {len(sync_stats.get('revision_log', []))}"
         )
     else:
         print("[2/4] astra: skipped (--no-astra)")

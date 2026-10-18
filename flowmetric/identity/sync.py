@@ -9,6 +9,11 @@ from typing import Any
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
+from flowmetric.identity.memory import (
+    ConstrainedUnionFind,
+    IdentityEvidence,
+    RetrospectiveIdentityMemory,
+)
 from flowmetric.tracking import LocalPass
 
 # ---------------------------------------------------------------------------
@@ -72,59 +77,6 @@ def _local_pair_constraints(
                     incompatible_pairs.add(pair)
     lp._pair_constraints = simultaneous_pairs, incompatible_pairs
     return lp._pair_constraints
-
-
-class ConstrainedUnionFind:
-    """Union-find with Astra-batch and simultaneous-local-track constraints."""
-
-    def __init__(self, cannot_link: set[tuple[int, int]] | None = None) -> None:
-        self.parent: dict[str, str] = {}
-        self.astra: dict[str, dict[int, int]] = {}  # root -> {batch: astra_id}
-        self.local_ids: dict[str, set[int]] = {}
-        self.cannot_link = cannot_link or set()
-        self.last_rejection: str | None = None
-
-    def add(
-        self,
-        node: str,
-        batch: int | None = None,
-        aid: int | None = None,
-        local_id: int | None = None,
-    ) -> None:
-        if node not in self.parent:
-            self.parent[node] = node
-            self.astra[node] = {batch: aid} if batch is not None else {}
-            self.local_ids[node] = {local_id} if local_id is not None else set()
-
-    def find(self, x: str) -> str:
-        while self.parent[x] != x:
-            self.parent[x] = self.parent[self.parent[x]]
-            x = self.parent[x]
-        return x
-
-    def union(self, a: str, b: str) -> bool:
-        self.last_rejection = None
-        ra, rb = self.find(a), self.find(b)
-        if ra == rb:
-            return True
-        ma, mb = self.astra[ra], self.astra[rb]
-        for batch, aid in mb.items():
-            if batch in ma and ma[batch] != aid:
-                self.last_rejection = "astra_conflict"
-                return False  # Astra says these are different people
-        if any(
-            tuple(sorted((left, right))) in self.cannot_link
-            for left in self.local_ids[ra]
-            for right in self.local_ids[rb]
-        ):
-            self.last_rejection = "temporal_overlap"
-            return False  # both local IDs were visible in the same video frame
-        self.parent[rb] = ra
-        ma.update(mb)
-        self.local_ids[ra].update(self.local_ids[rb])
-        del self.astra[rb]
-        del self.local_ids[rb]
-        return True
 
 
 def _normalize_legacy_reids_for_sync(
@@ -322,19 +274,12 @@ def sync_ids(
 
     all_tids = {tid for dets in lp.dets.values() for tid, _, _ in dets}
     simultaneous_pairs, incompatible_pairs = _local_pair_constraints(lp)
-    uf = ConstrainedUnionFind(incompatible_pairs)
-    for tid in all_tids:
-        uf.add(f"T{tid}", local_id=tid)
-
-    rejected = Counter()
-    identity_decisions: list[dict[str, Any]] = []
-    accepted_confidence: dict[int, list[float]] = defaultdict(list)
-    accepted_support: Counter[int] = Counter()
     observed_tids = {key[0] for key in edge_scores}
     edges_by_tid_batch: dict[tuple[int, int], list[tuple[int, list[float]]]] = defaultdict(list)
     for (tid, batch, aid), scores in edge_scores.items():
         edges_by_tid_batch[(tid, batch)].append((aid, scores))
 
+    evidence_by_batch: dict[int, list[IdentityEvidence]] = defaultdict(list)
     for (tid, b), candidates in sorted(edges_by_tid_batch.items()):
         aid, scores = max(
             candidates,
@@ -343,35 +288,50 @@ def sync_ids(
         support = len(scores)
         confidence = float(np.average(scores))
         weighted_support = float(sum(scores))
-        decision: dict[str, Any] = {
-            "tracklet_id": tid,
-            "batch": b,
-            "identity_id": aid,
-            "source": edge_sources[(tid, b, aid)],
-            "support": support,
-            "confidence": round(confidence, 4),
-            "weighted_support": round(weighted_support, 4),
-        }
-        if (
-            support < min_support
-            or confidence < merge_confidence
-            or weighted_support < min_support * merge_confidence
-        ):
-            decision.update({"decision": "abstain", "reason": "insufficient_evidence"})
-            identity_decisions.append(decision)
-            continue
+        evidence_by_batch[b].append(
+            IdentityEvidence(
+                tracklet_id=tid,
+                batch=b,
+                identity_id=aid,
+                source=edge_sources[(tid, b, aid)],
+                support=support,
+                confidence=confidence,
+                weighted_support=weighted_support,
+                role=roles.get((b, aid), "unknown"),
+            )
+        )
 
-        node = f"A{b}:{aid}"
-        uf.add(node, b, aid)
-        if not uf.union(f"T{tid}", node):
-            reason = uf.last_rejection or "unknown"
-            rejected[reason] += 1
-            decision.update({"decision": "reject", "reason": reason})
-        else:
-            accepted_confidence[tid].append(confidence)
-            accepted_support[tid] += support
-            decision["decision"] = "merge"
-        identity_decisions.append(decision)
+    memory = RetrospectiveIdentityMemory(
+        all_tids,
+        cannot_link=incompatible_pairs,
+        merge_confidence=merge_confidence,
+        min_support=min_support,
+    )
+    for batch in sorted(evidence_by_batch):
+        memory.observe_batch(evidence_by_batch[batch], batch=batch)
+    projection = memory.resolve()
+    uf = projection.union_find
+    rejected = projection.rejected_reasons
+    identity_decisions = projection.decisions
+
+    evidence_by_key = {
+        evidence.key: evidence
+        for batch_evidence in evidence_by_batch.values()
+        for evidence in batch_evidence
+    }
+    accepted_confidence: dict[int, list[float]] = defaultdict(list)
+    accepted_support: Counter[int] = Counter()
+    for decision in identity_decisions:
+        if decision["decision"] != "merge":
+            continue
+        key = (
+            int(decision["tracklet_id"]),
+            int(decision["batch"]),
+            int(decision["identity_id"]),
+        )
+        evidence = evidence_by_key[key]
+        accepted_confidence[evidence.tracklet_id].append(evidence.confidence)
+        accepted_support[evidence.tracklet_id] += evidence.support
 
     decided_tid_batches = {
         (int(decision["tracklet_id"]), int(decision["batch"]))
@@ -447,6 +407,8 @@ def sync_ids(
         "spatial_cannot_link_pairs": len(incompatible_pairs),
         "merge_confidence": merge_confidence,
         "min_support": min_support,
+        "memory_strategy": "retrospective_strongest_first_v1",
+        "revision_log": memory.revision_log,
         "identity_decisions": identity_decisions,
         "track_identity": track_identity,
     }

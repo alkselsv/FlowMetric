@@ -7,6 +7,7 @@ from .gallery import (
     validate_normalized_gallery_metadata,
     validate_tracklet_reid_response,
 )
+from .memory import IdentityEvidence, RetrospectiveIdentityMemory
 from .sync import iou_matrix, sync_ids, validate_reids_against_local
 
 __all__ = [
@@ -15,6 +16,8 @@ __all__ = [
     "normalize_gallery_response",
     "validate_normalized_gallery_metadata",
     "validate_tracklet_reid_response",
+    "IdentityEvidence",
+    "RetrospectiveIdentityMemory",
     "iou_matrix",
     "sync_ids",
     "validate_reids_against_local",

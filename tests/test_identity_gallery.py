@@ -109,6 +109,81 @@ class TrackletGalleryTests(unittest.TestCase):
         self.assertNotEqual(mapping[7], mapping[12])
         self.assertTrue(all(item["decision"] == "abstain" for item in stats["identity_decisions"]))
 
+    def test_sync_reports_late_revision_of_weak_identity_merge(self) -> None:
+        lp = LocalPass(fps=10.0, width=160, height=100, total=4)
+        box = np.asarray([10, 10, 50, 90], float)
+        lp.sample_idx = [0, 1, 2, 3]
+        lp.dets = {
+            0: [(1, box.copy(), 0.9)],
+            1: [(2, box.copy(), 0.9)],
+            2: [(1, box.copy(), 0.9)],
+            3: [(2, box.copy(), 0.9)],
+        }
+        first = normalize_gallery_response(
+            {
+                "identities": [
+                    {
+                        "id": 10,
+                        "role": "customer",
+                        "tracklet_ids": [1, 2],
+                        "confidence": 0.6,
+                    }
+                ],
+                "abstained_tracklet_ids": [],
+            },
+            tracklets=[
+                {"tracklet_id": 1, "crop_count": 1},
+                {"tracklet_id": 2, "crop_count": 1},
+            ],
+            video_frames=[0, 1],
+            detections=lp.dets,
+            original_width=lp.width,
+            original_height=lp.height,
+            requested_model="requested",
+            actual_model="actual",
+        )
+        second = normalize_gallery_response(
+            {
+                "identities": [
+                    {
+                        "id": 20,
+                        "role": "customer",
+                        "tracklet_ids": [1],
+                        "confidence": 0.95,
+                    },
+                    {
+                        "id": 21,
+                        "role": "staff",
+                        "tracklet_ids": [2],
+                        "confidence": 0.95,
+                    },
+                ],
+                "abstained_tracklet_ids": [],
+            },
+            tracklets=[
+                {"tracklet_id": 1, "crop_count": 1},
+                {"tracklet_id": 2, "crop_count": 1},
+            ],
+            video_frames=[2, 3],
+            detections=lp.dets,
+            original_width=lp.width,
+            original_height=lp.height,
+            requested_model="requested",
+            actual_model="actual",
+        )
+
+        mapping, roles, stats = sync_ids(
+            lp, [first, second], iou_thr=0.3, min_support=1
+        )
+
+        self.assertNotEqual(mapping[1], mapping[2])
+        self.assertEqual(roles[mapping[1]], "customer")
+        self.assertEqual(roles[mapping[2]], "staff")
+        self.assertEqual(stats["memory_strategy"], "retrospective_strongest_first_v1")
+        self.assertEqual(len(stats["revision_log"]), 1)
+        self.assertEqual(stats["revision_log"][0]["from"], "merge")
+        self.assertEqual(stats["revision_log"][0]["to"], "reject")
+
 
 if __name__ == "__main__":
     unittest.main()
