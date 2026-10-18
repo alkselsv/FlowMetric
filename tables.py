@@ -16,6 +16,7 @@ import cv2
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
+from flowmetric.device import resolve_device
 from track import ROOT, iou_matrix, weights_path
 
 COCO_DINING_TABLE = 60
@@ -31,9 +32,11 @@ def detect_tables(
     step: int = 12,
     min_support: float = 0.3,
     match_iou: float = 0.4,
+    device: str = "auto",
 ) -> list[dict]:
     if step <= 0:
         raise ValueError("step must be positive")
+    compute_device = resolve_device(device)
     cap = cv2.VideoCapture(str(video))
     if not cap.isOpened():
         raise RuntimeError(f"Cannot open {video}")
@@ -47,7 +50,10 @@ def detect_tables(
         if not ok:
             break
         if i % step == 0:
-            r = model.predict(frame, imgsz=imgsz, conf=conf, classes=[COCO_DINING_TABLE], verbose=False)[0]
+            r = model.predict(
+                frame, imgsz=imgsz, conf=conf, classes=[COCO_DINING_TABLE],
+                device=compute_device, verbose=False,
+            )[0]
             boxes = r.boxes.xyxy.cpu().numpy()
             n_samples += 1
             if clusters and len(boxes):
@@ -94,6 +100,7 @@ def main() -> None:
     p.add_argument("--video", type=Path, default=next((ROOT / "data").glob("*.mp4"), None))
     p.add_argument("--out", type=Path, default=DEFAULT_OUT)
     p.add_argument("--preview", type=Path, default=ROOT / "data" / "output" / "tables.jpg")
+    p.add_argument("--device", default="auto", help="auto, cpu, mps, cuda, cuda:N or N")
     args = p.parse_args()
 
     if args.video is None or not args.video.exists():
@@ -104,7 +111,7 @@ def main() -> None:
     resolution = [int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))]
     cap.release()
 
-    tables = detect_tables(args.video)
+    tables = detect_tables(args.video, device=args.device)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(
         json.dumps({"source": args.video.name, "resolution": resolution, "tables": tables}, indent=2),

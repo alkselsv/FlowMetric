@@ -35,6 +35,7 @@ def local_track(
     tracker: str,
     sample_fps: float,
     imgsz: int = 1280,
+    device: str = "cpu",
 ) -> LocalPass:
     """Run the local detector/tracker and retain optional ReID sample frames."""
     model = YOLO(weights_path(model_name))
@@ -65,6 +66,7 @@ def local_track(
                 imgsz=imgsz,
                 classes=[0],
                 tracker=tracker,
+                device=device,
                 verbose=False,
             )[0]
             detections: list[tuple[int, np.ndarray, float]] = []

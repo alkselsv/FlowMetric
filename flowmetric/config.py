@@ -15,6 +15,7 @@ class TrackingConfig:
     iou: float = 0.5
     image_size: int = 1280
     tracker: str = str(PROJECT_ROOT / "config" / "botsort_recall.yaml")
+    device: str = "auto"
 
 
 @dataclass(frozen=True)

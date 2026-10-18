@@ -71,6 +71,7 @@ FlowMetric анализирует видео зала кафе со статич
 flowmetric/
   pipeline.py             управление этапами и интерфейс командной строки
   config.py               PipelineConfig и настройки этапов
+  device.py               проверенный выбор CPU, Apple MPS или NVIDIA CUDA
   domain/models.py        общие структуры Track, ServiceInterval и Decision
   tracking/local.py       YOLO и локальное сопровождение людей
   identity/gallery.py     галереи фрагментов траекторий и схема ReID
@@ -185,6 +186,7 @@ python metrics.py
 | `--out` | путь к размеченному видео; JSON-файлы записываются в тот же каталог |
 | `--model`, `--imgsz`, `--conf` | модель детектора, размер входа и порог уверенности |
 | `--tracker` | YAML-конфигурация алгоритма сопровождения |
+| `--device` | устройство вычислений: `auto`, `cpu`, `mps`, `cuda`, `cuda:N` или номер CUDA-карты |
 | `--camera` | зоны двери, кухни и края кадра |
 | `--tables` | необязательная карта столов |
 | `--gt` | эталонная разметка для автоматической оценки |
@@ -199,6 +201,36 @@ python metrics.py
 Интерактивный воспроизводимый сценарий с явной конфигурацией локальной и
 гибридной веток находится в [`notebook.ipynb`](notebook.ipynb). Ноутбук также
 показывает сводку метрик, аудит решений и визуальную проверку результата.
+
+### CPU, Apple MPS и NVIDIA CUDA
+
+По умолчанию `--device auto` выбирает CUDA, затем Apple MPS, а при отсутствии
+доступного ускорителя — CPU. Выбор применяется к основному детектору и трекеру;
+локальная проверка обслуживания использует то же устройство. Параметр
+`--local-service-device` нужен только для отдельного переопределения, например
+когда детектор должен работать на MPS, а модель позы — на CPU.
+
+```bash
+# Любая машина: принудительно использовать CPU
+python track.py --no-astra --device cpu
+
+# Mac с Apple Silicon и PyTorch с поддержкой Metal
+python track.py --no-astra --device mps
+
+# Первая или конкретная NVIDIA-видеокарта
+python track.py --no-astra --device cuda
+python track.py --no-astra --device cuda:1
+
+# Детектор на MPS, локальная проверка обслуживания на CPU
+python track.py --no-astra --device mps \
+  --service-verifier local --local-service-device cpu
+```
+
+Явный запрос недоступного устройства завершает запуск до обработки видео. Это
+предотвращает незаметный переход на CPU и ошибочные сравнения скорости. Для
+CUDA нужна CUDA-сборка PyTorch; для MPS — Apple Silicon, поддерживаемая macOS и
+сборка PyTorch с MPS. Команда `auto` остаётся переносимым вариантом для общих
+сценариев и ноутбука.
 
 ## Поток данных
 
@@ -234,6 +266,8 @@ ReID группирует локальные идентификаторы, но 
   "width": 1920,
   "height": 1080,
   "n_frames": 361,
+  "device": "mps",
+  "service_device": "mps",
   "tracks": {
     "7": {
       "role": "customer",
@@ -291,7 +325,7 @@ ReID группирует локальные идентификаторы, но 
 Карту столов можно перестроить отдельно:
 
 ```bash
-python tables.py --video data/example.mp4
+python tables.py --video data/example.mp4 --device auto
 ```
 
 ### Кэш Astra

@@ -438,10 +438,10 @@ pip install --no-deps boxmot==12.0.2
 python experiments/astra_variants.py
 
 # Полная сетка: обнаружение, сопровождение и оценка.
-python experiments/run_experiments.py
+python experiments/run_experiments.py --device mps
 
 # Только оценка сохранённых артефактов; API-вызовы не выполняются.
-python experiments/run_experiments.py --stages eval
+python experiments/run_experiments.py --stages eval --device cpu
 
 # Оценка с картой столов
 python tables.py

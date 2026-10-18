@@ -51,6 +51,7 @@ python track.py \
   --camera config/camera.json \
   --tables config/tables.json \
   --gt benchmark/ground_truth.json \
+  --device auto \
   --no-astra
 ```
 

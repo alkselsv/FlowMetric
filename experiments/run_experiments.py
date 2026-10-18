@@ -29,6 +29,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from events import extract_events, load_camera  # noqa: E402
+from flowmetric.device import resolve_device  # noqa: E402
 from metrics import run_benchmark  # noqa: E402
 from track import LocalPass, build_tracks, make_batches, sync_ids, weights_path  # noqa: E402
 
@@ -36,7 +37,7 @@ EXP = ROOT / "data" / "experiments"
 REPORTS = ROOT / "reports"
 GT_PATH = ROOT / "benchmark" / "ground_truth.json"
 DET_CONF = 0.1
-DEVICE = "mps"
+DEVICE = "cpu"
 
 
 def read_frames(video: Path) -> tuple[list[np.ndarray], float]:
@@ -87,7 +88,10 @@ def rfdetr_detector(cls_name: str, resolution: int | None = None) -> Callable[[n
     import rfdetr
     from PIL import Image
 
-    model = getattr(rfdetr, cls_name)(**({"resolution": resolution} if resolution else {}))
+    options: dict[str, Any] = {"device": DEVICE}
+    if resolution:
+        options["resolution"] = resolution
+    model = getattr(rfdetr, cls_name)(**options)
 
     def detect(frame: np.ndarray) -> np.ndarray:
         d = model.predict(Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)), threshold=DET_CONF)
@@ -554,7 +558,7 @@ def write_tables(rows: list[dict], det_cache: dict, path: Path) -> None:
         "связанным с опорными точками, и должны читаться вместе с покрытием якорей.",
         "",
     ]
-    lines += ["## Детекторы", "", "| Детектор | мс/кадр (MPS) | Найденные эталонные головы (уверенность ≥ 0.3) |", "|---|---:|---:|"]
+    lines += ["## Детекторы", "", "| Детектор | мс/кадр | Найденные эталонные головы (уверенность ≥ 0.3) |", "|---|---:|---:|"]
     for k, d in det_cache.items():
         lines.append(f"| {DETECTORS[k][0]} | {d['ms']:.0f} | {d['anchor_hits']}/{d['anchor_total']} |")
     hdr = ("| Детектор | Алгоритм сопровождения | Повторная идентификация | Режим | ID | Покрытие якорей | "
@@ -614,11 +618,14 @@ def write_summary(rows: list[dict], path: Path) -> None:
 
 
 def main() -> None:
+    global DEVICE
+
     p = argparse.ArgumentParser()
     p.add_argument("--video", type=Path, default=next((ROOT / "data").glob("*.mp4"), None))
     p.add_argument("--detectors", nargs="*", default=list(DETECTORS))
     p.add_argument("--trackers", nargs="*", default=list(BOXMOT_TRACKERS))
     p.add_argument("--no-ul", action="store_true", help="skip ultralytics BoT-SORT reference runs")
+    p.add_argument("--device", default="auto", help="auto, cpu, mps, cuda, cuda:N or N")
     p.add_argument("--stages", default="detect,track,eval")
     p.add_argument("--astra", nargs="*", default=None, help="subset of Astra variants to score (default: all)")
     p.add_argument("--table-gap", type=float, default=None,
@@ -646,6 +653,8 @@ def main() -> None:
         events.TABLE_GAP = args.table_gap
         suffix = f"_tablegap{args.table_gap:g}"
     stages = {stage.strip() for stage in args.stages.split(",") if stage.strip()}
+    DEVICE = resolve_device(args.device)
+    print(f"device: {DEVICE}", flush=True)
     if stages & {"detect", "track"}:
         frames, fps = read_frames(args.video)
         frame_count = len(frames)

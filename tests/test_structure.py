@@ -55,7 +55,7 @@ class PipelineConfigTests(unittest.TestCase):
         config = PipelineConfig(
             source=Path("input.mp4"),
             destination=Path("output.mp4"),
-            tracking=TrackingConfig(model_name="detector.pt", confidence=0.12),
+            tracking=TrackingConfig(model_name="detector.pt", confidence=0.12, device="cpu"),
             identity=IdentityConfig(enabled=False, minimum_support=3),
             service=ServiceConfig(verifier="local", device="cpu"),
         )
@@ -67,6 +67,7 @@ class PipelineConfigTests(unittest.TestCase):
         self.assertEqual(args, (Path("input.mp4"), Path("output.mp4")))
         self.assertEqual(kwargs["model_name"], "detector.pt")
         self.assertEqual(kwargs["conf"], 0.12)
+        self.assertEqual(kwargs["device"], "cpu")
         self.assertFalse(kwargs["use_astra"])
         self.assertEqual(kwargs["reid_min_support"], 3)
         self.assertEqual(kwargs["service_verifier"], "local")

@@ -20,9 +20,13 @@ import cv2
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from flowmetric.device import resolve_device  # noqa: E402
+
 EXP = ROOT / "data" / "experiments"
 WARMUP_FRAMES = 3  # same as run_experiments.py
-DEVICE = "mps"
+DEVICE = "cpu"
 REID = ROOT / "weights" / "osnet_x0_25_msmt17.pt"
 
 # Our shared thresholds (same as the BoxMOT 12 grid): new tracks at >= 0.4, high/det at 0.3, low at 0.1.
@@ -84,6 +88,8 @@ def run(frames, fps, dets, name: str, unified: bool) -> dict:
 
 
 def main() -> None:
+    global DEVICE
+
     import boxmot
 
     p = argparse.ArgumentParser()
@@ -92,7 +98,10 @@ def main() -> None:
                    default=["yolo11s@1280", "yolo11m@1280", "yolo26s@1280", "yolo26m@1280", "rfdetr-m+cal",
                             "rfdetr-l@1024+cal"])
     p.add_argument("--trackers", nargs="*", default=list(CLASSES))
+    p.add_argument("--device", default="auto", help="auto, cpu, mps, cuda, cuda:N or N")
     args = p.parse_args()
+    DEVICE = resolve_device(args.device)
+    print(f"device: {DEVICE}", flush=True)
     print(f"boxmot {boxmot.__version__} from {Path(boxmot.__file__).parent}", flush=True)
 
     cap = cv2.VideoCapture(str(args.video))

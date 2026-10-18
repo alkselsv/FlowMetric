@@ -165,6 +165,7 @@ def run_hybrid(
     iou: float = 0.5,
     imgsz: int = 1280,
     tracker: str = str(ROOT / "config" / "botsort_recall.yaml"),
+    device: str = "auto",
     camera: Path | None = None,
     tables: Path | None = None,
     gt: Path | None = None,
@@ -191,8 +192,12 @@ def run_hybrid(
     local_service_imgsz: int = 640,
     local_service_device: str | None = None,
 ) -> dict[str, Any]:
+    from flowmetric.device import resolve_device
     from flowmetric.events import extract_events
     from scene import load_scene_config
+
+    compute_device = resolve_device(device)
+    service_compute_device = compute_device
 
     if use_astra:
         validate_astra_options(
@@ -203,6 +208,8 @@ def run_hybrid(
         )
     if service_verifier not in {"off", "astra", "local"}:
         raise ValueError("service_verifier must be 'off', 'astra', or 'local'")
+    if service_verifier == "local" and local_service_device is not None:
+        service_compute_device = resolve_device(local_service_device)
     if not math.isfinite(reid_merge_confidence) or not 0 <= reid_merge_confidence <= 1:
         raise ValueError("reid_merge_confidence must be in [0, 1]")
     if (
@@ -260,10 +267,14 @@ def run_hybrid(
         tables_path=tables,
     )
 
-    print(f"[1/4] local detect+track: {model_name} @ {imgsz} + {tracker}")
+    print(
+        f"[1/4] local detect+track: {model_name} @ {imgsz} + {tracker} "
+        f"on {compute_device}"
+    )
     lp = local_track(
         source, model_name=model_name, conf=conf, iou=iou, imgsz=imgsz,
         tracker=tracker, sample_fps=sample_fps if use_astra else 0,
+        device=compute_device,
     )
 
     tid_to_gid: dict[int, int] = {}
@@ -380,6 +391,9 @@ def run_hybrid(
     }[service_verifier]
     pipeline_mode = f"{mode}{service_suffix}"
     tracks = build_tracks(lp, tid_to_gid, gid_role, mode=pipeline_mode)
+    tracks["device"] = compute_device
+    if service_verifier == "local":
+        tracks["service_device"] = service_compute_device
     if sync_stats:
         tracks["identity_sync"] = sync_stats
         identity_by_tid = sync_stats.get("track_identity", {})
@@ -433,7 +447,7 @@ def run_hybrid(
             decision_threshold=local_service_threshold,
             sample_fps=local_service_sample_fps,
             imgsz=local_service_imgsz,
-            device=local_service_device,
+            device=service_compute_device,
         )
     ev = extract_events(tracks, scene, service_verifier=verify_service)
     (out_dir / "tracks.json").write_text(json.dumps(tracks), encoding="utf-8")
@@ -468,10 +482,13 @@ def run_hybrid(
         "tables": len(scene.get("tables", [])),
         "sync": sync_stats,
         "output": dest,
+        "device": compute_device,
     }
     if service_verifier != "off":
         stats["service_verifier"] = service_verifier
         stats["service_candidates"] = len(ev.get("service_candidates", []))
+    if service_verifier == "local":
+        stats["service_device"] = service_compute_device
     return stats
 
 
@@ -495,6 +512,7 @@ def run_pipeline(config: PipelineConfig) -> dict[str, Any]:
         iou=tracking.iou,
         imgsz=tracking.image_size,
         tracker=tracking.tracker,
+        device=tracking.device,
         camera=config.camera,
         tables=config.tables,
         gt=config.ground_truth,
@@ -535,6 +553,10 @@ def main() -> None:
         "--tracker",
         default=str(ROOT / "config" / "botsort_recall.yaml"),
         help="Ultralytics tracker YAML; the default keeps low-confidence distant people",
+    )
+    p.add_argument(
+        "--device", default="auto",
+        help="compute device: auto, cpu, mps, cuda, cuda:N or N",
     )
     p.add_argument("--camera", type=Path, default=ROOT / "config" / "camera.json", help="zones config")
     p.add_argument(
@@ -618,7 +640,7 @@ def main() -> None:
     )
     p.add_argument(
         "--local-service-device", default=None,
-        help="Ultralytics device for local verification (for example mps, cpu, 0)",
+        help="optional local-verifier override: auto, cpu, mps, cuda, cuda:N or N",
     )
     args = p.parse_args()
 
@@ -720,6 +742,7 @@ def main() -> None:
                 iou=args.iou,
                 image_size=args.imgsz,
                 tracker=args.tracker,
+                device=args.device,
             ),
             identity=IdentityConfig(
                 enabled=not args.no_astra,
@@ -750,7 +773,7 @@ def main() -> None:
         )
     )
     print(
-        f"done [{stats['mode']}]: {stats['frames']} frames, "
+        f"done [{stats['mode']}] on {stats['device']}: {stats['frames']} frames, "
         f"local tracks {stats['local_tracks']} → final IDs {stats['final_ids']}, "
         f"astra samples {stats['astra_samples']} → {stats['output']}"
     )
