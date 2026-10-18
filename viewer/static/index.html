@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FlowMetric Viewer</title>
+  <link rel="stylesheet" href="styles.css?v=6">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand"><span class="brand-mark">F</span><span>FlowMetric</span><span class="product">Viewer</span></div>
+        <div class="session-meta"><span id="mode">—</span><span class="status"><i></i><span id="playback-status">готово</span></span></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="workspace">
+        <div class="workspace-head">
+          <div><h1>Видеоаналитика зала</h1><p id="projection-label">Загрузка размеченного видео…</p></div>
+          <div class="view-options" aria-label="Настройки карты">
+            <span class="source-pill">Разметка FlowMetric</span>
+          </div>
+        </div>
+
+        <div id="video-stage" class="video-stage" aria-label="Размеченное видео">
+          <video id="video" playsinline preload="auto"></video>
+          <div id="video-loading" class="video-message">Загрузка видео…</div>
+          <div class="video-legend"><span><i class="customer"></i>Гость</span><span><i class="staff"></i>Сотрудник</span><span><i class="event-mark"></i>Бизнес-событие</span></div>
+        </div>
+
+        <div class="player">
+          <button id="play" class="play" type="button" aria-label="Воспроизвести">▶</button>
+          <div class="timeline-wrap">
+            <input id="timeline" type="range" min="0" max="1" step="0.01" value="0" aria-label="Время записи">
+            <div class="timeline-events" id="timeline-events"></div>
+          </div>
+          <output id="clock">00:00.0 / 00:00.0</output>
+          <select id="speed" aria-label="Скорость воспроизведения"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select>
+        </div>
+
+        <section class="analytics" aria-labelledby="analytics-title">
+          <div class="analytics-head">
+            <h2 id="analytics-title">Сводная аналитика</h2>
+            <span id="analytics-time">на 00:00.0</span>
+          </div>
+          <div class="analytics-tabs" role="tablist" aria-label="Раздел аналитики">
+            <button class="analytics-tab active" type="button" role="tab" aria-selected="true" data-analytics-tab="visitors">Посетители</button>
+            <button class="analytics-tab" type="button" role="tab" aria-selected="false" data-analytics-tab="service">Обслуживание</button>
+            <button class="analytics-tab" type="button" role="tab" aria-selected="false" data-analytics-tab="tables">Столы</button>
+            <button class="analytics-tab" type="button" role="tab" aria-selected="false" data-analytics-tab="quality">Качество</button>
+          </div>
+          <div id="analytics-metrics" class="analytics-metrics" role="tabpanel"></div>
+          <p id="analytics-note" class="analytics-note"></p>
+        </section>
+      </section>
+
+      <aside class="sidebar">
+        <div class="sidebar-head"><div><h2>Бизнес-события</h2><p>Автоматическая фиксация</p></div><span id="event-count" class="count">0</span></div>
+        <div class="summary" aria-label="Оперативные показатели">
+          <div><strong id="visible-count">0</strong><span>в кадре</span></div>
+          <div><strong id="customer-count">0</strong><span>посетителей</span></div>
+          <div><strong id="staff-count">0</strong><span>сотрудников</span></div>
+          <div><strong id="waiting-count">0</strong><span>ожидают</span></div>
+          <div><strong id="service-count">0</strong><span>обслуживаний</span></div>
+          <div><strong id="max-wait">—</strong><span>макс. ожидание</span></div>
+        </div>
+        <section id="active-detail" class="active-detail" aria-live="polite">
+          <div class="detail-head">
+            <span>Фиксация события</span>
+            <span id="sla-badge" class="sla-badge idle">SLA: нет ожидания</span>
+          </div>
+          <strong id="detail-title">Ожидание первого события</strong>
+          <span id="detail-subject" class="detail-subject">События появятся во время воспроизведения</span>
+          <div class="detail-facts">
+            <span><small>Время</small><b id="detail-time">—</b></span>
+            <span><small>Стол</small><b id="detail-table">—</b></span>
+            <span><small>Ожидание</small><b id="detail-wait">—</b></span>
+            <span><small>Уверенность</small><b id="detail-confidence">—</b></span>
+          </div>
+        </section>
+        <div id="event-feed" class="event-feed"></div>
+      </aside>
+    </main>
+  </div>
+  <div id="error" class="error" role="alert" hidden></div>
+  <script src="app.js?v=10" defer></script>
+</body>
+</html>
