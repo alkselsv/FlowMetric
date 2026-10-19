@@ -1,0 +1,37 @@
+{
+  "model": "SINet MARS",
+  "threshold": 0.7018,
+  "sequence_length": 4,
+  "embedding_dimension": 2048,
+  "embedding_inference_s_cpu": 2.374,
+  "local_tracklets": 74,
+  "astra_cache_sampling": "uniform_16_frames_step_24",
+  "external_requests": 0,
+  "appearance_candidates": 12,
+  "appearance_merges": 8,
+  "visually_verified_new_merges": 8,
+  "baseline": {
+    "final_ids": 54,
+    "pred_ids_ge_0.5s": 37,
+    "anchor_coverage": 30,
+    "continuity": 0.856,
+    "continuity_staff": 0.724,
+    "role_accuracy": 0.933,
+    "strict_f1": 0.667,
+    "loose_f1": 0.889,
+    "waiting_tiou": 0.536,
+    "consuming_tiou": 0.746
+  },
+  "sinet": {
+    "final_ids": 47,
+    "pred_ids_ge_0.5s": 36,
+    "anchor_coverage": 30,
+    "continuity": 0.859,
+    "continuity_staff": 0.724,
+    "role_accuracy": 0.933,
+    "strict_f1": 0.667,
+    "loose_f1": 0.889,
+    "waiting_tiou": 0.536,
+    "consuming_tiou": 0.750
+  }
+}
