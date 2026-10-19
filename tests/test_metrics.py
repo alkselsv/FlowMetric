@@ -1,6 +1,6 @@
 import unittest
 
-from metrics import run_benchmark, score_events, score_states
+from metrics import run_benchmark, score_dense_reid, score_events, score_states
 
 
 class StateMetricsTests(unittest.TestCase):
@@ -93,6 +93,44 @@ class BenchmarkMetricsTests(unittest.TestCase):
         self.assertEqual(result["roles"]["staff_tp"], 1)
         self.assertEqual(result["roles"]["staff_fp"], 1)
         self.assertEqual(result["roles"]["staff_fn"], 1)
+        self.assertFalse(result["reid"]["standard_metrics_available"])
+        self.assertIsNone(result["reid"]["idf1"])
+        self.assertIn("idf1", result["reid"]["proxy"])
+
+    def test_dense_reid_reports_merges_fragmentation_switches_and_idf1(self) -> None:
+        box_a = [0, 0, 20, 40]
+        box_b = [100, 0, 120, 40]
+        gt = {
+            "staff": [2],
+            "trajectories": {
+                "1": {"frames": [0, 1, 2, 3], "boxes": [box_a] * 4},
+                "2": {"frames": [0, 1, 2, 3], "boxes": [box_b] * 4},
+            },
+        }
+        tracks = {
+            "fps": 1.0,
+            "tracks": {
+                "p1": {
+                    "frames": [0, 1, 2, 3],
+                    "boxes": [box_a, box_a, box_b, box_b],
+                },
+                "p2": {"frames": [2, 3], "boxes": [box_a, box_a]},
+                "p3": {"frames": [0, 1], "boxes": [box_b, box_b]},
+            },
+        }
+
+        result = score_dense_reid(gt, tracks)
+
+        self.assertTrue(result["standard_metrics_available"])
+        self.assertEqual(result["idf1"], 0.5)
+        self.assertGreater(result["hota"], 0.0)
+        self.assertLess(result["hota"], 1.0)
+        self.assertEqual(result["false_merges"]["count"], 1)
+        self.assertEqual(result["false_merges"]["predicted_id_to_gt"]["p1"], [1, 2])
+        self.assertEqual(result["fragmentation"]["total"], 2)
+        self.assertEqual(result["id_switches"]["count"], 2)
+        self.assertEqual(result["staff"]["fragments"], 1)
+        self.assertEqual(result["staff"]["id_switches"], 1)
 
 
 class EventMetricsTests(unittest.TestCase):

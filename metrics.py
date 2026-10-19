@@ -8,6 +8,8 @@ GT persons are tied to predicted IDs through head labels on two reference frames
   - roles:      end-to-end staff/customer accuracy and staff detection counts
   - events:     P/R/F1 + timing error; strict = type + people + time, loose = type + time
   - states:     temporal IoU for waiting / consuming
+  - reid:       dense IDF1/HOTA, false merges, fragments and ID switches when
+                per-frame GT trajectories exist; explicit anchor proxies otherwise
 """
 
 from __future__ import annotations
@@ -105,6 +107,396 @@ def gt_presence(gt: dict[str, Any]) -> dict[int, tuple[float, float]]:
         if e["type"] == "leave_kitchen":
             pres[int(e["person"])][0] = e["t"]
     return {p: (a, b) for p, (a, b) in pres.items()}
+
+
+def _box_iou(left: list[float], right: list[float]) -> float:
+    x1, y1 = max(left[0], right[0]), max(left[1], right[1])
+    x2, y2 = min(left[2], right[2]), min(left[3], right[3])
+    intersection = max(0.0, x2 - x1) * max(0.0, y2 - y1)
+    left_area = max(0.0, left[2] - left[0]) * max(0.0, left[3] - left[1])
+    right_area = max(0.0, right[2] - right[0]) * max(0.0, right[3] - right[1])
+    return intersection / max(left_area + right_area - intersection, 1e-9)
+
+
+def _predictions_by_frame(
+    tracks: dict[str, Any],
+) -> dict[int, list[tuple[str, list[float]]]]:
+    result: dict[int, list[tuple[str, list[float]]]] = {}
+    for predicted_id, track in tracks["tracks"].items():
+        for frame, box in zip(track["frames"], track["boxes"]):
+            result.setdefault(int(frame), []).append((str(predicted_id), box))
+    return result
+
+
+def _anchor_assignments(
+    gt: dict[str, Any], tracks: dict[str, Any]
+) -> dict[int, list[tuple[int, str]]]:
+    """Independently associate every anchor, retaining cross-frame collisions."""
+    fps = float(tracks["fps"])
+    predictions: dict[int, list[tuple[str, list[float], float]]] = {}
+    for predicted_id, track in tracks["tracks"].items():
+        life = (track["frames"][-1] - track["frames"][0]) / fps
+        for frame, box in zip(track["frames"], track["boxes"]):
+            predictions.setdefault(int(frame), []).append(
+                (str(predicted_id), box, life)
+            )
+
+    def nested_fragment(
+        candidate: tuple[str, list[float], float],
+        others: list[tuple[str, list[float], float]],
+    ) -> bool:
+        x1, y1, x2, y2 = candidate[1]
+        area = max(1.0, (x2 - x1) * (y2 - y1))
+        for other in others:
+            if other is candidate or other[2] < 1.0:
+                continue
+            ox1, oy1, ox2, oy2 = other[1]
+            intersection = max(0.0, min(x2, ox2) - max(x1, ox1)) * max(
+                0.0, min(y2, oy2) - max(y1, oy1)
+            )
+            if intersection / area > 0.8:
+                return True
+        return False
+
+    result: dict[int, list[tuple[int, str]]] = {}
+    for frame_text, points in gt.get("anchors", {}).items():
+        if not str(frame_text).isdigit():
+            continue
+        frame = int(frame_text)
+        frame_candidates = predictions.get(frame, [])
+        candidates = [
+            candidate
+            for candidate in frame_candidates
+            if not (candidate[2] < 1.0 and nested_fragment(candidate, frame_candidates))
+        ]
+        people = [(int(person), point) for person, point in points.items()]
+        if not people or not candidates:
+            continue
+        cost = np.full((len(people), len(candidates)), 1e6)
+        for row, (_, (x, y)) in enumerate(people):
+            for column, (_, (x1, y1, x2, y2), life) in enumerate(candidates):
+                if x1 - 10 <= x <= x2 + 10 and y1 - 30 <= y <= y1 + 0.5 * (y2 - y1):
+                    cost[row, column] = np.hypot(
+                        x - (x1 + x2) / 2,
+                        y - (y1 + 0.12 * (y2 - y1)),
+                    ) + (SHORT_TRACK_PENALTY if life < 1.0 else 0.0)
+        for row, column in zip(*linear_sum_assignment(cost)):
+            if cost[row, column] < 1e6:
+                result.setdefault(people[row][0], []).append(
+                    (frame, candidates[column][0])
+                )
+    return result
+
+
+def _short_tracklet_summary(
+    tracks: dict[str, Any], matched_ids: set[str], *, threshold_s: float = 0.5
+) -> dict[str, Any]:
+    fps = float(tracks["fps"])
+    short_ids = {
+        str(predicted_id)
+        for predicted_id, track in tracks["tracks"].items()
+        if (track["frames"][-1] - track["frames"][0]) / fps < threshold_s
+    }
+    matched = short_ids & matched_ids
+    return {
+        "threshold_s": threshold_s,
+        "predicted_ids": len(short_ids),
+        "matched_ids": len(matched),
+        "unmatched_ids": len(short_ids - matched),
+        "anchor_precision": round(len(matched) / len(short_ids), 3)
+        if short_ids
+        else None,
+    }
+
+
+def score_sparse_reid_proxy(
+    gt: dict[str, Any],
+    tracks: dict[str, Any],
+    gt2pred: dict[int, str],
+) -> dict[str, Any]:
+    """Report bounded diagnostics when only sparse identity anchors exist."""
+    fps = float(tracks["fps"])
+    assignments = _anchor_assignments(gt, tracks)
+    owners: dict[str, set[int]] = {}
+    for person, items in assignments.items():
+        for _, predicted_id in items:
+            owners.setdefault(predicted_id, set()).add(person)
+    false_merges = {
+        predicted_id: sorted(people)
+        for predicted_id, people in owners.items()
+        if len(people) > 1
+    }
+    presence = gt_presence(gt)
+    expected = sum(max(1, round((end - start) * fps)) for start, end in presence.values())
+    correct = 0
+    fragmentation: dict[str, Any] = {}
+    switches = 0
+    for person in sorted(gt_person_ids(gt)):
+        anchored = sorted(assignments.get(person, []))
+        anchor_ids = [predicted_id for _, predicted_id in anchored]
+        person_switches = sum(
+            left != right for left, right in zip(anchor_ids, anchor_ids[1:])
+        )
+        switches += person_switches
+        primary = gt2pred.get(person)
+        source_tracklets = 0
+        if primary is not None:
+            track = tracks["tracks"][primary]
+            start, end = presence[person]
+            correct += sum(start <= frame / fps <= end for frame in track["frames"])
+            source_tracklets = len(track.get("tids", [primary]))
+        fragmentation[str(person)] = {
+            "anchor_predicted_ids": sorted(set(anchor_ids)),
+            "anchor_fragments": max(0, len(set(anchor_ids)) - 1),
+            "anchor_id_switches": person_switches,
+            "source_tracklets_in_primary_id": source_tracklets,
+        }
+    predicted = sum(len(track["frames"]) for track in tracks["tracks"].values())
+    idtp = min(correct, expected)
+    idfn = max(0, expected - idtp)
+    idfp = max(0, predicted - idtp)
+    id_precision = idtp / (idtp + idfp) if idtp + idfp else 0.0
+    id_recall = idtp / (idtp + idfn) if idtp + idfn else 0.0
+    idf1_proxy = (
+        2 * idtp / (2 * idtp + idfp + idfn)
+        if 2 * idtp + idfp + idfn
+        else 0.0
+    )
+    deta_proxy = idtp / (idtp + idfp + idfn) if idtp + idfp + idfn else 0.0
+    assa_proxy = id_recall
+    staff = {int(person) for person in gt.get("staff", [])}
+    staff_details = [fragmentation[str(person)] for person in staff]
+    return {
+        "protocol": "sparse_anchor_proxy_v1",
+        "standard_metrics_available": False,
+        "unavailable_reason": (
+            "IDF1 and HOTA require dense per-frame GT trajectories; "
+            "this ground truth contains identity anchors only"
+        ),
+        "idf1": None,
+        "hota": None,
+        "proxy": {
+            "idtp": int(idtp),
+            "idfp": int(idfp),
+            "idfn": int(idfn),
+            "id_precision": round(id_precision, 3),
+            "id_recall": round(id_recall, 3),
+            "idf1": round(idf1_proxy, 3),
+            "deta": round(deta_proxy, 3),
+            "assa": round(assa_proxy, 3),
+            "hota": round(float(np.sqrt(deta_proxy * assa_proxy)), 3),
+        },
+        "false_merges": {
+            "count": len(false_merges),
+            "predicted_id_to_gt": false_merges,
+            "scope": "reference_frames_only",
+        },
+        "fragmentation": {
+            "per_person": fragmentation,
+            "mean_anchor_fragments": round(
+                float(np.mean([item["anchor_fragments"] for item in fragmentation.values()])),
+                3,
+            ) if fragmentation else 0.0,
+            "mean_source_tracklets": round(
+                float(np.mean([
+                    item["source_tracklets_in_primary_id"]
+                    for item in fragmentation.values()
+                ])),
+                3,
+            ) if fragmentation else 0.0,
+            "source_tracklets_total": sum(
+                item["source_tracklets_in_primary_id"]
+                for item in fragmentation.values()
+            ),
+            "max_source_tracklets": max(
+                (
+                    item["source_tracklets_in_primary_id"]
+                    for item in fragmentation.values()
+                ),
+                default=0,
+            ),
+        },
+        "id_switches": {
+            "count": switches,
+            "scope": "between_reference_frames_only",
+        },
+        "short_tracklets": _short_tracklet_summary(
+            tracks,
+            {predicted_id for items in assignments.values() for _, predicted_id in items},
+        ),
+        "staff": {
+            "people": len(staff),
+            "anchor_id_switches": sum(item["anchor_id_switches"] for item in staff_details),
+            "mean_anchor_fragments": round(
+                float(np.mean([item["anchor_fragments"] for item in staff_details])), 3
+            ) if staff_details else None,
+            "mean_source_tracklets": round(
+                float(np.mean([
+                    item["source_tracklets_in_primary_id"] for item in staff_details
+                ])),
+                3,
+            ) if staff_details else None,
+        },
+    }
+
+
+def _dense_trajectories(gt: dict[str, Any]) -> dict[int, dict[int, list[float]]]:
+    trajectories = gt.get("trajectories")
+    if not isinstance(trajectories, dict):
+        return {}
+    result: dict[int, dict[int, list[float]]] = {}
+    for person, trajectory in trajectories.items():
+        if not isinstance(trajectory, dict):
+            continue
+        frames, boxes = trajectory.get("frames", []), trajectory.get("boxes", [])
+        if len(frames) != len(boxes):
+            raise ValueError(f"GT trajectory {person} has mismatched frames and boxes")
+        result[int(person)] = {
+            int(frame): box for frame, box in zip(frames, boxes)
+        }
+    return result
+
+
+def _dense_matches(
+    dense: dict[int, dict[int, list[float]]],
+    predictions: dict[int, list[tuple[str, list[float]]]],
+    threshold: float,
+) -> list[tuple[int, int, str]]:
+    matches: list[tuple[int, int, str]] = []
+    for frame in sorted(set(predictions) | {f for trajectory in dense.values() for f in trajectory}):
+        ground_truth = [
+            (person, trajectory[frame])
+            for person, trajectory in dense.items()
+            if frame in trajectory
+        ]
+        predicted = predictions.get(frame, [])
+        if not ground_truth or not predicted:
+            continue
+        cost = np.full((len(ground_truth), len(predicted)), 1e6)
+        for row, (_, gt_box) in enumerate(ground_truth):
+            for column, (_, pred_box) in enumerate(predicted):
+                overlap = _box_iou(gt_box, pred_box)
+                if overlap >= threshold:
+                    cost[row, column] = -overlap
+        for row, column in zip(*linear_sum_assignment(cost)):
+            if cost[row, column] < 1e6:
+                matches.append((frame, ground_truth[row][0], predicted[column][0]))
+    return matches
+
+
+def score_dense_reid(gt: dict[str, Any], tracks: dict[str, Any]) -> dict[str, Any]:
+    """Compute standard identity diagnostics when dense boxes are available."""
+    dense = _dense_trajectories(gt)
+    if not dense:
+        raise ValueError("dense ReID scoring requires gt.trajectories")
+    predictions = _predictions_by_frame(tracks)
+    matches = _dense_matches(dense, predictions, 0.5)
+    pair_counts: dict[tuple[int, str], int] = {}
+    for _, person, predicted_id in matches:
+        pair_counts[(person, predicted_id)] = pair_counts.get((person, predicted_id), 0) + 1
+    people, predicted_ids = sorted(dense), sorted(tracks["tracks"])
+    matrix = np.zeros((len(people), len(predicted_ids)), dtype=int)
+    for row, person in enumerate(people):
+        for column, predicted_id in enumerate(predicted_ids):
+            matrix[row, column] = pair_counts.get((person, predicted_id), 0)
+    idtp = 0
+    if len(people) and len(predicted_ids):
+        rows, columns = linear_sum_assignment(-matrix)
+        idtp = int(matrix[rows, columns].sum())
+    total_gt = sum(len(trajectory) for trajectory in dense.values())
+    total_pred = sum(len(track["frames"]) for track in tracks["tracks"].values())
+    idfn, idfp = total_gt - idtp, total_pred - idtp
+    idf1 = 2 * idtp / max(2 * idtp + idfp + idfn, 1)
+
+    by_person: dict[int, dict[int, str]] = {person: {} for person in people}
+    owners: dict[str, set[int]] = {}
+    for frame, person, predicted_id in matches:
+        by_person[person][frame] = predicted_id
+        owners.setdefault(predicted_id, set()).add(person)
+    per_person: dict[str, Any] = {}
+    total_switches = 0
+    for person, trajectory in dense.items():
+        previous: str | None = None
+        segments = switches = 0
+        active = False
+        used_ids: set[str] = set()
+        for frame in sorted(trajectory):
+            current = by_person[person].get(frame)
+            if current is None:
+                active = False
+                continue
+            used_ids.add(current)
+            if not active or (previous is not None and current != previous):
+                segments += 1
+            if previous is not None and current != previous:
+                switches += 1
+            previous, active = current, True
+        total_switches += switches
+        per_person[str(person)] = {
+            "predicted_ids": sorted(used_ids),
+            "matched_segments": segments,
+            "fragments": max(0, segments - 1),
+            "id_switches": switches,
+        }
+
+    hota_values = []
+    for threshold in np.arange(0.05, 1.0, 0.05):
+        threshold_matches = _dense_matches(dense, predictions, float(threshold))
+        tp = len(threshold_matches)
+        fn, fp = total_gt - tp, total_pred - tp
+        deta = tp / max(tp + fn + fp, 1)
+        counts: dict[tuple[int, str], int] = {}
+        for _, person, predicted_id in threshold_matches:
+            counts[(person, predicted_id)] = counts.get((person, predicted_id), 0) + 1
+        ass_sum = 0.0
+        for _, person, predicted_id in threshold_matches:
+            tpa = counts[(person, predicted_id)]
+            ass_sum += tpa / max(
+                len(dense[person]) + len(tracks["tracks"][predicted_id]["frames"]) - tpa,
+                1,
+            )
+        assa = ass_sum / tp if tp else 0.0
+        hota_values.append(float(np.sqrt(deta * assa)))
+
+    false_merges = {
+        predicted_id: sorted(persons)
+        for predicted_id, persons in owners.items()
+        if len(persons) > 1
+    }
+    staff = {int(person) for person in gt.get("staff", [])} & set(dense)
+    return {
+        "protocol": "dense_tracking_v1",
+        "standard_metrics_available": True,
+        "idf1": round(idf1, 3),
+        "hota": round(float(np.mean(hota_values)), 3),
+        "id_counts": {"idtp": idtp, "idfp": idfp, "idfn": idfn},
+        "false_merges": {
+            "count": len(false_merges),
+            "predicted_id_to_gt": false_merges,
+        },
+        "fragmentation": {
+            "per_person": per_person,
+            "total": sum(item["fragments"] for item in per_person.values()),
+            "mean": round(float(np.mean([item["fragments"] for item in per_person.values()])), 3),
+        },
+        "id_switches": {"count": total_switches},
+        "short_tracklets": _short_tracklet_summary(tracks, set(owners)),
+        "staff": {
+            "people": len(staff),
+            "fragments": sum(per_person[str(person)]["fragments"] for person in staff),
+            "id_switches": sum(per_person[str(person)]["id_switches"] for person in staff),
+        },
+    }
+
+
+def score_reid_diagnostics(
+    gt: dict[str, Any], tracks: dict[str, Any], gt2pred: dict[int, str]
+) -> dict[str, Any]:
+    return (
+        score_dense_reid(gt, tracks)
+        if _dense_trajectories(gt)
+        else score_sparse_reid_proxy(gt, tracks, gt2pred)
+    )
 
 
 def score_events(
@@ -308,6 +700,7 @@ def run_benchmark(tracks: dict[str, Any], events: dict[str, Any], gt: dict[str, 
             "staff_fn": len(staff) - staff_tp,
             "staff_unmapped_pred": len(unmapped_pred_staff),
         },
+        "reid": score_reid_diagnostics(gt, tracks, gt2pred),
         "events_strict": score_events(gt["events"], events["events"], pred2gt, tol=tol, strict=True),
         "events_loose": score_events(gt["events"], events["events"], pred2gt, tol=tol, strict=False),
         "states": score_states(gt, events["states"], pred2gt),
@@ -325,6 +718,21 @@ def print_report(r: dict[str, Any]) -> None:
           f"(coverage {i['continuity_coverage']:.0%}, staff {staff_cont})")
     print(f"Roles      : accuracy {ro['accuracy']:.0%} end-to-end, {ro['accuracy_conditional']:.0%} mapped "
           f"(coverage {ro['coverage']:.0%}); staff TP {ro['staff_tp']} FP {ro['staff_fp']} FN {ro['staff_fn']}")
+    reid = r["reid"]
+    if reid["standard_metrics_available"]:
+        print(
+            f"ReID       : IDF1 {reid['idf1']:.3f}, HOTA {reid['hota']:.3f}, "
+            f"false merges {reid['false_merges']['count']}, "
+            f"switches {reid['id_switches']['count']}"
+        )
+    else:
+        proxy = reid["proxy"]
+        print(
+            f"ReID proxy : IDF1 {proxy['idf1']:.3f}, HOTA {proxy['hota']:.3f}, "
+            f"anchor false merges {reid['false_merges']['count']}, "
+            f"anchor switches {reid['id_switches']['count']} "
+            "(dense GT unavailable)"
+        )
     for name in ("events_strict", "events_loose"):
         e = r[name]
         print(f"{'Events ' + name.split('_')[1]:11s}: P {e['precision']:.2f} R {e['recall']:.2f} F1 {e['f1']:.2f} "
