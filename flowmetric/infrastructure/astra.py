@@ -19,7 +19,7 @@ from openai import BadRequestError, OpenAI
 load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 ASTRA_CACHE_VERSION = 1
-ASTRA_PROMPT_VERSION = "2026-10-18.tracklet-gallery-v1"
+ASTRA_PROMPT_VERSION = "2026-10-18.tracklet-gallery-targeted-v3"
 ASTRA_SCHEMA_VERSION = "2"
 VALID_ROLES = frozenset({"customer", "staff", "unknown"})
 
@@ -122,6 +122,8 @@ _bgr_to_data_url = bgr_to_data_url
 
 
 VSELLM_BASE_URL = "https://api.vsellm.ru/v1"
+ASTRA_REQUEST_TIMEOUT_S = 90.0
+ASTRA_TRANSPORT_RETRIES = 2
 
 
 def configured_default_model_id() -> str | None:
@@ -141,9 +143,23 @@ def make_client() -> tuple[OpenAI, str]:
     """
     if key := os.environ.get("VSELLM_API_KEY"):
         base_url = os.environ.get("VSELLM_BASE_URL", VSELLM_BASE_URL)
-        return OpenAI(api_key=key, base_url=base_url), "openai/gpt-6-astra"
+        return (
+            OpenAI(
+                api_key=key,
+                base_url=base_url,
+                timeout=ASTRA_REQUEST_TIMEOUT_S,
+                max_retries=ASTRA_TRANSPORT_RETRIES,
+            ),
+            "openai/gpt-6-astra",
+        )
     if os.environ.get("OPENAI_API_KEY"):
-        return OpenAI(), "gpt-6-astra"
+        return (
+            OpenAI(
+                timeout=ASTRA_REQUEST_TIMEOUT_S,
+                max_retries=ASTRA_TRANSPORT_RETRIES,
+            ),
+            "gpt-6-astra",
+        )
     raise RuntimeError("Set VSELLM_API_KEY (or OPENAI_API_KEY) for the Astra stage")
 
 
@@ -538,6 +554,16 @@ def build_astra_cache_manifest(
     batch_size: int,
     requested_model: str | None,
     effort: str,
+    batch_overlap: int = 1,
+    targeted_pass: bool = False,
+    targeted_references_per_identity: int = 1,
+    targeted_resampling: bool = False,
+    targeted_resample_budget: int = 16,
+    targeted_shortlist: bool = False,
+    targeted_shortlist_size: int = 5,
+    part_aware_appearance: bool = False,
+    tracker_reid: bool = False,
+    offline_graph: bool = False,
     resolved_models: list[str] | None = None,
     actual_models: list[str] | None = None,
 ) -> dict[str, Any]:
@@ -558,6 +584,18 @@ def build_astra_cache_manifest(
         "astra": {
             "sample_fps": float(sample_fps),
             "batch_size": int(batch_size),
+            "batch_overlap": int(batch_overlap),
+            "targeted_pass": bool(targeted_pass),
+            "targeted_references_per_identity": int(
+                targeted_references_per_identity
+            ),
+            "targeted_resampling": bool(targeted_resampling),
+            "targeted_resample_budget": int(targeted_resample_budget),
+            "targeted_shortlist": bool(targeted_shortlist),
+            "targeted_shortlist_size": int(targeted_shortlist_size),
+            "part_aware_appearance": bool(part_aware_appearance),
+            "tracker_reid": bool(tracker_reid),
+            "offline_graph": bool(offline_graph),
             "requested_model": requested_model,
             "resolved_models": resolved_model_ids,
             "actual_model": actual_model_ids[0] if len(actual_model_ids) == 1 else None,
@@ -585,12 +623,25 @@ def validate_astra_cache_manifest(
         "video": ("width", "height", "frame_count", "sample_frame_indexes"),
         "astra": (
             "batch_size",
+            "batch_overlap",
+            "targeted_pass",
+            "targeted_references_per_identity",
+            "targeted_resampling",
+            "targeted_resample_budget",
+            "targeted_shortlist",
+            "targeted_shortlist_size",
             "requested_model",
             "effort",
             "prompt_version",
             "schema_version",
         ),
     }
+    if expected.get("astra", {}).get("targeted_shortlist"):
+        exact_fields["astra"] = (*exact_fields["astra"], "part_aware_appearance")
+    if expected.get("astra", {}).get("tracker_reid"):
+        exact_fields["astra"] = (*exact_fields["astra"], "tracker_reid")
+    if expected.get("astra", {}).get("targeted_shortlist"):
+        exact_fields["astra"] = (*exact_fields["astra"], "offline_graph")
     mismatches: list[str] = []
     for section, fields in exact_fields.items():
         for field in fields:
@@ -680,9 +731,29 @@ def validate_reid_collection(
                 f"Astra batch {batch_i} n_frames does not match video_frames"
             )
         unexpected = set(video_frames) - expected_set
-        if unexpected:
+        declared_resampled = meta.get("targeted_resampled_frames", [])
+        if (
+            not isinstance(declared_resampled, list)
+            or any(
+                isinstance(frame, bool) or not isinstance(frame, int) or frame < 0
+                for frame in declared_resampled
+            )
+            or len(declared_resampled) != len(set(declared_resampled))
+        ):
             raise AstraResponseError(
-                f"Astra batch {batch_i} contains unsampled video frames: {sorted(unexpected)}"
+                f"Astra batch {batch_i} targeted_resampled_frames must be "
+                "unique non-negative integers"
+            )
+        allowed_resampled = (
+            set(declared_resampled)
+            if meta.get("protocol") == "tracklet_gallery_v1"
+            and meta.get("gallery_scope") == "targeted"
+            else set()
+        )
+        if unexpected != allowed_resampled:
+            raise AstraResponseError(
+                f"Astra batch {batch_i} contains undeclared resampled video frames: "
+                f"{sorted(unexpected - allowed_resampled)}"
             )
         validate_astra_response(
             reid,
@@ -707,8 +778,8 @@ def validate_reid_batches(
     original_width: int,
     original_height: int,
 ) -> None:
-    """Validate exact batch count/order in addition to aggregate coverage."""
-    if len(reids) != len(expected_batches):
+    """Validate base batches plus optional explicitly targeted follow-up batches."""
+    if len(reids) < len(expected_batches):
         raise AstraResponseError(
             f"incomplete Astra batch coverage: got {len(reids)} batches, "
             f"expected {len(expected_batches)}"
@@ -720,6 +791,17 @@ def validate_reid_batches(
             raise AstraResponseError(
                 f"Astra batch {batch_i} frame coverage mismatch: "
                 f"got {actual_frames!r}, expected {expected_frames!r}"
+            )
+    for batch_i, reid in enumerate(reids[len(expected_batches) :], len(expected_batches)):
+        meta = reid.get("_meta") if isinstance(reid, dict) else None
+        if (
+            not isinstance(meta, dict)
+            or meta.get("protocol") != "tracklet_gallery_v1"
+            or meta.get("gallery_scope") != "targeted"
+            or not meta.get("targeted_query_ids")
+        ):
+            raise AstraResponseError(
+                f"unexpected extra Astra batch {batch_i}; only targeted follow-ups are allowed"
             )
     expected_samples = sorted({frame for batch in expected_batches for frame in batch})
     validate_reid_collection(

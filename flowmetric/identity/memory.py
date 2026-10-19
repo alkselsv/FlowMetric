@@ -79,13 +79,18 @@ class IdentityEvidence:
     confidence: float
     weighted_support: float
     role: str = "unknown"
+    required_support: int | None = None
+    required_confidence: float | None = None
+    policy: str | None = None
+    reference_tracklet_id: int | None = None
+    confirming_batch: int | None = None
 
     @property
     def key(self) -> tuple[int, int, int]:
         return self.tracklet_id, self.batch, self.identity_id
 
     def decision_base(self) -> dict[str, Any]:
-        return {
+        decision = {
             "tracklet_id": self.tracklet_id,
             "batch": self.batch,
             "identity_id": self.identity_id,
@@ -94,6 +99,19 @@ class IdentityEvidence:
             "confidence": round(self.confidence, 4),
             "weighted_support": round(self.weighted_support, 4),
         }
+        if self.policy is not None:
+            decision.update(
+                {
+                    "policy": self.policy,
+                    "required_support": self.required_support,
+                    "required_confidence": round(
+                        float(self.required_confidence), 4
+                    ),
+                    "reference_tracklet_id": self.reference_tracklet_id,
+                    "confirming_batch": self.confirming_batch,
+                }
+            )
+        return decision
 
 
 @dataclass
@@ -175,10 +193,20 @@ class RetrospectiveIdentityMemory:
         eligible: list[IdentityEvidence] = []
         for item in self._evidence:
             decision = item.decision_base()
+            required_support = (
+                item.required_support
+                if item.required_support is not None
+                else self.min_support
+            )
+            required_confidence = (
+                item.required_confidence
+                if item.required_confidence is not None
+                else self.merge_confidence
+            )
             if (
-                item.support < self.min_support
-                or item.confidence < self.merge_confidence
-                or item.weighted_support < self.min_support * self.merge_confidence
+                item.support < required_support
+                or item.confidence < required_confidence
+                or item.weighted_support < required_support * required_confidence
             ):
                 decision.update(
                     {"decision": "abstain", "reason": "insufficient_evidence"}

@@ -142,6 +142,115 @@ def validate_tracklet_reid_response(
     return response
 
 
+def validate_targeted_shortlist_response(
+    response: dict[str, Any],
+    *,
+    target_tracklet_ids: Sequence[int],
+    candidate_shortlists: Mapping[int, Sequence[int]],
+) -> dict[str, Any]:
+    """Ensure a targeted response cannot bypass its per-query shortlist."""
+    targets = {int(value) for value in target_tracklet_ids}
+    normalized = {
+        int(query): {int(reference) for reference in references}
+        for query, references in candidate_shortlists.items()
+    }
+    if set(normalized) != targets:
+        raise ValueError("candidate shortlists must cover every targeted query")
+    for identity in response["identities"]:
+        members = {int(value) for value in identity["tracklet_ids"]}
+        queries = members & targets
+        if len(queries) > 1:
+            raise AstraResponseError(
+                "targeted shortlist response merged multiple unresolved queries"
+            )
+        if queries:
+            query = next(iter(queries))
+            disallowed = members - targets - normalized[query]
+            if disallowed:
+                raise AstraResponseError(
+                    f"targeted query {query} matched references outside its shortlist: "
+                    f"{sorted(disallowed)}"
+                )
+    return response
+
+
+def constrain_targeted_shortlist_response(
+    response: dict[str, Any],
+    *,
+    target_tracklet_ids: Sequence[int],
+    candidate_shortlists: Mapping[int, Sequence[int]],
+) -> tuple[dict[str, Any], int]:
+    """Safely abstain shortlist violations after a model retry has failed."""
+    targets = {int(value) for value in target_tracklet_ids}
+    allowed = {
+        int(query): {int(reference) for reference in references}
+        for query, references in candidate_shortlists.items()
+    }
+    if set(allowed) != targets:
+        raise ValueError("candidate shortlists must cover every targeted query")
+
+    identities: list[dict[str, Any]] = []
+    abstained = {int(value) for value in response["abstained_tracklet_ids"]}
+    next_identity_id = max(
+        (int(identity["id"]) for identity in response["identities"]),
+        default=-1,
+    ) + 1
+    rejected_queries = 0
+    for identity in response["identities"]:
+        members = [int(value) for value in identity["tracklet_ids"]]
+        queries = [value for value in members if value in targets]
+        references = [value for value in members if value not in targets]
+        valid = (
+            len(queries) <= 1
+            and (
+                not queries
+                or not references
+                or set(references) <= allowed[queries[0]]
+            )
+        )
+        if valid:
+            identities.append(identity)
+            continue
+
+        abstained.update(queries)
+        rejected_queries += len(queries)
+        for index, reference in enumerate(references):
+            identities.append(
+                {
+                    "id": (
+                        int(identity["id"])
+                        if index == 0
+                        else next_identity_id
+                    ),
+                    "role": identity["role"],
+                    "tracklet_ids": [reference],
+                    "confidence": float(identity["confidence"]),
+                }
+            )
+            if index > 0:
+                next_identity_id += 1
+
+    constrained = {
+        "identities": identities,
+        "abstained_tracklet_ids": sorted(abstained),
+    }
+    validate_tracklet_reid_response(
+        constrained,
+        expected_tracklet_ids={
+            int(value)
+            for identity in response["identities"]
+            for value in identity["tracklet_ids"]
+        }
+        | {int(value) for value in response["abstained_tracklet_ids"]},
+    )
+    validate_targeted_shortlist_response(
+        constrained,
+        target_tracklet_ids=target_tracklet_ids,
+        candidate_shortlists=candidate_shortlists,
+    )
+    return constrained, rejected_queries
+
+
 def validate_normalized_gallery_metadata(meta: Any) -> dict[str, Any]:
     """Validate cached gallery associations before they can affect identity sync."""
     if not isinstance(meta, dict) or meta.get("protocol") != GALLERY_PROTOCOL:
@@ -156,6 +265,72 @@ def validate_normalized_gallery_metadata(meta: Any) -> dict[str, Any]:
     if len(gallery_ids) != len(set(gallery_ids)):
         raise AstraResponseError("gallery_tracklet_ids contains duplicates")
     expected = set(gallery_ids)
+    gallery_scope = meta.get("gallery_scope", "full")
+    targeted_query_ids = meta.get("targeted_query_ids", [])
+    targeted_resampled_frames = meta.get("targeted_resampled_frames", [])
+    targeted_candidate_shortlists = meta.get("targeted_candidate_shortlists", {})
+    targeted_shortlist_rejections = meta.get("targeted_shortlist_rejections", 0)
+    if gallery_scope not in {"full", "targeted"}:
+        raise AstraResponseError("gallery_scope must be full or targeted")
+    if (
+        not isinstance(targeted_query_ids, list)
+        or any(
+            isinstance(value, bool) or not isinstance(value, int) or value not in expected
+            for value in targeted_query_ids
+        )
+        or len(targeted_query_ids) != len(set(targeted_query_ids))
+    ):
+        raise AstraResponseError("targeted_query_ids must be unique gallery tracklets")
+    if gallery_scope == "targeted" and not targeted_query_ids:
+        raise AstraResponseError("targeted gallery has no query tracklets")
+    if gallery_scope == "full" and targeted_query_ids:
+        raise AstraResponseError("full gallery cannot contain targeted queries")
+    video_frames = meta.get("video_frames", [])
+    if (
+        not isinstance(targeted_resampled_frames, list)
+        or any(
+            isinstance(value, bool)
+            or not isinstance(value, int)
+            or value not in video_frames
+            for value in targeted_resampled_frames
+        )
+        or len(targeted_resampled_frames) != len(set(targeted_resampled_frames))
+    ):
+        raise AstraResponseError(
+            "targeted_resampled_frames must be unique targeted video frames"
+        )
+    if gallery_scope == "full" and targeted_resampled_frames:
+        raise AstraResponseError("full gallery cannot contain targeted resampled frames")
+    if not isinstance(targeted_candidate_shortlists, dict):
+        raise AstraResponseError("targeted_candidate_shortlists must be an object")
+    if (
+        isinstance(targeted_shortlist_rejections, bool)
+        or not isinstance(targeted_shortlist_rejections, int)
+        or targeted_shortlist_rejections < 0
+    ):
+        raise AstraResponseError("targeted_shortlist_rejections must be non-negative")
+    if gallery_scope == "full" and targeted_candidate_shortlists:
+        raise AstraResponseError("full gallery cannot contain targeted candidate shortlists")
+    expected_query_keys = {str(value) for value in targeted_query_ids}
+    if (
+        targeted_candidate_shortlists
+        and set(targeted_candidate_shortlists) != expected_query_keys
+    ):
+        raise AstraResponseError("candidate shortlists must cover every targeted query")
+    for query, references in targeted_candidate_shortlists.items():
+        if (
+            query not in expected_query_keys
+            or not isinstance(references, list)
+            or len(references) != len(set(references))
+            or any(
+                isinstance(value, bool)
+                or not isinstance(value, int)
+                or value not in expected
+                or value in targeted_query_ids
+                for value in references
+            )
+        ):
+            raise AstraResponseError("candidate shortlist contains invalid references")
     assigned: set[int] = set()
     seen_identity_ids: set[int] = set()
     for index, association in enumerate(associations):
@@ -216,6 +391,55 @@ def _evenly_spaced(values: Sequence[Any], count: int) -> list[Any]:
         return list(values)
     last = len(values) - 1
     return [values[(index * last) // (count - 1)] for index in range(count)]
+
+
+def _intersection_over_subject(box: np.ndarray, other: np.ndarray) -> float:
+    x1 = max(float(box[0]), float(other[0]))
+    y1 = max(float(box[1]), float(other[1]))
+    x2 = min(float(box[2]), float(other[2]))
+    y2 = min(float(box[3]), float(other[3]))
+    intersection = max(0.0, x2 - x1) * max(0.0, y2 - y1)
+    area = max(1.0, float((box[2] - box[0]) * (box[3] - box[1])))
+    return intersection / area
+
+
+def _crop_quality(
+    frame: np.ndarray,
+    box: np.ndarray,
+    confidence: float,
+    other_boxes: Sequence[np.ndarray],
+) -> tuple[np.ndarray, float]:
+    crop = _crop_with_context(frame, box)
+    gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
+    sharpness = min(float(cv2.Laplacian(gray, cv2.CV_64F).var()) / 300.0, 1.0)
+    frame_area = max(float(frame.shape[0] * frame.shape[1]), 1.0)
+    box_area = max(0.0, float((box[2] - box[0]) * (box[3] - box[1])))
+    size = min(math.sqrt(box_area / frame_area) / 0.25, 1.0)
+    occlusion = max(
+        (_intersection_over_subject(box, other) for other in other_boxes),
+        default=0.0,
+    )
+    visibility = 1.0 - min(occlusion, 1.0)
+    quality = 0.4 * confidence + 0.25 * sharpness + 0.2 * visibility + 0.15 * size
+    return crop, float(quality)
+
+
+def _quality_diverse(
+    values: Sequence[tuple[int, int, np.ndarray, float, np.ndarray, float]],
+    count: int,
+) -> list[tuple[int, int, np.ndarray, float, np.ndarray, float]]:
+    """Pick the best crop in each chronological segment."""
+    if len(values) <= count:
+        return list(values)
+    boundaries = np.linspace(0, len(values), count + 1, dtype=int)
+    chosen = [
+        max(
+            values[int(boundaries[index]) : int(boundaries[index + 1])],
+            key=lambda item: (item[5], item[3], -item[1]),
+        )
+        for index in range(count)
+    ]
+    return sorted(chosen, key=lambda item: item[1])
 
 
 def _crop_with_context(frame: np.ndarray, box: np.ndarray, margin: float = 0.18) -> np.ndarray:
@@ -279,13 +503,34 @@ def build_tracklet_gallery(
         raise ValueError("sample_frames and video_frames must be aligned and non-empty")
     if crops_per_tracklet < 1 or columns < 1 or cell_width < 64 or cell_height < 96:
         raise ValueError("invalid tracklet gallery layout")
-    observations: dict[int, list[tuple[int, int, np.ndarray, float]]] = defaultdict(list)
+    observations: dict[
+        int, list[tuple[int, int, np.ndarray, float, np.ndarray, float]]
+    ] = defaultdict(list)
     for sample_index, (frame, video_frame) in enumerate(zip(sample_frames, video_frames)):
         if not isinstance(frame, np.ndarray) or frame.ndim != 3 or frame.size == 0:
             raise ValueError("gallery frames must be non-empty colour images")
-        for tracklet_id, box, confidence in detections.get(video_frame, ()):
+        frame_detections = list(detections.get(video_frame, ()))
+        for detection_index, (tracklet_id, box, confidence) in enumerate(frame_detections):
+            box_array = np.asarray(box, dtype=float)
+            crop, quality = _crop_quality(
+                frame,
+                box_array,
+                float(confidence),
+                [
+                    np.asarray(other_box, dtype=float)
+                    for other_index, (_, other_box, _) in enumerate(frame_detections)
+                    if other_index != detection_index
+                ],
+            )
             observations[int(tracklet_id)].append(
-                (sample_index, int(video_frame), np.asarray(box, dtype=float), float(confidence))
+                (
+                    sample_index,
+                    int(video_frame),
+                    box_array,
+                    float(confidence),
+                    crop,
+                    quality,
+                )
             )
     if not observations:
         raise ValueError("cannot build a tracklet gallery without local detections")
@@ -293,19 +538,20 @@ def build_tracklet_gallery(
     cells: list[np.ndarray] = []
     metadata: list[dict[str, Any]] = []
     for tracklet_id in sorted(observations):
-        chosen = _evenly_spaced(observations[tracklet_id], crops_per_tracklet)
+        chosen = _quality_diverse(observations[tracklet_id], crops_per_tracklet)
         metadata.append(
             {
                 "tracklet_id": tracklet_id,
                 "crop_count": len(chosen),
                 "video_frames": [item[1] for item in chosen],
+                "crop_quality": [round(float(item[5]), 4) for item in chosen],
+                "selection_strategy": "quality_by_temporal_segment_v1",
                 "mean_detector_confidence": round(
                     float(np.mean([item[3] for item in chosen])), 4
                 ),
             }
         )
-        for sample_index, video_frame, box, _ in chosen:
-            crop = _crop_with_context(sample_frames[sample_index], box)
+        for _, video_frame, _, _, crop, _ in chosen:
             cells.append(
                 _render_cell(
                     crop,
@@ -332,6 +578,9 @@ def astra_reid_tracklet_gallery(
     reasoning_effort: str | None,
     client: Any,
     max_side: int = 1600,
+    target_tracklet_ids: Sequence[int] | None = None,
+    candidate_shortlists: Mapping[int, Sequence[int]] | None = None,
+    repair_shortlist_violations: bool = False,
 ) -> tuple[dict[str, Any], str | None]:
     """Ask Astra only to associate numbered local tracklets."""
     tracklet_ids = [int(item["tracklet_id"]) for item in tracklets]
@@ -348,11 +597,50 @@ def astra_reid_tracklet_gallery(
     inventory = ", ".join(
         f"{item['tracklet_id']}({item['crop_count']} crops)" for item in tracklets
     )
+    target_ids = sorted({int(value) for value in target_tracklet_ids or []})
+    if not set(target_ids) <= set(tracklet_ids):
+        raise ValueError("target_tracklet_ids must be present in the gallery")
+    targeted_instruction = ""
+    if target_ids:
+        shortlists = {
+            int(query): sorted({int(reference) for reference in references})
+            for query, references in (candidate_shortlists or {}).items()
+        }
+        if shortlists and set(shortlists) != set(target_ids):
+            raise ValueError("candidate_shortlists must cover every target tracklet")
+        if any(
+            reference not in tracklet_ids or reference in target_ids
+            for references in shortlists.values()
+            for reference in references
+        ):
+            raise ValueError("candidate shortlist references must be gallery references")
+        shortlist_instruction = ""
+        if shortlists:
+            shortlist_lines = "\n".join(
+                f"- query {query}: allowed reference tracklets {references}"
+                for query, references in sorted(shortlists.items())
+            )
+            shortlist_instruction = f"""
+Candidate shortlists (hard constraints):
+{shortlist_lines}
+For each query, compare only with its allowed references. Never attach it to another
+reference or to another unresolved query. A query may remain abstained or form a
+singleton identity when it is a genuinely new person; do not force a listed match.
+"""
+        targeted_instruction = f"""
+This is a targeted second pass. The unresolved QUERY tracklets are: {target_ids}.
+All other tracklets are trusted reference prototypes from previously accepted groups.
+Focus on attaching a query to a convincing reference of the same physical person.
+Do not merge two reference prototypes unless the visual evidence is unmistakable.
+If no reference convincingly matches a query, put that query in abstained_tracklet_ids.
+{shortlist_instruction}
+"""
     prompt = f"""You are the identity-association stage of FlowMetric restaurant CCTV.
 
 The {len(encoded_pages)} image page(s) are contact sheets up to {width}x{height}. Every cell is a LOCAL tracker crop and
 is labelled with an existing integer tracklet ID and video frame. Tracklet inventory:
 {inventory}
+{targeted_instruction}
 
 Group tracklet IDs only when the crops provide convincing evidence that they show the
 same physical person. Assign customer/staff/unknown from visible appearance and context.
@@ -380,9 +668,26 @@ Return ONLY one JSON object matching the supplied schema, without Markdown or pr
         schema=TRACKLET_REID_SCHEMA,
         schema_name="flowmetric_tracklet_reid",
     )
-    return validate_tracklet_reid_response(
+    validated = validate_tracklet_reid_response(
         data, expected_tracklet_ids=tracklet_ids
-    ), actual_model
+    )
+    if target_ids and candidate_shortlists:
+        try:
+            validate_targeted_shortlist_response(
+                validated,
+                target_tracklet_ids=target_ids,
+                candidate_shortlists=candidate_shortlists,
+            )
+        except AstraResponseError:
+            if not repair_shortlist_violations:
+                raise
+            validated, rejected_queries = constrain_targeted_shortlist_response(
+                validated,
+                target_tracklet_ids=target_ids,
+                candidate_shortlists=candidate_shortlists,
+            )
+            validated["_targeted_shortlist_rejections"] = rejected_queries
+    return validated, actual_model
 
 
 def normalize_gallery_response(
@@ -395,8 +700,25 @@ def normalize_gallery_response(
     original_height: int,
     requested_model: str,
     actual_model: str | None,
+    gallery_scope: str = "full",
+    targeted_query_ids: Sequence[int] = (),
+    targeted_candidate_shortlists: Mapping[int, Sequence[int]] | None = None,
 ) -> dict[str, Any]:
     """Convert associations to the established internal ReID collection shape."""
+    if gallery_scope not in {"full", "targeted"}:
+        raise ValueError("gallery_scope must be 'full' or 'targeted'")
+    gallery_tracklet_ids = [int(item["tracklet_id"]) for item in tracklets]
+    query_ids = sorted({int(value) for value in targeted_query_ids})
+    if not set(query_ids) <= set(gallery_tracklet_ids):
+        raise ValueError("targeted_query_ids must be present in tracklets")
+    if gallery_scope == "targeted" and not query_ids:
+        raise ValueError("targeted gallery must contain at least one query")
+    shortlists = {
+        str(int(query)): sorted({int(reference) for reference in references})
+        for query, references in (targeted_candidate_shortlists or {}).items()
+    }
+    if shortlists and set(shortlists) != {str(value) for value in query_ids}:
+        raise ValueError("targeted candidate shortlists must cover every query")
     by_tracklet: dict[int, dict[int, tuple[np.ndarray, float]]] = defaultdict(dict)
     for local_frame_index, video_frame in enumerate(video_frames):
         for tracklet_id, box, detector_confidence in detections.get(video_frame, ()):
@@ -462,8 +784,248 @@ def normalize_gallery_response(
             "actual_model": actual_model,
             "prompt_version": ASTRA_PROMPT_VERSION,
             "schema_version": ASTRA_SCHEMA_VERSION,
-            "gallery_tracklet_ids": [int(item["tracklet_id"]) for item in tracklets],
+            "gallery_tracklet_ids": gallery_tracklet_ids,
+            "gallery_scope": gallery_scope,
+            "targeted_query_ids": query_ids,
+            "targeted_candidate_shortlists": shortlists,
+            "targeted_shortlist_rejections": int(
+                response.get("_targeted_shortlist_rejections", 0)
+            ),
             "gallery_associations": associations,
             "abstained_tracklet_ids": list(response["abstained_tracklet_ids"]),
         },
     }
+
+
+def targeted_gallery_inventory(
+    reids: Sequence[dict[str, Any]],
+    *,
+    merge_confidence: float = 0.55,
+    min_support: int = 2,
+    representatives_per_group: int = 1,
+    tracklet_midpoints: Mapping[int, float] | None = None,
+) -> tuple[list[int], list[int]]:
+    """Return unresolved queries and strong, temporally diverse references."""
+    if (
+        isinstance(representatives_per_group, bool)
+        or not isinstance(representatives_per_group, int)
+        or representatives_per_group <= 0
+    ):
+        raise ValueError("representatives_per_group must be a positive integer")
+    midpoints = tracklet_midpoints or {}
+    accepted_tracklets: set[int] = set()
+    unresolved_tracklets: set[int] = set()
+    representatives: list[int] = []
+    for reid in reids:
+        meta = reid.get("_meta", {}) if isinstance(reid, dict) else {}
+        if meta.get("protocol") != GALLERY_PROTOCOL:
+            continue
+        for association in meta.get("gallery_associations", []):
+            tracklet_ids = [int(value) for value in association.get("tracklet_ids", [])]
+            support = association.get("support", {})
+            if not tracklet_ids:
+                continue
+            confidence = float(association.get("confidence", 0.0))
+            eligible = [
+                tracklet_id
+                for tracklet_id in tracklet_ids
+                if int(support.get(str(tracklet_id), 0)) >= min_support
+                and confidence >= merge_confidence
+                and confidence * int(support.get(str(tracklet_id), 0))
+                >= min_support * merge_confidence
+            ]
+            accepted_tracklets.update(eligible)
+            unresolved_tracklets.update(set(tracklet_ids) - set(eligible))
+            if eligible:
+                selected = [
+                    max(
+                        eligible,
+                        key=lambda tracklet_id: (
+                            int(support.get(str(tracklet_id), 0)),
+                            -tracklet_id,
+                        ),
+                    )
+                ]
+                while (
+                    len(selected) < representatives_per_group
+                    and len(selected) < len(eligible)
+                ):
+                    remaining = [value for value in eligible if value not in selected]
+                    selected.append(
+                        max(
+                            remaining,
+                            key=lambda tracklet_id: (
+                                min(
+                                    abs(
+                                        float(midpoints.get(tracklet_id, tracklet_id))
+                                        - float(midpoints.get(chosen, chosen))
+                                    )
+                                    for chosen in selected
+                                ),
+                                int(support.get(str(tracklet_id), 0)),
+                                -tracklet_id,
+                            ),
+                        )
+                    )
+                representatives.extend(selected)
+        unresolved_tracklets.update(
+            int(value) for value in meta.get("abstained_tracklet_ids", [])
+        )
+    queries = sorted(unresolved_tracklets - accepted_tracklets)
+    references = sorted(set(representatives) - set(queries))
+    return queries, references
+
+
+def build_targeted_candidate_shortlists(
+    local_pass: Any,
+    reids: Sequence[dict[str, Any]],
+    *,
+    query_tracklet_ids: Sequence[int],
+    reference_tracklet_ids: Sequence[int],
+    limit: int = 5,
+) -> dict[int, list[int]]:
+    """Rank compatible reference prototypes for each unresolved tracklet."""
+    if isinstance(limit, bool) or not isinstance(limit, int) or not 1 <= limit <= 10:
+        raise ValueError("limit must be an integer in [1, 10]")
+    queries = sorted({int(value) for value in query_tracklet_ids})
+    references = sorted({int(value) for value in reference_tracklet_ids})
+    if (
+        len(queries) != len(query_tracklet_ids)
+        or len(references) != len(reference_tracklet_ids)
+    ):
+        raise ValueError("query and reference tracklet ids must be unique")
+
+    roles: dict[int, str] = {}
+    for reid in reids:
+        meta = reid.get("_meta", {}) if isinstance(reid, dict) else {}
+        role_by_identity = {
+            int(person["id"]): str(person.get("role", "unknown"))
+            for person in reid.get("people", [])
+            if isinstance(person, dict) and isinstance(person.get("id"), int)
+        }
+        for association in meta.get("gallery_associations", []):
+            role = role_by_identity.get(int(association.get("id", -1)), "unknown")
+            for tracklet_id in association.get("tracklet_ids", []):
+                roles[int(tracklet_id)] = role
+
+    observations: dict[int, dict[int, np.ndarray]] = defaultdict(dict)
+    for frame, detections in local_pass.dets.items():
+        for tracklet_id, box, _ in detections:
+            tracklet_id = int(tracklet_id)
+            if tracklet_id in queries or tracklet_id in references:
+                observations[tracklet_id][int(frame)] = np.asarray(box, dtype=float)
+
+    def prototype(tracklet_id: int) -> np.ndarray | None:
+        samples = local_pass.appearance_embeddings.get(tracklet_id, [])
+        if not samples:
+            return None
+        strongest = sorted(samples, key=lambda item: (-item[2], item[0]))[:8]
+        vector = np.mean(
+            np.stack([np.asarray(item[1], dtype=float) for item in strongest]), axis=0
+        )
+        return vector / max(float(np.linalg.norm(vector)), 1e-12)
+
+    prototypes = {tracklet_id: prototype(tracklet_id) for tracklet_id in queries + references}
+
+    def spatially_distinct(a: np.ndarray, b: np.ndarray) -> bool:
+        x1, y1 = np.maximum(a[:2], b[:2])
+        x2, y2 = np.minimum(a[2:], b[2:])
+        intersection = max(0.0, x2 - x1) * max(0.0, y2 - y1)
+        area_a = max(float((a[2] - a[0]) * (a[3] - a[1])), 1.0)
+        area_b = max(float((b[2] - b[0]) * (b[3] - b[1])), 1.0)
+        containment = intersection / min(area_a, area_b)
+        center_gap = float(
+            np.linalg.norm(
+                np.asarray(
+                    [
+                        (a[0] + a[2] - b[0] - b[2]) / 2,
+                        (a[1] + a[3] - b[1] - b[3]) / 2,
+                    ]
+                )
+            )
+            / max(min(a[3] - a[1], b[3] - b[1]), 1.0)
+        )
+        return containment < 0.1 and center_gap > 0.35
+
+    def motion_distance(query: int, reference: int) -> float:
+        query_items = sorted(observations.get(query, {}).items())
+        reference_items = sorted(observations.get(reference, {}).items())
+        if not query_items or not reference_items:
+            return float("inf")
+        if query_items[0][0] > reference_items[-1][0]:
+            left, right = reference_items[-1][1], query_items[0][1]
+        elif reference_items[0][0] > query_items[-1][0]:
+            left, right = query_items[-1][1], reference_items[0][1]
+        else:
+            shared = sorted(set(observations[query]) & set(observations[reference]))
+            if not shared:
+                return float("inf")
+            distances = []
+            for frame in shared:
+                left = observations[query][frame]
+                right = observations[reference][frame]
+                scale = max(
+                    ((left[3] - left[1]) + (right[3] - right[1])) / 2,
+                    1.0,
+                )
+                distances.append(
+                    float(
+                        np.linalg.norm(
+                            np.asarray(
+                                [
+                                    (left[0] + left[2] - right[0] - right[2]) / 2,
+                                    (left[1] + left[3] - right[1] - right[3]) / 2,
+                                ]
+                            )
+                        )
+                        / scale
+                    )
+                )
+            return float(np.median(distances))
+        scale = max(
+            ((left[3] - left[1]) + (right[3] - right[1])) / 2,
+            1.0,
+        )
+        return float(
+            np.linalg.norm(
+                np.asarray(
+                    [
+                        (left[0] + left[2] - right[0] - right[2]) / 2,
+                        (left[1] + left[3] - right[1] - right[3]) / 2,
+                    ]
+                )
+            )
+            / scale
+        )
+
+    result: dict[int, list[int]] = {}
+    for query in queries:
+        ranked: list[tuple[tuple[float, float, int], int]] = []
+        query_role = roles.get(query, "unknown")
+        for reference in references:
+            reference_role = roles.get(reference, "unknown")
+            if (
+                query_role != "unknown"
+                and reference_role != "unknown"
+                and query_role != reference_role
+            ):
+                continue
+            shared = set(observations.get(query, {})) & set(observations.get(reference, {}))
+            if any(
+                spatially_distinct(
+                    observations[query][frame], observations[reference][frame]
+                )
+                for frame in shared
+            ):
+                continue
+            query_prototype = prototypes.get(query)
+            reference_prototype = prototypes.get(reference)
+            similarity = (
+                float(np.dot(query_prototype, reference_prototype))
+                if query_prototype is not None and reference_prototype is not None
+                else -1.0
+            )
+            distance = motion_distance(query, reference)
+            ranked.append(((-similarity, distance, reference), reference))
+        result[query] = [reference for _, reference in sorted(ranked)[:limit]]
+    return result

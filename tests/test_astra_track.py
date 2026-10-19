@@ -5,6 +5,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 
 import numpy as np
@@ -22,6 +23,7 @@ from astra import (
 )
 from track import (
     LocalPass,
+    astra_pass,
     make_batches,
     sync_ids,
     validate_astra_options,
@@ -109,6 +111,28 @@ class AstraCacheTests(unittest.TestCase):
                     original_height=100,
                 )
 
+            shortlisted = copy.deepcopy(expected)
+            shortlisted["astra"]["targeted_shortlist"] = True
+            with self.assertRaisesRegex(AstraCacheError, "targeted_shortlist"):
+                load_astra_cache(
+                    cache,
+                    expected_manifest=shortlisted,
+                    expected_batches=[[0, 10]],
+                    original_width=200,
+                    original_height=100,
+                )
+
+            tracker_reid = copy.deepcopy(expected)
+            tracker_reid["astra"]["tracker_reid"] = True
+            with self.assertRaisesRegex(AstraCacheError, "tracker_reid"):
+                load_astra_cache(
+                    cache,
+                    expected_manifest=tracker_reid,
+                    expected_batches=[[0, 10]],
+                    original_width=200,
+                    original_height=100,
+                )
+
     def test_legacy_cache_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -143,6 +167,8 @@ class AstraCacheTests(unittest.TestCase):
             make_batches(5, 0)
         with self.assertRaisesRegex(ValueError, "overlap"):
             make_batches(5, 2, overlap=-1)
+        with self.assertRaisesRegex(ValueError, "smaller"):
+            make_batches(5, 2, overlap=2)
         with self.assertRaisesRegex(ValueError, "sample_fps"):
             validate_astra_options(
                 sample_fps=float("nan"), batch_size=16, workers=1, match_iou=0.3
@@ -155,9 +181,102 @@ class AstraCacheTests(unittest.TestCase):
             validate_astra_options(
                 sample_fps=1.0, batch_size=16, workers=1, match_iou=1.1
             )
+        with self.assertRaisesRegex(ValueError, "targeted_shortlist_size"):
+            validate_astra_options(
+                sample_fps=1.0,
+                batch_size=16,
+                workers=1,
+                match_iou=0.3,
+                targeted_shortlist_size=2,
+            )
 
 
 class AstraResponseValidationTests(unittest.TestCase):
+    def test_astra_pass_runs_targeted_followup_for_unresolved_tracklet(self) -> None:
+        lp = LocalPass(fps=10.0, width=160, height=100, total=5)
+        lp.sample_idx = [0, 1, 2, 3]
+        lp.sample_frames = [np.full((100, 160, 3), 80, np.uint8) for _ in range(4)]
+        left = np.asarray([10, 10, 50, 90], float)
+        right = np.asarray([12, 10, 52, 90], float)
+        lp.dets = {
+            0: [(7, left.copy(), 0.9)],
+            1: [(7, left.copy(), 0.9)],
+            2: [(12, right.copy(), 0.9)],
+            3: [(12, right.copy(), 0.9)],
+            4: [(12, right.copy(), 0.95)],
+        }
+        base_response = {
+            "identities": [
+                {
+                    "id": 1,
+                    "role": "customer",
+                    "tracklet_ids": [7],
+                    "confidence": 0.9,
+                }
+            ],
+            "abstained_tracklet_ids": [12],
+        }
+        targeted_response = {
+            "identities": [
+                {
+                    "id": 20,
+                    "role": "customer",
+                    "tracklet_ids": [7, 12],
+                    "confidence": 0.9,
+                }
+            ],
+            "abstained_tracklet_ids": [],
+        }
+
+        with (
+            patch(
+                "flowmetric.infrastructure.astra.make_client",
+                return_value=(SimpleNamespace(base_url="mock"), "mock-model"),
+            ),
+            patch(
+                "flowmetric.identity.gallery.astra_reid_tracklet_gallery",
+                side_effect=[
+                    (base_response, "mock-model"),
+                    (targeted_response, "mock-model"),
+                ],
+            ) as gallery_call,
+            patch(
+                "flowmetric.media.video.load_video_frames",
+                return_value={4: np.full((100, 160, 3), 100, np.uint8)},
+            ) as frame_loader,
+        ):
+            reids = astra_pass(
+                lp,
+                source=Path("video.mp4"),
+                model="mock-model",
+                effort="low",
+                batch_size=16,
+                batch_overlap=4,
+                workers=1,
+                targeted_pass=True,
+                merge_confidence=0.55,
+                min_support=2,
+                targeted_resampling=True,
+                targeted_resample_budget=4,
+                targeted_shortlist=True,
+                targeted_shortlist_size=3,
+            )
+
+        self.assertEqual(len(reids), 2)
+        self.assertEqual(reids[1]["_meta"]["gallery_scope"], "targeted")
+        self.assertEqual(reids[1]["_meta"]["targeted_query_ids"], [12])
+        self.assertEqual(reids[1]["_meta"]["targeted_resampled_frames"], [4])
+        self.assertEqual(
+            reids[1]["_meta"]["targeted_candidate_shortlists"], {"12": [7]}
+        )
+        self.assertEqual(gallery_call.call_count, 2)
+        self.assertEqual(gallery_call.call_args_list[1].kwargs["target_tracklet_ids"], [12])
+        self.assertEqual(
+            gallery_call.call_args_list[1].kwargs["candidate_shortlists"],
+            {12: [7]},
+        )
+        frame_loader.assert_called_once_with(Path("video.mp4"), (4,))
+
     def test_valid_box_is_clipped_to_image(self) -> None:
         response = _response([0, 10])
         response["people"][0]["detections"][0]["xyxy"] = [-5, -4, 250, 90]
@@ -209,6 +328,32 @@ class AstraResponseValidationTests(unittest.TestCase):
             validate_reid_batches(
                 [_response([0, 10])],
                 expected_batches=[[0, 10], [10, 20]],
+                original_width=200,
+                original_height=100,
+            )
+
+    def test_targeted_followup_batch_is_allowed_but_arbitrary_extra_is_not(self) -> None:
+        base = _response([0, 10])
+        targeted = _response([0, 10])
+        targeted["_meta"].update(
+            {
+                "protocol": "tracklet_gallery_v1",
+                "gallery_scope": "targeted",
+                "targeted_query_ids": [7],
+            }
+        )
+
+        validate_reid_batches(
+            [base, targeted],
+            expected_batches=[[0, 10]],
+            original_width=200,
+            original_height=100,
+        )
+
+        with self.assertRaisesRegex(AstraResponseError, "unexpected extra"):
+            validate_reid_batches(
+                [base, _response([0, 10])],
+                expected_batches=[[0, 10]],
                 original_width=200,
                 original_height=100,
             )
